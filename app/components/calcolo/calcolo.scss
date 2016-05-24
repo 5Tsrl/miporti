@@ -1,0 +1,26 @@
+@import '../../base/_variables.scss';
+
+.react-autosuggest__container {
+  margin: 0;
+  z-index: auto;
+  position:relative;
+}
+.react-autosuggest__input {
+padding-left: 0px;    
+    
+}
+.react-autosuggest__suggestions-container {
+  z-index: auto;
+  position:relative;
+  background-color: darken($c12_1, 8%);
+  
+}
+.react-autosuggest__suggestion {
+  padding-left: 15px; 
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.react-autosuggest__suggestion--focused {
+  background-color: lighten($c12_1, 3%);
+}

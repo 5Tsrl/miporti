@@ -1,0 +1,2253 @@
+@import 'base/reset.scss';
+@import 'base/mixins.scss';
+@import 'base/_include-media.scss';
+@import 'base/_variables.scss';
+
+@import 'font/font.scss';
+
+
+
+/*.html-menu-open{
+	overflow:hidden;
+	position:fixed;
+}*/
+
+body{
+	background: $c1;
+	font-family: $OS;
+	&.menu-open {
+		overflow: hidden;
+		position: fixed;
+	}
+}
+
+.aux {
+	margin: 0 15px;
+	position: relative;
+	@include media('screen', '>dim_30') {
+		margin: 0 30px;
+	}
+	@include media('screen', '>dim_70') {
+		max-width: 1140px;
+		margin: 0 auto;
+	}
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+	.no-touch &:hover{
+		text-decoration: underline;
+	}
+}
+
+.tabs{
+	.tabs_container{
+		position: relative;
+		.tab_container{
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+			&.first_active{
+				display: block;
+			}
+		}
+	}
+	.tabs_label{
+		position: relative;
+		.tab_label{
+			display: inline-block;
+		}
+	}
+}
+.tabs_label{
+	position: relative;
+	.tab_label{
+		display: inline-block;
+	}
+}
+.iScrollVerticalScrollbar {
+	position: absolute;
+	z-index: 9999;
+	width: 35px;
+	bottom: 20px;
+	top: 20px;
+	right: 0;
+	overflow: hidden;
+}
+.iScrollIndicator {
+	position: absolute;
+	border:0;
+	cursor: pointer;
+}
+.iScrollVerticalScrollbar .iScrollIndicator {
+	&:after{
+		display: block;
+		content: '';
+		width: 7px;
+		height: 100%;
+		right: 13px;
+		position: absolute;
+	}
+	width: 100%;
+	right: 0;
+}
+
+
+.header{
+	position: relative;
+	width: 100%;
+	background: #fff;
+	padding: 9px 0;
+	.aux:after{
+		content:'';
+		display: table;
+		clear: both;
+	}
+	hgroup{
+		display: block;
+		width: 115px;
+		float: left;
+	}
+
+	#logo_site-title {
+		text-indent: -9999px;
+		font-size: 0;
+		line-height: 0;
+		display: block;
+		width: 115px;
+		height: 37px;
+		background:url(images/logo_MIP.svg) no-repeat top left;
+		background-size:contain;
+	}
+	#nav-toggle {
+		display: block;
+		width: 23px;
+		height: 20px;
+		text-indent: -9999px;
+		position:absolute;
+		right:0;
+		top: 10%;
+		padding: 6px 5px 5px 5px;
+
+		.icon {
+		    bottom: 0;
+		    height: 20px;
+		    margin: auto;
+		    position: absolute;
+		    right: 15%;
+		    text-indent: -9999px;
+		    top: 0;
+			@include prefix('transition', 'all 0.2s linear 0s');
+		    width: 23px;
+
+		    &:before, &:after, span{
+			    background: $c2 none repeat scroll 0 0;
+			    height: 3px;
+			    left: 0;
+			    position: absolute;
+			    right: 0;
+			    @include prefix('border-radius', '2px');
+				@include prefix('transition', 'all 0.2s linear 0s');
+			}
+
+			&:before {
+			    content: "";
+			    top: 0;
+			}
+			&:after {
+			    bottom: 1px;
+			    content: "";
+			    top: auto;
+			}
+			span {
+			    margin-top: -2px;
+			    top: 50%;
+			}
+		}
+		.no-touch &:hover{
+			cursor: pointer;
+			background: $c2;
+			.icon:before, .icon:after, .icon span{
+				background: #fff;
+			}
+		}
+	}
+	nav{
+		background: $c2;
+		position: fixed;
+		padding: 25px 30px;
+		z-index: 10;
+		left: 100%;
+		top: 55px;
+		width: 100%;
+		bottom: 0;
+		@include prefix('box-sizing', 'border-box');
+		@include prefix('transition', 'all 0.3s ease 0s');
+
+
+		ul li a{
+			padding: 3px 15px;
+			display: inline-block;
+			color: #fff;
+			font-weight: $fw3;
+			font-size: 1.1em;
+		}
+		.language-switcher{
+			position: absolute;
+			top: 25px;
+			right: 30px;
+			ul li a{
+				background: rgba(0, 0, 0, 0.1);
+				text-transform: uppercase;
+				font-weight: $fw2;
+				font-size: 0.9em;
+				text-align: center;
+				@include prefix('box-sizing', 'border-box');
+				width: 35px;
+				padding: 4px;
+				display: none;
+				&.current_lang{
+					display: block;
+				}
+			}
+			ul{
+				.no-touch &:hover{
+					background: rgba(0, 0, 0, 0.3);
+					li a{
+						display: block;
+					}
+				}
+				.touch &{
+					li a{
+						display: block;
+					}
+				}
+			}
+		}
+		.menu-open &{
+			display: block;
+		}
+	}
+	@include media('screen', '>dim_30') {
+		padding: 20px 0;
+		hgroup{
+			width: 230px;
+		}
+		#logo_site-title {
+			width: 230px;
+			height: 70px;
+		}
+		#nav-toggle {
+			top: 30%;
+		}
+		nav{
+			top: 110px;
+		}
+	}
+	@include media('screen', '>dim_50') {
+		#nav-toggle{
+			display: none;
+		}
+		nav{
+			background: none;
+			position: absolute;
+			left: auto;
+			top: auto;
+			right: 0;
+			bottom: -20px;
+			width: auto;
+			//float: right;
+			//width: inherit;
+			padding: 0;
+			padding-right: 50px;
+
+			ul {
+				display: inline-block;
+				float: right;
+				li{
+					display: inline-block;
+				}
+			}
+
+			ul.main-menu-5t li a{
+				color: $c5;
+				font-size: 0.9em;
+				text-transform: uppercase;
+				position: relative;
+				padding-bottom: 29px;
+				border-bottom: 6px #fff solid;
+				.no-touch &:hover{
+					text-decoration: none;
+					border-bottom: 6px $c6 solid;
+					color: #222;
+					&:before{
+						display: block;
+					    content: '';
+					    position: absolute;
+					    bottom: 0;
+					    left: 43%;
+					    margin: 0;
+					    width: 0;
+					    height: 0;
+					    border: 5px solid transparent;
+					    border-bottom-color: $c6;
+					}
+				}
+			}
+			ul.main-menu-5t li.active a{
+				text-decoration: none;
+				border-bottom: 6px $c6 solid;
+				color: #222;
+				&:before{
+					display: block;
+				    content: '';
+				    position: absolute;
+				    bottom: 0;
+				    left: 43%;
+				    margin: 0;
+				    width: 0;
+				    height: 0;
+				    border: 5px solid transparent;
+				    border-bottom-color: $c6;
+				}
+			}
+			.language-switcher{
+				top: 0;
+				right: 0;
+				ul li a{
+					background: rgba(0, 0, 0, 0.05);
+					color: $c5; 
+				}
+				ul{
+					li{
+						display:block;
+					}
+					.no-touch &:hover{
+						background: rgba(0, 0, 0, 0.1);
+					}
+				}
+			}
+		}
+	}
+}
+.menu-open nav.main-menu-container{
+	left: 0;
+}
+.menu-open #nav-toggle {
+	.icon:before {
+		top: 40%;
+		@include prefix('transform', 'rotate(45deg)');
+	}
+	.icon:after {
+		bottom: 45%;
+	    @include prefix('transform', 'rotate(-45deg)');
+	}
+	.icon span {
+	    opacity: 0;
+	}
+}
+
+footer{
+	width: 100%;
+	background: $c3;
+	color: $c4;
+	position: relative;
+	padding: 25px 0 0;
+	.logo-regione{
+		text-indent: -9999px;
+		display: inline-block;
+		width: 80px;
+		height: 26px;
+		background:url(images/logo_piemonte.png) no-repeat top left;
+		background-size:contain;
+		margin-right: 20px;
+		.no-touch &:hover{
+			opacity: 0.8;
+		}
+	}
+	.logo-5t{
+		text-indent: -9999px;
+		display: inline-block;
+		width: 27px;
+		height: 27px;
+		background:url(images/logo_5T.png) no-repeat top left;
+		background-size:contain;
+		vertical-align: middle;
+		margin-left: 5px;
+	}
+	.madeby{
+		float: right;
+		display: inline-block;
+		font-size: 0.8em;
+		color: #fff;
+		vertical-align: middle;
+		.no-touch &:hover{
+			opacity: 0.8;
+			text-decoration: none;
+		}
+	}
+	.wrapper{
+		padding-top: 1.35em;
+		&:after{
+			content: '';
+			display: table;
+			clear: both;
+		}
+	}
+	.footer-menu{
+		padding-top: 25px;
+		ul li{
+			display: inline-block;
+			font-size: 0.7em;
+			&:nth-child(even):before,
+			&:nth-child(even):after{
+				content: " | ";
+				padding: 0 10px;
+				color: #fff;
+			}
+			a {
+				text-transform: uppercase;
+			}
+		}
+	}
+	.info{
+		font-size: 0.7em;
+		display: block;
+		padding-top: 0.25em;
+		a{
+			color: $c4;
+		}
+	}
+
+	.info-tel{
+		display:block;
+		// float: right;
+		color: #fff;
+		font-size: 0.9em;
+		text-align: right;
+		line-height: 3em;
+		width: 110px;
+		height: 40px;
+		background:url(images/bg_tel.png) no-repeat center;
+		background-size:contain;
+		margin-right: 10px;
+		padding-right: 8px;
+		box-sizing: border-box;
+		margin: 0 auto;
+	}
+	.social{
+		text-indent: -9999px;
+		display: inline-block;
+		float: right;
+		position: relative;
+		background: #00aced;
+		width: 26px;
+		height: 26px;
+		top: -47px;
+		@include prefix('border-radius', '25px');
+		&:after{
+			display: block;
+			width: 15px;
+			height: 15px;
+			background:url(images/twitter.svg) no-repeat center;
+			background-size:contain;
+			content: " ";
+			position: absolute;
+			top: 5px;
+			right: 5px;
+		}
+		.no-touch &:hover{
+			background: rgba(0, 172, 237, 0.8);
+		}
+	}
+	@include media('screen', '>dim_05') {
+		.social{
+			width: 35px;
+			height: 35px;
+			margin-left: 12px;
+			top: -38px;
+			&:after{
+				width: 20px;
+				height: 20px;
+				top: 8px;
+				right: 7px;
+			}
+		}
+	}
+	@include media('screen', '>dim_20') {
+		padding: 25px 0;
+		.wrapper{
+			padding-top: 2.2em;
+		}
+		.madeby{
+			float: none;
+		}
+		.social{
+			width: 35px;
+			height: 35px;
+			margin-left: -1px;
+			top: 6px;
+			&:after{
+				width: 20px;
+				height: 20px;
+				top: 8px;
+				right: 7px;
+			}
+		}
+		.footer-info{
+			float: left;
+			margin-right: 12px;
+		}
+		.footer-menu{
+			padding-top: 0;
+			font-size: 1.1em;
+		}
+		.info-tel{
+			margin-right: 20px;
+			width: 115px;
+			height: 45px;
+			font-size: 0.95em;
+			line-height: 3.2em;
+			float: left;
+		}
+	}
+	@include media('screen', '>dim_30') {
+		.logo-regione{
+			width: 150px;
+			height: 50px;
+			margin-right: 30px;
+		}
+		.logo-5t{
+			width: 47px;
+			height: 45px;
+			margin-left: 10px;
+		}
+		.madeby{
+			font-size: 1em;
+			vertical-align: text-top;
+		}
+		.social{
+			width: 40px;
+			height: 40px;
+			margin-left: 15px;
+			top: 4px;
+			&:after{
+				width: 23px;
+				height: 23px;
+				top: 9px;
+				right: 8px;
+			}
+		}
+		.info-tel{
+			margin-right: 30px;
+		}
+		
+	}
+	@include media('screen', '>dim_40') {
+		padding: 45px 0;
+		.wrapper{
+			float: right;
+			padding: 0;
+			.footer-menu{
+				font-size: 1.3em;
+			}
+			.info{
+				font-size: 0.75em;
+			}
+			.info-tel{
+				margin-right: 30px;
+				width: 120px;
+				height: 50px;
+				font-size: 1em;
+				line-height: 3.4em;
+			}
+			.social{
+				top: 8px;
+			}
+		}
+	}
+	@include media('screen', '>dim_50') {
+		padding: 65px 0;
+	}
+}
+.main{
+	&:after{
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+.widget_container{
+	@include flex();
+	@include prefix('flex-wrap', 'wrap');
+	@include prefix('justify-content', 'space-between');
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.widget{
+	width:100%;
+	background: #fff;
+	margin-bottom: 30px;
+	text-align: center;
+	font-weight: 300;
+	box-sizing: border-box;
+	@include prefix('box-shadow', '0px 0px 7px 0px rgba(0,0,0,0.2)');
+
+	h2{
+		font-weight: 400;
+	}
+	.title-1{
+		margin-bottom: 35px;
+		&:before{
+			display: block;
+			content: '';
+			background-size:contain;
+			margin: 0 auto 10px;
+			vertical-align: bottom;
+		}
+	}
+	.title-2{
+		text-transform: uppercase;
+		font-size: 1.15em;
+		line-height: 1.2em;
+	}
+	.title-3{
+		text-transform: uppercase;
+		font-size: 1em;
+	}
+	strong{
+		font-weight: 400;
+	}
+	p{
+		font-size: 0.8em;
+	}
+	.btn_link{
+		text-transform: uppercase;
+		font-size: 0.75em;
+		font-weight: 600;
+		display: inline-block;
+		padding: 15px 35px;
+		background: #26527b;
+		max-width: 225px;
+		.no-touch &:hover{
+			text-decoration: none;
+			background: #2e6294;
+		}
+	}
+	.align_brother_bottom{
+		position: absolute;
+		bottom: 40px;
+		left: 40px;
+		right: 40px;
+	}
+}
+//@import 'components/calcolo/calcolo.scss';
+.widget_viaggio {
+	height: 500px;
+	position: relative;
+	background: $c12_1;
+	color:#fff;
+	padding: 40px 20px;
+	text-align: left;
+
+	.title-1{
+		text-align: center;
+		&:before{
+			width: 80px;
+			height: 80px;
+			margin-bottom: 20px;
+			background:url(images/indicazioni.svg) no-repeat center;
+			vertical-align: middle;
+		}
+	}
+  .trip_form{
+      z-index: 0;
+      _position: relative;
+  }
+	.trip_container{
+		position: relative;
+    z-index: 10;
+		ul li{
+			list-style-type: none;
+		}
+		.trip_input{
+			width: 90%;
+			border-bottom: 1px $c12_2 solid;
+			margin-bottom: 30px;
+			label{
+				color: $c12_2;
+				padding-left: 10px;
+				font-size: 1.1em;
+				font-weight: $fw2;
+				text-align: right;
+				width: 25px;
+				display: inline-block;
+			}
+			input{
+				background: $c12_1;
+				border: 0;
+				color: #fff;
+				font-size: 1.1em;
+				font-weight: $fw2;
+				font-family: $OS;
+				vertical-align: baseline;
+				margin-left: 10px;
+				width: 70%;
+			}
+		}
+		.trip_input_switch{
+			background: url(images/trip_input_switch.svg) no-repeat center;
+			border: 0;
+			width: 22px;
+			height: 29px;
+			position: absolute;
+			right: 0;
+			top: 30%;
+			cursor: pointer;
+			.no-touch &:hover{
+				background: url(images/trip_input_switch2.svg) no-repeat center;
+			}
+		}
+	}
+	.trip_mode{
+		padding-top:20px;
+    z-index: 1;
+    //position: absolute;
+    //bottom: 0px;
+		ul{
+			//float: left;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		ul li{
+			list-style-type: none;
+			display: inline-block;
+			cursor:pointer;
+			.no-touch &:hover{
+				label span:after{
+					color:#fff;
+				}		
+			}
+			input[type="radio"] {
+				display:none;
+			}
+			input[type="radio"] + label {
+				text-indent: -9999px;
+				font-size: 0;
+				line-height: 0;
+			}
+			input[type="radio"] + label span:after {
+				font-family: 'fontello';
+				content: '\e800';
+				font-size: 2rem;
+				line-height: 3rem;
+				margin: 0 10px;
+				cursor:pointer;
+				color:$c12_4;
+			}
+			input[type="radio"]:checked + label span:after{
+				color:#fff;
+			}
+			&.public input[type="radio"] + label span:after{
+				content: '\e800';
+			}
+			&.car input[type="radio"] + label span:after{
+				content: '\e803';
+				font-size: 1.8rem;
+			}
+			&.bike input[type="radio"] + label span:after{
+				content: '\e805';
+				
+			}
+			&.walk input[type="radio"] + label span:after{
+				content: '\e804';
+				
+			}
+		}
+		.trip_button_container{
+			text-align: center;
+			.trip_button{
+				border:0;
+				color: #fff;
+				cursor:pointer;
+			}
+		}
+		&:after{
+			content: '';
+			display: table;
+			clear: both;
+		}
+	}
+		
+		
+}
+
+.widget_traffico {
+	height: 500px;
+	background: $c11;
+	color:#fff;
+	padding: 40px;
+	position: relative;
+	.title-1{
+		&:before{
+			width: 87px;
+			height: 71px;
+			margin-bottom: 15px;
+			background:url(images/traffico.svg) no-repeat center;
+		}
+	}
+	p{
+		font-size: 1.1em;
+		margin: 0 auto;
+		margin-bottom: 45px;
+		max-width: 240px;
+
+	}
+
+	.news_traffico{
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		margin-bottom: 30px;
+		//margin-right: 30px;
+
+		.no-touch &:hover{
+			&:before{
+				background: #56C3A3;
+			}
+		}
+
+		&:after{
+			background: url(images/player_default.svg) no-repeat center;
+			display: block;
+			content: '';
+			width: 30px;
+			height: 27px;
+			top: 22%;
+			left: 5%;
+			position: absolute;
+			opacity: 0;
+			visibility: hidden;
+		}
+		&:before{
+			display: inline-block;
+			content: '';
+			width: 42px;
+			height: 42px;
+			vertical-align: middle;
+			margin-right: 10px;
+			background: #40b391;
+			border: 4px #fff solid;
+			@include prefix('border-radius', '50%');
+
+			opacity: 0;
+			visibility: hidden;
+		}
+		h3{
+			display: inline-block;
+			text-transform: uppercase;
+			font-size: 0.8em;
+			font-weight: $fw2;
+			top: -11px;
+			position: relative;
+			@include prefix('transition', 'all 0.3s ease-out');
+		}
+		.no-touch &:hover{
+			h3{
+				text-decoration: none;
+			}
+		}
+		&.close {
+			h3{
+				top: 0;
+			}
+			&:after,
+			&:before{
+				opacity: 1;
+				visibility: visible;
+			}
+			.no-touch &:hover{
+				h3{
+					text-decoration: underline;
+				}
+			}
+		}
+		&.close .player {
+			opacity: 0;
+			visibility: hidden;
+			//display: none;
+		}
+		
+	}
+
+	.player {
+		opacity: 1;
+		visibility: visible;
+		padding: 0;
+		margin: 0;
+		//display: block;
+		height: 50px;
+		width: 100%;
+		position: absolute;
+		top: 5px;
+		left: 0;
+		cursor: default;
+		@include prefix('transition', 'all 0.8s ease');
+		@include prefix('transition-delay', '0.1s');
+		
+	}
+
+	#playtoggle {
+		position: absolute;
+		top: -5px;
+		left: 0;
+		width: 42px;
+		height: 42px;
+		cursor: pointer;
+		background: #40b391;
+		border: 4px #fff solid;
+		@include prefix('border-radius', '50%');
+		&:before{
+			background: url(images/player_play.svg) no-repeat center;
+			display: block;
+			content: '';
+			width: 15px;
+			height: 21px;
+			top: 25%;
+			left: 40%;
+			position: relative;
+		}
+		.no-touch &:hover{
+			background: #56C3A3;
+		}
+	}
+
+	#playtoggle.playing {
+		background: #40b391;
+		border: 4px #fff solid;
+		@include prefix('border-radius', '50%');
+		&:before{
+			background: url(images/player_pausa.svg) no-repeat center;
+			display: block;
+			content: '';
+			width: 15px;
+			height: 21px;
+			top: 25%;
+			left: 33%;
+			position: relative;
+		}
+	}
+
+	#timeleft {
+		display: none;
+	}
+
+	#gutter {
+		position: absolute;
+		top: 32px;
+		left: 75px;
+		right: 10px;
+		height: 3px;
+		&:before{
+			display: block;
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -10px;
+			right: -10px;
+			height: 3px;
+			background: $c11_2;
+		}
+	}
+
+	#wrapper #gutter {
+		right: 90px;
+	}
+
+	#loading {
+		background: #fff;
+		background: #939eaa;
+		@include prefix('border-radius', '3px');
+		display: block;
+		float: left;
+		min-width: 6px;
+		height: 6px;
+	}
+
+	#handle {
+		position: absolute;
+		top: -8px;
+		left: 0;
+		width: 14px;
+		height: 14px;
+		margin-left: -10px;
+		@include prefix('border-radius', '50%');
+		background: #fff;
+		cursor: pointer;
+		border: 3px #fff solid;
+		.no-touch &:hover{
+			background: #40B391;
+		}
+	}
+/*
+	.player a.popup {
+		position: absolute;
+		top: 9px;
+		right: 8px;
+		width: 32px;
+		height: 30px;
+		overflow: hidden;
+		text-indent: -999px;
+		background: url(images/player.png) no-repeat -90px 0;
+	}
+*/
+	.player a.popup:active {
+		background-position: -90px 1px;
+	}
+
+}
+
+.widget_news{
+	text-align: left;
+	#scroll_news {
+		position: relative;
+		height: 480px;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+	}
+	.title-2{
+		color: #fff;
+		background: $c8_1;
+		padding: 15px 35px;
+	}
+	.link_news {
+		list-style-type: none;
+		&:nth-child(even){
+			background: $c8_2;
+			border-bottom: 1px $c8_3 solid;
+			border-top: 1px $c8_3 solid;
+			.no-touch &:hover{
+				background: #edf6f5;
+			}
+		}
+		.no-touch &:hover{
+			background: #f9fbfb;	
+		}
+	}
+	.link_news a{
+		color: $cfont;
+		font-size: 0.8em;
+		font-weight: 400;
+		display: inline-block;
+		padding: 15px 45px 15px 35px;
+		h3{
+			margin-bottom: 10px;
+		}
+		.date_news{
+			display: block;
+			text-transform: uppercase;
+			padding-top: 10px;
+			.date{
+				font-weight: 700;
+				margin-right: 20px;
+			}
+			.time{
+				font-weight: 600;
+			}
+		}
+		.no-touch &:hover{
+			text-decoration: none;
+		}
+	}
+
+	.iScrollIndicator:after {
+		background: $c8_1;
+	}
+}
+
+.widget_twitter{
+	.title-2{
+		color: #fff;
+		background: $c9_1;
+		padding: 15px 25px;
+	}
+	#scroll_twit {
+		position: relative;
+		z-index: 1;
+		height: 480px;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		&:before{
+			display: block;
+			content: '';
+			_border-left: 2px dashed #ddd;
+			width: 3px;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 32px;
+		}
+		ul{
+			padding-top: 7%;
+			padding-bottom: 7%;
+		}
+	}
+	.link_twit{
+		list-style-type: none;
+		margin: 7% 15% 7% 0;
+		margin-left:70px;
+		background: $c9_2;
+		position: relative;
+
+		&:first-child{
+			margin-top: 0;
+		}
+		&:last-child{
+			margin-bottom: 0;
+		}
+
+		
+		
+	}
+	.link_twit a{
+		color: $cfont;
+		text-align: left;
+		font-size: 0.7em;
+		font-weight: 400;
+		display: inline-block;
+		padding: 8px 25px 10px 19px;
+		position: relative;
+		&:before{
+			display: block;
+			content: '';
+			position: absolute;
+			top: 20%;
+			left: -20px;
+			margin: 0;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+			border-right-color: $c9_2;
+		}
+		&:after{
+			background: url(images/twitter_circle.svg) no-repeat center;
+			display: block;
+			content: '';
+			position: absolute;
+			top: 13%;
+			left: -55px;
+			width: 35px;
+			height: 35px;
+		}
+
+		h3{
+			margin-bottom: 10px;
+			font-size:1.1em;
+		}
+		.date_news{
+			display: block;
+			text-transform: uppercase;
+			padding-top: 10px;
+			.date{
+				font-weight: 700;
+				margin-right: 20px;
+			}
+			.time{
+				font-weight: 600;
+			}
+		}
+		.no-touch &:hover{
+			text-decoration: none;
+			background: $c9_3;
+			&:before{
+				border-right-color: $c9_3;
+			}
+		}
+	}
+
+	.iScrollIndicator:after {
+		background: $c9_1;
+	}
+}
+
+.widget_meteo{
+	background: $c13_1;
+	color:#b6e7f3;
+	text-transform: uppercase;
+	font-size: 0.7em;
+	font-weight: $fw1;
+	text-align: center;
+	padding: 0;
+	position: relative;
+	//min-height: 470px;
+	h2{
+		display: none;
+	}
+	p{
+		font-size: 1em;
+		margin: 30px auto;
+	}
+
+	.tabs_meteo_container{
+		height: 480px;
+		position:relative;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+	span.meteo_here{
+		color: #fff;
+		font-size: 1.4em;
+		padding: 14px 0;
+		width: 85%;
+		cursor: pointer;
+		display: inline-block;
+		.no-touch &:hover{
+			color: #b6e7f3;
+		}
+		&:after{
+			background: url(images/select_arrow.png) no-repeat center;
+			width: 10px;
+			height: 10px;
+			margin-left: 15px;
+			display: inline-block;
+			content: '';
+			@include prefix('transition', '0.5s all');
+		}
+		&.open:after{
+			@include prefix('transform', 'rotate(-180deg)');
+		}
+	}
+	ul.meteo_cities{
+		position: absolute;
+		top: 51px;
+		left: 7.5%;
+		width: 85%;
+		z-index: 1;
+		background: $c13_2;
+		display: none;
+		li{
+			list-style-type: none;
+			color: #fff;
+			font-size: 1.4em;
+			padding: 7px;
+			cursor: pointer;
+			&:first-child{
+				padding-top: 14px;
+			}
+			&:last-child{
+				padding-bottom: 14px;
+			}
+			.no-touch &:hover{
+				background: $c13_3;
+			}
+		}
+	}
+
+	.tabs_container{
+		height: 255px;
+		margin: 0 auto 5px;
+		border-top: 1px #a4e1f0 solid;
+		width: 85%;
+	}
+	.tab_container{
+		_height: 255px;
+		margin: 0 auto 5px;
+		border-top: 1px #a4e1f0 solid;
+		width: 85%;
+	}
+	.meteo_now{
+		color: #fff;
+		font-size: 4.5em;
+		display: block;
+		padding-top: 45px;
+		width: 85%;
+		/*.meteo_img:before{
+			display: block;
+			content: '';
+			width: 130px;
+			height: 115px;
+			background:url(images/variabile.svg) no-repeat center;
+			background-size:contain;
+			margin: 0 auto 5px;
+		}*/
+	}
+	.meteo_forecast_container{
+		width: 100%;
+		padding-top: 20px;
+		/*position: absolute;
+		bottom: 0;
+		left: 0;*/
+		&:after{
+			content: '';
+			display: table;
+			clear: both;
+		}
+		.meteo_forecast{
+			color: #fff;
+			font-size: 1.4em;
+			padding: 10px 0;
+			float: left;
+			width: 50%;
+			cursor: pointer;
+			background: $c13_2;
+			.no-touch &:hover{
+				background: $c13_3;
+			}
+			&.tab_left{
+				border-right: 1px $c13_4 solid;
+				@include prefix('box-sizing', 'border-box');
+			}
+			&.tab_right{
+				border-left: 1px $c13_4 solid;
+				@include prefix('box-sizing', 'border-box');
+			}
+			&.tab_active{
+				background: $c13_1;
+				cursor: auto;
+				.no-touch &:hover{
+					background: $c13_1;
+				}
+			}
+			/*.meteo_today{
+				.meteo_img{
+					display: block;
+					content: '';
+					width: 41px;
+					height: 41px;
+					background:url(images/variabile_small.svg) no-repeat center;
+					background-size:contain;
+					margin: 10px auto;
+				}
+			}
+			.meteo_tomorrow{
+				.meteo_img{
+					display: block;
+					content: '';
+					width: 41px;
+					height: 41px;
+					background:url(images/variabile_small.svg) no-repeat center;
+					background-size:contain;
+					margin: 10px auto;
+				}
+			}*/
+		}
+	}
+}
+
+.widget_imgbg{
+	background: url(./images/img_bg_colli_estate.jpg) no-repeat center;
+	background-size: cover;
+	color: #fff;
+	padding: 23px;
+	ul{list-style-type:none}
+	p,
+	.title-3{
+		text-align: left;
+		margin-bottom: 15px;
+		max-width: 260px;
+	}
+	.btn_link{
+		width: 100%;
+		box-sizing: border-box;
+		display: block;
+		background: #fff;
+		padding: 15px;
+		color: $c6;
+		.no-touch &:hover{
+			background: rgba(255,255,255, 0.9);
+		}
+	}
+	span.meteo_here{
+		_color: #fff;
+		_font-size: 1.4em;
+		padding: 14px 0;
+		_width: 85%;
+		cursor: pointer;
+		display: inline-block;
+		.no-touch &:hover{
+			_color: #b6e7f3;
+		}
+		&:after{
+			background: url(images/select_arrow.png) no-repeat center;
+			width: 10px;
+			height: 10px;
+			margin-left: 15px;
+			display: inline-block;
+			content: '';
+			@include prefix('transition', '0.5s all');
+		}
+		&.open:after{
+			@include prefix('transform', 'rotate(-180deg)');
+		}
+	}
+	.elencoColli{display:none;background: #fff;color: $c6; text-align: left; padding: 10px;     font-size: 0.8em; line-height: 2em;
+		.aperto{			
+			&:before{content: '\2713'; margin-right: 10px}
+		}
+		.chiuso{			
+			&:before{content: '\2717'; color: #de5b00; margin-right: 10px}
+		}
+	}
+}
+
+.widget_ticket{
+	color: $c4;
+	padding: 23px;
+	.title-2{
+		margin: 0 auto;
+		margin-bottom: 15px;
+		max-width: 260px;
+	}
+	p{
+		margin: 0 auto;
+		max-width: 260px;
+	}
+	.img_ticket{
+		background: url(images/img_biglietto.svg)  no-repeat center;
+		display: block;
+		height: 151px;
+		margin: 40px auto 50px;
+		max-width: 170px;
+	}
+	.btn_link{
+		background: #A9B0C0;
+		color: #fff;
+		width: 100%;
+		box-sizing: border-box;
+		max-width: 170px;
+		.no-touch &:hover{
+			background:#b4bac9;
+		}
+	}
+}
+
+.widget_voli{
+	text-align: left;
+	color: $c10_3;
+	font-weight: $fw2;
+	text-transform: uppercase;
+	.title-4{
+		text-align: center;
+		background: $c10_1;
+		padding: 10px 30px;
+		h2{
+			color: #fff;
+			font-weight: $fw1;
+			font-size: 2.1em;
+			text-transform: lowercase;
+		}
+		h3{
+			color: $c10_2;
+			font-weight: $fw1;
+			font-size: 1em;
+		}
+		p{
+			color: $c10_2;
+			font-weight: $fw1;
+		}
+	}
+	.last_info{
+		text-align: center;
+		margin: 0px auto; 
+		p{text-align: right; margin:0 auto 10px}
+		a.btn_link{
+			background: $c10_1;
+			padding: 7px 15px;
+			.no-touch &:hover{
+				background:#e66b16;
+			}
+		}
+		span.btn_partenze_cont{
+			border: 1px $c10_4 solid;
+			margin: 10px 0;
+			display: inline-block;
+			a.btn_partenze{
+				padding:0 5px;
+				margin: 6px 0;
+				color: $cfont;
+				font-weight: $fw3;
+				font-size: 0.8em;
+				display: inline-block;
+				&:first-child{
+					border-right: 1px $c10_4 solid;
+				}
+			}
+		}
+		span.raggiungere{
+			font-size: 0.8em;
+			
+			margin: 10px 0;
+			display: inline-block;
+			a.btn_partenze{
+				border: 1px $c10_4 solid;
+				padding:0 5px;
+				margin: 6px 0;
+				color: $cfont;
+				font-weight: $fw3;
+				font-size: 0.8em;
+				display: inline-block;
+				&:first-child{
+					border-right: 1px $c10_4 solid;
+					margin-left: 6px
+				}
+			}
+		}
+	}
+		
+		
+	.voli_tabella_container{
+		color: $c10_3;
+		font-weight: $fw3;
+		font-size: 0.9em;
+		margin: 15px;
+		.tab_left,
+		.tab_right{
+			&:before{
+				display: inline-block;
+				font-size: 1.4em;
+				font-family: 'fontello';
+				font-weight: normal;
+				padding-right: 10px;
+			}
+			cursor: pointer;
+			padding: 10px;
+			width: 49%;
+			box-sizing: border-box;
+			text-align: center;
+			.no-touch &:hover{
+				color: $c10_2;
+			}
+		}
+		.tab_left{
+			&:before{
+				content: '\e802';
+			}
+			padding-right: 20px;
+		}
+		.tab_right{
+			&:before{
+				content: '\e801';
+			}
+			border-left: 1px $c10_4 solid;
+			padding-left: 20px;
+		}
+		.tab_active{
+			color: $c10_1;
+			cursor: auto;
+			.no-touch &:hover{
+				color: $c10_1;
+			}
+		}
+	}
+	.tabs_container{
+		overflow-x: scroll;
+		height: 218px;
+		width: 100%;
+		.voli_partenze,
+		.voli_arrivi{
+			width: 100%;
+		}
+		.tabella_voli{
+			width: 100%;
+			thead{
+				color: $c10_3;
+				font-size: 0.75em;
+				border-top: 1px $c10_4 solid;
+				tr th{
+					font-weight: $fw2;
+					text-align: left;
+				}
+			}
+			tbody{
+				tr{
+					font-size: 0.7em;
+					font-weight: $fw3;
+					background: $c10_5;
+					color: $cfont;
+					border-bottom: 1px #fff solid;
+					text-transform: none;
+					&:nth-child(even){
+						background: $c10_6;
+					}
+					.note{text-transform: lowercase; font-weight:normal}
+				}
+			}
+			tr{
+				height: 40px;
+				td,
+				th{
+					vertical-align: middle;
+					padding: 0 7px;
+					&:first-child{
+						padding-left: 14px;
+					}
+					&:last-child{
+						padding-right: 14px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include media('screen', '>dim_05') {
+	.widget_traffico{
+		height: 470px; 
+	}
+}
+
+@include media('screen', '>dim_07') {
+	.widget_voli{
+		.tabs_container{
+			overflow-x: auto;
+			.tabella_voli{
+				thead{
+					font-size: 0.85em;
+				}
+				tbody tr{
+					font-size: 0.8em;
+				}
+			}
+		}
+		.last_info{
+			margin: 0 auto 10px;
+			a.btn_link{
+				margin-left: 15px;
+			}
+			span.btn_partenze_cont a.btn_partenze{
+				padding:0 15px;
+			}
+		}
+			
+	}
+	.widget_traffico{
+		height: 480px;
+		.news_traffico{
+			margin-right: 30px;
+		}
+	}
+}
+
+@include media('screen', '>dim_20') {
+	.title-1{
+		font-size:1.75em;
+	}
+	.widget .title-1{
+		&:before{
+			display: inline-block;
+			margin: 0 20px 0 0;
+		}
+	}
+	.widget_viaggio {
+		height: 360px;
+		.align_brother_bottom{
+			left: 20px;
+			right: 20px;
+		}
+		.title-1{
+			padding-left: 20px;
+			text-align: left;
+			&:before{
+				width: 50px;
+				height: 50px;
+				margin-bottom: 0;
+			}
+		}
+		.trip_container .trip_input input{
+			width: 80%;
+		}
+		.trip_mode{
+			width: 90%;
+			ul{
+				float: left;
+				margin-bottom: 0;
+				margin-left: 20px;
+			}
+			.trip_button_container{
+				float: right;
+
+			}
+		}
+	}
+	.widget_traffico {
+		height: 410px;
+		.title-1:before{
+			width: 57px;
+			height: 41px;
+			margin-bottom: 0;
+		}
+		p{
+			font-size: 1.2em;
+		}
+	}
+	.widget_twitter #scroll_twit,
+	.widget_news #scroll_news{
+		height: 425px;
+	}
+	.widget_voli {
+		.tabs_container .tabella_voli tr td,
+		.tabs_container .tabella_voli tr th{
+			&:first-child{
+				padding-left: 30px;
+			}
+			&:last-child{
+				padding-right: 30px;
+			}
+		}
+	}
+}
+@include media('screen', '>dim_22') {
+	.widget_traffico {
+		height: 360px;
+	}
+}
+@include media('screen', '>dim_25') {
+	.widget_4-1{
+		width: 48%;
+		.browser_ie9 &{
+			float: left;
+			margin-left: 4%;
+			min-height: 470px;
+			&:nth-child(even){
+				margin-left: 0;
+			}
+		}
+	}
+	.widget_4-2{
+		.browser_ie9 &{
+			float: left;
+		}
+	}
+	.browser_ie9 .widget_container{
+		&:after{
+			display: table;
+			content: '';
+			clear: both;
+		}
+	}
+
+	.title-1{
+		font-size:1.9em;
+	}
+	.widget_viaggio {
+		.trip_mode{
+			.trip_button_container{
+				.trip_button{
+					width: 190px;
+				}
+			}
+		}
+	}
+	.widget_traffico {
+		p{
+			font-size: 1.3em;
+			line-height: 1.5em;
+		}
+		.news_traffico{
+			margin-bottom: 0;
+		}
+	}
+	.widget_news #scroll_news {
+		height: 370px;
+	}
+	.widget_twitter #scroll_twit{
+		height: 478px;
+	}
+	.widget_voli{
+		.title-4{
+			text-align: left;
+			position: relative;
+			p{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				margin: 10px 30px;
+			}
+		}
+		.last_info{
+			position: relative;
+			text-align: left;
+			margin: 10px 30px; 
+			a.btn_link{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				margin: 10px 0;
+			}
+		}
+		.tabs_container .tabella_voli tr td,
+		.tabs_container .tabella_voli tr th{
+			&:first-child{
+				padding-left: 30px;
+			}
+			&:last-child{
+				padding-right: 30px;
+			}
+		}
+		.voli_tabella_container{
+			.tab_left,
+			.tab_right{
+				width: auto;
+				box-sizing: border-box;
+				text-align: left;
+			}
+		}
+	}
+}
+
+@include media('screen', '>dim_35') {
+	.widget .title-1{
+		&:before{
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.widget_4-1{
+		width: 48.5%;
+		.browser_ie9 &{
+			margin-left: 3%;
+			&:nth-child(even){
+				margin-left: 0;
+			}
+		}
+	}
+	.widget_4-2{
+		width: 48.5%;
+		.browser_ie9 &{
+			margin-left: 3%;
+			min-height: 550px;
+			&:nth-child(odd){
+				margin-left: 0;
+			}
+		}
+	}
+	.widget_4-4{
+		width: 100%;
+		.browser_ie9 &{
+			margin-left: 0;
+			min-height: 470px;
+		}
+	}
+	.widget_viaggio {
+		height: 550px;
+		.title-1{
+			padding-left: 0;
+			text-align: center;
+			&:before{
+				width: 80px;
+				height: 80px;
+				margin-bottom: 20px;
+			}
+		}
+		.trip_mode{
+			width: auto;
+			ul{
+				float: none;
+				margin-bottom: 33px;
+				margin-left: 0;
+			}
+			.trip_button_container{
+				float: none;
+				.trip_button{
+					width: 190px;
+				}
+			}
+		}
+	}
+	.widget_traffico {
+		height: 550px;
+		.title-1:before{
+			width: 97px;
+			height: 85px;
+			margin-bottom: 15px;
+		}
+		.news_traffico{
+			margin-bottom: 30px;
+		}
+	}
+	.widget_news #scroll_news {
+		height: 480px;
+	}
+}
+
+@include media('screen', '>dim_50') {
+	.widget_container{
+		margin-top: 40px;
+		margin-bottom: 25px;
+	}
+	.widget .title-1{
+		&:before{
+			display: inline-block;
+			margin: 0 20px 0 0;
+		}
+	}
+	.widget_4-1{
+		width: 23.5%;
+		.browser_ie9 &{
+			margin-left: 2%;
+			min-height: 472px;
+			&:nth-child(even){
+				margin-left: 2%;
+			}
+			&:nth-child(6){
+				margin-left: 0;
+			}
+		}
+	}
+	.widget_4-2{
+		width: 49%;
+		.browser_ie9 &{
+			margin-left: 2%;
+			min-height: 350px;
+			&:nth-child(odd){
+				margin-left: 0;
+			}
+			&:nth-child(8){
+				margin-left: 2%;
+			}
+			&.widget_traffico{
+				padding: 25px;
+			}
+		}
+	}
+	.widget_4-4{
+		.browser_ie9 &{
+			min-height: 472px;
+			margin-left: 0;
+		}
+	}
+	.widget_viaggio {
+		height: 370px;
+		.title-1{
+			padding-left: 20px;
+			text-align: left;
+			&:before{
+				width: 50px;
+				height: 50px;
+				margin-bottom: 0;
+			}
+		}
+		.trip_mode{
+			width: 90%;
+			ul{
+				float: left;
+				margin-bottom: 0;
+				margin-left: 20px;
+			}
+			.trip_button_container{
+				float: right;
+				.trip_button{
+					width: auto;
+				}
+			}
+		}
+	}
+	.widget_traffico{
+		height: 370px;
+		.title-1:before{
+			width: 57px;
+			height: 41px;
+			margin-bottom: 0;
+		}
+		p{
+			padding-top: 10px;
+		}
+		.align_brother_bottom{
+			left: 30px;
+			right: 30px;
+			.news_traffico{
+				margin-bottom: 0;
+			}
+		}
+	}
+	.widget_twitter #scroll_twit,
+	.widget_news #scroll_news {
+		height: 430px;
+	}
+	.widget_meteo {
+		.tabs_meteo_container {
+			height: 433px;
+		}
+		.meteo_now {
+			padding-top: 25px;
+		}
+		p{
+			margin: 0 auto;
+		}
+	}
+	.widget_voli{
+		.last_info{
+			span.btn_partenze_cont{
+				a.btn_partenze{
+					padding: 0 7px;
+				}
+			}
+				
+			a.btn_link{
+				padding: 7px;
+			}
+		}
+	}
+}
+
+@include media('screen', '>dim_60') {
+	.widget_viaggio {
+		.trip_mode{
+			.trip_button_container{
+				.trip_button{
+					width: 190px;
+				}
+			}
+		}
+	}
+
+	.widget_traffico{
+		.news_traffico{
+			margin-bottom: 0;
+		}
+	}
+	.widget_voli{
+		.last_info{
+			span.btn_partenze_cont{
+				a.btn_partenze{
+					padding: 0 15px;
+				}
+			}	
+			a.btn_link{
+				padding: 7px 15px;
+			}
+		}
+	}
+}
+.widget_meteo .meteo_forecast .meteo_img:before{
+	margin-bottom: 10px;
+	margin-top: 10px;
+	color:#298ca4;
+}
+
+.widget_meteo .meteo_now .meteo_img{
+	display: block;
+
+	&:before{
+		//font-family: 'meteo';
+		//font-size: 2.3em;
+		//color: #fff;
+		//content: '\e80b';
+		content: '';
+		max-width: 60%;
+		height: 140px; 
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 20px;
+	}
+	&.coperto:before{
+		// content: '\e80b';
+		// font-size: 1.8em;
+		background:url(images/meteo/coperto.svg) no-repeat center;
+	}
+	&.foschia:before{
+		// content: '\e80c';
+		background:url(images/meteo/foschia.svg) no-repeat center;
+	}
+	&.nebbia:before{
+		// content: '\e80d';
+		background:url(images/meteo/nebbia.svg) no-repeat center;
+	}
+	&.neve-debole:before{
+		// content: '\e80e';
+		background:url(images/meteo/neve-debole.svg) no-repeat center;
+	}
+	&.neve-forte:before{
+		// content: '\e80f';
+		background:url(images/meteo/neve-forte.svg) no-repeat center;
+	}
+	&.neve-moderata:before{
+		// content: '\e810';
+		background:url(images/meteo/neve-moderata.svg) no-repeat center;
+	}
+	&.neve-molto-forte:before{
+		// content: '\e811';
+		background:url(images/meteo/neve-molto-forte.svg) no-repeat center;
+	}
+	&.nuvoloso:before{
+		// content: '\e800';
+		background:url(images/meteo/nuvoloso.svg) no-repeat center;
+	}
+	&.parzialmente-nuvoloso:before{
+		// content: '\e801';
+		background:url(images/meteo/parzialmente-nuvoloso.svg) no-repeat center;
+	}
+	&.pioggia-debole:before{
+		// content: '\e812';
+		background:url(images/meteo/pioggia-debole.svg) no-repeat center;
+	}
+	&.pioggia-forte:before{
+		// content: '\e813';
+		background:url(images/meteo/pioggia-forte.svg) no-repeat center;
+	}
+	&.pioggia-moderata:before{
+		// content: '\e814';
+		background:url(images/meteo/pioggia-moderata.svg) no-repeat center;
+	}
+	&.pioggia-molto-forte:before{
+		// content: '\e815';
+		background:url(images/meteo/pioggia-molto-forte.svg) no-repeat center;
+	}
+	&.pioggia-neve:before{
+		// content: '\e816';
+		background:url(images/meteo/pioggia-neve.svg) no-repeat center;
+	}
+	&.poco-nuvoloso:before{
+		// content: '\e802';
+		background:url(images/meteo/poco-nuvoloso.svg) no-repeat center;
+	}
+	&.rovesci:before{
+		// content: '\e803';
+		background:url(images/meteo/rovesci.svg) no-repeat center;
+	}
+	&.sereno:before{
+		// content: '\e804';
+		background:url(images/meteo/sereno.svg) no-repeat center;
+	}
+	&.temporali:before{
+		// content: '\e805';
+		background:url(images/meteo/temporali.svg) no-repeat center;
+	}
+	&.tormenta-neve:before{
+		// content: '\e806';
+		background:url(images/meteo/tormenta-neve.svg) no-repeat center;
+	}
+	&.variabile-con-temporali:before{
+		// content: '\e807';
+		background:url(images/meteo/variabile-con-temporali.svg) no-repeat center;
+	}
+	&.vento:before{
+		// content: '\e808';
+		background:url(images/meteo/vento.svg) no-repeat center;
+	}
+	&.vento-neve:before{
+		// content: '\e809';
+		background:url(images/meteo/vento-neve.svg) no-repeat center;
+	}
+	&.vento-pioggia:before{
+		// content: '\e80a';
+		background:url(images/meteo/vento-pioggia.svg) no-repeat center;
+	}
+}
+
+.widget_meteo .meteo_forecast .meteo_img{
+	display: block;
+
+	&:before{
+		//font-family: 'meteo';
+		//font-size: 2.3em;
+		//color: #fff;
+		//content: '\e80b';
+		content: '';
+		max-width: 40%;
+		height: 55px; 
+		display: block;
+		margin: 10px auto;
+	}
+	&.coperto:before{
+		// content: '\e80b';
+		// font-size: 1.8em;
+		background:url(images/meteo/small/coperto.svg) no-repeat center;
+	}
+	&.foschia:before{
+		// content: '\e80c';
+		background:url(images/meteo/small/foschia.svg) no-repeat center;
+	}
+	&.nebbia:before{
+		// content: '\e80d';
+		background:url(images/meteo/small/nebbia.svg) no-repeat center;
+	}
+	&.neve-debole:before{
+		// content: '\e80e';
+		background:url(images/meteo/small/neve-debole.svg) no-repeat center;
+	}
+	&.neve-forte:before{
+		// content: '\e80f';
+		background:url(images/meteo/small/neve-forte.svg) no-repeat center;
+	}
+	&.neve-moderata:before{
+		// content: '\e810';
+		background:url(images/meteo/small/neve-moderata.svg) no-repeat center;
+	}
+	&.neve-molto-forte:before{
+		// content: '\e811';
+		background:url(images/meteo/small/neve-molto-forte.svg) no-repeat center;
+	}
+	&.nuvoloso:before{
+		// content: '\e800';
+		background:url(images/meteo/small/nuvoloso.svg) no-repeat center;
+	}
+	&.parzialmente-nuvoloso:before{
+		// content: '\e801';
+		background:url(images/meteo/small/parzialmente-nuvoloso.svg) no-repeat center;
+	}
+	&.pioggia-debole:before{
+		// content: '\e812';
+		background:url(images/meteo/small/pioggia-debole.svg) no-repeat center;
+	}
+	&.pioggia-forte:before{
+		// content: '\e813';
+		background:url(images/meteo/small/pioggia-forte.svg) no-repeat center;
+	}
+	&.pioggia-moderata:before{
+		// content: '\e814';
+		background:url(images/meteo/small/pioggia-moderata.svg) no-repeat center;
+	}
+	&.pioggia-molto-forte:before{
+		// content: '\e815';
+		background:url(images/meteo/small/pioggia-molto-forte.svg) no-repeat center;
+	}
+	&.pioggia-neve:before{
+		// content: '\e816';
+		background:url(images/meteo/small/pioggia-neve.svg) no-repeat center;
+	}
+	&.poco-nuvoloso:before{
+		// content: '\e802';
+		background:url(images/meteo/small/poco-nuvoloso.svg) no-repeat center;
+	}
+	&.rovesci:before{
+		// content: '\e803';
+		background:url(images/meteo/small/rovesci.svg) no-repeat center;
+	}
+	&.sereno:before{
+		// content: '\e804';
+		background:url(images/meteo/small/sereno.svg) no-repeat center;
+	}
+	&.temporali:before{
+		// content: '\e805';
+		background:url(images/meteo/small/temporali.svg) no-repeat center;
+	}
+	&.tormenta-neve:before{
+		// content: '\e806';
+		background:url(images/meteo/small/tormenta-neve.svg) no-repeat center;
+	}
+	&.variabile-con-temporali:before{
+		// content: '\e807';
+		background:url(images/meteo/small/variabile-con-temporali.svg) no-repeat center;
+	}
+	&.vento:before{
+		// content: '\e808';
+		background:url(images/meteo/small/vento.svg) no-repeat center;
+	}
+	&.vento-neve:before{
+		// content: '\e809';
+		background:url(images/meteo/small/vento-neve.svg) no-repeat center;
+	}
+	&.vento-pioggia:before{
+		// content: '\e80a';
+		background:url(images/meteo/small/vento-pioggia.svg) no-repeat center;
+	}
+}

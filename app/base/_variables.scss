@@ -1,0 +1,83 @@
+
+// colors
+
+$c1: #eaedf2; // background
+$c2: #1961ac; // vivid blue
+$c3: #26527b; // dark blue - footer
+$c4: #7d97b0; // light blue
+$c5: #999999; // light gray
+$c6: #1b69b2; // blue underline
+$c7: #bcbdc0; // grey
+
+$c8_1: #09c697; // verde news
+$c8_2: #f3f9f8; // verde bg news
+$c8_3: #ebf0ef; // verde linea news
+$c8_4: #e0eeec; // verde hover bg news
+
+$c9_1: #00aced; // azzurro twitter
+$c9_2: #edf6fa; // azzurro bg twit
+$c9_3: #deedf4; // azzurro hover bg twit
+
+$c10_1: #de5b00; // arancio voli
+$c10_2: #eda877; // arancio chiaro text
+$c10_3: #9eaaba; // grigio chiaro text
+$c10_4: #ebebeb; // grigio chiaro linee
+$c10_5: #fbf0e8; // arancio tabella 1
+$c10_6: #fdf6f2; // arancio tabella 2
+
+$c11: #3673ad; // blue traffico
+$c11_2: #739dc6; // linea player
+
+$c12_1: #4089cd; // blue indicazioni
+$c12_2: #a0c4e6; // font/line - light icon color
+$c12_3: #26527b; // btn/icons color
+$c12_4: #26527b; // dark icon
+
+$c13_1: #49c2e0; // azzurro meteo
+$c13_2: #3cb6d4; // tab_off meteo
+$c13_3: #42bcda; // tab_off_hover meteo
+$c13_4: #6dcee6; // line meteo
+
+
+$cfont: #485772;
+
+// typography font-weight
+$fw1: 300;
+$fw2: 400;
+$fw3: 600;
+$fw3: 700;
+
+$OS: "Open Sans", sans-serif;
+
+
+
+// Media Queries
+$breakpoints: (
+ 'dim_05': 23.5em,
+ 'dim_07': 26em,	
+ 'dim_10': 30em,
+ 'dim_20': 31.250em,
+ 'dim_22': 34.250em,
+ 'dim_25': 37.250em,
+ 'dim_30': 43.125em,
+ 'dim_35': 52.875em,
+ 'dim_40': 60.625em,
+ 'dim_50': 65.625em,
+ 'dim_60': 72.313em,
+ 'dim_65': 76.313em,
+ 'dim_70': 81.250em,
+ 'dim_75': 1440px,
+ 'dim_80': 92.188em,
+ 'dim_90': 100em,
+);
+
+$media-expressions: (
+ 'screen': 'screen',
+ 'print': 'print',
+ 'handheld': 'handheld',
+ 'landscape': '(orientation: landscape)',
+ 'portrait': '(orientation: portrait)',
+ 'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+ 'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
