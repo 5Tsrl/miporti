@@ -29,7 +29,7 @@ function initAudio() {
 		loadingIndicator = $('.player #loading');
 		positionIndicator = $('.player #handle');
 		
-		if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
+		if (audio && (audio.buffered != undefined) && (audio.buffered.length != 0)) {
 			$(audio).bind('progress', function() {
 				var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
 				loadingIndicator.css({width: loaded + '%'});
@@ -98,26 +98,8 @@ function showPlayer(audio) {
 
 
 $(document).ready(function() {
-	$('#nav-toggle').click(function(){
-		$('body').toggleClass('menu-open');
-		//$('html').toggleClass('html-menu-open');
-
-	});
-	// Detects Touch or noTouch devices
-	if(!!('ontouchstart' in window)){ //check for touch device
-		$('body').addClass('touch');
-	} else{ //behaviour and events for pointing device like mouse
-		$('body').addClass('no-touch');
-	}
-
 	// -------- Audio Player --------------------------------------------------------
 	initAudio();
-
-	//da togliere
-	$('#otp-planner-optionsWidget-submit-button').click(function(){
-		window.location.href = '/#planner'
-
-	});
 	
 });
 

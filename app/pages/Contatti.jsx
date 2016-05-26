@@ -29,9 +29,12 @@ const News = React.createClass({
         <h2 style={styles.titleStyle}>Contatti</h2>
         <div id="scroll_news">
           <ReactIScroll iScroll={iScroll} options={this.props.options}>
-              
               <div className="text">
-                  <p>piripicchio </p>       
+
+                 <p>Per segnalazioni e suggerimenti, scrivi a <a href="mailto:muoversinpiemonte@5t.torino.it">muoversinpiemonte@5t.torino.it</a> o contatta il Numero Verde Unico
+                    della Regione Piemonte 800333444 attivo dal lunedì al venerdì dalle ore 8 alle 18 con orario continuato,
+                    festivi esclusi, gratuito da telefono fisso e mobile.</p>
+                  
               </div>
         
           </ReactIScroll>	

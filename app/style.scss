@@ -97,6 +97,7 @@ a {
 
 .header{
 	position: relative;
+  z-index: 2;
 	width: 100%;
 	background: #fff;
 	padding: 9px 0;
@@ -195,6 +196,8 @@ a {
 			font-size: 1.1em;
 		}
 		.language-switcher{
+      /* temporaneamente disabilitato*/
+      display: none;
 			position: absolute;
 			top: 25px;
 			right: 30px;
@@ -296,7 +299,7 @@ a {
 					}
 				}
 			}
-			ul.main-menu-5t li.active a{
+			ul.main-menu-5t li a.active{
 				text-decoration: none;
 				border-bottom: 6px $c6 solid;
 				color: #222;
@@ -573,6 +576,8 @@ footer{
 	}
 }
 .main{
+  position: relative;
+  z-index: 1;
 	&:after{
 		content: '';
 		display: table;
@@ -774,6 +779,9 @@ footer{
 				border:0;
 				color: #fff;
 				cursor:pointer;
+			}
+      .trip_button:focus{
+				border:1px solid $c12_2;
 			}
 		}
 		&:after{

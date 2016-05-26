@@ -12,15 +12,19 @@ const Calcolo = React.createClass({
         console.log('changiato', mode)
         this.setState({otpMode: mode})
     },
-    onChangeFrom: function(event, { newValue }) {
+    onChangeFrom: function(e, { newValue }) {
+        e.preventDefault()
+      e.stopPropagation()
       this.setState({value_from: newValue});
     },
-    onChangeTo: function(event, { newValue }) {
+    onChangeTo: function(e, { newValue }) {
+      e.stopPropagation()
       this.setState({value_to: newValue});
     },
     
     handleReverseBtn: function(e){
         e.preventDefault()
+        e.stopPropagation()
         console.log('invertito')
         const value_from_tmp = this.state.value_from;
         const coord_from_tmp = this.state.coord_from;
@@ -55,21 +59,21 @@ const Calcolo = React.createClass({
         const styles = {
           widget_viaggio: {color: '#fff'},//esempio di inline style...
           ulStyle: {zIndex: 0},
-          trip_input_z13: {zIndex: 13, position: 'relative'},
-          trip_input_z12: {zIndex: 12, position: 'relative'},
+          trip_input_z13: {zIndex: 3, position: 'relative'},
+          trip_input_z12: {zIndex: 2, position: 'relative'},
         }
         return(
         
 <div className="widget widget_viaggio" style={styles.widget_viaggio}>
     <h2 className="title-1">calcolo percorsi</h2>
-    <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}>
+    <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}> 
         
         <div className="trip_container">
-            <ul style={styles.ulStyle}>
+            <ul _style={styles.ulStyle}>
                 <li className="trip_input" style={styles.trip_input_z13}>
                     <label htmlFor="trip_from">da</label>
                     {/* <input type="text" value={this.state.trip_from} id="trip_from" name="trip_from" /> */}
-                    <GeocodeSuggest id="trip_from" value={this.state.value_from} onChange={this.onChangeFrom} onSuggestSelected={this.handleFromSelected}/>
+                    <GeocodeSuggest id="trip_from" value={this.state.value_from} onChange={this.onChangeFrom} onSuggestSelected={this.handleFromSelected} autoFocus={true}/>
                 </li>
                 <li className="trip_input" style={styles.trip_input_z12}>
                     <label htmlFor="trip_to">a</label>
@@ -77,7 +81,7 @@ const Calcolo = React.createClass({
                 </li>
             </ul>
             
-            <button className="trip_input_switch" id="trip_switch" onClick={this.handleReverseBtn}></button>
+            <button type="button" key="revbtn" tabIndex="-1" className="trip_input_switch" id="trip_switch" onClick={this.handleReverseBtn}></button> 
             
         </div>
 
@@ -101,7 +105,7 @@ const Calcolo = React.createClass({
                 </li>
             </ul>
             <div className="trip_button_container">
-                <button id="otp-planner-optionsWidget-submit-button" className="btn_link trip_button" type="submit">Calcola</button>
+                <button type="submit"  id="otp-planner-optionsWidget-submit-button" className="btn_link trip_button"  _onClick={this.handleSubmit}>Calcola</button>
             </div>
         </div>
     </form>

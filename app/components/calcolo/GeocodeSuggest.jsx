@@ -13,25 +13,26 @@ const GeocodeSuggest = React.createClass({
             return {suggestions: []}
     },
     
-    getSuggestions: function(inputText) {
+    loadSuggestions: function(inputText) {
       const inputValue = inputText.trim().toLowerCase();
-      const inputLength = inputValue.length;
-      
+      const this_ = this
       axios.get('http://mip.5t.torino.it/suggest?query=' + inputValue)
          .then(function(response){
-             features = response.data.features.slice(0,7)
+             const suggestions = response.data.features.slice(0,6)
+             this_.setState({ suggestions })
          })
-         return inputLength === 0 ? [] : features
     },
     
-    onSuggestionsUpdateRequested: function({ value: currentInput }) {
-        this.setState({
-          suggestions: this.getSuggestions(currentInput)
-        });
+    onSuggestionsUpdateRequested: function({ value: currentInput, reason }) {
+        this.loadSuggestions(currentInput);
+        if(reason == 'enter'){
+            //console.log('enterato')            
+        }
     },
   
     getSuggestionValue: function(suggestion) { // when suggestion selected, this function tells
-      console.log(suggestion.properties.hint, suggestion.geometry.coordinates)
+      console.log('getSuggestionValue',suggestion.properties.hint, suggestion.geometry.coordinates)
+      this.props.onSuggestSelected(suggestion)
       return suggestion.properties.hint              // what should be the value of the input
     },
     
@@ -42,8 +43,8 @@ const GeocodeSuggest = React.createClass({
     },    
     
     onSuggestSelected: function(event, { suggestion, suggestionValue, sectionIndex, method }) {
-        console.log('cucu')
-        this.props.onSuggestSelected(suggestion);
+        console.log('onSuggestSelected')
+        this.props.onSuggestSelected(suggestion)
     },    
   
     render: function() {
@@ -51,7 +52,9 @@ const GeocodeSuggest = React.createClass({
           value: this.props.value, //this.state.value,
           onChange: this.props.onChange, //this.onChange,        
           placeholder: '',
-          type: 'search',          
+          type: 'search', 
+          autoFocus: this.props.autoFocus
+                 
         };
 
         return (

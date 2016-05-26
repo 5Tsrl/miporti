@@ -98,7 +98,7 @@ var MeteoDays = React.createClass({
 const Meteo = React.createClass({
     province : ['Alessandria', 'Asti', 'Biella', 'Cuneo', 'Novara', 'Torino', 'Verbania', 'Vercelli'],
     getInitialState: function() {
-      return { giornoAttivo:'oggi', data: [], provId: 5};
+      return { giornoAttivo:'oggi', data: [], provId: 0};
     },
     
   loadMeteoFromServer: function() {

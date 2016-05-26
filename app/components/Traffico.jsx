@@ -1,5 +1,5 @@
 import React from 'react';
-
+import trafficoAudioPlayer from './trafficoAudioPlayer'
 
 export default () =>(
         

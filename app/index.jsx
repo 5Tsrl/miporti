@@ -10,19 +10,19 @@ import HomeLayout from './components/HomeLayout'
 import PageLayout from './components/PageLayout'
 import Servizio from './pages/Servizio'
 import Contatti from './pages/Contatti'
-import utility from './utility'
+//import utility from './utility'
 
 const browserHistory = useRouterHistory(createHistory)({
-    basename: "/home"
+    //basename: "/home"
 });
 
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route component={MainLayout} >
-        <Route path="/" component={HomeLayout} />
+        <Route path="/(home/)" component={HomeLayout} />
         <Route component={PageLayout} >
-            <Route path="/servizio" component={Servizio} />
-            <Route path="/contatti" component={Contatti} />
+            <Route path="/(home/)servizio" component={Servizio} />
+            <Route path="/(home/)contatti" component={Contatti} />
         </Route>
         
     </Route>

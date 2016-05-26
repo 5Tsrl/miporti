@@ -1,8 +1,8 @@
 @import '../../base/_variables.scss';
-
+  
 .react-autosuggest__container {
   margin: 0;
-  z-index: auto;
+  //z-index: auto;
   position:relative;
 }
 .react-autosuggest__input {
@@ -10,8 +10,8 @@ padding-left: 0px;
     
 }
 .react-autosuggest__suggestions-container {
-  z-index: auto;
-  position:relative;
+  //z-index: auto;
+  position:absolute;
   background-color: darken($c12_1, 8%);
   
 }
