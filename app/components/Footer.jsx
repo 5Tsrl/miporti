@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router'
 
-export  default () => (
+export  default () => 
  
     <footer>
     	<div className="aux">
@@ -12,9 +13,9 @@ export  default () => (
     			<div className="footer-info">
     				<nav className="footer-menu">
     					<ul>
-    						<li><a href="#">Privacy</a></li>
-    						<li><a href="#">Cookies</a></li>
-    						<li><a href="#">Contatti</a></li>
+    						<li><Link to="/privacy">Privacy</Link></li>
+    						<li><Link to="/cookie">Cookies</Link></li>
+    						<li><Link to="/contatti">Contatti</Link></li>
     					</ul>
     				</nav>
     				<span className="info">&reg;2016 Regione Piemonte - Designed by <a href="http://www.madeincima.it/" target="_blank">Madeincima</a></span>
@@ -24,7 +25,7 @@ export  default () => (
     	</div>
     </footer>
     
-)
+
         
         
     

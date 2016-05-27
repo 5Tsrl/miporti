@@ -1,36 +1,11 @@
 import React from 'react'
-import ReactIScroll from 'react-iscroll'
-var iScroll = require('iscroll/build/iscroll')
-import './servizio/servizio.scss';
+import './page.scss';
 
-const News = React.createClass({
+export default () =>
     
-    getDefaultProps: function() {
-        return ({
-          options: {
-            mouseWheel: true,
-            //snap: true,
-            scrollbars: 'custom',
-            interactiveScrollbars: true,
-            //shrinkScrollbars: 'clip',
-            //fadeScrollbars: 'true',
-            disableMouse: true,
-            preventDefaultException: { tagName:/.*/ } 
-          }
-        })
-    },    
-        
-    render: function() {
-        const styles = {
-          titleStyle: {color: '#fff', backgroundColor: '#4089cd',padding: '15px 35px'},
-        }
-        return(
-    <div className="widget widget_news widget_servizio">
-        <h2 style={styles.titleStyle}>Il Servizio</h2>
-        <div id="scroll_news">
-          <ReactIScroll iScroll={iScroll} options={this.props.options}>
-              
-              <div className="text">
+    <div className="widget  page">
+        <h2 className="pageHeader" >Il Servizio</h2>
+        <div className="pageContent">
 
          <p>
          Muoversi in Piemonte è il servizio unico di infomobilità regionale che offre informazioni utili e aggiornate per pianificare i tuoi spostamenti sul
@@ -147,13 +122,5 @@ const News = React.createClass({
       per la disattivazione di Google Analytics: <a href="https://tools.google.com/dlpage/gaoptout">https://tools.google.com/dlpage/gaoptout</a>.
       </p>
       </div>
-        
-          </ReactIScroll>	
-      </div>
-        
+              
     </div>
-)}
-  
-})
-
-export default News
