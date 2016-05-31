@@ -10,7 +10,7 @@ import HomeLayout from './components/HomeLayout'
 import PageLayout from './components/PageLayout'
 import Servizio from './pages/Servizio'
 import Contatti from './pages/Contatti'
-import Privacy from './pages/Privacy'
+import Privacy from './pages/Disclaimer'
 import Cookie from './pages/Cookie'
 
 
@@ -25,7 +25,7 @@ ReactDOM.render((
         <Route component={PageLayout} >
             <Route path="/(home/)servizio" component={Servizio} />
             <Route path="/(home/)contatti" component={Contatti} />
-            <Route path="/(home/)privacy"  component={Privacy} />
+            <Route path="/(home/)disclaimer"  component={Disclaimer} />
             <Route path="/(home/)cookie"   component={Cookie} />
         </Route>
         
