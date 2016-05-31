@@ -102,9 +102,9 @@ const Colli = React.createClass({
         
         <div className="widget widget_imgbg">
             <h2 className="title-3">I colli alpini in piemonte</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Informazioni sull'apertura dei principali colli alpini piemontesi.</p>
             <Selector texts={this.state.colli}  colli={this.state.colli} text="Situazione colli alpini" />
-      </div>
+        </div>
     );
   }
 });
