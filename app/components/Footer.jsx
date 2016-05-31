@@ -5,22 +5,22 @@ export  default () =>
  
     <footer>
     	<div className="aux">
-    		<a href="http://www.regione.piemonte.it/" className="logo-regione">Regione Piemonte</a>
-    		<a href="http://www.5t.torino.it/" className="madeby">Powered by <span className="logo-5t">5T</span></a>
+    		<a href="http://www.regione.piemonte.it/" target="_blank" className="logo-regione">Regione Piemonte</a>
+    		<a href="http://www.5t.torino.it/" target="_blank" className="madeby">Powered by <span className="logo-5t">5T</span></a>
     					
     		<div className="wrapper">
     			<span className="info-tel">800 333 444</span>
     			<div className="footer-info">
     				<nav className="footer-menu">
     					<ul>
-    						<li><Link to="/privacy">Privacy</Link></li>
+    						<li><Link to="/disclaimer">Disclaimer</Link></li>
     						<li><Link to="/cookie">Cookies</Link></li>
     						<li><Link to="/contatti">Contatti</Link></li>
     					</ul>
     				</nav>
     				<span className="info">&reg;2016 Regione Piemonte - Designed by <a href="http://www.madeincima.it/" target="_blank">Madeincima</a></span>
     			</div>
-    			<a href="#" className="social">Twitter</a>
+    			<a href="https://twitter.com/mipiemonte" className="social" target="_blank">Twitter</a>
     		</div>
     	</div>
     </footer>
