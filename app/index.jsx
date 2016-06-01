@@ -10,8 +10,9 @@ import HomeLayout from './components/HomeLayout'
 import PageLayout from './components/PageLayout'
 import Servizio from './pages/Servizio'
 import Contatti from './pages/Contatti'
-import Privacy from './pages/Disclaimer'
+import Disclaimer from './pages/Disclaimer'
 import Cookie from './pages/Cookie'
+import Radio from './pages/Radio'
 
 
 const browserHistory = useRouterHistory(createHistory)({
@@ -27,6 +28,7 @@ ReactDOM.render((
             <Route path="/(home/)contatti" component={Contatti} />
             <Route path="/(home/)disclaimer"  component={Disclaimer} />
             <Route path="/(home/)cookie"   component={Cookie} />
+            <Route path="/(home/)radio"   component={Radio} />
         </Route>
         
     </Route>
