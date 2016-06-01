@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import './page.scss';
 
 export default () =>
@@ -19,7 +20,7 @@ export default () =>
                  Le informazioni sul traffico sono diffuse attraverso 4 canali:
                  </p>
                      <ul className="liv2">
-                          <li>bollettini radiofonici, diffusi su oltre 30 emittenti radiofoniche a copertura locale e regionale o radio e con le seguenti modalità:
+                          <li>bollettini radiofonici, diffusi su oltre <strong><Link to="/radio">30 emittenti radiofoniche</Link></strong> a copertura locale e regionale o radio e con le seguenti modalità:
                           dal lunedì al venerdì: 7.40 - 8.10 - 9.10 - 10.10 - 13.10 - 16.10 - 17.10 - 18.10 - 19.10 - 20.10
                           il sabato, domenica e festivi: 8.10 - 9.10 - 10.10 - 13.10 - 16.10 - 17.10 - 18.10 - 19.10 - 20.10 - 21.10</li>
                           <li>il portale web <strong><a href="http://www.muoversinpiemonte.it/mip/">www.muoversinpiemonte.it</a></strong>, costantemente aggiornato
