@@ -8,11 +8,11 @@ export default () =>
         <div className="pageContent">
 
 <div id="radio">
-		<div class="radio-content">
+		<div className="radio-content">
 			<p>
 				Il notiziario del traffico può essere ascoltato anche sulle seguenti radio:
 			</p>
-			<ul class="col1 col">
+			<ul className="col1 col">
 				<li><strong>Disco Radio</strong><a href="http://www.discoradio.it" target="_blank">www.discoradio.it</a></li>
 				<li><strong>Primaradio</strong><a href="http://www.primaradio.it/" target="_blank">www.primaradio.it</a></li>
 				<li><strong>Radio 103</strong><a href="http://www.radio103.it/cuneo" target="_blank">www.radio103.it</a></li>
@@ -26,7 +26,7 @@ export default () =>
 
 
 			</ul>
-			<ul class="col2 col">
+			<ul className="col2 col">
 
 				<li><strong>Radio Dora</strong><a href="http://www.radiodora.it" target="_blank">www.radiodora.it</a></li>
 				<li><strong>Radio Frejus</strong><a href="http://www.radiofrejus.it" target="_blank">www.radiofrejus.it</a></li>
@@ -41,7 +41,7 @@ export default () =>
 
 
 			</ul>
-			<ul class="col3 col">
+			<ul className="col3 col">
 				<li><strong>Radio Studio 92</strong><a href="http://www.radiostudio92.it" target="_blank">www.radiostudio92.it</a></li>
 				<li><strong>Radio Torino</strong><a href="http://www.radiotorinofm.it" target="_blank">www.radiotorinofm.it</a></li>
 				<li><strong>Radio Veronica One </strong><a href="http://www.radioveronica.it" target="_blank">www.radioveronica.it</a></li>
