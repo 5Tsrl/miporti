@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default class HomeLayout extends React.Component {
+export default class PageLayout extends React.Component {
     
       render() {
          
