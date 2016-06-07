@@ -27,5 +27,63 @@
         padding-left: 11px;
         padding-top: 5px;
       }
+  
+  /*Radio*/
+  #radio {
+    padding:10px;
+    color:#000;
+    float:left;
+    width:698px;
+    }
+    
+	.radio-content {padding:0 16px;}
+	
+	#radio p{
+	  color:#555555;
+	  font-size:1.1em;
+	  margin:0 0 25px 0;
+	  }
+	  
+	#radio .col{
+	  float:left;
+	  margin:0 30px 5px 0;
+	  }
+	  
+	#radio .col3 {margin-right:0;}
+	
+	#radio .col1 {width:223px;}
+	
+	#radio .col2 {width:183px;}
+	
+	#radio .col3 {width:178px;}
+	
+	#radio li{
+	  white-space:nowrap;
+	  position:relative;
+	  margin:0;
+	  border-bottom:1px solid #eeeeee;
+	  background:url(../images/ico-radio.gif) 0 13px no-repeat;
+	  padding:15px 0 15px 23px;
+	  }
+	  
+	#radio li.last {border-bottom:0;}
+	
+	#radio strong {
+	  text-transform:uppercase;
+	  color:#555555;
+	  font-size:1.1em;
+	  display:block;
+	  margin:0 0 5px 0;
+	  white-space:nowrap;
+	  }
+	  
+	#radio a{
+	  color:#0e8de7;
+	  font-size:1em;
+	  }
+	  
+	#radio a:hover {text-decoration:underline;}
+	
+	.link-radio {margin-right:5px;}    
   }
 }

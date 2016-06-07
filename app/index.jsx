@@ -13,6 +13,7 @@ import Contatti from './pages/Contatti'
 import Disclaimer from './pages/Disclaimer'
 import DisclaimerWP from './pages/DisclaimerWP'
 import Cookie from './pages/Cookie'
+import Radio from './pages/Radio'
 
 
 const browserHistory = useRouterHistory(createHistory)({
@@ -29,6 +30,7 @@ ReactDOM.render((
             <Route path="/(home/)disclaimer"  component={DisclaimerWP} />
             <Route path="/(home/)disclaimer-old"  component={Disclaimer} />
             <Route path="/(home/)cookie"   component={Cookie} />
+            <Route path="/(home/)radio"   component={Radio} />
         </Route>
         
     </Route>
