@@ -26,7 +26,7 @@ module.exports = {
         loaders: [
           {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract("style",[ "css", "sass"])
+                loader: ExtractTextPlugin.extract("style",[ "css?sourceMap", "sass?sourceMap"])
           },
           {     test: /\.jpe?g$|\.gif$|\.png$|\.svg$/,
                 //include: 'images',
