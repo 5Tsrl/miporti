@@ -13,7 +13,8 @@ export  default () =>
     			<div className="footer-info">
     				<nav className="footer-menu">
     					<ul>
-    						<li><Link to="/disclaimer">Disclaimer</Link></li>
+                            <li><Link to="/disclaimer">Disclaimer</Link></li>
+    						<li><Link to="/disclaimer-old">Disclaimer</Link></li>
     						<li><Link to="/cookie">Cookies</Link></li>
     						<li><Link to="/contatti">Contatti</Link></li>
     					</ul>
