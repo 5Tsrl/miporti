@@ -18,7 +18,7 @@ export default () =>
 				<li><strong>Radio 103</strong><a href="http://www.radio103.it/cuneo" target="_blank">www.radio103.it</a></li>
 				<li><strong>Radio Amica</strong><a href="#">&nbsp;</a></li>
 				<li><strong>Radio Beckwith Evangelica</strong><a href="http://rbe.it" target="_blank">rbe.it</a></li>
-				<li><strong>Radio Canelli <br>e Monferrato</strong></li>
+				<li><strong>Radio Canelli <br />e Monferrato</strong></li>
 				<li><strong>Radio Parco Dora</strong><a href="http://www.parcocommercialedora.it/radio/radio-parco-dora/">www.parcocommercialedora.it</a></li>
 				<li><strong>Radio City La città che vive</strong><a href="http://www.radio-city.it" target="_blank">www.radio-city.it</a></li>
 				<li><strong>Radio Chieri</strong><a href="http://www.radiochieri.it" target="_blank">www.radiochieri.it</a></li>
@@ -54,6 +54,9 @@ export default () =>
 				<li class="last"><strong>TRS Radio</strong><a href="http://www.trsradio.it/" target="_blank">wwww.trsradio.it</a></li>
 
 			</ul>
+
+      		</div>
+      	</div>
 
 		</div>
 	</div>
