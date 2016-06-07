@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import axios from 'axios'
 
 const Volo = React.createClass({
   render: function() {
@@ -98,18 +99,18 @@ const Voli = React.createClass({
     },
     
   loadVoliFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: true,
-      success: function(data) {
-        this.setState({data: data});
-        
-    }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+      axios.get(this.props.url)
+         .catch(function (response){
+            if (response instanceof Error) {
+              // Something happened in setting up the request that triggered an Error
+              console.log('Error', response.message);
+            } else {
+              // The request was made, but the server responded with a status code that falls out of the range of 2xx
+              console.log(response.status);
+          }})
+          .then( (response) =>{
+              this.setState({data: response.data})
+         }) 
   },
   
   componentDidMount: function() {
