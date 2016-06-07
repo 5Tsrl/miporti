@@ -21,7 +21,7 @@ const News = React.createClass({
     render: function() {
         
         return(
-    <div className="widget widget_news">
+    <div className="widget_news">
         <h2 className="title-2">Ultime news</h2>
         <div id="scroll_news">
           <ReactIScroll iScroll={iScroll} options={this.props.options}>

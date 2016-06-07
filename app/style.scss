@@ -652,7 +652,7 @@ footer{
 }
 //@import 'components/calcolo/calcolo.scss';
 .widget_viaggio {
-	height: 500px;
+	//height: 500px;
 	position: relative;
 	background: $c12_1;
 	color:#fff;
@@ -701,7 +701,7 @@ footer{
 				font-family: $OS;
 				vertical-align: baseline;
 				margin-left: 10px;
-				width: 70%;
+				/*width: 70%;*/
 			}
 		}
 		.trip_input_switch{
@@ -1351,6 +1351,7 @@ footer{
 }
 
 .widget_imgbg{
+  min-height: 427px;
 	background: url(./images/img_bg_colli_estate.jpg) no-repeat center;
 	background-size: cover;
 	color: #fff;
@@ -1465,7 +1466,7 @@ footer{
 	.last_info{
 		text-align: center;
 		margin: 0px auto; 
-		p{text-align: right; margin:0 auto 10px}
+		p{text-align: right; margin:0 10px 10px}
 		a.btn_link{
 			background: $c10_1;
 			padding: 7px 15px;
@@ -1637,7 +1638,7 @@ footer{
 			
 	}
 	.widget_traffico{
-		height: 480px;
+		height: 400px;
 		.news_traffico{
 			margin-right: 30px;
 		}
@@ -1655,7 +1656,7 @@ footer{
 		}
 	}
 	.widget_viaggio {
-		height: 360px;
+		height: 280px;//360px;
 		.align_brother_bottom{
 			left: 20px;
 			right: 20px;
@@ -1670,7 +1671,7 @@ footer{
 			}
 		}
 		.trip_container .trip_input input{
-			width: 80%;
+			/*width: 80%;*/
 		}
 		.trip_mode{
 			width: 90%;
@@ -1686,7 +1687,7 @@ footer{
 		}
 	}
 	.widget_traffico {
-		height: 410px;
+		height: 330px;
 		.title-1:before{
 			width: 57px;
 			height: 41px;
@@ -1714,7 +1715,7 @@ footer{
 }
 @include media('screen', '>dim_22') {
 	.widget_traffico {
-		height: 360px;
+		height: 280px;
 	}
 }
 @include media('screen', '>dim_25') {
@@ -1845,7 +1846,7 @@ footer{
 		}
 	}
 	.widget_viaggio {
-		height: 550px;
+		height: 390px; //470px;
 		.title-1{
 			padding-left: 0;
 			text-align: center;
@@ -1871,7 +1872,7 @@ footer{
 		}
 	}
 	.widget_traffico {
-		height: 550px;
+		height: 390px;
 		.title-1:before{
 			width: 97px;
 			height: 85px;
@@ -1933,7 +1934,7 @@ footer{
 		}
 	}
 	.widget_viaggio {
-		height: 370px;
+		height: 290px;//370px;
 		.title-1{
 			padding-left: 20px;
 			text-align: left;
@@ -1959,7 +1960,7 @@ footer{
 		}
 	}
 	.widget_traffico{
-		height: 370px;
+		height: 290px;
 		.title-1:before{
 			width: 57px;
 			height: 41px;

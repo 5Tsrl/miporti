@@ -100,7 +100,7 @@ const Colli = React.createClass({
       }
     return (
         
-        <div className="widget widget_imgbg">
+        <div className="widget_imgbg">
             <h2 className="title-3">I colli alpini in piemonte</h2>
             <p>Informazioni sull'apertura dei principali colli alpini piemontesi.</p>
             <Selector texts={this.state.colli}  colli={this.state.colli} text="Situazione colli alpini" />

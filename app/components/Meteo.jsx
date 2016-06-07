@@ -142,7 +142,7 @@ const Meteo = React.createClass({
       } 
     return (
         
-        <div className="widget widget_meteo accord_widget_meteo">
+        <div className="widget_meteo accord_widget_meteo">
             <h2>Meteo</h2>
             <Selector texts={this.province} text={this.province[this.state.provId]} onTextIdChoosen={this.handleSceltaProvincia}/>
             <MeteoPanel temperature={temperaturePanel} clima={climaPanel}/>

@@ -37,8 +37,8 @@ handleClick() {
             <li id="menu-home" className="active"><Link to="/" activeClassName="active">Home</Link></li>
             <li id="menu-planner"><a href="/#planner">Calcolo percorsi</a></li>
             <li id="menu-traffic"><a href="/#traffic">Traffico</a></li>
-            <li id="menu-otp-infoWidget-3"><Link className="modalboxMenu" to="/servizio" activeClassName="active">Il servizio</Link></li>
-            <li id="menu-otp-infoWidget-4"><Link className="modalboxMenu" to="/contatti" activeClassName="active">Contatti</Link></li>
+            <li id="menu-otp-infoWidget-3"><Link className="modalboxMenu" to="/home/servizio" activeClassName="active">Il servizio</Link></li>
+            <li id="menu-otp-infoWidget-4"><Link className="modalboxMenu" to="/home/contatti" activeClassName="active">Contatti</Link></li>
         </ul>
         <div className="language-switcher" id="language-switcher">
             <ul>

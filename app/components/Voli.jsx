@@ -132,7 +132,7 @@ const Voli = React.createClass({
       }
     return (
         
-      <div className="widget widget_voli">
+      <div className="widget_voli">
         <div className="title-4">
             <h2>orario voli</h2>
             <h3>Aeroporto di Torino</h3>

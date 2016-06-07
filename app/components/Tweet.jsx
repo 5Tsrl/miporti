@@ -3,7 +3,7 @@ import React from 'react';
 
 export default () =>(
         
-    <div className="widget widget_twitter">
+    <div className="widget_twitter">
         <h2 className="title-2">Tweet di mobilit&agrave;</h2> 
         <div id="scroll_twit">            
             

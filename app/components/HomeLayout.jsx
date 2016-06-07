@@ -15,28 +15,28 @@ export default class HomeLayout extends React.Component {
         return (
             
         <div className="aux widget_container">
-            <div  className="widget_4-2">
+            <div  className="widget widget_4-2">
                 <Calcolo />
             </div>
-            <div  className="widget_4-2">
+            <div  className="widget widget_4-2">
                 <Traffico />
             </div>
-            <div  className="widget_4-2 widget_4-4">
+            <div  className="widget widget_4-2 widget_4-4">
                 <News />
             </div>
-            <div className="widget_4-1">
+            <div className="widget widget_4-1">
                 <Tweet />
             </div>
-            <div className="widget_4-1">
+            <div className="widget widget_4-1">
                 <Meteo url="http://mip.5t.torino.it/meteoarpa" pollInterval={2000} />
             </div>
-            <div className="widget_4-1">
-                <Colli url="colli.json" pollInterval={2000}/>
+            <div className="widget widget_4-1">
+                <Colli url="http://mip.5t.torino.it/home/colli.json" pollInterval={2000}/>
 			</div>
-            <div className="widget_4-1">
+            <div className="widget widget_4-1">
                 <Bip />
             </div>
-            <div  className="widget_4-2 widget_4-4">
+            <div  className="widget widget_4-2 widget_4-4">
                 <Voli url="http://mip.5t.torino.it/voli-caselle" pollInterval={10*60*1000}/>
 			</div>
         </div>

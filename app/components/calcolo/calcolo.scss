@@ -1,16 +1,23 @@
 @import '../../base/_variables.scss';
+@import '../../base/_include-media.scss';
   
 .react-autosuggest__container {
   margin: 0;
-  //z-index: auto;
+  display: inline-block;
   position:relative;
+  width: 80%;
+}
+@include media('screen', '>dim_60') {
+  .react-autosuggest__container {
+    width: 90%;
+  }
 }
 .react-autosuggest__input {
-padding-left: 0px;    
-    
+padding-left: 0px;
+width: 100%;
 }
 .react-autosuggest__suggestions-container {
-  //z-index: auto;
+  padding: 0.3em 0.8em 0.2em 0em;
   position:absolute;
   background-color: darken($c12_1, 8%);
   

@@ -64,7 +64,7 @@ const Calcolo = React.createClass({
         }
         return(
         
-<div className="widget widget_viaggio" style={styles.widget_viaggio}>
+<div className="widget_viaggio" style={styles.widget_viaggio}>
     <h2 className="title-1">calcolo percorsi</h2>
     <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}> 
         
