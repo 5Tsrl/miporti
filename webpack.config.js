@@ -17,7 +17,7 @@ module.exports = {
     output: {
         //path: path.resolve(__dirname, "build"),
         path: PATHS.build,
-        //publicPath: "/home/",
+        publicPath: "/home/",
         filename: "bundle.js",
         //sourceMapFilename: "./build/bundle.map"
     },

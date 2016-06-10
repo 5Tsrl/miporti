@@ -2,6 +2,7 @@ import './style.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {IntlProvider} from 'react-intl';
 //import { Router, Route, Link,  browserHistory } from 'react-router'
 import { Router, Route, useRouterHistory } from 'react-router'
 import { createHistory } from "history";
@@ -21,6 +22,7 @@ const browserHistory = useRouterHistory(createHistory)({
 });
 
 ReactDOM.render((
+<IntlProvider locale="it">
   <Router history={browserHistory}>
     <Route component={MainLayout} >
         <Route path="/(home/)" component={HomeLayout} />
@@ -36,5 +38,6 @@ ReactDOM.render((
     </Route>
         
   </Router>
+</IntlProvider>  
     
 ), document.getElementById('main'))
