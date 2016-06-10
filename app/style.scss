@@ -652,7 +652,7 @@ footer{
 }
 //@import 'components/calcolo/calcolo.scss';
 .widget_viaggio {
-	//height: 500px;
+	height: 420px;
 	position: relative;
 	background: $c12_1;
 	color:#fff;
@@ -795,7 +795,7 @@ footer{
 }
 
 .widget_traffico {
-	height: 500px;
+	height: 420px;
 	background: $c11;
 	color:#fff;
 	padding: 40px;
@@ -1034,6 +1034,8 @@ footer{
 		background: $c8_1;
 		padding: 15px 35px;
 	}
+  p{font-size: 1em;}
+  a{font-size: 1em; color: darken($c8_1, 10%); font-weight: 600}
 	.link_news {
 		list-style-type: none;
 		&:nth-child(even){
@@ -1048,7 +1050,7 @@ footer{
 			background: #f9fbfb;	
 		}
 	}
-	.link_news a{
+	.link_news>a{
 		color: $cfont;
 		font-size: 0.8em;
 		font-weight: 400;
