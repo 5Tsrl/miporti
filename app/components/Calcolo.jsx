@@ -6,7 +6,7 @@ import './calcolo/calcolo.scss';
 
 const Calcolo = React.createClass({
     getInitialState: function(){
-            return {otpMode: 'TRANSIT', value_from: '', value_to:'', coord_from:'', coord_to:''}
+            return {otpMode: 'TRANSIT,WALK', value_from: '', value_to:'', coord_from:'', coord_to:''}
     },
     handleModeChanged: function(mode){
         console.log('changiato', mode)
@@ -88,7 +88,7 @@ const Calcolo = React.createClass({
         <div className="trip_mode align_brother_bottom">
             <ul>
                 <li className="public active" title="Mezzi pubblici">
-                    <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode"   checked={this.state.otpMode == 'TRANSIT'} onChange={this.handleModeChanged.bind(null,'TRANSIT')}/>
+                    <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode"   checked={this.state.otpMode == 'TRANSIT,WALK'} onChange={this.handleModeChanged.bind(null,'TRANSIT,WALK')}/>
                     <label htmlFor="tripmode_public"><span></span>Mezzi pubblici</label>
                 </li>
                 <li className="car" title="In auto">
