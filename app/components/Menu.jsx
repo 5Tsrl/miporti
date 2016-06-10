@@ -34,11 +34,11 @@ handleClick() {
 <div>
     <nav className="main-menu-container" id="main-menu-container">
         <ul className="main-menu-5t" id="main-menu-5t">
-            <li id="menu-home" className="active"><Link to="/" activeClassName="active" onClick={this.handleClick}>Home</Link></li>
+            <li id="menu-home" className="active"><Link to="/home/" activeClassName="active" onClick={this.handleClick}>Home</Link></li>
             <li id="menu-planner"><a href="/#planner">Calcolo percorsi</a></li>
             <li id="menu-traffic"><a href="/#traffic">Traffico</a></li>
-            <li id="menu-otp-infoWidget-3"><Link className="modalboxMenu" to="/servizio" activeClassName="active" onClick={this.handleClick}>Il servizio</Link></li>
-            <li id="menu-otp-infoWidget-4"><Link className="modalboxMenu" to="/contatti" activeClassName="active" onClick={this.handleClick}>Contatti</Link></li>
+            <li id="menu-otp-infoWidget-3"><Link className="modalboxMenu" to="/home/servizio" activeClassName="active" onClick={this.handleClick}>Il servizio</Link></li>
+            <li id="menu-otp-infoWidget-4"><Link className="modalboxMenu" to="/home/contatti" activeClassName="active" onClick={this.handleClick}>Contatti</Link></li>
         </ul>
         <div className="language-switcher" id="language-switcher">
             <ul>

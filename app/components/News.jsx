@@ -61,7 +61,7 @@ const News = React.createClass({
         if(typeof this.state.news === 'undefined') {
 			// Request our data again
 			axios
-                .get('http://proteo:3000/api/veline?filter[where][channel]=5')
+                .get('http://mip.5t.torino.it/news')
 				.then( (res) =>{
                     console.log(res)
 					this.setLocalState({
