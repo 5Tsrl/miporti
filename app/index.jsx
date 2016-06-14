@@ -2,7 +2,9 @@ import './style.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {IntlProvider} from 'react-intl';
+import {addLocaleData, IntlProvider} from 'react-intl';
+import it from 'react-intl/locale-data/it';
+import en from 'react-intl/locale-data/en';
 //import { Router, Route, Link,  browserHistory } from 'react-router'
 import { Router, Route, useRouterHistory } from 'react-router'
 import { createHistory } from "history";
@@ -15,24 +17,26 @@ import Disclaimer from './pages/Disclaimer'
 import DisclaimerWP from './pages/DisclaimerWP'
 import Cookie from './pages/Cookie'
 import Radio from './pages/Radio'
+import WPage from './components/WPage'
 
+addLocaleData([ ...it, ...en]);
 
 const browserHistory = useRouterHistory(createHistory)({
     //basename: "/home"
 });
 
 ReactDOM.render((
-<IntlProvider locale="it">
+<IntlProvider locale={navigator.language}>
   <Router history={browserHistory}>
     <Route component={MainLayout} >
-        <Route path="/(home/)" component={HomeLayout} />
+        <Route path="/home" component={HomeLayout} />
         <Route component={PageLayout} >
+            {/*
             <Route path="/(home/)servizio" component={Servizio} />
             <Route path="/(home/)contatti" component={Contatti} />
-            <Route path="/(home/)disclaimer"  component={DisclaimerWP} />
-            <Route path="/(home/)disclaimer-old"  component={Disclaimer} />
-            <Route path="/(home/)cookie"   component={Cookie} />
             <Route path="/(home/)radio"   component={Radio} />
+            */}
+            <Route path="/home/page/:slug"   component={WPage} />
         </Route>
         
     </Route>

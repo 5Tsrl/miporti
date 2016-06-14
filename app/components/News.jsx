@@ -2,9 +2,9 @@ import React from 'react'
 import axios from 'axios'
 import lscache from 'lscache'
 import ReactIScroll from 'react-iscroll'
-import {addLocaleData, IntlProvider, FormattedDate, FormattedNumber, FormattedPlural} from 'react-intl';
-import it from 'react-intl/locale-data/it';
-addLocaleData([ ...it]);
+import {FormattedDate} from 'react-intl';
+
+
 
 var iScroll = require('iscroll/build/iscroll')
 
@@ -93,7 +93,7 @@ const News = React.createClass({
         
         
         return(
-<IntlProvider locale="it">
+
     <div className="widget_news">
         <h2 className="title-2">Ultime news</h2>
         <div id="scroll_news">
@@ -104,7 +104,7 @@ const News = React.createClass({
         </ReactIScroll>	
       </div>
     </div>
-</IntlProvider>        
+
 )}
   
 })

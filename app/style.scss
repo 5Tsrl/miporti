@@ -1034,8 +1034,11 @@ footer{
 		background: $c8_1;
 		padding: 15px 35px;
 	}
-  p{font-size: 1em;}
+  p{font-size: 1em;
+    strong{font-weight: 800}
+  }
   a{font-size: 1em; color: darken($c8_1, 10%); font-weight: 600}
+  
 	.link_news {
 		list-style-type: none;
 		&:nth-child(even){
