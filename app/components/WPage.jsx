@@ -21,41 +21,44 @@ var WPage = React.createClass({
         newPages[key] = value
         this.setState({ pages: newPages });
         lscache.set('pages',this.state.pages , 2);
-},
+    },
 
-getPageContent: function(slug){
-        axios
-            .get('http://wpmip.5t.torino.it/wp-json/wp/v2/pages?filter[name]=' + slug)
-            .then( (res) =>{
-                this.setLocalState(slug, res.data[0])
-            })
-},
+    getPageContent: function(slug){
+            axios
+                .get('http://mip.5t.torino.it/wp-json/wp/v2/pages?filter[name]=' + slug)
+                .then( (res) =>{
+                    this.setLocalState(slug, res.data[0])
+                })
+    },
 
-componentDidMount: function() {
-},
+    componentDidMount: function() {
+    },
     
 render: function () {
-         const slug = this.props.routeParams.slug
-         if ( ! this.state.pages[slug] ) {
-            this.getPageContent(slug)
-			return (
-				<div className="loading-wrap">
-					<div className="loading"><span className="fa fa-heart"></span> LOADING</div>
-				</div>
-			)
-		}
-        return(
+    const slug = this.props.routeParams.slug
+     
+    if ( ! this.state.pages[slug] ) {
+        this.getPageContent(slug)
+    
+	return (
+<div className="widget page">
+    <h2 className="pageHeader" >...</h2>
+    <div className="pageContent">        
+        <div className="entry-content">...</div>
+    </div>
+</div>            
+		)
+	}
+    return(
 <div className="widget page">
     <h2 className="pageHeader" >{this.state.pages[slug].title.rendered}</h2>
-    <div className="pageContent">
-        
+    <div className="pageContent">        
         <div className="entry-content" dangerouslySetInnerHTML={{__html: this.state.pages[slug].content.rendered}}></div>
-
     </div>
 </div>
-        )
+    )
     
-    }
+  }
 })
 
 module.exports = WPage
