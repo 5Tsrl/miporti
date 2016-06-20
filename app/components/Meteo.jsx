@@ -1,6 +1,9 @@
 
-import React from 'react';
-import classNames from 'classnames';
+import React from 'react'
+import {presets} from 'react-motion'
+import Collapse from 'react-collapse'
+import classNames from 'classnames'
+import axios from 'axios'
 
 
 
@@ -9,55 +12,45 @@ var SelectorText = React.createClass({
   render: function() {
     
     var classes = classNames('meteo_here accord_meteo_here',  {open: this.props.open} )
-    return (
-        <span className={classes} onClick={this.props.onTextClick}>{this.props.text}</span>
-    );
+    return <span className={classes} onClick={this.props.onTextClick}>{this.props.text}</span>    
   }
 });
+
 var SelectorTexts = React.createClass({
-    makeTogglable: function(domEl) {
-      var element = $(domEl);
-
-      this.toggle = function() {
-        element.slideToggle();
-      };
-    },
-
-  render: function() {
-        var textsNodes = this.props.texts.map(function(singleText, id){
+    
+    render: function() {
+        var textsNodes = this.props.texts.map((singleText, id) =>{
           return (
               <li className="meteo_city accord_meteo_city" key={id} onClick={this.props.onTextsClick.bind(null,id)}><span className="city">{singleText}</span></li>
           )
-      }.bind(this))
-        var classes = classNames('meteo_cities accord_meteo_cities')
+        })
         return (
-            <ul ref={this.makeTogglable} className={classes}>
+        <Collapse className="meteo_cities" isOpened={this.props.open} >
+            <ul>
                 {textsNodes}
             </ul>
-        );
+        </Collapse>
+        )
   }
 });
+
 var Selector = React.createClass({
     getInitialState: function() {
       return {open:false, text:this.props.text};
     },
     handleTextClick: function(){
-        //console.log('open', this.state.open)
         this.setState({open:!this.state.open})
-        this.refs.textsBox.toggle()
     },
     handleTextsClick: function(id){
-        //console.log('click', id)
         this.setState({open:!this.state.open})
-        this.refs.textsBox.toggle()
         this.setState({text: this.props.texts[id]})
         this.props.onTextIdChoosen(id)
     },
     render: function() {
         return(
             <div>
-                <SelectorText open={this.state.open} text={this.state.text} onTextClick={this.handleTextClick} />
-                <SelectorTexts ref="textsBox" texts={this.props.texts} onTextsClick={this.handleTextsClick}/>
+                <SelectorText open={this.state.open} text={this.props.text} onTextClick={this.handleTextClick} />
+                <SelectorTexts open={this.state.open} ref="textsBox" texts={this.props.texts} onTextsClick={this.handleTextsClick}/>
             </div>
         )
     }
@@ -94,35 +87,45 @@ var MeteoDays = React.createClass({
   }
 });
 
- //class Meteo extends React.Component {
 const Meteo = React.createClass({
+    
     province : ['Alessandria', 'Asti', 'Biella', 'Cuneo', 'Novara', 'Torino', 'Verbania', 'Vercelli'],
     getInitialState: function() {
-      return { giornoAttivo:'oggi', data: [], provId: 0};
+      return { giornoAttivo:'oggi', data: [], provId: 0, hover: false};
     },
-    
+    cambiaProvincia: function(){
+        if(!this.state.hover){
+            const newProvId = this.state.provId == this.province.length-1 ? 0 : this.state.provId + 1
+            this.setState({provId: newProvId})
+        }
+    },
+    toggleHover: function(){
+        this.setState({hover: !this.state.hover})
+    },
+      
   loadMeteoFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: true,
-      success: function(data) {
-        this.setState({data: data});
-        
-    }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+      axios
+          .get(this.props.url)
+          .then( (res) =>{
+              this.setState({data: res.data})              
+          })
   },
-  
+    
   componentDidMount: function() {
-    this.loadMeteoFromServer();
+    this.loadMeteoFromServer()
+    const intervalId = setInterval(this.cambiaProvincia, 6*1000)
+    this.setState({intervalId: intervalId})
     //setInterval(this.loadMeteoFromServer, this.props.pollInterval);
   },
+  
+  componentWillUnmount: function(){
+    clearInterval(this.state.intervalId);
+  },
+  
   handleSceltaProvincia: function(provId){
       var provin = this.state.data.find(function(el){return el.id === provId})
       this.setState({provId: provin.id})
+      clearInterval(this.state.intervalId)
 },
   handleSceltaGiorno: function(giorno){
       console.log('giorno', giorno)      
@@ -142,7 +145,7 @@ const Meteo = React.createClass({
       } 
     return (
         
-        <div className="widget_meteo accord_widget_meteo">
+        <div className="widget_meteo accord_widget_meteo" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
             <h2>Meteo</h2>
             <Selector texts={this.province} text={this.province[this.state.provId]} onTextIdChoosen={this.handleSceltaProvincia}/>
             <MeteoPanel temperature={temperaturePanel} clima={climaPanel}/>

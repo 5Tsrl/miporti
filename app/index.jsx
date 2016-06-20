@@ -11,13 +11,8 @@ import { createHistory } from "history";
 import MainLayout from './components/MainLayout'
 import HomeLayout from './components/HomeLayout'
 import PageLayout from './components/PageLayout'
-import Servizio from './pages/Servizio'
-import Contatti from './pages/Contatti'
-import Disclaimer from './pages/Disclaimer'
-import DisclaimerWP from './pages/DisclaimerWP'
-import Cookie from './pages/Cookie'
-import Radio from './pages/Radio'
-import WPage from './components/WPage'
+import WPage      from './components/WPage'
+import Pvova      from './components/Pvova'
 
 addLocaleData([ ...it, ...en]);
 
@@ -25,8 +20,19 @@ const browserHistory = useRouterHistory(createHistory)({
     //basename: "/home"
 });
 
+const translation = {
+    'calcolo.title':'trip planner',
+    '_calcolo.da':'from',
+    'calcolo.a':'to',
+    'calcolo.calcola':'plan',
+    'calcolo.mezzi':'Public transport',
+    
+}
+/*
+locale={navigator.language}>
+*/
 ReactDOM.render((
-<IntlProvider locale={navigator.language}>
+<IntlProvider key={navigator.language} defaultLocale="it-IT" locale="it" messages={translation}>
   <Router history={browserHistory}>
     <Route component={MainLayout} >
         <Route path="/home" component={HomeLayout} />
@@ -37,6 +43,7 @@ ReactDOM.render((
             <Route path="/(home/)radio"   component={Radio} />
             */}
             <Route path="/home/page/:slug"   component={WPage} />
+            <Route path="/pvova"   component={Pvova} />
         </Route>
         
     </Route>

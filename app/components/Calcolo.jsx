@@ -1,6 +1,6 @@
 import React from 'react'
 import GeocodeSuggest from './calcolo/GeocodeSuggest'
-
+import {injectIntl, FormattedMessage} from 'react-intl'
 import './calcolo/calcolo.scss';
 
 
@@ -65,18 +65,23 @@ const Calcolo = React.createClass({
         return(
         
 <div className="widget_viaggio" style={styles.widget_viaggio}>
-    <h2 className="title-1">calcolo percorsi</h2>
+    <h2 className="title-1">
+        <FormattedMessage
+            id='calcolo.title'
+            description='titolo del componente calcolo'
+            defaultMessage='calcolo percorsi'
+        /></h2>
     <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}> 
         
         <div className="trip_container">
             <ul _style={styles.ulStyle}>
                 <li className="trip_input" style={styles.trip_input_z13}>
-                    <label htmlFor="trip_from">da</label>
+                    <label htmlFor="trip_from"><FormattedMessage id='calcolo.da'/></label>
                     {/* <input type="text" value={this.state.trip_from} id="trip_from" name="trip_from" /> */}
                     <GeocodeSuggest id="trip_from" value={this.state.value_from} onChange={this.onChangeFrom} onSuggestSelected={this.handleFromSelected} autoFocus={true}/>
                 </li>
                 <li className="trip_input" style={styles.trip_input_z12}>
-                    <label htmlFor="trip_to">a</label>
+                    <label htmlFor="trip_to"><FormattedMessage id='calcolo.a'/></label>
                     <GeocodeSuggest id="trip_to" value={this.state.value_to}  onChange={this.onChangeTo} onSuggestSelected={this.handleToSelected}/>
                 </li>
             </ul>
@@ -87,7 +92,7 @@ const Calcolo = React.createClass({
 
         <div className="trip_mode align_brother_bottom">
             <ul>
-                <li className="public active" title="Mezzi pubblici">
+                <li className="public active" _title="Mezzi pubblici" title={this.props.intl.formatMessage({id: 'calcolo.mezzi', defaultMessage: 'Mezzi Pubblici'})}>
                     <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode"   checked={this.state.otpMode == 'TRANSIT,WALK'} onChange={this.handleModeChanged.bind(null,'TRANSIT,WALK')}/>
                     <label htmlFor="tripmode_public"><span></span>Mezzi pubblici</label>
                 </li>
@@ -105,7 +110,7 @@ const Calcolo = React.createClass({
                 </li>
             </ul>
             <div className="trip_button_container">
-                <button type="submit"  id="otp-planner-optionsWidget-submit-button" className="btn_link trip_button"  _onClick={this.handleSubmit}>Calcola</button>
+                <button type="submit"  id="otp-planner-optionsWidget-submit-button" className="btn_link trip_button"  _onClick={this.handleSubmit}><FormattedMessage id='calcolo.calcola' defaultMessage='calcola'/></button>
             </div>
         </div>
     </form>
@@ -116,4 +121,4 @@ const Calcolo = React.createClass({
  
 })
 
-export default Calcolo
+export default injectIntl(Calcolo)

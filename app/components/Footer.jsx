@@ -13,17 +13,7 @@ export  default () =>
     			<span className="info-tel">800 333 444</span>
     			<div className="footer-info">
                     <FooterMenu />
-                    {/*
-    				<nav className="footer-menu">
-    					<ul>
-                            <li><Link to="/disclaimer">Disclaimer</Link></li>
-    						<li><Link to="/disclaimer-old">Disclaimer</Link></li>
-    						<li><Link to="/cookie">Cookies</Link></li>
-    						<li><Link to="/contatti">Contatti</Link></li>
-    					</ul>
-    				</nav>
-                    */}
-    				<span className="info">&reg;2016 Regione Piemonte - Designed by <a href="http://www.madeincima.it/" target="_blank">Madeincima</a></span>
+                    <span className="info">&reg;2016 Regione Piemonte - Designed by <a href="http://www.madeincima.it/" target="_blank">Madeincima</a></span>
     			</div>
     			<a href="https://twitter.com/mipiemonte" className="social" target="_blank">Twitter</a>
     		</div>

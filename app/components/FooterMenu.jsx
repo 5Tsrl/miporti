@@ -33,7 +33,7 @@ componentDidMount: function() {
     if(typeof this.state.footerMenu === 'undefined') {
         // Request our data again
         axios
-            .get('http://wpmip.5t.torino.it/wp-json/wp-api-menus/v2/menus/3')
+            .get('http://mip.5t.torino.it/wp-json/wp-api-menus/v2/menus/3')
             .then( (res) =>{
                 //console.log(res)
                 this.setLocalState({
@@ -46,30 +46,29 @@ componentDidMount: function() {
     
 render: function() {
         if ( ! this.state.footerMenu ) {
-           return (
+            //var footerMenuNodes = <li><Link to={this.props.url}>{this.props.title}</Link></li>
+            var footerMenuNodes = <FooterMenuItem title="home" url="/home"  />
+        /*   return (
                <div className="loading-wrap">
                    <div className="loading"><span className="fa fa-heart"></span> LOADING</div>
                </div>
-           )
+           )*/
+       }else{
+        
+            var footerMenuNodes = this.state.footerMenu.items.map( function(item, idx){
+                const baseurl="http://wpmip.5t.torino.it"
+                const url = '/home/page'+item.url.slice(baseurl.length,-1)
+                return(
+                    <FooterMenuItem key={idx} title={item.title} url={url}  />
+                )
+            }.bind(this))
         }
-        
-        var footerMenuNodes = this.state.footerMenu.items.map( function(item, idx){
-            const baseurl="http://wpmip.5t.torino.it"
-            const url = '/home/page'+item.url.slice(baseurl.length,-1)
-            return(
-                <FooterMenuItem key={idx} title={item.title} url={url}  />
-            )
-        }.bind(this))
-        
-        return (
-            
-            
+        return (            
             <nav className="footer-menu">
                 <ul>
                     {footerMenuNodes}
                 </ul>
             </nav>
-
         )
     }
 })

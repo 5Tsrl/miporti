@@ -8,9 +8,10 @@ const PATHS = {
 };
 
 module.exports = {
-    entry: {
+    entry: ['babel-polyfill',path.join(__dirname, 'app')],
+    /*{
        app: PATHS.app
-    },
+    },*/
     resolve: {
         extensions: ['', '.js', '.jsx']
     },

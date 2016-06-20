@@ -1017,6 +1017,24 @@ footer{
 		background-position: -90px 1px;
 	}
 
+
+/*video*/
+.widget_traffico{overflow: hidden;}
+.widget_traffico .video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    _width: auto;
+    _height: auto;
+    z-index: 0;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translate(-50%,-50%);
+    _background-size: cover;
+}
+
+
 }
 
 .widget_news{
@@ -1191,6 +1209,7 @@ footer{
 }
 
 .widget_meteo{
+  height: 100%;
 	background: $c13_1;
 	color:#b6e7f3;
 	text-transform: uppercase;
@@ -1238,14 +1257,16 @@ footer{
 			@include prefix('transform', 'rotate(-180deg)');
 		}
 	}
-	ul.meteo_cities{
-		position: absolute;
-		top: 51px;
-		left: 7.5%;
-		width: 85%;
-		z-index: 1;
-		background: $c13_2;
-		display: none;
+  $cities_width: 85% ;
+  .meteo_cities{
+    position: absolute;
+    top: 51px;
+		left: (100% - $cities_width) /2;
+		width: $cities_width;
+    background: $c13_2;
+  }
+	ul{
+
 		li{
 			list-style-type: none;
 			color: #fff;
@@ -2131,9 +2152,9 @@ footer{
 		// content: '\e804';
 		background:url(images/meteo/sereno.svg) no-repeat center;
 	}
-	&.temporali:before{
+	&.temporale:before{
 		// content: '\e805';
-		background:url(images/meteo/temporali.svg) no-repeat center;
+		background:url(images/meteo/temporale.svg) no-repeat center;
 	}
 	&.tormenta-neve:before{
 		// content: '\e806';
@@ -2240,9 +2261,9 @@ footer{
 		// content: '\e804';
 		background:url(images/meteo/small/sereno.svg) no-repeat center;
 	}
-	&.temporali:before{
+	&.temporale:before{
 		// content: '\e805';
-		background:url(images/meteo/small/temporali.svg) no-repeat center;
+		background:url(images/meteo/small/temporale.svg) no-repeat center;
 	}
 	&.tormenta-neve:before{
 		// content: '\e806';

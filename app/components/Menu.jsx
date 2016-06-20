@@ -2,15 +2,14 @@ import React from 'react';
 import { Link } from 'react-router'
 import axios from 'axios'
 import lscache from 'lscache'
-/*
-<li id="menu-home" className="active"><Link to="/home/" activeClassName="active" onClick={this.handleClick}>Home</Link></li>
-<li id="menu-planner"><a href="/#planner">Calcolo percorsi</a></li>
-*/
+
 const MenuItem = React.createClass({
   render: function() {
-    return (
-        <li><Link to={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</Link></li>
-    )
+    if(this.props.external){
+        return <li><a href={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</a></li>    
+    } else
+        return <li><Link to={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</Link></li>
+    
   }
 })
 
@@ -47,7 +46,7 @@ componentDidMount: function() {
     if(typeof this.state.menu === 'undefined') {
         // Request our data again
         axios
-            .get('http://wpmip.5t.torino.it/wp-json/wp-api-menus/v2/menus/4')
+            .get('http://mip.5t.torino.it/wp-json/wp-api-menus/v2/menus/4')
             .then( (res) =>{
                 //console.log(res)
                 this.setLocalState({
@@ -81,11 +80,15 @@ render: function() {
             url = '/home/page'+item.url.slice(baseurlWP.length,-1)
         } else {
             //pagine otp + home
-            url = item.url.slice(baseurlMip.length)
-            //url = item.url
+            url = item.url
+            var external=true
+            if (item.title == 'Home'){
+                external=false
+                url = item.url.slice(baseurlMip.length)             
+            }            
         }
         return(
-            <MenuItem key={idx} title={item.title} url={url} handleClick={this.handleClick} />
+            <MenuItem key={idx} title={item.title} url={url} external={external} handleClick={this.handleClick} />
         )
     }.bind(this))
     
@@ -94,13 +97,6 @@ render: function() {
     <nav className="main-menu-container" id="main-menu-container">
         <ul className="main-menu-5t" id="main-menu-5t">
             {menuNodes}
-            {/*
-            <li id="menu-home" className="active"><Link to="/home/" activeClassName="active" onClick={this.handleClick}>Home</Link></li>
-            <li id="menu-planner"><a href="/#planner">Calcolo percorsi</a></li>
-            <li id="menu-traffic"><a href="/#traffic">Traffico</a></li>
-            <li id="menu-otp-infoWidget-3"><Link className="modalboxMenu" to="/home/servizio" activeClassName="active" onClick={this.handleClick}>Il servizio</Link></li>
-            <li id="menu-otp-infoWidget-4"><Link className="modalboxMenu" to="/home/contatti" activeClassName="active" onClick={this.handleClick}>Contatti</Link></li>
-            */}
         </ul>
         <div className="language-switcher" id="language-switcher">
             <ul>
