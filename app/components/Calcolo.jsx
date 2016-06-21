@@ -55,6 +55,7 @@ const Calcolo = React.createClass({
         
     },
     render: function() {
+        //const intl = this.props.intl
         
         const styles = {
           widget_viaggio: {color: '#fff'},//esempio di inline style...
@@ -67,7 +68,7 @@ const Calcolo = React.createClass({
 <div className="widget_viaggio" style={styles.widget_viaggio}>
     <h2 className="title-1">
         <FormattedMessage
-            id='calcolo.title'
+            id='calcolo percorsi'
             description='titolo del componente calcolo'
             defaultMessage='calcolo percorsi'
         /></h2>
@@ -76,12 +77,12 @@ const Calcolo = React.createClass({
         <div className="trip_container">
             <ul _style={styles.ulStyle}>
                 <li className="trip_input" style={styles.trip_input_z13}>
-                    <label htmlFor="trip_from"><FormattedMessage id='calcolo.da'/></label>
+                    <label htmlFor="trip_from"><FormattedMessage id='da' defaultMessage='da dove?'/></label>
                     {/* <input type="text" value={this.state.trip_from} id="trip_from" name="trip_from" /> */}
                     <GeocodeSuggest id="trip_from" value={this.state.value_from} onChange={this.onChangeFrom} onSuggestSelected={this.handleFromSelected} autoFocus={true}/>
                 </li>
                 <li className="trip_input" style={styles.trip_input_z12}>
-                    <label htmlFor="trip_to"><FormattedMessage id='calcolo.a'/></label>
+                    <label htmlFor="trip_to"><FormattedMessage id='a'/></label>
                     <GeocodeSuggest id="trip_to" value={this.state.value_to}  onChange={this.onChangeTo} onSuggestSelected={this.handleToSelected}/>
                 </li>
             </ul>
@@ -92,11 +93,11 @@ const Calcolo = React.createClass({
 
         <div className="trip_mode align_brother_bottom">
             <ul>
-                <li className="public active" _title="Mezzi pubblici" title={this.props.intl.formatMessage({id: 'calcolo.mezzi', defaultMessage: 'Mezzi Pubblici'})}>
+                <li className="public active" _title="Mezzi pubblici" title={this.props.intl.formatMessage({id: 'mezzi pubblici', defaultMessage: 'Mezzi Pubblici'})}>
                     <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode"   checked={this.state.otpMode == 'TRANSIT,WALK'} onChange={this.handleModeChanged.bind(null,'TRANSIT,WALK')}/>
                     <label htmlFor="tripmode_public"><span></span>Mezzi pubblici</label>
                 </li>
-                <li className="car" title="In auto">
+                <li className="car" _title={this.props.intl.formatMessage({id: 'in auto'})}>
                     <input type="radio" id="tripmode_car" value="CAR" className="car" name="otpMode" checked={this.state.otpMode == 'CAR'} onChange={this.handleModeChanged.bind(null,'CAR')}/>
                     <label htmlFor="tripmode_car"><span></span>In auto</label>
                 </li>
@@ -110,7 +111,7 @@ const Calcolo = React.createClass({
                 </li>
             </ul>
             <div className="trip_button_container">
-                <button type="submit"  id="otp-planner-optionsWidget-submit-button" className="btn_link trip_button"  _onClick={this.handleSubmit}><FormattedMessage id='calcolo.calcola' defaultMessage='calcola'/></button>
+                <button type="submit"  id="otp-planner-optionsWidget-submit-button" className="btn_link trip_button"  _onClick={this.handleSubmit}><FormattedMessage id='calcola'/></button>
             </div>
         </div>
     </form>

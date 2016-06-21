@@ -13,6 +13,10 @@ import HomeLayout from './components/HomeLayout'
 import PageLayout from './components/PageLayout'
 import WPage      from './components/WPage'
 import Pvova      from './components/Pvova'
+import messages_en   from './messages/en.js'
+import messages_it   from './messages/it.js'
+
+console.log('messages',messages_en)
 
 addLocaleData([ ...it, ...en]);
 
@@ -20,19 +24,11 @@ const browserHistory = useRouterHistory(createHistory)({
     //basename: "/home"
 });
 
-const translation = {
-    'calcolo.title':'trip planner',
-    '_calcolo.da':'from',
-    'calcolo.a':'to',
-    'calcolo.calcola':'plan',
-    'calcolo.mezzi':'Public transport',
-    
-}
 /*
 locale={navigator.language}>
 */
 ReactDOM.render((
-<IntlProvider key={navigator.language} defaultLocale="it-IT" locale="it" messages={translation}>
+<IntlProvider key={navigator.language} defaultLocale="it-IT" locale="it" messages={messages_it}>
   <Router history={browserHistory}>
     <Route component={MainLayout} >
         <Route path="/home" component={HomeLayout} />
