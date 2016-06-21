@@ -4,7 +4,7 @@
 .page{
   text-align: left;
   min-height: 500px;
-  
+
   .pageHeader{
     color: #fff;
     background-color: $c12_1;
@@ -17,7 +17,7 @@
     p{  font-size: 1em; margin-bottom: 12px}
     padding: 35px;
     ul{    list-style: none; margin-top: 10px}
-    
+
     .liv1 li {
        background: url(../images/list.gif) 0 4px no-repeat;
        padding-left: 14px;
@@ -28,7 +28,7 @@
         padding-left: 11px;
         padding-top: 5px;
       }
-  
+
   /*Radio*/
   #radio {
     width:100%;
@@ -39,24 +39,44 @@
     align-items: center;
     justify-content: space-between;
     display: -webkit-flex;
-    
+
     li{
    	  border-bottom:1px solid #eeeeee;
    	  background:url(../images/ico-radio.gif) 0 20px no-repeat;
    	  padding:15px 0 15px 23px;
       }
     li.last{border-bottom:0}
-    
+
     strong {
   	  text-transform:uppercase;
   	  color:$cfont;
   	  font-size:1.1em;
   	  display:block;
   	  margin:0 0 5px 0;
-  	  }  
+  	  }
     a{ color:$c2 }
     }
-	 
-	
+
+#tablepress-1 {
+        margin-top: 20px;
+        th {
+          text-align: center;
+          padding: 10px;
+          }
+        td {
+          border-bottom: 1px solid $c12_1;
+          padding: 10px;
+          }
+        thead {
+          _background-color: $c12_1;
+          color: $c12_1;
+          border-bottom: 2px solid $c12_1;
+          }
+        .column-2 {
+          text-align: center;
+          border-right: 1px solid $c12_1;
+          border-left: 1px solid $c12_1;
+          }
+	      }
 	}
 }
