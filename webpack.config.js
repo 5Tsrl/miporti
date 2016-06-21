@@ -63,7 +63,7 @@ module.exports = {
       // Parse host and port from env so this is easy to customize.
       //
       // If you use Vagrant or Cloud9, set
-      // host: process.env.HOST || '0.0.0.0';
+       host: process.env.HOST || '0.0.0.0',
       //
       // 0.0.0.0 is available to all network devices unlike default
       // localhost
