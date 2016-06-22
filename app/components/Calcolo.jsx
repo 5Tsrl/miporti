@@ -21,7 +21,7 @@ const Calcolo = React.createClass({
       e.stopPropagation()
       this.setState({value_to: newValue});
     },
-    
+
     handleReverseBtn: function(e){
         e.preventDefault()
         e.stopPropagation()
@@ -52,11 +52,11 @@ const Calcolo = React.createClass({
         var queryString = Object.keys(params).map(function(k){return encodeURIComponent(k) +'=' + encodeURIComponent(params[k])}).join('&')
         console.log(queryString)
         location.href='/#planner?'+queryString
-        
+
     },
     render: function() {
-        //const intl = this.props.intl
-        
+        const {formatMessage} = this.props.intl
+
         const styles = {
           widget_viaggio: {color: '#fff'},//esempio di inline style...
           ulStyle: {zIndex: 0},
@@ -64,7 +64,7 @@ const Calcolo = React.createClass({
           trip_input_z12: {zIndex: 2, position: 'relative'},
         }
         return(
-        
+
 <div className="widget_viaggio" style={styles.widget_viaggio}>
     <h2 className="title-1">
         <FormattedMessage
@@ -72,8 +72,8 @@ const Calcolo = React.createClass({
             description='titolo del componente calcolo'
             defaultMessage='calcolo percorsi'
         /></h2>
-    <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}> 
-        
+    <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}>
+
         <div className="trip_container">
             <ul _style={styles.ulStyle}>
                 <li className="trip_input" style={styles.trip_input_z13}>
@@ -86,26 +86,26 @@ const Calcolo = React.createClass({
                     <GeocodeSuggest id="trip_to" value={this.state.value_to}  onChange={this.onChangeTo} onSuggestSelected={this.handleToSelected}/>
                 </li>
             </ul>
-            
-            <button type="button" key="revbtn" tabIndex="-1" className="trip_input_switch" id="trip_switch" onClick={this.handleReverseBtn}></button> 
-            
+
+            <button type="button" key="revbtn" tabIndex="-1" className="trip_input_switch" id="trip_switch" onClick={this.handleReverseBtn}></button>
+
         </div>
 
         <div className="trip_mode align_brother_bottom">
             <ul>
-                <li className="public active" _title="Mezzi pubblici" title={this.props.intl.formatMessage({id: 'mezzi pubblici', defaultMessage: 'Mezzi Pubblici'})}>
+                <li className="public active" title={formatMessage({id: 'Mezzi pubblici', defaultMessage: 'Mezzi pubblici'})}>
                     <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode"   checked={this.state.otpMode == 'TRANSIT,WALK'} onChange={this.handleModeChanged.bind(null,'TRANSIT,WALK')}/>
                     <label htmlFor="tripmode_public"><span></span>Mezzi pubblici</label>
                 </li>
-                <li className="car" _title={this.props.intl.formatMessage({id: 'in auto'})}>
+                <li className="car" title={formatMessage({id: 'In auto'})}>
                     <input type="radio" id="tripmode_car" value="CAR" className="car" name="otpMode" checked={this.state.otpMode == 'CAR'} onChange={this.handleModeChanged.bind(null,'CAR')}/>
                     <label htmlFor="tripmode_car"><span></span>In auto</label>
                 </li>
-                <li className="bike" title="In bici">
+                <li className="bike" title={formatMessage({id: 'In bici'})}>
                     <input type="radio" id="tripmode_bike" value="BICYCLE" className="bike" name="otpMode" checked={this.state.otpMode == 'BICYCLE'}  onChange={this.handleModeChanged.bind(null,'BICYCLE')}/>
                     <label htmlFor="tripmode_bike"><span></span>In bici</label>
                 </li>
-                <li className="walk" title="A piedi">
+                <li className="walk" title={formatMessage({id: 'A piedi'})}>
                     <input type="radio" id="tripmode_walk" value="WALK" className="walk" name="otpMode" checked={this.state.otpMode == 'WALK'}  onChange={this.handleModeChanged.bind(null,'WALK')}/>
                     <label htmlFor="tripmode_walk"><span></span>A piedi</label>
                 </li>
@@ -115,11 +115,11 @@ const Calcolo = React.createClass({
             </div>
         </div>
     </form>
-        
+
 </div>
-  
+
   )}
- 
+
 })
 
 export default injectIntl(Calcolo)

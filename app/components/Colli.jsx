@@ -1,9 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
+import {injectIntl, FormattedMessage} from 'react-intl'
 
 var SelectorText = React.createClass({
   render: function() {
-    
+
     var classes = classNames('btn_link meteo_here accord_meteo_here',  {open: this.props.open} )
     return (
         <span className={classes} onClick={this.props.onTextClick}>{this.props.text}</span>
@@ -58,17 +59,17 @@ var Selector = React.createClass({
             </div>
         )
     }
-    
+
 });
 
 
 
 const Colli = React.createClass({
-    
+
     getInitialState: function() {
       return {  colli: []};
     },
-    
+
   loadDataFromServer: function() {
     $.ajax({
       url: this.props.url,
@@ -82,36 +83,31 @@ const Colli = React.createClass({
       }.bind(this)
     });
   },
-  
+
   componentDidMount: function() {
     this.loadDataFromServer();
     //setInterval(this.loadMeteoFromServer, this.props.pollInterval);
   },
- 
+
   render: function() {
-       
+
       var elenco = []
       if(typeof this.state.colli !== 'undefined'){
-         
+
          this.state.colli.map(function(colle){
              elenco.push(colle.nome)
          })
-         
+
       }
     return (
-        
+
         <div className="widget_imgbg">
-            <h2 className="title-3">I colli alpini in piemonte</h2>
-            <p>Informazioni sull'apertura dei principali colli alpini piemontesi.</p>
-            <Selector texts={this.state.colli}  colli={this.state.colli} text="Situazione colli alpini" />
+            <h2 className="title-3"><FormattedMessage id='I colli alpini in piemonte'/></h2>
+            <p><FormattedMessage id="Informazioni sull'apertura dei principali colli alpini piemontesi." /></p>
+            <Selector texts={this.state.colli}  colli={this.state.colli} text={this.props.intl.formatMessage({id:'Situazione colli alpini'})}/>
         </div>
     );
   }
 });
 
-export default Colli
-
-
-
-
-
+export default injectIntl(Colli)
