@@ -1,4 +1,5 @@
 import React from 'react';
+import {FormattedMessage} from 'react-intl'
 import classNames from 'classnames';
 import axios from 'axios'
 
@@ -30,25 +31,20 @@ const VoliTable = React.createClass({
                 <table className="tabella_voli">
                     <thead>
                         <tr>
-                            <th>Data</th>
-                            <th>Ora</th>
-                            <th>{this.props.partenzeArrivi == 'partenze'? 'Destinazione':'Provenienza'}</th>
-                            <th>Volo</th>
-                            <th>{this.props.partenzeArrivi == 'partenze'? 'imbarco':'note'}</th>
+                            <th><FormattedMessage id='Data'/></th>
+                            <th><FormattedMessage id='Ora'/></th>
+                            <th>{this.props.partenzeArrivi == 'partenze'? <FormattedMessage id='Destinazione'/>:<FormattedMessage id='Provenienza'/>}</th>
+                            <th><FormattedMessage id='Volo'/></th>
+                            <th>{this.props.partenzeArrivi == 'partenze'? <FormattedMessage id='imbarco'/>:<FormattedMessage id='note'/>}</th>
                         </tr>
-                    </thead>	
+                    </thead>
                     <tbody>
                         {voliNodes}
-                        {/*
-                        <Volo data="10-02" ora="16:31" destinazione="Parigi" volo="123456" imbarco="in corso" />
-                        <Volo data="10-02" ora="16:31" destinazione="Parigi" volo="123456" imbarco="in corso" />
-                        <Volo data="10-02" ora="16:31" destinazione="Parigi" volo="123456" imbarco="in corso" />
-                        */}
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
     );
   }
 });
@@ -57,14 +53,14 @@ var VoliTabs = React.createClass({
   render: function() {
     var classesPartenze = classNames('tab_label tab_left',{'tab_active': this.props.partenzeArrivi == 'partenze' })
     var classesArrivi   = classNames('tab_label tab_right',{'tab_active': this.props.partenzeArrivi == 'arrivi'} )
-    
+
     return (
         <div class="tabs">
             <ul className="tabs_label voli_tabella_container">
-                <li onClick={this.props.onCurrentChoosen.bind(null,'partenze')}  className={classesPartenze}>Partenze</li>
-                <li onClick={this.props.onCurrentChoosen.bind(null,'arrivi')}  className={classesArrivi}>Arrivi</li>
+                <li onClick={this.props.onCurrentChoosen.bind(null,'partenze')}  className={classesPartenze}><FormattedMessage id='Partenze'/></li>
+                <li onClick={this.props.onCurrentChoosen.bind(null,'arrivi')}  className={classesArrivi}><FormattedMessage id='Arrivi'/></li>
             </ul>
-        </div>        
+        </div>
     )
   }
 })
@@ -73,18 +69,18 @@ var VoliFooter = React.createClass({
   render: function() {
     return (
         <div className="last_info">
-            <p>{this.props.aggiornamento}</p>
+            <p><FormattedMessage id='orari di volo aggiornati alle '/>{this.props.aggiornamento}</p>
             <span className="raggiungere">
-                Raggiungere l'aeroporto in 
-                <a href="http://www.aeroportoditorino.it/en/tomove/parking-transport/by-car" className="btn_partenze" target="_blank">auto</a>
-                    <a href="http://www.aeroportoditorino.it/en/tomove/parking-transport/by-bus" className="btn_partenze" target="_blank">bus</a>
-                        <a href="http://www.aeroportoditorino.it/en/tomove/parking-transport/by-train" className="btn_partenze" target="_blank">treno</a>
-                {/* 
+                <FormattedMessage id="Raggiungere l'aeroporto in "/>
+                <a href="http://www.aeroportoditorino.it/en/tomove/parking-transport/by-car" className="btn_partenze" target="_blank"><FormattedMessage id='auto'/></a>
+                    <a href="http://www.aeroportoditorino.it/en/tomove/parking-transport/by-bus" className="btn_partenze" target="_blank"><FormattedMessage id='bus'/></a>
+                        <a href="http://www.aeroportoditorino.it/en/tomove/parking-transport/by-train" className="btn_partenze" target="_blank"><FormattedMessage id='treno'/></a>
+                {/*
                 <a href="http://www.aeroportoditorino.it/it/tofly/voli/partenze-arrivi?orario=oggi" className="btn_partenze">Partenze di oggi</a>
                 <a href="http://www.aeroportoditorino.it/it/tofly/voli/partenze-arrivi?orario=domani&set=partenze" className="btn_partenze">Partenze di domani</a>
                 */}
             </span>
-            <a href="http://www.aeroportoditorino.it/it/tofly/voli/orario-generale"  className="btn_link" target="_blank">Orario Generale</a>
+            <a href="http://www.aeroportoditorino.it/it/tofly/voli/orario-generale"  className="btn_link" target="_blank"><FormattedMessage id='Orario Generale'/></a>
         </div>
     )
   }
@@ -97,7 +93,7 @@ const Voli = React.createClass({
     getInitialState: function() {
       return { partenzeArrivi: 'partenze', data: {}};
     },
-    
+
   loadVoliFromServer: function() {
       axios.get(this.props.url)
          .catch(function (response){
@@ -110,44 +106,42 @@ const Voli = React.createClass({
           }})
           .then( (response) =>{
               this.setState({data: response.data})
-         }) 
+         })
   },
-  
+
   componentDidMount: function() {
     this.loadVoliFromServer();
     //setInterval(this.loadVoliFromServer, this.props.pollInterval);
   },
 
   handleSceltaCurrent: function(current){
-      console.log('p/a', current)      
+      console.log('p/a', current)
       this.setState({partenzeArrivi : current})
-      
+
   },
   render: function() {
       var voli = []
       var aggiornamento = ''
       if(typeof this.state.data.partenze !== 'undefined'){
           voli = this.state.data[this.state.partenzeArrivi].slice(0,4)
-          aggiornamento = this.state.data.aggiornamento
+          aggiornamento = this.state.data.aggiornamento.split(/alle/).pop().trim()
+          console.log(aggiornamento)
       }
     return (
-        
+
       <div className="widget_voli">
         <div className="title-4">
-            <h2>orario voli</h2>
-            <h3>Aeroporto di Torino</h3>
-            <p>In collaborazione con <a href="http://www.aeroportoditorino.it/it/sagat" target="_blank">Sagat S.p.a.</a></p>
+            <h2><FormattedMessage id='orario voli'/></h2>
+            <h3><FormattedMessage id='Aeroporto di Torino'/></h3>
+            <p><FormattedMessage id='In collaborazione con '/> <a href="http://www.aeroportoditorino.it/it/sagat" target="_blank">Sagat S.p.a.</a></p>
         </div>
         <VoliTabs partenzeArrivi={this.state.partenzeArrivi} onCurrentChoosen={this.handleSceltaCurrent}/>
         <VoliTable partenzeArrivi={this.state.partenzeArrivi} voli={voli} />
         <VoliFooter aggiornamento={aggiornamento} />
-            
+
       </div>
     );
   }
 });
 
 export default Voli
-
-
-

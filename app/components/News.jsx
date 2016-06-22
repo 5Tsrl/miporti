@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import lscache from 'lscache'
 import ReactIScroll from 'react-iscroll'
-import {FormattedDate} from 'react-intl';
+import {FormattedDate, FormattedMessage} from 'react-intl';
 
 
 
@@ -26,7 +26,7 @@ const Velina = React.createClass({
 
 
 const News = React.createClass({
-    
+
     getDefaultProps: function() {
         return ({
           options: {
@@ -36,11 +36,11 @@ const News = React.createClass({
             interactiveScrollbars: true,
             mouseWheel: true,
             disableMouse: true,
-            preventDefaultException: { tagName:/.*/ } 
+            preventDefaultException: { tagName:/.*/ }
           }
         })
     },
-    
+
     getInitialState: function() {
         console.log(this.constructor.displayName)
 		// Check our localstorage cache, we may as well load from there if we have it
@@ -69,8 +69,8 @@ const News = React.createClass({
 					})
 				})
         }
-	}, 
-        
+	},
+
     render: function() {
         if ( ! this.state.news ) {
 			return (
@@ -83,30 +83,30 @@ const News = React.createClass({
                 </ul>
             )
 		}
-        
-        
+
+
         var velineNodes = this.state.news.map( function(velina, idx){
             return(
                 <Velina key={idx} title={velina.title} description={velina.description} validitystart={velina.validitystart} />
             )
         }.bind(this))
-        
-        
+
+
         return(
 
     <div className="widget_news">
-        <h2 className="title-2">Ultime news</h2>
+        <h2 className="title-2"><FormattedMessage id='Ultime news'/></h2>
         <div id="scroll_news">
           <ReactIScroll iScroll={iScroll} options={this.props.options}>
             <ul>
                 {velineNodes}
             </ul>
-        </ReactIScroll>	
+        </ReactIScroll>
       </div>
     </div>
 
 )}
-  
+
 })
 
 export default News

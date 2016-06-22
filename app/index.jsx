@@ -41,10 +41,10 @@ ReactDOM.render((
             <Route path="/home/page/:slug"   component={WPage} />
             <Route path="/pvova"   component={Pvova} />
         </Route>
-        
+
     </Route>
-        
+
   </Router>
-</IntlProvider>  
-    
+</IntlProvider>
+
 ), document.getElementById('main'))
