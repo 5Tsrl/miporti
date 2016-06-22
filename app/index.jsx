@@ -13,12 +13,11 @@ import HomeLayout from './components/HomeLayout'
 import PageLayout from './components/PageLayout'
 import WPage      from './components/WPage'
 import Pvova      from './components/Pvova'
+import HotSwappingIntlProvider from './components/HotSwappingIntlProvider.js'
+
 import messages_en   from './messages/en.js'
 import messages_it   from './messages/it.js'
 
-console.log('messages',messages_en)
-
-addLocaleData([ ...it, ...en]);
 
 const browserHistory = useRouterHistory(createHistory)({
     //basename: "/home"
@@ -27,8 +26,10 @@ const browserHistory = useRouterHistory(createHistory)({
 /*
 locale={navigator.language}>
 */
-ReactDOM.render((
-<IntlProvider key={navigator.language} defaultLocale="it-IT" locale="it" messages={messages_it}>
+const initialMessages = {pippo:5}
+ReactDOM.render((    
+<HotSwappingIntlProvider initialLocale='it' initialMessages={initialMessages}>
+{/*<IntlProvider key={navigator.language} defaultLocale="it-IT" locale="it" messages={messages_it}>*/}
   <Router history={browserHistory}>
     <Route component={MainLayout} >
         <Route path="/home" component={HomeLayout} />
@@ -45,6 +46,8 @@ ReactDOM.render((
     </Route>
         
   </Router>
-</IntlProvider>  
+
+{/*</IntlProvider>  */}
+</HotSwappingIntlProvider>
     
 ), document.getElementById('main'))
