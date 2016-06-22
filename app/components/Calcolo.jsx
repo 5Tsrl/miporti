@@ -1,6 +1,6 @@
 import React from 'react'
 import GeocodeSuggest from './calcolo/GeocodeSuggest'
-import {injectIntl, FormattedMessage} from 'react-intl'
+import {injectIntl, intlShape, FormattedMessage} from 'react-intl'
 import './calcolo/calcolo.scss';
 
 
@@ -55,7 +55,7 @@ const Calcolo = React.createClass({
         
     },
     render: function() {
-        //const intl = this.props.intl
+        const {formatMessage} = this.props.intl
         
         const styles = {
           widget_viaggio: {color: '#fff'},//esempio di inline style...
@@ -93,7 +93,7 @@ const Calcolo = React.createClass({
 
         <div className="trip_mode align_brother_bottom">
             <ul>
-                <li className="public active" _title="Mezzi pubblici" title={this.props.intl.formatMessage({id: 'mezzi pubblici', defaultMessage: 'Mezzi Pubblici'})}>
+                <li className="public active" _title="Mezzi pubblici" title={formatMessage({id: 'mezzi pubblici', defaultMessage: 'Mezzi Pubblici'})}>
                     <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode"   checked={this.state.otpMode == 'TRANSIT,WALK'} onChange={this.handleModeChanged.bind(null,'TRANSIT,WALK')}/>
                     <label htmlFor="tripmode_public"><span></span>Mezzi pubblici</label>
                 </li>
