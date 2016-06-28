@@ -1,6 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import {injectIntl, FormattedMessage} from 'react-intl'
+import axios from 'axios'
+import lscache from 'lscache'
+
 
 var SelectorText = React.createClass({
   render: function() {
@@ -38,7 +41,6 @@ var Selector = React.createClass({
       return {open:false, text:this.props.text};
     },
     handleTextClick: function(){
-        //console.log('open', this.state.open)
         this.setState({open:!this.state.open})
         this.refs.textsBox.toggle()
     },
@@ -71,22 +73,21 @@ const Colli = React.createClass({
     },
 
   loadDataFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: true,
-      success: function(data) {
-        this.setState({colli: data});
-    }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+      
+    axios
+      .get(this.props.url)
+      .then( (res) =>{
+          this.setState({colli: res.data});
+          //lscache.set(`menu_${locale}`,res.data,1)
+      })
   },
 
   componentDidMount: function() {
     this.loadDataFromServer();
     //setInterval(this.loadMeteoFromServer, this.props.pollInterval);
+  },
+  componentWillUnmount: function() {
+    //console.log('componente Colli smontato')    
   },
 
   render: function() {
