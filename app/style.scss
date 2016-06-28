@@ -197,7 +197,7 @@ a {
 		}
 		.language-switcher{
       /* temporaneamente disabilitato*/
-      display: none;
+      //display: none;
 			position: absolute;
 			top: 25px;
 			right: 30px;
@@ -689,7 +689,7 @@ footer{
 				font-size: 1.1em;
 				font-weight: $fw2;
 				text-align: right;
-				width: 25px;
+				width: 29px;
 				display: inline-block;
 			}
 			input{

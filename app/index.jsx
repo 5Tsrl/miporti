@@ -2,6 +2,8 @@ import './style.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {createStore, combineReducers} from 'redux'
+import {Provider, intlReducer, update} from 'react-intl-redux'
 import {addLocaleData, IntlProvider} from 'react-intl';
 import it from 'react-intl/locale-data/it';
 import en from 'react-intl/locale-data/en';
@@ -20,15 +22,57 @@ console.log('messages',messages_en)
 
 addLocaleData([ ...it, ...en]);
 
+const reducer = combineReducers({
+  intl: intlReducer,
+})
+const initialState = {
+  intl: {
+    defaultLocale: 'it',
+    locale: 'it',
+    messages: messages_it,
+  },
+}
+const store = createStore(reducer, initialState)
+
+
 const browserHistory = useRouterHistory(createHistory)({
     //basename: "/home"
 });
+
+
+
+/*demo switch*/
+/*
+var lang = 'it'
+
+setInterval(() => {
+    let messages = {}
+          if(lang == 'it'){
+            lang ='en' 
+            messages=messages_en
+        }else {
+            lang ='it' 
+            messages=messages_it
+            
+        }
+        let locale = lang
+          
+          console.log(lang)
+          
+          store.dispatch(update({
+              locale,
+              messages,
+            }))
+          
+        }, 30000);
+*/
 
 /*
 locale={navigator.language}>
 */
 ReactDOM.render((
-<IntlProvider key={navigator.language} defaultLocale="it-IT" locale="it" messages={messages_it}>
+
+<Provider store={store}>
   <Router history={browserHistory}>
     <Route component={MainLayout} >
         <Route path="/home" component={HomeLayout} />
@@ -41,10 +85,9 @@ ReactDOM.render((
             <Route path="/home/page/:slug"   component={WPage} />
             <Route path="/pvova"   component={Pvova} />
         </Route>
-
     </Route>
-
   </Router>
-</IntlProvider>
+</Provider>
+
 
 ), document.getElementById('main'))
