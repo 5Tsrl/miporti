@@ -60,7 +60,6 @@ const browserHistory = useRouterHistory(createHistory)({
 /*demo switch*/
 /*
 var lang = 'it'
-
 setInterval(() => {
     let messages = {}
           if(lang == 'it'){
@@ -72,14 +71,11 @@ setInterval(() => {
             
         }
         let locale = lang
-          
           console.log(lang)
-          
           store.dispatch(update({
               locale,
               messages,
             }))
-          
         }, 30000);
 */
 

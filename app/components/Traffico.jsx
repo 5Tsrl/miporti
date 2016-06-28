@@ -2,8 +2,18 @@ import React from 'react'
 import trafficoAudioPlayer from './trafficoAudioPlayer'
 import {FormattedMessage} from 'react-intl'
 import Video from 'react-html5video'
+import AudioPlayer from '../audio-player/components/AudioPlayer'
+import '../audio-player/app.scss';
 
-export default () =>(
+const Traffico = React.createClass({
+    
+    render: function() {
+        
+        var songs = [
+        	{url: "http://www.muoversinpiemonte.it/notiziario/notiziario.mp3"}
+        ]
+        
+        return (
 
     <div className="widget_traffico ">
         {/*
@@ -21,8 +31,19 @@ export default () =>(
             </div>
             <a href="/#traffic" className="btn_link"><FormattedMessage id='Visualizza eventi'/></a>
         </div>
+        <div style={{marginTop:120}}>
+            
+            <div className="NOnews_traffico NOclose">
+                <AudioPlayer songs={songs} />
+                <h3><FormattedMessage id='Ascolta il notiziario'/></h3>
+            </div>
+            <a href="/#traffic" className="btn_link"><FormattedMessage id='Visualizza eventi'/></a>
+        </div>
 
     </div>
+)}
 
 
-)
+})
+
+export default Traffico
