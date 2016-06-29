@@ -14,7 +14,7 @@ export default () =>(
         </Video>
         */}
         <h2 className="title-1"><FormattedMessage id='traffico in tempo reale'/></h2>
-        <p><FormattedMessage id='Aggiornamenti su traffico e viabilità in Piemonte.'/> <strong><FormattedMessage id='Muoviti informato.'/></strong></p>
+        <p><FormattedMessage id='Aggiornamenti su traffico e viabilità in Piemonte.'/><br /><strong><FormattedMessage id='Muoviti informato.'/></strong></p>
         <div className="align_brother_bottom">
             <div className="news_traffico close">
                 <h3><FormattedMessage id='Ascolta il notiziario'/></h3>
