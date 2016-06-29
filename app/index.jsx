@@ -18,20 +18,36 @@ import Pvova      from './components/Pvova'
 import messages_en   from './messages/en.js'
 import messages_it   from './messages/it.js'
 
-console.log('messages',messages_en)
+/*utility function*/
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+let setLng = getParameterByName('setLng')
+if(! setLng || setLng == '')
+    setLng = 'it'
+
+const i18n={messages_it, messages_en}
 
 addLocaleData([ ...it, ...en]);
+
+const initialState = {
+  intl: {
+    defaultLocale: 'it',
+    locale: setLng,
+    messages: i18n[`messages_${setLng}`],
+  },
+}
 
 const reducer = combineReducers({
   intl: intlReducer,
 })
-const initialState = {
-  intl: {
-    defaultLocale: 'it',
-    locale: 'it',
-    messages: messages_it,
-  },
-}
 const store = createStore(reducer, initialState)
 
 

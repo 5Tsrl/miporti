@@ -41,7 +41,6 @@ getDefaultProps: function() {
 getInitialState: function () {
     
     // Check our localstorage cache, we may as well load from there if we have it
-    
     return  { menuIsOpen: false, 
               menu: lscache.get(`menu_${this.props.currentLocale}`)
             }
@@ -72,8 +71,7 @@ componentDidMount: function() {
         document.body.classList.add('no-touch')
 	}
     document.body.classList.toggle('menu-open', this.state.menuIsOpen)
-    
-    
+
     if(this.state.menu == null) {
         this.loadMenu()
     }
