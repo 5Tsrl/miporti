@@ -1,35 +1,63 @@
-import React from 'react';
+import React from 'react'
+import { connect} from 'react-redux'
+import {update} from 'react-intl-redux'
 import { Link } from 'react-router'
 import axios from 'axios'
 import lscache from 'lscache'
+import classNames from 'classnames';
+
+import messages_en   from '../messages/en.js'
+import messages_it   from '../messages/it.js'
+
 
 const MenuItem = React.createClass({
-  render: function() {
-    if(this.props.external){
-        return <li><a href={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</a></li>    
-    } else
-        return <li><Link to={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</Link></li>
     
+  render: function() {
+      console.log(this.props.url)
+    if(this.props.external)
+        return <li><a href={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</a></li>    
+    else
+        return <li><Link to={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</Link></li>
+  }
+})
+
+const LangItem = React.createClass({
+  render: function() {
+      const classes = classNames( {current_lang: this.props.isCurrentLang})
+      return(      
+          <li><Link to={'/home?setLng='+this.props.lang} onClick={this.props.handleLangClick.bind(null,this.props.lang)} className={classes} >{this.props.lang}</Link></li>
+      )
   }
 })
 
 
-const Menu = React.createClass({
-        
+let Menu = React.createClass({
+    
+getDefaultProps: function() {
+    return {
+      langs: ['it', 'en']      
+    }
+  },    
 getInitialState: function () {
-    console.log(this.constructor.displayName)
+    
     // Check our localstorage cache, we may as well load from there if we have it
-    const initialState = {menuIsOpen: false}
-    return Object.assign(lscache.get(this.constructor.displayName) || {}, initialState)
+    return  { menuIsOpen: false, 
+              menu: lscache.get(`menu_${this.props.currentLocale}`)
+            }
 },
-/**
- * Sets the localstorage state, and continues on to set the state of the React component
- */
-setLocalState: function (data) {
-    // Store in LocalStorage
-    lscache.set(this.constructor.displayName, data, 1);
-    // Store in Component State
-    this.setState(data);
+
+
+loadMenu: function() {
+        let menuId = 4 //it
+        if(this.props.currentLocale == 'en') menuId=5
+        
+        axios
+            .get('http://mip.5t.torino.it/wp-json/wp-api-menus/v2/menus/'+menuId)
+            .then( (res) =>{
+                console.log('scaricato', `menu_${this.props.currentLocale}`)
+                this.setState({menu: res.data})
+                lscache.set(`menu_${this.props.currentLocale}`,res.data,5)                
+            })    
 },
   
 
@@ -43,16 +71,9 @@ componentDidMount: function() {
         document.body.classList.add('no-touch')
 	}
     document.body.classList.toggle('menu-open', this.state.menuIsOpen)
-    if(typeof this.state.menu === 'undefined') {
-        // Request our data again
-        axios
-            .get('http://mip.5t.torino.it/wp-json/wp-api-menus/v2/menus/4')
-            .then( (res) =>{
-                //console.log(res)
-                this.setLocalState({
-                    menu: res.data
-                })
-            })
+
+    if(this.state.menu == null) {
+        this.loadMenu()
     }
 },
 
@@ -61,36 +82,55 @@ handleClick: function() {
         document.body.classList.toggle('menu-open', this.state.menuIsOpen)
     })    
 },
+handleLangClick: function(locale){
+    //event.preventDefault()
+    
+    let messages = {}
+        if(locale == 'it'){
+            messages=messages_it
+        }else {
+            messages=messages_en            
+        }
+    this.props.dispatch(update({
+        locale,
+        messages,
+      }))
+},
+
     
 render: function() {
     if ( ! this.state.menu ) {
-       return (
-           <div className="loading-wrap">
-               <div className="loading"><span className="fa fa-heart"></span> LOADING</div>
-           </div>
-       )
+       var menuNodes = <MenuItem title='home' url='/home'  handleClick={this.handleClick} />
+   }else{
+    
+        var menuNodes = this.state.menu.items.map( (item, idx) =>{
+            let url = ''
+            const baseurlWP="http://wpmip.5t.torino.it"
+            const baseurlMip="http://mip.5t.torino.it"
+            if(item.url.indexOf(baseurlWP) >=0){
+                //pagine wordpress
+                url = '/home/page'+item.url.slice(baseurlWP.length,-1)
+            } else {
+                //pagine otp + home
+                url = item.url
+                var external=true
+                if (item.title == 'Home'){
+                    external=false
+                    url = item.url.slice(baseurlMip.length)             
+                }            
+            }
+            return(
+                <MenuItem key={idx} title={item.title} url={url} external={external} handleClick={this.handleClick} />
+            )
+        })
     }
     
-    var menuNodes = this.state.menu.items.map( function(item, idx){
-        let url = ''
-        const baseurlWP="http://wpmip.5t.torino.it"
-        const baseurlMip="http://mip.5t.torino.it"
-        if(item.url.indexOf(baseurlWP) >=0){
-            //pagine wordpress
-            url = '/home/page'+item.url.slice(baseurlWP.length,-1)
-        } else {
-            //pagine otp + home
-            url = item.url
-            var external=true
-            if (item.title == 'Home'){
-                external=false
-                url = item.url.slice(baseurlMip.length)             
-            }            
-        }
-        return(
-            <MenuItem key={idx} title={item.title} url={url} external={external} handleClick={this.handleClick} />
-        )
-    }.bind(this))
+    const langNodes = this.props.langs.map( (item, idx) =>{         
+         const isCurrentLang = (item == this.props.currentLocale)
+         return <LangItem  key={idx} lang={item} isCurrentLang={isCurrentLang}  handleLangClick={this.handleLangClick} />
+    })
+    
+    
     
     return (
 <div>
@@ -100,8 +140,7 @@ render: function() {
         </ul>
         <div className="language-switcher" id="language-switcher">
             <ul>
-                <li><a href="?setLng=it" className="current_lang">it</a></li>
-                <li><a href="?setLng=en">en</a></li>
+                {langNodes}
             </ul>
         </div>
     </nav>
@@ -113,5 +152,10 @@ render: function() {
         )
     }
 })
+//mappo l' intl.locale dello state di redux sulla props currentLocale
+function mapStateToProps(state) {
+  return { currentLocale: state.intl.locale }
+}
 
+Menu = connect(mapStateToProps)(Menu)
 export default Menu

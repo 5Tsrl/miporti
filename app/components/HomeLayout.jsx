@@ -11,6 +11,7 @@ import Voli from './Voli'
 export default class HomeLayout extends React.Component {
     
       render() {
+        console.log('this.props.location.query.setLng', this.props.location.query.setLng)
           let style = {height: '200px', color:'blue', textAlign:'center', paddingTop:'100px'}
         return (
             
@@ -21,21 +22,27 @@ export default class HomeLayout extends React.Component {
             <div  className="widget widget_4-2">
                 <Traffico />
             </div>
-            <div  className="widget widget_4-2 widget_4-4">
-                <News />
-            </div>
-            <div className="widget widget_4-1">
-                <Tweet />
-            </div>
+            { this.props.location.query.setLng != 'en' &&
+              <div  className="widget widget_4-2 widget_4-4">
+                  <News />
+              </div>
+            }
+            { this.props.location.query.setLng != 'en' &&
+              <div className="widget widget_4-1">
+                  <Tweet />
+              </div>
+            }
             <div className="widget widget_4-1">
                 <Meteo url="http://mip.5t.torino.it/meteoarpa" pollInterval={2000} />
             </div>
             <div className="widget widget_4-1">
                 <Colli url="http://mip.5t.torino.it/home/colli.json" pollInterval={2000}/>
-			</div>
-            <div className="widget widget_4-1">
-                <Bip />
-            </div>
+			      </div>
+            { this.props.location.query.setLng != 'en' &&
+              <div className="widget widget_4-1">
+                  <Bip />
+              </div>
+            }
             <div  className="widget widget_4-2 widget_4-4">
                 <Voli url="http://mip.5t.torino.it/voli-caselle" pollInterval={10*60*1000}/>
 			</div>

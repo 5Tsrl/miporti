@@ -2,6 +2,8 @@ import './style.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {createStore, combineReducers} from 'redux'
+import {Provider, intlReducer, update} from 'react-intl-redux'
 import {addLocaleData, IntlProvider} from 'react-intl';
 import it from 'react-intl/locale-data/it';
 import en from 'react-intl/locale-data/en';
@@ -16,19 +18,77 @@ import Pvova      from './components/Pvova'
 import messages_en   from './messages/en.js'
 import messages_it   from './messages/it.js'
 
-console.log('messages',messages_en)
+/*utility function*/
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+let setLng = getParameterByName('setLng')
+if(! setLng || setLng == '')
+    setLng = 'it'
+
+const i18n={messages_it, messages_en}
 
 addLocaleData([ ...it, ...en]);
+
+const initialState = {
+  intl: {
+    defaultLocale: 'it',
+    locale: setLng,
+    messages: i18n[`messages_${setLng}`],
+  },
+}
+
+const reducer = combineReducers({
+  intl: intlReducer,
+})
+const store = createStore(reducer, initialState)
+
 
 const browserHistory = useRouterHistory(createHistory)({
     //basename: "/home"
 });
 
+
+
+/*demo switch*/
+/*
+var lang = 'it'
+
+setInterval(() => {
+    let messages = {}
+          if(lang == 'it'){
+            lang ='en' 
+            messages=messages_en
+        }else {
+            lang ='it' 
+            messages=messages_it
+            
+        }
+        let locale = lang
+          
+          console.log(lang)
+          
+          store.dispatch(update({
+              locale,
+              messages,
+            }))
+          
+        }, 30000);
+*/
+
 /*
 locale={navigator.language}>
 */
 ReactDOM.render((
-<IntlProvider key={navigator.language} defaultLocale="it-IT" locale="it" messages={messages_it}>
+
+<Provider store={store}>
   <Router history={browserHistory}>
     <Route component={MainLayout} >
         <Route path="/home" component={HomeLayout} />
@@ -41,10 +101,9 @@ ReactDOM.render((
             <Route path="/home/page/:slug"   component={WPage} />
             <Route path="/pvova"   component={Pvova} />
         </Route>
-
     </Route>
-
   </Router>
-</IntlProvider>
+</Provider>
+
 
 ), document.getElementById('main'))
