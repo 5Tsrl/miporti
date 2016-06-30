@@ -1,6 +1,8 @@
 import React from 'react'
 //var React = require('react/addons');
-var Label = require('react-bootstrap/Label');
+//var Label = require('react-bootstrap/Label');
+import { Label } from 'react-bootstrap'
+
 
 module.exports = React.createClass({
 	render: function() {

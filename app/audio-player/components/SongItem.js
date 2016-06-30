@@ -1,8 +1,10 @@
 import React from 'react'
 //var React = require('react/addons');
 var classnames = require("classnames");
-var MenuItem = require("react-bootstrap/MenuItem");
-var Glyphicon = require('react-bootstrap/Glyphicon');
+import { MenuItem } from 'react-bootstrap'
+import { Glyphicon } from 'react-bootstrap'
+//var MenuItem = require("react-bootstrap/MenuItem");
+//var Glyphicon = require('react-bootstrap/Glyphicon');
 
 module.exports = React.createClass({
 	render: function() {

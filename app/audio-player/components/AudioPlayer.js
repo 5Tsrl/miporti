@@ -1,16 +1,17 @@
-import React from 'react'
-//var React = require('react/addons');
+//import '../vendor/bootstrap.min.scss'
+
+var React = require('react');
 var ButtonPanel = require("./ButtonPanel");
-//var ProgressBar = require("./ProgressBar");
-//var VolumeBar = require("./VolumeBar");
-//var TimeLabel = require("./TimeLabel");
-//var NameLabel = require("./NameLabel");
-//var SongList = require("./SongList");
+var ProgressBar = require("./ProgressBar");
+var VolumeBar = require("./VolumeBar");
+var TimeLabel = require("./TimeLabel");
+var NameLabel = require("./NameLabel");
+var SongList = require("./SongList");
 
 var SongFormatterMixin = require("./../mixins/SongFormatterMixin");
 
 //var Howl = require('howler').Howl;
-import Howl from '../vendor/howler.min.js'
+var Howl = require('../vendor/howler.min.js').Howl;
 
 module.exports = React.createClass({
 
@@ -67,14 +68,13 @@ module.exports = React.createClass({
 		}
 
 		var topComponents = [
-			<ButtonPanel key="pippo" isPlaying={this.state.isPlaying} isPause={this.state.isPause}
+			<ButtonPanel key="1" isPlaying={this.state.isPlaying} isPause={this.state.isPause}
 					isLoading={this.state.isLoading}
 					currentSongIndex={this.state.currentSongIndex} songCount={songCount}
 					onPlayBtnClick={this.onPlayBtnClick} onPauseBtnClick={this.onPauseBtnClick}
 					onPrevBtnClick={this.onPrevBtnClick} onNextBtnClick={this.onNextBtnClick} />,
-                <div  key="pippo2">pvova</div>
-                /*<ProgressBar shorter={songCount > 1} percent={percent} seekTo={this.seekTo} />,
-			<VolumeBar volume={this.state.volume} adjustVolumeTo={this.adjustVolumeTo} />*/
+      <ProgressBar key="2" shorter={songCount > 1} percent={percent} seekTo={this.seekTo} />,
+			<VolumeBar key="3" volume={this.state.volume} adjustVolumeTo={this.adjustVolumeTo} />
 		];
 
 		var songName;
@@ -96,12 +96,12 @@ module.exports = React.createClass({
 				<div className="clearfix">
 					{ topComponents }
 				</div>
-				{/*
+				
 				<div className="audio-desc-container clearfix">
 					<NameLabel name={songName} />
 					<TimeLabel seek={this.state.seek} duration={this.state.duration}/>
 				</div>
-                */}
+
 			</div>
 		);
 	},

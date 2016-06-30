@@ -1,8 +1,8 @@
 import React from 'react'
 //var React = require('react/addons');
 var classnames = require('classnames');
-var Button = require('react-bootstrap/Button');
-var Glyphicon = require('react-bootstrap/Glyphicon');
+import { Button } from 'react-bootstrap'
+import { Glyphicon } from 'react-bootstrap'
 
 var uniquleId = 0
 
@@ -23,8 +23,8 @@ module.exports = React.createClass({
   		'audio-volume-bar-hide': this.state.hide
 		});
 
-		audioVolumeBarContainerId = "audioVolumeBarContainerId" + ++uniquleId;
-		toggleBtnId = "toggleBtn" + ++uniquleId;
+		var audioVolumeBarContainerId = "audioVolumeBarContainerId" + ++uniquleId;
+		var toggleBtnId = "toggleBtn" + ++uniquleId;
 
 		return (
 			<div id={audioVolumeBarContainerId} ref="audioVolumeBarContainer" className="audio-volume-bar-container">

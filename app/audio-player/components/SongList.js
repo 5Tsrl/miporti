@@ -1,6 +1,7 @@
 import React from 'react'
 //var React = require('react/addons');
-var DropDownButton = require("react-bootstrap/DropDownButton");
+//var DropDownButton = require("react-bootstrap/DropDownButton");
+import { DropDownButton } from 'react-bootstrap'
 var SongItem = require("./SongItem");
 var SongFormatterMixin = require("./../mixins/SongFormatterMixin");
 

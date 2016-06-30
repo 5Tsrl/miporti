@@ -1,6 +1,9 @@
 import React from 'react'
 //var React = require('react/addons');
 //var Button = require('react-bootstrap/Button');
+import { Button } from 'react-bootstrap'
+import { Glyphicon } from 'react-bootstrap'
+import { ButtonGroup } from 'react-bootstrap'
 //var Glyphicon = require('react-bootstrap/Glyphicon');
 //var ButtonGroup = require('react-bootstrap/ButtonGroup');
 
@@ -31,17 +34,34 @@ module.exports = React.createClass({
 		}
 
 		var songIndex = this.props.currentSongIndex;
-		var buttonPanelClasses = "player audio-button-panel pull-left";
+		var buttonPanelClasses = "audio-button-panel pull-left";
 
-			return (
-				<div className={buttonPanelClasses}>
-                    
-					<div bsSize="small" onClick={buttonClickHandler}>
-                    <span id="playtoggle" />    
-						{/*<Glyphicon className={iconClasses} glyph={iconName} />*/}
-					</div>
-				</div>
-			);
+    if (this.props.songCount < 2) {
+    return (
+      <ButtonGroup className={buttonPanelClasses}>
+        <Button bsSize="small" onClick={buttonClickHandler}>
+          <Glyphicon className={iconClasses} glyph={iconName} />
+        </Button>
+      </ButtonGroup>
+    );
+  } else {
+
+    var nextButtonClass = songIndex == this.props.songCount - 1 ? "disabled" : "";
+    
+    return (
+      <ButtonGroup className={buttonPanelClasses}>
+        <Button bsSize="small" onClick={this.props.onPrevBtnClick}>
+          <Glyphicon glyph="step-backward" />
+        </Button>
+        <Button bsSize="small" onClick={buttonClickHandler}>
+          <Glyphicon className={iconClasses} glyph={iconName} />
+        </Button>
+        <Button bsSize="small" onClick={this.props.onNextBtnClick} className={nextButtonClass}>
+          <Glyphicon glyph="step-forward" />
+        </Button>
+      </ButtonGroup>
+    );
+  }
 
 	}
 });
