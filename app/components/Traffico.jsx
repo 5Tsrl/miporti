@@ -24,10 +24,10 @@ const Traffico = React.createClass({
         </Video>
         */}
         <h2 className="title-1"><FormattedMessage id='traffico in tempo reale'/></h2>
-        <AudioPlayer songs={songs} />
         <p><FormattedMessage id='Aggiornamenti su traffico e viabilità in Piemonte.'/><br /><strong><FormattedMessage id='Muoviti informato.'/></strong></p>
         <div className="align_brother_bottom">
-            <div className="news_traffico close">
+            <div className="area_player" _className="news_traffico close">
+                <AudioPlayer songs={songs} />
                 <h3><FormattedMessage id='Ascolta il notiziario'/></h3>
             </div>
             <a href="/#traffic" className="btn_link"><FormattedMessage id='Visualizza eventi'/></a>

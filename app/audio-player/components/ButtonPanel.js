@@ -38,12 +38,19 @@ module.exports = React.createClass({
 
     if (this.props.songCount < 2) {
     return (
+      
+      
+      <div role="button" className="audio-button" _className="btn btn-sm btn-default" onClick={buttonClickHandler}></div>
+      
+    )
+    /*
       <ButtonGroup className={buttonPanelClasses}>
         <Button bsSize="small" onClick={buttonClickHandler}>
           <Glyphicon className={iconClasses} glyph={iconName} />
         </Button>
       </ButtonGroup>
-    );
+      */
+    
   } else {
 
     var nextButtonClass = songIndex == this.props.songCount - 1 ? "disabled" : "";

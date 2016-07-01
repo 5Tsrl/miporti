@@ -92,16 +92,15 @@ module.exports = React.createClass({
 		}
 
 		return (
-			<div className="audio-player">		
-				<div className="clearfix">
-					{ topComponents }
-				</div>
+			<div className="audio-player">	
 				
-				<div className="audio-desc-container clearfix">
-					<NameLabel name={songName} />
-					<TimeLabel seek={this.state.seek} duration={this.state.duration}/>
-				</div>
-
+          <ButtonPanel key="1" isPlaying={this.state.isPlaying} isPause={this.state.isPause}
+    					isLoading={this.state.isLoading}
+    					currentSongIndex={this.state.currentSongIndex} songCount={songCount}
+    					onPlayBtnClick={this.onPlayBtnClick} onPauseBtnClick={this.onPauseBtnClick}
+    					onPrevBtnClick={this.onPrevBtnClick} onNextBtnClick={this.onNextBtnClick} />
+          <ProgressBar key="2" shorter={songCount > 1} percent={percent} seekTo={this.seekTo} />
+				
 			</div>
 		);
 	},

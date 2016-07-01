@@ -795,7 +795,9 @@ footer{
 }
 
 .widget_traffico {
-	height: 420px;
+	_height: 420px;
+  
+  height: 720px;
 	background: $c11;
 	color:#fff;
 	padding: 40px;
@@ -1986,7 +1988,7 @@ footer{
 		}
 	}
 	.widget_traffico{
-		height: 290px;
+		_height: 290px;
 		.title-1:before{
 			width: 57px;
 			height: 41px;

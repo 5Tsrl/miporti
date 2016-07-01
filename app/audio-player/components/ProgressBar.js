@@ -12,10 +12,11 @@ module.exports = React.createClass({
 
 	render: function() {
 		var percent = this.props.percent * 100;
-		var style = { width: percent + "%" };
+		//var style = { width: percent + "%" }
+    var style = { left: percent + "%" }
 		var classes = classnames({
   		'audio-progress-container': true,
-  		'pull-left': true,
+  		//'pull-left': true,
   		'audio-progress-container-short-width': this.props.shorter
 		});
 
