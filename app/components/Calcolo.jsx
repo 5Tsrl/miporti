@@ -58,7 +58,6 @@ const Calcolo = React.createClass({
         const {formatMessage} = this.props.intl
         const styles = {
           widget_viaggio: {color: '#fff'},//esempio di inline style...
-          ulStyle: {zIndex: 0},
           trip_input_z13: {zIndex: 3, position: 'relative'},
           trip_input_z12: {zIndex: 2, position: 'relative'},
         }
@@ -74,7 +73,7 @@ const Calcolo = React.createClass({
     <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}>
 
         <div className="trip_container">
-            <ul _style={styles.ulStyle}>
+            <ul>
                 <li className="trip_input" style={styles.trip_input_z13}>
                     <label htmlFor="trip_from"><FormattedMessage id='da' defaultMessage='da dove?'/></label>
                     {/* <input type="text" value={this.state.trip_from} id="trip_from" name="trip_from" /> */}
@@ -110,7 +109,7 @@ const Calcolo = React.createClass({
                 </li>
             </ul>
             <div className="trip_button_container">
-                <button type="submit"  id="otp-planner-optionsWidget-submit-button" className="btn_link trip_button"  _onClick={this.handleSubmit}><FormattedMessage id='calcola'/></button>
+                <button type="submit"  id="otp-planner-optionsWidget-submit-button" className="btn_link trip_button"><FormattedMessage id='calcola'/></button>
             </div>
         </div>
     </form>
