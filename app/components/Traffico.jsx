@@ -14,15 +14,20 @@ const Traffico = React.createClass({
         ]
         
         return (
-
+<div className="widget_traffico_container ">
+    {/* 
+    <Video id="videoTraff" autoPlay loop muted
+        poster="https://adayofrest.hm/content/themes/ador-boston-2016/assets/images/poster.jpg"
+        onCanPlayThrough={() => {  }}>
+        <source src="https://adayofrest.hm/content/themes/ador-boston-2016/assets/adayofrest-boston.mp4" type="video/mp4" />
+    </Video>
+    
+    <video id="videoTraff" autoPlay loop="" poster="https://adayofrest.hm/content/themes/ador-boston-2016/assets/images/poster.jpg">
+      <source src="https://adayofrest.hm/content/themes/ador-boston-2016/assets/adayofrest-boston.mp4" type="video/mp4"/>          
+    </video>
+    */}
     <div className="widget_traffico ">
-        {/*
-        <Video id="videoTraff" controls autoPlay loop muted
-            poster="https://adayofrest.hm/content/themes/ador-boston-2016/assets/images/poster.jpg"
-            onCanPlayThrough={() => {  }}>
-            <source src="https://adayofrest.hm/content/themes/ador-boston-2016/assets/adayofrest-boston.mp4" type="video/mp4" />
-        </Video>
-        */}
+        
         <h2 className="title-1"><FormattedMessage id='traffico in tempo reale'/></h2>
         <p><FormattedMessage id='Aggiornamenti su traffico e viabilità in Piemonte.'/><br /><strong><FormattedMessage id='Muoviti informato.'/></strong></p>
         <div className="align_brother_bottom">
@@ -44,6 +49,7 @@ const Traffico = React.createClass({
         */}
 
     </div>
+  </div>
 )}
 
 
