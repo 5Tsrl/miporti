@@ -15,7 +15,7 @@ const MenuItem = React.createClass({
   render: function() {
       console.log(this.props.url)
     if(this.props.external)
-        return <li><a href={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</a></li>    
+        return <li><a href={this.props.url} onClick={this.props.handleClick}>{this.props.title}</a></li>    
     else
         return <li><Link to={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</Link></li>
   }

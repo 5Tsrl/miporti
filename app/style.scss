@@ -41,26 +41,7 @@ a {
 	}
 }
 
-.tabs{
-	.tabs_container{
-		position: relative;
-		.tab_container{
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: none;
-			&.first_active{
-				display: block;
-			}
-		}
-	}
-	.tabs_label{
-		position: relative;
-		.tab_label{
-			display: inline-block;
-		}
-	}
-}
+
 .tabs_label{
 	position: relative;
 	.tab_label{
