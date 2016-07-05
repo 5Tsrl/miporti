@@ -776,6 +776,7 @@ footer{
 }
 .widget_traffico_container {
   	position: relative;
+    _height: 290px;
     
     #videoTraff{
       position: absolute;
@@ -788,11 +789,12 @@ footer{
     }
 }
 .widget_traffico {
+  height: 420px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 720px;
+  
 	background: $c11;
 	color:#fff;
 	padding: 40px;
@@ -854,7 +856,7 @@ footer{
 			@include prefix('border-radius', '50%');
 
 			opacity: 0;
-			visibility: hidden;
+			_visibility: hidden;
 		}
 		h3{
 			display: inline-block;
@@ -1987,7 +1989,7 @@ footer{
 		}
 	}
 	.widget_traffico{
-		_height: 290px;
+		height: 290px;
 		.title-1:before{
 			width: 57px;
 			height: 41px;

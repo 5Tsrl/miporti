@@ -40,7 +40,7 @@ module.exports = React.createClass({
     return (
       
       
-      <div role="button" className="audio-button" _className="btn btn-sm btn-default" onClick={buttonClickHandler}></div>
+      <div role="button" className="audio-button" className="_btn _btn-sm _btn-default" onClick={buttonClickHandler}></div>
       
     )
     /*
