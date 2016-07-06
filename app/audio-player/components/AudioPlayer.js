@@ -67,29 +67,9 @@ module.exports = React.createClass({
 			percent = this.state.seek / this.state.duration;
 		}
 
-		var topComponents = [
-			<ButtonPanel key="1" isPlaying={this.state.isPlaying} isPause={this.state.isPause}
-					isLoading={this.state.isLoading}
-					currentSongIndex={this.state.currentSongIndex} songCount={songCount}
-					onPlayBtnClick={this.onPlayBtnClick} onPauseBtnClick={this.onPauseBtnClick}
-					onPrevBtnClick={this.onPrevBtnClick} onNextBtnClick={this.onNextBtnClick} />,
-      <ProgressBar key="2" shorter={songCount > 1} percent={percent} seekTo={this.seekTo} />,
-			<VolumeBar key="3" volume={this.state.volume} adjustVolumeTo={this.adjustVolumeTo} />
-		];
+		
 
-		var songName;
-		if (this.songCount() > 1) {
-			topComponents.push(
-				<SongList ref="songList" className="pull-left" 
-						songs={this.state.songs}
-						currentSongIndex={this.state.currentSongIndex} 
-						isPlaying={this.state.isPlaying} isPause={this.state.isPause} 
-						onSongItemClick={this.onSongItemClick}/>
-			);
-			songName = (this.state.currentSongIndex + 1) + ". " + this.getCurrentSongName();
-		} else {
-			songName = this.getCurrentSongName();
-		}
+		var songName = this.getCurrentSongName()
 
 		return (
 			<div className="audio-player">	
@@ -99,7 +79,7 @@ module.exports = React.createClass({
     					currentSongIndex={this.state.currentSongIndex} songCount={songCount}
     					onPlayBtnClick={this.onPlayBtnClick} onPauseBtnClick={this.onPauseBtnClick}
     					onPrevBtnClick={this.onPrevBtnClick} onNextBtnClick={this.onNextBtnClick} />
-          <ProgressBar key="2" shorter={songCount > 1} percent={percent} seekTo={this.seekTo} />
+          <ProgressBar key="2" shorter={songCount > 1} percent={percent} seekTo={this.seekTo}  isPlaying={this.state.isPlaying}/>
 				
 			</div>
 		);

@@ -2,7 +2,7 @@ import React from 'react'
 //var React = require('react/addons');
 //var ProgressBar = require('react-bootstrap/ProgressBar');
 import { ProgressBar } from 'react-bootstrap'
-var classnames = require("classnames");
+var classNames = require("classnames");
 
 module.exports = React.createClass({
 
@@ -14,8 +14,9 @@ module.exports = React.createClass({
 		var percent = this.props.percent * 100;
 		//var style = { width: percent + "%" }
     var style = { left: percent + "%" }
-		var classes = classnames({
+		var classes = classNames({
   		'audio-progress-container': true,
+      'visibile':this.props.isPlaying,
   		//'pull-left': true,
   		'audio-progress-container-short-width': this.props.shorter
 		});
@@ -28,6 +29,7 @@ module.exports = React.createClass({
 	},
 
 	seekTo: function(e){
+    console.log('cucu');
 		if (!this.props.percent) {
 			return;
 		}

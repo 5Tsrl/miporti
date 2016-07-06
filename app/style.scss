@@ -775,10 +775,15 @@ footer{
 		
 }
 .widget_traffico_container {
-  	position: relative;
-    _height: 290px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px;
+  	
+    height: 100%;
     
-    #videoTraff{
+    #_videoTraff{
       position: absolute;
       top: 0;
       left: 0;
@@ -789,11 +794,9 @@ footer{
     }
 }
 .widget_traffico {
+  position: relative;
   height: 420px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+
   
 	background: $c11;
 	color:#fff;
@@ -818,7 +821,17 @@ footer{
 		max-width: 240px;
 
 	}
-
+  h3.ascolta{
+    display: inline-block;
+    position:absolute;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: $fw2;
+    top: 10px;
+    left: 70px;
+    
+    @include prefix('transition', 'all 0.3s ease-out');
+  }
 	.news_traffico{
 		display: inline-block;
 		position: relative;
@@ -858,15 +871,7 @@ footer{
 			opacity: 0;
 			_visibility: hidden;
 		}
-		h3{
-			display: inline-block;
-			text-transform: uppercase;
-			font-size: 0.8em;
-			font-weight: $fw2;
-			top: -11px;
-			position: relative;
-			@include prefix('transition', 'all 0.3s ease-out');
-		}
+		
 		.no-touch &:hover{
 			h3{
 				text-decoration: none;
@@ -1022,7 +1027,7 @@ footer{
 
 
 /*video*/
-.widget_traffico{overflow: hidden;}
+
 .widget_traffico .video {
     position: absolute;
     top: 50%;

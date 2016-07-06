@@ -6,8 +6,10 @@ $animate-sec: 1.5s;
 	_background: #eeeeee;
 	_vertical-align: middle;
 	_padding: $common-padding;
-  position:relative;
-  border:1px solid red;
+  position:absolute;
+  top:0;
+  left:0;
+  
 }
 
 .audio-button-panel {
@@ -23,29 +25,25 @@ $animate-sec: 1.5s;
 }
 
 .audio-progress-container {
-	_float: left;
-	_height: 34px;
-  _border-right: 1px solid #aaaaaa;
-  _border-left: 1px solid #aaaaaa;
-	_width: 235px;
   position: absolute;
   left:70px;
   top:0px;
   width: 120px;
-  height: 50px
+  height: 50px;
+  display: none;
 }
 .audio-progress-container:before {
   display: block;
     content: '';
     position: absolute;
-    top: 32px;
+    top: 39px;
     left: 0px;
-    right: 10px;
-    _top: 0;
-    _left: -10px;
-    _right: -10px;
+    right: 0px;
     height: 3px;
     background: #739dc6;
+}
+.audio-progress-container.visibile{
+  display: block;
 }
 
 .audio-progress-container-short-width {
@@ -59,8 +57,8 @@ $animate-sec: 1.5s;
     left: 75px;
     _top: -8px;
     _left: 0;
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     margin-left: -10px;
     border-radius: 50%;
     background: #fff;
@@ -196,7 +194,18 @@ $animate-sec: 1.5s;
 }
 
 .area_player{
-  _width: 40%
+  //position:relative;
+  display: inline-block;
+  .btn_link {
+    
+    position: absolute;
+    top:0;
+    right:20px;
+  }
+}
+.visualizza{
+  display: inline-block;
+  margin-left:230px
 }
 .audio-button{
   position: absolute;;
@@ -224,6 +233,9 @@ $animate-sec: 1.5s;
     _opacity: 0;
     _visibility: hidden;
 }
+.audio-button:hover:before{
+  background: #56C3A3
+}
 .audio-button:after{
   background: url(../images/player_default.svg) no-repeat center;
   display: block;
@@ -231,12 +243,23 @@ $animate-sec: 1.5s;
   width: 30px;
   height: 27px;
   top: 22%;
-  left: 5%;
+  left: 21%;
   position: absolute;
   _opacity: 0;
   _visibility: hidden;
 }
-
-.audio-button:hover{
-  background: #56C3A3
+.playing.audio-button:after{
+  background: url(../images/player_pausa.svg) no-repeat center;
+  top:30%;
+  left:29%;
+  width: 20px;
+  height: 19px;
 }
+.paused.audio-button:after{
+  background: url(../images/player_play.svg) no-repeat center;
+  top:30%;
+  left:33%;
+  width: 20px;
+  height: 19px;
+}
+
