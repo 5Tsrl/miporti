@@ -6,7 +6,10 @@ import AudioPlayer from '../audio-player/components/AudioPlayer'
 import '../audio-player/app.scss';
 
 const Traffico = React.createClass({
-    
+    onAscoltaClick: function(e){
+      e.preventDefault()
+      this.refs.audioPlayer.onPlayBtnClick()
+    },
     render: function() {
         
         var songs = [
@@ -31,29 +34,20 @@ const Traffico = React.createClass({
           */}
         <h2 className="title-1"><FormattedMessage id='traffico in tempo reale'/></h2> 
         <p><FormattedMessage id='Aggiornamenti su traffico e viabilità in Piemonte.'/><br /><strong><FormattedMessage id='Muoviti informato.'/></strong></p>
-        <div className="align_brother_bottom">
-            <div className="area_player no_news_traffico no_close">
-                <AudioPlayer songs={songs} />
-                <h3 className="ascolta"><FormattedMessage id='Ascolta il notiziario'/></h3>
-                
-            </div>
-            <div className="visualizza">
-              <a href="/#traffic" className="btn_link "><FormattedMessage id='Visualizza eventi'/></a>
-            </div>
-            
-        </div>
-        {/*
-        <div style={{marginTop:120}}>
-            
-            <div className="NOnews_traffico NOclose">
-                <AudioPlayer songs={songs} />
-                <h3><FormattedMessage id='Ascolta il notiziario'/></h3>
-            </div>
-            <a href="/#traffic" className="btn_link"><FormattedMessage id='Visualizza eventi'/></a>
-        </div>
-        */}
 
     </div>
+    <div className="align_brother_bottom">
+        <div className="area_player no_news_traffico no_close">
+            <AudioPlayer ref="audioPlayer" songs={songs} />
+            <a href="#" className="ascolta" onClick={this.onAscoltaClick}><FormattedMessage id='Ascolta il notiziario'/></a>
+            
+        </div>
+        <div className="visualizza">
+          <a href="/#traffic" className="btn_link "><FormattedMessage id='Visualizza eventi'/></a>
+        </div>
+    </div>
+
+
   </div>
 )}
 

@@ -1,3 +1,6 @@
+@import '../base/_include-media.scss';
+@import '../base/_variables.scss';
+
 $common-padding: 5px;
 $animate-sec: 1.5s;
 
@@ -57,8 +60,8 @@ $animate-sec: 1.5s;
     left: 75px;
     _top: -8px;
     _left: 0;
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 12px;
     margin-left: -10px;
     border-radius: 50%;
     background: #fff;
@@ -194,8 +197,11 @@ $animate-sec: 1.5s;
 }
 
 .area_player{
+  padding: 0 30px;
+  margin-bottom: 50px;
   //position:relative;
-  display: inline-block;
+  //display: inline-block;
+  
   .btn_link {
     
     position: absolute;
@@ -203,10 +209,12 @@ $animate-sec: 1.5s;
     right:20px;
   }
 }
-.visualizza{
-  display: inline-block;
-  margin-left:230px
+@include media('screen', '>dim_50') {
+  .area_player{
+    float: left;
+  }
 }
+
 .audio-button{
   position: absolute;;
   width: 50px;
@@ -217,6 +225,7 @@ $animate-sec: 1.5s;
 }
 
 .audio-button:before{
+  box-sizing: border-box;
   display: inline-block;
     content: '';
     width: 50px;
@@ -243,7 +252,7 @@ $animate-sec: 1.5s;
   width: 30px;
   height: 27px;
   top: 22%;
-  left: 21%;
+  left: 20%;
   position: absolute;
   _opacity: 0;
   _visibility: hidden;
@@ -251,7 +260,7 @@ $animate-sec: 1.5s;
 .playing.audio-button:after{
   background: url(../images/player_pausa.svg) no-repeat center;
   top:30%;
-  left:29%;
+  left:28%;
   width: 20px;
   height: 19px;
 }

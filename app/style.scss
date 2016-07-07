@@ -612,6 +612,7 @@ footer{
 		font-size: 0.8em;
 	}
 	.btn_link{
+    font-family: $OS;
 		text-transform: uppercase;
 		font-size: 0.75em;
 		font-weight: 600;
@@ -629,6 +630,7 @@ footer{
 		bottom: 40px;
 		left: 40px;
 		right: 40px;
+    
 	}
 }
 //@import 'components/calcolo/calcolo.scss';
@@ -774,34 +776,36 @@ footer{
 		
 		
 }
-.widget_traffico_container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 40px;
-  	
-    height: 100%;
-    
-    #_videoTraff{
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      width:100% !important;
-      height: auto !important;
-      opacity: 0.1;      
-    }
-}
+
 .widget_traffico {
+  box-sizing: border-box;
+  
   position: relative;
   height: 420px;
+  color:#fff;
+	  
+  #videoTraff{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width:100% !important;
+    height: auto !important;
+    opacity: 0.1;      
+  }
 
-  
-	background: $c11;
-	color:#fff;
-	padding: 40px;
-
+  .widget_traffico_container {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 40px;
+    _margin: 40px;
+    height: 100%;
+    background: $c11;    
+  }
   
   
 
@@ -821,7 +825,7 @@ footer{
 		max-width: 240px;
 
 	}
-  h3.ascolta{
+  h3.ascolta, a.ascolta{
     display: inline-block;
     position:absolute;
     text-transform: uppercase;
@@ -1643,7 +1647,7 @@ footer{
 
 @include media('screen', '>dim_05') {
 	.widget_traffico{
-		height: 470px; 
+		_height: 470px; 
 	}
 }
 
@@ -1749,7 +1753,7 @@ footer{
 }
 @include media('screen', '>dim_22') {
 	.widget_traffico {
-		height: 280px;
+		_height: 280px;
 	}
 }
 @include media('screen', '>dim_25') {
@@ -1845,7 +1849,7 @@ footer{
 		}
 	}
 }
-
+//passaggio da un widget per colonna a due widget per colonna
 @include media('screen', '>dim_35') {
 	.widget .title-1{
 		&:before{
@@ -1906,7 +1910,7 @@ footer{
 		}
 	}
 	.widget_traffico {
-		height: 390px;
+		height: 470px;
 		.title-1:before{
 			width: 97px;
 			height: 85px;
@@ -1994,7 +1998,7 @@ footer{
 		}
 	}
 	.widget_traffico{
-		height: 290px;
+		height: 370px;
 		.title-1:before{
 			width: 57px;
 			height: 41px;
@@ -2004,11 +2008,17 @@ footer{
 			padding-top: 10px;
 		}
 		.align_brother_bottom{
-			left: 30px;
-			right: 30px;
+			_left: 30px;
+			_right: 30px;
 			.news_traffico{
 				margin-bottom: 0;
 			}
+      .visualizza{
+        float:right;
+      }
+      .area_player{
+        float:left;
+      }
 		}
 	}
 	.widget_twitter #scroll_twit,
