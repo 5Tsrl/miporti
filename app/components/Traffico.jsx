@@ -27,11 +27,11 @@ const Traffico = React.createClass({
               onCanPlayThrough={() => {  }}>
               <source src="https://adayofrest.hm/content/themes/ador-boston-2016/assets/adayofrest-boston.mp4" type="video/mp4" />
           </Video>
-        
-          <video id="videoTraff" autoPlay loop="" poster="https://adayofrest.hm/content/themes/ador-boston-2016/assets/images/poster.jpg">
-            <source src="https://adayofrest.hm/content/themes/ador-boston-2016/assets/adayofrest-boston.mp4" type="video/mp4"/>          
+        */}
+          <video id="videoTraff" muted autoPlay loop poster="http://mip.5t.torino.it/home/traffico.png">
+            <source src="http://mip.5t.torino.it/home/traffico.m4v" type="video/mp4"/>          
           </video>
-          */}
+          
         <h2 className="title-1"><FormattedMessage id='traffico in tempo reale'/></h2> 
         <p><FormattedMessage id='Aggiornamenti su traffico e viabilità in Piemonte.'/><br /><strong><FormattedMessage id='Muoviti informato.'/></strong></p>
 

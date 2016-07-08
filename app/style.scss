@@ -785,10 +785,10 @@ footer{
   color:#fff;
 	  
   #videoTraff{
+    _border: 1px solid red;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
     width:100% !important;
     height: auto !important;
     opacity: 0.1;      
