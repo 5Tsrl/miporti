@@ -15,6 +15,7 @@ import HomeLayout from './components/HomeLayout'
 import PageLayout from './components/PageLayout'
 import WPage      from './components/WPage'
 import Pvova      from './components/Pvova'
+import NotFound   from './components/NotFound'
 import messages_en   from './messages/en.js'
 import messages_it   from './messages/it.js'
 
@@ -96,6 +97,7 @@ ReactDOM.render((
             */}
             <Route path="/home/page/:slug"   component={WPage} />
             <Route path="/pvova"   component={Pvova} />
+            <Route path="/NotFound"   component={NotFound} />
         </Route>
     </Route>
   </Router>

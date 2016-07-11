@@ -47,5 +47,9 @@ export default {
     'auto':'car',
     'bus':'bus',
     'treno':'train',
-    'Orario Generale':'General timetable'
+    'Orario Generale':'General timetable',
+    //NotFound
+    'Ooops . . . pagina non trovata!':'Ooops . . . page not found!',
+    'Torna alla':'Go back to the',
+    'del servizio Muoversi in Piemonte':'of Muoversi in Piemonte service'
 }
