@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router'
 import FooterMenu from './FooterMenu'
 
-export  default () => 
- 
+export  default () =>
+
     <footer>
     	<div className="aux">
     		<a href="http://www.regione.piemonte.it/" target="_blank" className="logo-regione">Regione Piemonte</a>
     		<a href="http://www.5t.torino.it/" target="_blank" className="madeby">Powered by <span className="logo-5t">5T</span></a>
-    					
+
     		<div className="wrapper">
     			<span className="info-tel">800 333 444</span>
     			<div className="footer-info">
@@ -19,9 +19,3 @@ export  default () =>
     		</div>
     	</div>
     </footer>
-    
-
-        
-        
-    
-  
