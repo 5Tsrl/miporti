@@ -2195,15 +2195,15 @@ footer{
 		// content: '\e807';
 		background:url(images/meteo/variabile-con-temporali.svg) no-repeat center;
 	}
-	&.vento:before{
+	&.ventoso:before{
 		// content: '\e808';
 		background:url(images/meteo/vento.svg) no-repeat center;
 	}
-	&.vento-neve:before{
+	&.ventoso-neve:before{
 		// content: '\e809';
 		background:url(images/meteo/vento-neve.svg) no-repeat center;
 	}
-	&.vento-pioggia:before{
+	&.ventoso-pioggia:before{
 		// content: '\e80a';
 		background:url(images/meteo/vento-pioggia.svg) no-repeat center;
 	}
@@ -2304,15 +2304,15 @@ footer{
 		// content: '\e807';
 		background:url(images/meteo/small/variabile-con-temporali.svg) no-repeat center;
 	}
-	&.vento:before{
+	&.ventoso:before{
 		// content: '\e808';
 		background:url(images/meteo/small/vento.svg) no-repeat center;
 	}
-	&.vento-neve:before{
+	&.ventoso-neve:before{
 		// content: '\e809';
 		background:url(images/meteo/small/vento-neve.svg) no-repeat center;
 	}
-	&.vento-pioggia:before{
+	&.ventoso-pioggia:before{
 		// content: '\e80a';
 		background:url(images/meteo/small/vento-pioggia.svg) no-repeat center;
 	}
