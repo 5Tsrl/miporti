@@ -55,7 +55,7 @@ var VoliTabs = React.createClass({
     var classesArrivi   = classNames('tab_label tab_right',{'tab_active': this.props.partenzeArrivi == 'arrivi'} )
 
     return (
-        <div class="tabs">
+        <div>
             <ul className="tabs_label voli_tabella_container">
                 <li onClick={this.props.onCurrentChoosen.bind(null,'partenze')}  className={classesPartenze}><FormattedMessage id='Partenze'/></li>
                 <li onClick={this.props.onCurrentChoosen.bind(null,'arrivi')}  className={classesArrivi}><FormattedMessage id='Arrivi'/></li>

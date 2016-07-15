@@ -41,26 +41,7 @@ a {
 	}
 }
 
-.tabs{
-	.tabs_container{
-		position: relative;
-		.tab_container{
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: none;
-			&.first_active{
-				display: block;
-			}
-		}
-	}
-	.tabs_label{
-		position: relative;
-		.tab_label{
-			display: inline-block;
-		}
-	}
-}
+
 .tabs_label{
 	position: relative;
 	.tab_label{
@@ -253,12 +234,25 @@ a {
 		#nav-toggle{
 			display: none;
 		}
+		#logo_regPie {
+			position: absolute;
+			top:26px;
+			right:0;
+			width: 120px;
+			height: 40px;
+			text-indent: -9999px;
+			font-size: 0;
+			line-height: 0;
+			display: block;
+			background:url(images/RegionePiemonte.jpg) no-repeat top right;
+			background-size:contain;
+		}
 		nav{
 			background: none;
 			position: absolute;
 			left: auto;
 			top: auto;
-			right: 0;
+			right: 148px;
 			bottom: -20px;
 			width: auto;
 			//float: right;
@@ -321,7 +315,7 @@ a {
 				right: 0;
 				ul li a{
 					background: rgba(0, 0, 0, 0.05);
-					color: $c5; 
+					color: $c5;
 				}
 				ul{
 					li{
@@ -546,7 +540,7 @@ footer{
 		.info-tel{
 			margin-right: 30px;
 		}
-		
+
 	}
 	@include media('screen', '>dim_40') {
 		padding: 45px 0;
@@ -631,6 +625,7 @@ footer{
 		font-size: 0.8em;
 	}
 	.btn_link{
+    font-family: $OS;
 		text-transform: uppercase;
 		font-size: 0.75em;
 		font-weight: 600;
@@ -648,6 +643,7 @@ footer{
 		bottom: 40px;
 		left: 40px;
 		right: 40px;
+
 	}
 }
 //@import 'components/calcolo/calcolo.scss';
@@ -735,7 +731,7 @@ footer{
 			.no-touch &:hover{
 				label span:after{
 					color:#fff;
-				}		
+				}
 			}
 			input[type="radio"] {
 				display:none;
@@ -766,11 +762,11 @@ footer{
 			}
 			&.bike input[type="radio"] + label span:after{
 				content: '\e805';
-				
+
 			}
 			&.walk input[type="radio"] + label span:after{
 				content: '\e804';
-				
+
 			}
 		}
 		.trip_button_container{
@@ -790,16 +786,44 @@ footer{
 			clear: both;
 		}
 	}
-		
-		
+
+
 }
 
 .widget_traffico {
-	height: 420px;
-	background: $c11;
-	color:#fff;
-	padding: 40px;
-	position: relative;
+  box-sizing: border-box;
+
+  position: relative;
+  height: 420px;
+  color:#fff;
+
+  #videoTraff{
+    _border: 1px solid red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100% !important;
+    height: auto !important;
+    opacity: 0.1;
+  }
+
+  .widget_traffico_container {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 40px;
+    _margin: 40px;
+    height: 100%;
+    background: $c11;
+    overflow: hidden;
+  }
+
+
+
+
 	.title-1{
 		&:before{
 			width: 87px;
@@ -815,7 +839,17 @@ footer{
 		max-width: 240px;
 
 	}
+  h3.ascolta, a.ascolta{
+    display: inline-block;
+    position:absolute;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: $fw2;
+    top: 10px;
+    left: 70px;
 
+    @include prefix('transition', 'all 0.3s ease-out');
+  }
 	.news_traffico{
 		display: inline-block;
 		position: relative;
@@ -853,17 +887,9 @@ footer{
 			@include prefix('border-radius', '50%');
 
 			opacity: 0;
-			visibility: hidden;
+			_visibility: hidden;
 		}
-		h3{
-			display: inline-block;
-			text-transform: uppercase;
-			font-size: 0.8em;
-			font-weight: $fw2;
-			top: -11px;
-			position: relative;
-			@include prefix('transition', 'all 0.3s ease-out');
-		}
+
 		.no-touch &:hover{
 			h3{
 				text-decoration: none;
@@ -889,7 +915,7 @@ footer{
 			visibility: hidden;
 			//display: none;
 		}
-		
+
 	}
 
 	.player {
@@ -906,7 +932,7 @@ footer{
 		cursor: default;
 		@include prefix('transition', 'all 0.8s ease');
 		@include prefix('transition-delay', '0.1s');
-		
+
 	}
 
 	#playtoggle {
@@ -1019,7 +1045,7 @@ footer{
 
 
 /*video*/
-.widget_traffico{overflow: hidden;}
+
 .widget_traffico .video {
     position: absolute;
     top: 50%;
@@ -1056,7 +1082,7 @@ footer{
     strong{font-weight: 800}
   }
   a{font-size: 1em; color: darken($c8_1, 10%); font-weight: 600}
-  
+
 	.link_news {
 		list-style-type: none;
 		&:nth-child(even){
@@ -1068,10 +1094,10 @@ footer{
 			}
 		}
 		.no-touch &:hover{
-			background: #f9fbfb;	
+			background: #f9fbfb;
 		}
 	}
-	.link_news>a{
+	.link_news>.notizia{
 		color: $cfont;
 		font-size: 0.8em;
 		font-weight: 400;
@@ -1144,8 +1170,8 @@ footer{
 			margin-bottom: 0;
 		}
 
-		
-		
+
+
 	}
 	.link_twit a{
 		color: $cfont;
@@ -1424,10 +1450,10 @@ footer{
 		}
 	}
 	.elencoColli{display:none;background: #fff;color: $c6; text-align: left; padding: 10px;     font-size: 0.8em; line-height: 2em;
-		.aperto{			
+		.aperto{
 			&:before{content: '\2713'; margin-right: 10px}
 		}
-		.chiuso{			
+		.chiuso{
 			&:before{content: '\2717'; color: #de5b00; margin-right: 10px}
 		}
 	}
@@ -1491,7 +1517,7 @@ footer{
 	}
 	.last_info{
 		text-align: center;
-		margin: 0px auto; 
+		margin: 0px auto;
 		p{text-align: right; margin:0 10px 10px}
 		a.btn_link{
 			background: $c10_1;
@@ -1518,7 +1544,7 @@ footer{
 		}
 		span.raggiungere{
 			font-size: 0.8em;
-			
+
 			margin: 10px 0;
 			display: inline-block;
 			a.btn_partenze{
@@ -1536,8 +1562,8 @@ footer{
 			}
 		}
 	}
-		
-		
+
+
 	.voli_tabella_container{
 		color: $c10_3;
 		font-weight: $fw3;
@@ -1635,7 +1661,7 @@ footer{
 
 @include media('screen', '>dim_05') {
 	.widget_traffico{
-		height: 470px; 
+		_height: 470px;
 	}
 }
 
@@ -1661,7 +1687,7 @@ footer{
 				padding:0 15px;
 			}
 		}
-			
+
 	}
 	.widget_traffico{
 		height: 400px;
@@ -1741,7 +1767,7 @@ footer{
 }
 @include media('screen', '>dim_22') {
 	.widget_traffico {
-		height: 280px;
+		_height: 280px;
 	}
 }
 @include media('screen', '>dim_25') {
@@ -1810,7 +1836,7 @@ footer{
 		.last_info{
 			position: relative;
 			text-align: left;
-			margin: 10px 30px; 
+			margin: 10px 30px;
 			a.btn_link{
 				position: absolute;
 				right: 0;
@@ -1837,7 +1863,7 @@ footer{
 		}
 	}
 }
-
+//passaggio da un widget per colonna a due widget per colonna
 @include media('screen', '>dim_35') {
 	.widget .title-1{
 		&:before{
@@ -1898,7 +1924,7 @@ footer{
 		}
 	}
 	.widget_traffico {
-		height: 390px;
+		height: 470px;
 		.title-1:before{
 			width: 97px;
 			height: 85px;
@@ -1986,7 +2012,7 @@ footer{
 		}
 	}
 	.widget_traffico{
-		height: 290px;
+		height: 370px;
 		.title-1:before{
 			width: 57px;
 			height: 41px;
@@ -1996,11 +2022,17 @@ footer{
 			padding-top: 10px;
 		}
 		.align_brother_bottom{
-			left: 30px;
-			right: 30px;
+			_left: 30px;
+			_right: 30px;
 			.news_traffico{
 				margin-bottom: 0;
 			}
+      .visualizza{
+        float:right;
+      }
+      .area_player{
+        float:left;
+      }
 		}
 	}
 	.widget_twitter #scroll_twit,
@@ -2025,7 +2057,7 @@ footer{
 					padding: 0 7px;
 				}
 			}
-				
+
 			a.btn_link{
 				padding: 7px;
 			}
@@ -2055,7 +2087,7 @@ footer{
 				a.btn_partenze{
 					padding: 0 15px;
 				}
-			}	
+			}
 			a.btn_link{
 				padding: 7px 15px;
 			}
@@ -2078,7 +2110,7 @@ footer{
 		//content: '\e80b';
 		content: '';
 		max-width: 60%;
-		height: 140px; 
+		height: 140px;
 		display: block;
 		margin: 0 auto;
 		margin-bottom: 20px;
@@ -2164,15 +2196,15 @@ footer{
 		// content: '\e807';
 		background:url(images/meteo/variabile-con-temporali.svg) no-repeat center;
 	}
-	&.vento:before{
+	&.ventoso:before{
 		// content: '\e808';
 		background:url(images/meteo/vento.svg) no-repeat center;
 	}
-	&.vento-neve:before{
+	&.ventoso-neve:before{
 		// content: '\e809';
 		background:url(images/meteo/vento-neve.svg) no-repeat center;
 	}
-	&.vento-pioggia:before{
+	&.ventoso-pioggia:before{
 		// content: '\e80a';
 		background:url(images/meteo/vento-pioggia.svg) no-repeat center;
 	}
@@ -2188,7 +2220,7 @@ footer{
 		//content: '\e80b';
 		content: '';
 		max-width: 40%;
-		height: 55px; 
+		height: 55px;
 		display: block;
 		margin: 10px auto;
 	}
@@ -2273,15 +2305,15 @@ footer{
 		// content: '\e807';
 		background:url(images/meteo/small/variabile-con-temporali.svg) no-repeat center;
 	}
-	&.vento:before{
+	&.ventoso:before{
 		// content: '\e808';
 		background:url(images/meteo/small/vento.svg) no-repeat center;
 	}
-	&.vento-neve:before{
+	&.ventoso-neve:before{
 		// content: '\e809';
 		background:url(images/meteo/small/vento-neve.svg) no-repeat center;
 	}
-	&.vento-pioggia:before{
+	&.ventoso-pioggia:before{
 		// content: '\e80a';
 		background:url(images/meteo/small/vento-pioggia.svg) no-repeat center;
 	}

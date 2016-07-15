@@ -47,5 +47,9 @@ export default {
     'auto':'auto',
     'bus':'bus',
     'treno':'treno',
-    'Orario Generale':'Orario Generale'
+    'Orario Generale':'Orario Generale',
+    //NotFound
+    'Ooops . . . pagina non trovata!':'Ooops . . . pagina non trovata!',
+    'Torna alla':'Torna alla',
+    'del servizio Muoversi in Piemonte':'del servizio Muoversi in Piemonte'
 }

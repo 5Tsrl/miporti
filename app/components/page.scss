@@ -79,4 +79,17 @@
           }
 	      }
 	}
+  .errore {
+    font-weight: 600;
+    text-align: center;
+    padding: 200px 0 200px 240px;
+      a {
+        color: #4089cd;
+        }
+    }
 }
+
+.notfound{
+  background: url(../images/notFound.jpg) #fff left center no-repeat;
+  background-size: auto;
+  }
