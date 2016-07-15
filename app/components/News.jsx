@@ -12,13 +12,13 @@ const Velina = React.createClass({
   render: function() {
     return (
         <li className="link_news">
-            <a href="#">
+            <div className="notizia">
                 <h3>{this.props.title}</h3>
                 <div dangerouslySetInnerHTML={{__html: this.props.description}} ></div>
                 <span className="date_news"><span className="date">
                     <FormattedDate value={this.props.validitystart} day="numeric" month="long" year="numeric" />
                 </span></span>
-            </a>
+            </div>
         </li>
     )
   }
@@ -72,25 +72,23 @@ const News = React.createClass({
 	},
 
     render: function() {
-        if ( ! this.state.news ) {
-			return (
-                <ul>
-                    <li className="link_news">
-                        <a href="#">
-                            <h3>Caricamento...</h3>
-                        </a>
-                    </li>
-                </ul>
-            )
+      
+      let velineNodes
+      if ( ! this.state.news ) {
+        velineNodes = (
+          <li className="link_news">
+              <div className="notizia">Notizie non disponibili</div>              
+          </li>
+        )
 		}
+    else {
 
-
-        var velineNodes = this.state.news.map( function(velina, idx){
+        velineNodes = this.state.news.map( function(velina, idx){
             return(
                 <Velina key={idx} title={velina.title} description={velina.description} validitystart={velina.validitystart} />
             )
         }.bind(this))
-
+}
 
         return(
 

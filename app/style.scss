@@ -818,6 +818,7 @@ footer{
     _margin: 40px;
     height: 100%;
     background: $c11;
+    overflow: hidden;
   }
 
 
@@ -1096,7 +1097,7 @@ footer{
 			background: #f9fbfb;
 		}
 	}
-	.link_news>a{
+	.link_news>.notizia{
 		color: $cfont;
 		font-size: 0.8em;
 		font-weight: 400;
