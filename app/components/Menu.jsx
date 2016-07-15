@@ -95,6 +95,7 @@ handleLangClick: function(locale){
         locale,
         messages,
       }))
+    lscache.set('preferredLocale', locale /*, 60*/)
 },
 
     

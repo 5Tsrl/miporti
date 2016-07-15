@@ -10,6 +10,7 @@ import en from 'react-intl/locale-data/en';
 //import { Router, Route, Link,  browserHistory } from 'react-router'
 import { Router, Route, useRouterHistory } from 'react-router'
 import { createHistory } from "history";
+import lscache from 'lscache'
 import MainLayout from './components/MainLayout'
 import HomeLayout from './components/HomeLayout'
 import PageLayout from './components/PageLayout'
@@ -31,9 +32,10 @@ function getParameterByName(name, url) {
 }
 
 let setLng = getParameterByName('setLng')
-if(! setLng || setLng == '')
-    setLng = 'it'
-
+if(! setLng || setLng == ''){
+  setLng = lscache.get('preferredLocale' )
+  if(! setLng )  setLng = 'it'
+}
 const i18n={messages_it, messages_en}
 
 addLocaleData([ ...it, ...en]);
@@ -97,7 +99,7 @@ ReactDOM.render((
             */}
             <Route path="/home/page/:slug"   component={WPage} />
             <Route path="/pvova"   component={Pvova} />
-            <Route path="/NotFound"   component={NotFound} />
+            <Route path="*"   component={NotFound} />
         </Route>
     </Route>
   </Router>
