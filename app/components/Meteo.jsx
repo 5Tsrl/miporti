@@ -1,18 +1,14 @@
-
 import React from 'react'
-import {presets} from 'react-motion'
 import Collapse from 'react-collapse'
 import {FormattedMessage} from 'react-intl'
 import classNames from 'classnames'
 import axios from 'axios'
 
 
-
-
 var SelectorText = React.createClass({
   render: function() {
 
-    var classes = classNames('meteo_here accord_meteo_here',  {open: this.props.open} )
+    var classes = classNames('meteo_here',  {open: this.props.open} )
     return <span className={classes} onClick={this.props.onTextClick}>{this.props.text}</span>
   }
 });
@@ -22,7 +18,7 @@ var SelectorTexts = React.createClass({
     render: function() {
         var textsNodes = this.props.texts.map((singleText, id) =>{
           return (
-              <li className="meteo_city accord_meteo_city" key={id} onClick={this.props.onTextsClick.bind(null,id)}><span className="city">{singleText}</span></li>
+              <li key={id} onClick={this.props.onTextsClick.bind(null,id)}>{singleText}</li>
           )
         })
         return (

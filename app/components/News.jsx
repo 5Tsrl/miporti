@@ -42,9 +42,8 @@ const News = React.createClass({
     },
 
     getInitialState: function() {
-        console.log(this.constructor.displayName)
-		// Check our localstorage cache, we may as well load from there if we have it
-        return lscache.get(this.constructor.displayName) || {}
+      // Check our localstorage cache, we may as well load from there if we have it
+      return lscache.get(this.constructor.displayName) || {news: []}
 	},
 
 	/**
@@ -57,24 +56,20 @@ const News = React.createClass({
 		this.setState(data);
 	},
 
-    componentDidMount: function() {
-        if(typeof this.state.news === 'undefined') {
-			// Request our data again
+  componentDidMount: function() {
+    if(this.state.news.length == 0) {
 			axios
-                .get('http://mip.5t.torino.it/news')
+        .get('http://mip.5t.torino.it/news')
 				.then( (res) =>{
-                    console.log(res)
-					this.setLocalState({
-						news: res.data
-					})
-				})
-        }
+          this.setLocalState({news: res.data})
+			})
+    }
 	},
 
-    render: function() {
+  render: function() {
       
-      let velineNodes
-      if ( ! this.state.news ) {
+    let velineNodes
+    if ( this.state.news.length == 0 ) {
         velineNodes = (
           <li className="link_news">
               <div className="notizia">Notizie non disponibili</div>              
@@ -82,15 +77,14 @@ const News = React.createClass({
         )
 		}
     else {
-
         velineNodes = this.state.news.map( function(velina, idx){
             return(
                 <Velina key={idx} title={velina.title} description={velina.description} validitystart={velina.validitystart} />
             )
         }.bind(this))
-}
+    }
 
-        return(
+    return(
 
     <div className="widget_news">
         <h2 className="title-2"><FormattedMessage id='Ultime news'/></h2>
