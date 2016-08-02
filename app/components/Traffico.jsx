@@ -1,7 +1,5 @@
 import React from 'react'
-import trafficoAudioPlayer from './trafficoAudioPlayer'
 import {FormattedMessage} from 'react-intl'
-import Video from 'react-html5video'
 import AudioPlayer from '../audio-player/components/AudioPlayer'
 import '../audio-player/app.scss';
 
@@ -12,22 +10,13 @@ const Traffico = React.createClass({
     },
     render: function() {
         
-        var songs = [
-        	{url: "http://www.muoversinpiemonte.it/notiziario/notiziario.mp3"}
-        ]
+      var songs = [	{url: "http://mip.5t.torino.it/notiziario.mp3"} ]
         
-        return (
+      return (
 
     
     <div className="widget_traffico ">
       <div className="widget_traffico_container ">
-          {/* 
-          <Video id="videoTraff" autoPlay loop muted
-              poster="https://adayofrest.hm/content/themes/ador-boston-2016/assets/images/poster.jpg"
-              onCanPlayThrough={() => {  }}>
-              <source src="https://adayofrest.hm/content/themes/ador-boston-2016/assets/adayofrest-boston.mp4" type="video/mp4" />
-          </Video>
-        */}
           <video id="videoTraff" muted autoPlay loop poster="http://mip.5t.torino.it/home/traffico.png">
             <source src="http://mip.5t.torino.it/home/traffico.m4v" type="video/mp4"/>          
           </video>
@@ -49,8 +38,7 @@ const Traffico = React.createClass({
 
 
   </div>
-)}
-
+  )}
 
 })
 
