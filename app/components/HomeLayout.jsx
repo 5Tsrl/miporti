@@ -36,7 +36,7 @@ export default class HomeLayout extends React.Component {
                 <Meteo url="http://mip.5t.torino.it/meteoarpa" pollInterval={2000} />
             </div>
             <div className="widget widget_4-1">
-                <Colli url="http://mip.5t.torino.it/home/colli.json" pollInterval={2000}/>
+                <Colli url="http://mip.5t.torino.it/colli" pollInterval={2000}/>
 			      </div>
             { this.props.location.query.setLng != 'en' &&
               <div className="widget widget_4-1">
