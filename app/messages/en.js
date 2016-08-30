@@ -3,7 +3,7 @@ export default {
     'calcolo percorsi':'trip planner',
     'da':'from',
     'a':'to',
-    'calcola':'plan',
+    'calcola':'go!',
     'Mezzi pubblici':'Public transport',
     'In auto':'By car',
     'In bici':'By bike',
@@ -11,9 +11,9 @@ export default {
   //traffico
     'traffico in tempo reale': 'real-time traffic information',
     'Aggiornamenti su traffico e viabilità in Piemonte.':'Updates on traffic and road conditions in Piemonte.',
-    'Muoviti informato.':'Move informed.',
-    'Ascolta il notiziario':'Listen to traffic news',
-    'Visualizza eventi':'Display events',
+    'Muoviti informato.':'',
+    'Ascolta il notiziario':'Listen to the latest traffic news',
+    'Visualizza eventi':'Events map',
   //news
     'Ultime news':'Latest news',
   //twitter
@@ -23,9 +23,9 @@ export default {
     'oggi':'today',
     'domani':'tomorrow',
   //colli
-    'I colli alpini in piemonte':'Alpin pass in piemonte',
+    'I colli alpini in piemonte':'Alpine pass in piemonte',
     'Informazioni sull\'apertura dei principali colli alpini piemontesi.':'Informations about opening of main alpine pass in Piemonte.',
-    "Situazione colli alpini":"Alpine pass state",
+    "Situazione colli alpini":"Alpine pass update",
   //bip
     'Biglietto integrato Piemonte':'Piemonte electronic ticket',
     'Scopri di più sul sistema regionale di bigliettazione elettronica.':'Discover more on regional electronic ticketing system.',
@@ -41,9 +41,9 @@ export default {
     'Partenze':'Departures',
     'Arrivi':'Arrivals',
     'orario voli':'timetables',
-    'Aeroporto di Torino':'Turin Airport',
+    'Aeroporto di Torino':'Torino Airport',
     'orari di volo aggiornati alle ':'timetables updated at ',
-    "Raggiungere l'aeroporto in ":"Reach the Airport by ",
+    "Raggiungere l'aeroporto in ":"Get to the Airport by ",
     'auto':'car',
     'bus':'bus',
     'treno':'train',
