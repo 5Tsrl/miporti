@@ -68,7 +68,7 @@ const Calcolo = React.createClass({
         <FormattedMessage
             id='calcolo percorsi'
             description='titolo del componente calcolo'
-            defaultMessage='calcolo percorsi'
+            defaultMessage='calcolo percorso'
         /></h2>
     <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}>
 

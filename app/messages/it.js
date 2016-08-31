@@ -1,6 +1,6 @@
 export default {
   //calcolo
-    'calcolo percorsi':'calcolo percorsi',
+    'calcolo percorso':'calcolo percorso',
     'da':'da',
     'a':'a',
     'calcola':'calcola',

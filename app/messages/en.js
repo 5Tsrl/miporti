@@ -1,9 +1,9 @@
 export default {
 //calcolo
-    'calcolo percorsi':'trip planner',
+    'calcolo percorsi':'journey planner',
     'da':'from',
     'a':'to',
-    'calcola':'go!',
+    'calcola':'plan my journey',
     'Mezzi pubblici':'Public transport',
     'In auto':'By car',
     'In bici':'By bike',
@@ -11,7 +11,7 @@ export default {
   //traffico
     'traffico in tempo reale': 'real-time traffic information',
     'Aggiornamenti su traffico e viabilità in Piemonte.':'Updates on traffic and road conditions in Piemonte.',
-    'Muoviti informato.':'',
+    'Muoviti informato.':' ',
     'Ascolta il notiziario':'Listen to the latest traffic news',
     'Visualizza eventi':'Events map',
   //news
@@ -24,7 +24,7 @@ export default {
     'domani':'tomorrow',
   //colli
     'I colli alpini in piemonte':'Alpine pass in piemonte',
-    'Informazioni sull\'apertura dei principali colli alpini piemontesi.':'Informations about opening of main alpine pass in Piemonte.',
+    'Informazioni sull\'apertura dei principali colli alpini piemontesi.':'Main alpine pass opening and closing infos.',
     "Situazione colli alpini":"Alpine pass update",
   //bip
     'Biglietto integrato Piemonte':'Piemonte electronic ticket',
