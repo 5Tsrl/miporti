@@ -1128,6 +1128,36 @@ footer{
 	}
 }
 
+
+
+.widget_viaggia{
+	.title-2{
+		color: #fff;
+		background: #00665d;
+		padding: 15px 25px;
+	}
+  p{
+		margin: 40px auto;
+		max-width: 260px;
+	}
+  .img_viaggia{
+		background: url(images/viaggia.svg)  no-repeat center;
+		display: block;
+		height: 180px;
+		margin: 4px auto 5px;		
+	}
+  .btn_link{
+    background: #00665d;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 170px;
+    .no-touch &:hover{
+      background:#006651;
+    }
+  }
+}
+
 .widget_twitter{
 	.title-2{
 		color: #fff;

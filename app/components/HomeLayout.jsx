@@ -1,18 +1,19 @@
 import React from 'react'
+import { connect} from 'react-redux'
 import Calcolo from './Calcolo'
 import Traffico from './Traffico'
 import News from './News'
+import ViaggiaPiemonte from './ViaggiaPiemonte'
 import Tweet from './Tweet'
 import Meteo from './Meteo'
 import Colli from './Colli'
 import Bip from './Bip'
 import Voli from './Voli'
 
-export default class HomeLayout extends React.Component {
+class HomeLayout extends React.Component {
     
       render() {
-        console.log('this.props.location.query.setLng', this.props.location.query.setLng)
-          let style = {height: '200px', color:'blue', textAlign:'center', paddingTop:'100px'}
+        //console.log('this.props.location.query.setLng', this.props.location.query.setLng)
         return (
             
         <div className="aux widget_container">
@@ -22,12 +23,17 @@ export default class HomeLayout extends React.Component {
             <div  className="widget widget_4-2">
                 <Traffico />
             </div>
-            { this.props.location.query.setLng != 'en' &&
-              <div  className="widget widget_4-2 widget_4-4">
-                  <News />
+            { this.props.currentLocale != 'en' &&
+            <div  className="widget widget_4-1 widget_4-1">
+              <News />
+            </div>
+          }
+            { this.props.currentLocale != 'en' &&
+              <div  className="widget widget_4-1 widget_4-1">
+                    <ViaggiaPiemonte />                  
               </div>
             }
-            { this.props.location.query.setLng != 'en' &&
+            { this.props.currentLocale != 'en' &&
               <div className="widget widget_4-1">
                   <Tweet />
               </div>
@@ -38,7 +44,7 @@ export default class HomeLayout extends React.Component {
             <div className="widget widget_4-1">
                 <Colli url="http://mip.5t.torino.it/colli" pollInterval={2000}/>
 			      </div>
-            { this.props.location.query.setLng != 'en' &&
+            { this.props.currentLocale != 'en' &&
               <div className="widget widget_4-1">
                   <Bip />
               </div>
@@ -51,3 +57,11 @@ export default class HomeLayout extends React.Component {
         )
     }
 }
+
+//mappo l' intl.locale dello state di redux sulla props currentLocale
+function mapStateToProps(state) {
+  return { currentLocale: state.intl.locale }
+}
+
+HomeLayout = connect(mapStateToProps)(HomeLayout)
+export default HomeLayout
