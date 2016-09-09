@@ -22,6 +22,7 @@ export default {
     'In collaborazione con ':'In cooperation with ',
     'oggi':'today',
     'domani':'tomorrow',
+    'gradi cent':'C',
   //colli
     'I colli alpini in piemonte':'Alpine pass in piemonte',
     'Informazioni sull\'apertura dei principali colli alpini piemontesi.':'Main alpine pass opening and closing infos.',

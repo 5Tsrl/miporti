@@ -22,6 +22,7 @@ export default {
     'In collaborazione con ':'In collaborazione con ',
     'oggi':'oggi',
     'domani':'domani',
+    'gradi cent':' ',
   //colli
     'I colli alpini in piemonte':'I colli alpini in piemonte',
     'Informazioni sull\'apertura dei principali colli alpini piemontesi.':'Informazioni sull\'apertura dei principali colli alpini piemontesi.',

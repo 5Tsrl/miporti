@@ -60,7 +60,7 @@ var MeteoPanel = React.createClass({
     return (
       <div>
         <div className="tab_container first_active meteo_now">
-            <span className={classes}>{this.props.temperature}</span>
+            <span className={classes}>{this.props.temperature}<FormattedMessage id='gradi cent'/></span>
         </div>
         <p><FormattedMessage id='In collaborazione con '/><a href="https://www.arpa.piemonte.gov.it/" target="_blank">Arpa Piemonte</a></p>
       </div>
@@ -77,8 +77,8 @@ var MeteoDays = React.createClass({
 
     return (
         <ul className="tabs_label meteo_forecast_container">
-            <li onClick={this.props.onDayChoosen.bind(null,'oggi')} className={classesLiOggi}><FormattedMessage id='oggi'/><span className={classesOggi}></span>{this.props.temperature}</li>
-            <li  onClick={this.props.onDayChoosen.bind(null,'domani')} className={classesLiDomani}><FormattedMessage id='domani'/><span className={classesDomani}></span>{this.props.temperatureDomani}</li>
+            <li onClick={this.props.onDayChoosen.bind(null,'oggi')} className={classesLiOggi}><FormattedMessage id='oggi'/><span className={classesOggi}></span>{this.props.temperature}<FormattedMessage id='gradi cent'/></li>
+            <li  onClick={this.props.onDayChoosen.bind(null,'domani')} className={classesLiDomani}><FormattedMessage id='domani'/><span className={classesDomani}></span>{this.props.temperatureDomani}<FormattedMessage id='gradi cent'/></li>
         </ul>
     );
   }
