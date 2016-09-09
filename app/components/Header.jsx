@@ -1,11 +1,12 @@
-import React from 'react';
-import Menu from './Menu';
+import React from 'react'
+import Menu from './Menu'
+import { Link } from 'react-router'
 
 const Header = () =>(
 
     <header className="clearfix header" id="branding">
         <div className="aux">
-            <a href="#" id="logo_site-title">Muoversi in Piemonte</a>
+            <Link to="/" id="logo_site-title">Muoversi in Piemonte</Link>
             <Menu />
             <a href="http://www.regione.piemonte.it/" id="logo_regPie" target="_blank">Regione Piemonte</a>
         </div>

@@ -10,15 +10,15 @@ const Traffico = React.createClass({
     },
     render: function() {
         
-      var songs = [	{url: "http://mip.5t.torino.it/notiziario.mp3"} ]
+      var songs = [	{url: "http://mip.muoversinpiemonte.it/notiziario.mp3"} ]
         
       return (
 
     
     <div className="widget_traffico ">
       <div className="widget_traffico_container ">
-          <video id="videoTraff" muted autoPlay loop poster="http://mip.5t.torino.it/home/traffico.png">
-            <source src="http://mip.5t.torino.it/home/traffico.m4v" type="video/mp4"/>          
+          <video id="videoTraff" muted autoPlay loop poster="http://mip.muoversinpiemonte.it/traffico.png">
+            <source src="http://mip.muoversinpiemonte.it/traffico.m4v" type="video/mp4"/>          
           </video>
           
         <h2 className="title-1"><FormattedMessage id='traffico in tempo reale'/></h2> 
@@ -32,7 +32,7 @@ const Traffico = React.createClass({
             
         </div>
         <div className="visualizza">
-          <a href="/#traffic" className="btn_link "><FormattedMessage id='Visualizza eventi'/></a>
+          <a href="http://map.muoversinpiemonte.it/#traffic" className="btn_link "><FormattedMessage id='Visualizza eventi'/></a>
         </div>
     </div>
 

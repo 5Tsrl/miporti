@@ -20,7 +20,7 @@ import NotFound   from './components/NotFound'
 import messages_en   from './messages/en.js'
 import messages_it   from './messages/it.js'
 
-/*utility function*/
+/*utility functions*/
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -31,11 +31,21 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+// gestione cookie lingua
+let i18next = document.cookie.replace(/(?:(?:^|.*;\s*)i18next\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+//console.log('i18next', i18next);
+
 let setLng = getParameterByName('setLng')
 if(! setLng || setLng == ''){
-  setLng = lscache.get('preferredLocale' )
-  if(! setLng )  setLng = 'it'
+  if(i18next){
+    setLng = i18next
+  } else{
+    setLng = lscache.get('preferredLocale' )
+    if(! setLng )  setLng = 'it'
+  }
 }
+//console.log('setLng', setLng);
+document.cookie = 'i18next='+setLng+';domain=muoversinpiemonte.it;path=/'
 const i18n={messages_it, messages_en}
 
 addLocaleData([ ...it, ...en]);
@@ -90,14 +100,14 @@ ReactDOM.render((
 <Provider store={store}>
   <Router history={browserHistory}>
     <Route component={MainLayout} >
-        <Route path="/home" component={HomeLayout} />
+        <Route path="/" component={HomeLayout} />
         <Route component={PageLayout} >
             {/*
             <Route path="/(home/)servizio" component={Servizio} />
             <Route path="/(home/)contatti" component={Contatti} />
             <Route path="/(home/)radio"   component={Radio} />
             */}
-            <Route path="/home/page/:slug"   component={WPage} />
+            <Route path="/page/:slug"   component={WPage} />
             <Route path="/pvova"   component={Pvova} />
             <Route path="*"   component={NotFound} />
         </Route>

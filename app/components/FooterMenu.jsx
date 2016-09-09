@@ -43,7 +43,7 @@ componentDidMount: function() {
 
 render: function() {
         if ( ! this.state.footerMenu ) {
-           var footerMenuNodes = <FooterMenuItem title="home" url="/home"  />
+           var footerMenuNodes = <FooterMenuItem title="home" url="/"  />
            return (
                <div className="loading-wrap">
                    <div className="loading"><span className="fa fa-heart"></span> LOADING</div>
@@ -53,7 +53,7 @@ render: function() {
 
             var footerMenuNodes = this.state.footerMenu.items.map( function(item, idx){
                 const baseurl="http://wpmip.5t.torino.it"
-                const url = '/home/page'+item.url.slice(baseurl.length,-1)
+                const url = '/page'+item.url.slice(baseurl.length,-1)
                 return(
                     <FooterMenuItem key={idx} title={item.title} url={url}  />
                 )

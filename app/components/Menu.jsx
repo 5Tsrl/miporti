@@ -13,7 +13,7 @@ import messages_it   from '../messages/it.js'
 const MenuItem = React.createClass({
     
   render: function() {
-      console.log(this.props.url)
+      //console.log(this.props.url)
     if(this.props.external)
         return <li><a href={this.props.url} onClick={this.props.handleClick}>{this.props.title}</a></li>    
     else
@@ -25,7 +25,7 @@ const LangItem = React.createClass({
   render: function() {
       const classes = classNames( {current_lang: this.props.isCurrentLang})
       return(      
-          <li><Link to={'/home?setLng='+this.props.lang} onClick={this.props.handleLangClick.bind(null,this.props.lang)} className={classes} >{this.props.lang}</Link></li>
+          <li><Link to='/' onClick={this.props.handleLangClick.bind(null,this.props.lang)} className={classes} >{this.props.lang}</Link></li>
       )
   }
 })
@@ -96,21 +96,22 @@ handleLangClick: function(locale){
         messages,
       }))
     lscache.set('preferredLocale', locale /*, 60*/)
+    document.cookie = 'i18next='+locale+';domain=muoversinpiemonte.it;path=/'
 },
 
     
 render: function() {
     if ( ! this.state.menu ) {
-       var menuNodes = <MenuItem title='home' url='/home'  handleClick={this.handleClick} />
+       var menuNodes = <MenuItem title='home' url='/'  handleClick={this.handleClick} />
    }else{
     
         var menuNodes = this.state.menu.items.map( (item, idx) =>{
             let url = ''
             const baseurlWP="http://wpmip.5t.torino.it"
-            const baseurlMip="http://mip.5t.torino.it"
+            const baseurlMip="http://mip.muoversinpiemonte.it"
             if(item.url.indexOf(baseurlWP) >=0){
                 //pagine wordpress
-                url = '/home/page'+item.url.slice(baseurlWP.length,-1)
+                url = '/page'+item.url.slice(baseurlWP.length,-1)
             } else {
                 //pagine otp + home
                 url = item.url

@@ -6,9 +6,11 @@ import lscache from 'lscache'
 
 var WPage = React.createClass({
     
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+  
 	getInitialState: function() {
-        console.log(this.constructor.displayName)
-        
 		// Check our localstorage cache, we may as well load from there if we have it
         return { pages: lscache.get('pages') || {} }
 	},
@@ -27,7 +29,14 @@ var WPage = React.createClass({
             axios
                 .get('http://mip.5t.torino.it/wp-json/wp/v2/pages?filter[name]=' + slug)
                 .then( (res) =>{
-                    this.setLocalState(slug, res.data[0])
+                    if(res.data[0])
+                      this.setLocalState(slug, res.data[0])
+                    else {
+                      this.context.router.push("/notfound");
+                    }
+                })
+                .catch(function (error) {
+                  console.log('error', error)
                 })
     },
 
@@ -42,9 +51,9 @@ render: function () {
     
 	return (
 <div className="widget page">
-    <h2 className="pageHeader" >...</h2>
+    <h2 className="pageHeader" >.</h2>
     <div className="pageContent">        
-        <div className="entry-content">...</div>
+        <div className="entry-content">.</div>
     </div>
 </div>            
 		)
