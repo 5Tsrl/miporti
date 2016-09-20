@@ -59,7 +59,7 @@ const News = React.createClass({
   componentDidMount: function() {
     if(this.state.news.length == 0) {
 			axios
-        .get('http://mip.5t.torino.it/news')
+        .get('http://mip.muoversinpiemonte.it/news')
 				.then( (res) =>{
           this.setLocalState({news: res.data})
 			})
