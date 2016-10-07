@@ -1,4 +1,7 @@
 export default {
+//l10n
+  'date_format': "MM/DD/YYYY", //momentjs
+  'time_format': "hh:mm a", //momentjs
 //calcolo
     'calcolo percorsi':'journey planner',
     'da':'from',

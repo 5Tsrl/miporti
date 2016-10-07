@@ -1,5 +1,5 @@
 import React from 'react'
-import {FormattedMessage} from 'react-intl'
+import {injectIntl, FormattedMessage} from 'react-intl'
 import axios from 'axios'
 import moment from 'moment'
 import AudioPlayer from '../audio-player/components/AudioPlayer'
@@ -25,8 +25,8 @@ const Traffico = React.createClass({
           .head(this.props.notiziario)
           .then( (res) =>{
             const lm = res.headers['last-modified']
-            //console.log(lm, moment(new Date(lm)).format('HH:mm'))
-            this.setState({bollentinUpdate: moment(new Date(lm)).format('HH:mm')})
+            const time_format = this.props.intl.formatMessage({id:'time_format'})
+            this.setState({bollentinUpdate: moment(new Date(lm)).format(time_format)})
           })  
     },
     
@@ -64,4 +64,5 @@ const Traffico = React.createClass({
 
 })
 
-export default Traffico
+
+export default injectIntl(Traffico)
