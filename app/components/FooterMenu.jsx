@@ -27,7 +27,7 @@ let FooterMenu = React.createClass({
           if(this.props.currentLocale == 'en') menuId=6
 
           axios
-              .get('http://mip.5t.torino.it/wp-json/wp-api-menus/v2/menus/'+menuId)
+              .get('https://www.muoversinpiemonte.it/wp-json/wp-api-menus/v2/menus/'+menuId)
               .then( (res) =>{
                   //console.log('scaricato', `footerMenu_${this.props.currentLocale}`)
                   this.setState({footerMenu: res.data})

@@ -42,7 +42,7 @@ const Calcolo = React.createClass({
     },
     handleSubmit: function(e){
         e.preventDefault()
-        console.log('submittato')
+        //console.log('submittato')
         var params = {
             module: 'planner',
             fromPlace: this.state.value_from + this.state.coord_from,
@@ -51,7 +51,7 @@ const Calcolo = React.createClass({
         }
         var queryString = Object.keys(params).map(function(k){return encodeURIComponent(k) +'=' + encodeURIComponent(params[k])}).join('&')
         console.log(queryString)
-        location.href='/#planner?'+queryString
+        location.href='http://map.muoversinpiemonte.it/#planner?'+queryString
 
     },
     render: function() {

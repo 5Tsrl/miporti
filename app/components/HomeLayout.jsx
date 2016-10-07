@@ -39,10 +39,10 @@ class HomeLayout extends React.Component {
               </div>
             }
             <div className="widget widget_4-1">
-                <Meteo url="http://mip.5t.torino.it/meteoarpa" pollInterval={2000} />
+                <Meteo url="https://www.muoversinpiemonte.it/meteoarpa" pollInterval={2000} />
             </div>
             <div className="widget widget_4-1">
-                <Colli url="http://mip.5t.torino.it/colli" pollInterval={2000}/>
+                <Colli url="https://www.muoversinpiemonte.it/colli" pollInterval={2000}/>
 			      </div>
             { this.props.currentLocale != 'en' &&
               <div className="widget widget_4-1">
@@ -50,7 +50,7 @@ class HomeLayout extends React.Component {
               </div>
             }
             <div  className="widget widget_4-2 widget_4-4">
-                <Voli url="http://mip.5t.torino.it/voli-caselle" pollInterval={10*60*1000}/>
+                <Voli url="https://www.muoversinpiemonte.it/voli-caselle" pollInterval={10*60*1000}/>
 			</div>
         </div>
       

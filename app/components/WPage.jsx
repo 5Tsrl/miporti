@@ -27,7 +27,7 @@ var WPage = React.createClass({
 
     getPageContent: function(slug){
             axios
-                .get('http://mip.5t.torino.it/wp-json/wp/v2/pages?filter[name]=' + slug)
+                .get('https://www.muoversinpiemonte.it/wp-json/wp/v2/pages?filter[name]=' + slug)
                 .then( (res) =>{
                     if(res.data[0])
                       this.setLocalState(slug, res.data[0])

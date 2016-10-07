@@ -52,7 +52,7 @@ loadMenu: function() {
         if(this.props.currentLocale == 'en') menuId=5
         
         axios
-            .get('http://mip.5t.torino.it/wp-json/wp-api-menus/v2/menus/'+menuId)
+            .get('https://www.muoversinpiemonte.it/wp-json/wp-api-menus/v2/menus/'+menuId)
             .then( (res) =>{
                 console.log('scaricato', `menu_${this.props.currentLocale}`)
                 this.setState({menu: res.data})

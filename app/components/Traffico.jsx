@@ -1,16 +1,38 @@
 import React from 'react'
 import {FormattedMessage} from 'react-intl'
+import axios from 'axios'
+import moment from 'moment'
 import AudioPlayer from '../audio-player/components/AudioPlayer'
 import '../audio-player/app.scss';
 
 const Traffico = React.createClass({
+  
+  getDefaultProps: function() {
+    return {
+      notiziario: 'https://www.muoversinpiemonte.it/notiziario/notiziario.mp3'
+    }
+  },
+  getInitialState: function() {
+    return { bollentinUpdate:'...'}
+  },
+  
     onAscoltaClick: function(e){
       e.preventDefault()
       this.refs.audioPlayer.onPlayBtnClick()
     },
+    componentWillMount: function(){
+      axios
+          .head(this.props.notiziario)
+          .then( (res) =>{
+            const lm = res.headers['last-modified']
+            //console.log(lm, moment(new Date(lm)).format('HH:mm'))
+            this.setState({bollentinUpdate: moment(new Date(lm)).format('HH:mm')})
+          })  
+    },
+    
     render: function() {
         
-      var songs = [	{url: "http://mip.muoversinpiemonte.it/notiziario.mp3"} ]
+      var songs = [	{url: this.props.notiziario} ]
         
       return (
 
@@ -28,11 +50,11 @@ const Traffico = React.createClass({
     <div className="align_brother_bottom">
         <div className="area_player no_news_traffico no_close">
             <AudioPlayer ref="audioPlayer" songs={songs} />
-            <a href="#" className="ascolta" onClick={this.onAscoltaClick}><FormattedMessage id='Ascolta il notiziario'/></a>
+            <a href="#" className="ascolta" onClick={this.onAscoltaClick}><FormattedMessage id='Ascolta il notiziario'  values={{bollentinUpdate: this.state.bollentinUpdate}}/> </a>
             
         </div>
         <div className="visualizza">
-          <a href="http://map.muoversinpiemonte.it/#traffic" className="btn_link "><FormattedMessage id='Visualizza eventi'/></a>
+          <a href="https://map.muoversinpiemonte.it/#traffic" className="btn_link "><FormattedMessage id='Visualizza eventi'/></a>
         </div>
     </div>
 

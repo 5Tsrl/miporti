@@ -12,7 +12,7 @@ export default {
     'traffico in tempo reale': 'traffico in tempo reale',
     'Aggiornamenti su traffico e viabilità in Piemonte.':'Aggiornamenti su traffico e viabilità in Piemonte.',
     'Muoviti informato.':'Muoviti informato.',
-    'Ascolta il notiziario':'Ascolta il notiziario',
+    'Ascolta il notiziario':'Ascolta il notiziario delle {bollentinUpdate}',
     'Visualizza eventi':'Visualizza eventi',
   //news
     'Ultime news':'Ultime news',

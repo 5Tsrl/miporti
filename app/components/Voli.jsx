@@ -145,7 +145,7 @@ let Voli = React.createClass({
       if(typeof this.state.data.partenze !== 'undefined'){
           voli = this.state.data[this.state.partenzeArrivi].slice(0,4)
           aggiornamento = this.state.data.aggiornamento.split(/alle/).pop().trim()
-          console.log(aggiornamento)
+          //console.log(aggiornamento)
       }
     return (
 

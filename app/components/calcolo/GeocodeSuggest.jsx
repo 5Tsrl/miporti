@@ -16,7 +16,7 @@ const GeocodeSuggest = React.createClass({
     loadSuggestions: function(inputText) {
       const inputValue = inputText.trim().toLowerCase();
       const this_ = this
-      axios.get('http://mip.5t.torino.it/suggest?query=' + inputValue)
+      axios.get('https://www.muoversinpiemonte.it/suggest?query=' + inputValue)
          .then(function(response){
              const suggestions = response.data.features.slice(0,6)
              this_.setState({ suggestions })
