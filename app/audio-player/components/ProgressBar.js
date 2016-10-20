@@ -27,9 +27,9 @@ module.exports = React.createClass({
 			</div>
 		);
 	},
-
+/*
 	seekTo: function(e){
-    console.log('cucu');
+    //console.log('cucu');
 		if (!this.props.percent) {
 			return;
 		}
@@ -39,5 +39,5 @@ module.exports = React.createClass({
 		percent = percent >= 1 ? 1 : percent;
 		this.props.seekTo(percent);
 	}
-
+*/
 })

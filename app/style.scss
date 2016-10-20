@@ -5,7 +5,7 @@
 
 @import 'font/font.scss';
 
-
+html{min-height:1200px}
 
 /*.html-menu-open{
 	overflow:hidden;
@@ -102,6 +102,10 @@ a {
 		height: 37px;
 		background:url(images/logo_MIP.svg) no-repeat top left;
 		background-size:contain;
+    
+    //style inline nel logo svg, ma explorer non lo becca
+    .cls-1{fill:#1961ac;}.cls-2{fill:#c6c6c6;}.cls-3{fill:#c61532;}
+    
 	}
 	#nav-toggle {
 		display: block;
