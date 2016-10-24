@@ -92,9 +92,7 @@ setInterval(() => {
         }, 30000);
 */
 
-/*
-locale={navigator.language}>
-*/
+
 ReactDOM.render((
 
 <Provider store={store}>
@@ -102,11 +100,6 @@ ReactDOM.render((
     <Route component={MainLayout} >
         <Route path="/" component={HomeLayout} />
         <Route component={PageLayout} >
-            {/*
-            <Route path="/(home/)servizio" component={Servizio} />
-            <Route path="/(home/)contatti" component={Contatti} />
-            <Route path="/(home/)radio"   component={Radio} />
-            */}
             <Route path="/page/:slug"   component={WPage} />
             <Route path="/pvova"   component={Pvova} />
             <Route path="*"   component={NotFound} />

@@ -5,20 +5,22 @@
 
 @import 'font/font.scss';
 
-html{min-height:1200px}
-
-/*.html-menu-open{
-	overflow:hidden;
-	position:fixed;
-}*/
-
 body{
 	background: $c1;
 	font-family: $OS;
-	&.menu-open {
-		overflow: hidden;
-		position: fixed;
-	}
+}
+@include media('screen', '>dim_05') {
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+  }
+}
+
+@include media('screen', '>dim_50') {
+  body.menu-open {
+    overflow:auto;
+    position: relative;
+  }
 }
 
 .aux {
@@ -235,6 +237,7 @@ a {
 		}
 	}
 	@include media('screen', '>dim_50') {
+    
 		#nav-toggle{
 			display: none;
 		}
@@ -361,7 +364,7 @@ footer{
 		display: inline-block;
 		width: 80px;
 		height: 26px;
-		background:url(images/logo_piemonte.png) no-repeat top left;
+		background:url(images/logo_piemonte.svg) no-repeat top left;
 		background-size:contain;
 		margin-right: 20px;
 		.no-touch &:hover{

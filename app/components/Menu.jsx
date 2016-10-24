@@ -18,6 +18,7 @@ const MenuItem = React.createClass({
         return <li><a href={this.props.url} onClick={this.props.handleClick}>{this.props.title}</a></li>    
     else
         return <li><Link to={this.props.url} activeClassName="active" onClick={this.props.handleClick}>{this.props.title}</Link></li>
+        //return <li><a href={this.props.url}  onClick={this.props.handleClick}>{this.props.title}</a></li>
   }
 })
 
@@ -70,7 +71,7 @@ componentDidMount: function() {
 		//$('body').addClass('no-touch');
         document.body.classList.add('no-touch')
 	}
-    document.body.classList.toggle('menu-open', this.state.menuIsOpen)
+    //document.body.classList.toggle('menu-open', this.state.menuIsOpen)
 
     if(this.state.menu == null) {
         this.loadMenu()
@@ -78,9 +79,20 @@ componentDidMount: function() {
 },
 
 handleClick: function() {
+  console.log('handleClickKATO');
+  if(this.state.menuIsOpen){
+    this.setState({menuIsOpen:false}, () => {
+      document.body.classList.remove('menu-open')
+    })
+  } else {
+    this.setState({menuIsOpen:true}, () => {
+      document.body.classList.add('menu-open')
+    })
+  }
+  /*  
     this.setState({menuIsOpen: !this.state.menuIsOpen}, () =>{
         document.body.classList.toggle('menu-open', this.state.menuIsOpen)
-    })    
+    })    */
 },
 handleLangClick: function(locale){
     //event.preventDefault()
