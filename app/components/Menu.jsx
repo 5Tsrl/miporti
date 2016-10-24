@@ -65,13 +65,10 @@ loadMenu: function() {
 componentDidMount: function() {
     // Detects Touch or noTouch devices
 	if(!!('ontouchstart' in window)){ //check for touch device
-		//$('body').addClass('touch');
         document.body.classList.add('touch')
 	} else{ //behaviour and events for pointing device like mouse
-		//$('body').addClass('no-touch');
         document.body.classList.add('no-touch')
 	}
-    //document.body.classList.toggle('menu-open', this.state.menuIsOpen)
 
     if(this.state.menu == null) {
         this.loadMenu()
@@ -79,20 +76,9 @@ componentDidMount: function() {
 },
 
 handleClick: function() {
-  console.log('handleClickKATO');
-  if(this.state.menuIsOpen){
-    this.setState({menuIsOpen:false}, () => {
-      document.body.classList.remove('menu-open')
-    })
-  } else {
-    this.setState({menuIsOpen:true}, () => {
-      document.body.classList.add('menu-open')
-    })
-  }
-  /*  
     this.setState({menuIsOpen: !this.state.menuIsOpen}, () =>{
         document.body.classList.toggle('menu-open', this.state.menuIsOpen)
-    })    */
+    })
 },
 handleLangClick: function(locale){
     //event.preventDefault()
