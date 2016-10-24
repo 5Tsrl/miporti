@@ -153,7 +153,7 @@ let Voli = React.createClass({
         <div className="title-4">
             <h2><FormattedMessage id='orario voli'/></h2>
             <h3><FormattedMessage id='Aeroporto di Torino'/></h3>
-            <p><FormattedMessage id='In collaborazione con '/> <a href={'http://www.aeroportoditorino.it/'+this.props.currentLocale+'/sagat'} target="_blank">Sagat S.p.a.</a></p>
+            <p><FormattedMessage id='In collaborazione con '/> <a href={'http://www.aeroportoditorino.it/'+this.props.currentLocale} target="_blank">Sagat S.p.a.</a></p>
         </div>
         <VoliTabs partenzeArrivi={this.state.partenzeArrivi} onCurrentChoosen={this.handleSceltaCurrent}/>
         <VoliTable partenzeArrivi={this.state.partenzeArrivi} voli={voli} />
