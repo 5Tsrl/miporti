@@ -405,12 +405,13 @@ footer{
 		ul li{
 			display: inline-block;
 			font-size: 0.7em;
-			&:nth-child(even):before,
-			&:nth-child(even):after{
+      
+      &:not(:first-child):before{
 				content: " | ";
 				padding: 0 10px;
 				color: #fff;
 			}
+
 			a {
 				text-transform: uppercase;
 			}
@@ -652,6 +653,7 @@ footer{
 		right: 40px;
 
 	}
+  .centra{margin:auto}
 }
 //@import 'components/calcolo/calcolo.scss';
 .widget_viaggio {
@@ -1440,24 +1442,24 @@ footer{
 }
 
 .widget_imgbg{
+  height:100%;
   min-height: 438px;
-	background: url(./images/img_bg_colli_estate.jpg) no-repeat center;
+  background: url(./images/img_bg_colli_estate.jpg) no-repeat center;
 	background-size: cover;
 	color: #fff;
-	padding: 23px;
 	ul{list-style-type:none}
 	p,
 	.title-3{
-		text-align: left;
+    padding-top: 23px;
 		margin-bottom: 15px;
-		max-width: 260px;
 	}
 	.btn_link{
+    margin: 0 auto;
+    padding: 14px 0;
 		width: 100%;
 		box-sizing: border-box;
 		display: block;
 		background: #fff;
-		padding: 14px 0;
 		color: $c6;
     cursor: pointer;
 		.no-touch &:hover{
@@ -1476,7 +1478,7 @@ footer{
 			@include prefix('transform', 'rotate(-180deg)');
 		}
 	}
-	.elencoColli{background: #fff;color: $c6; text-align: left; padding: 10px;     font-size: 0.8em; line-height: 2em;
+	.elencoColli{background: #fff;color: $c6; text-align: left; padding: 10px;margin:20px 40px;     font-size: 0.8em; line-height: 2em;
 		.aperto, .Aperto{
 			&:before{content: '\2713'; margin-right: 10px}
 		}

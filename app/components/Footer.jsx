@@ -1,9 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router'
+import React from 'react'
 import FooterMenu from './FooterMenu'
 
-export  default () =>
-
+const Footer = () =>(
     <footer>
     	<div className="aux">
     		<a href="http://www.regione.piemonte.it/" target="_blank" className="logo-regione">Regione Piemonte</a>
@@ -19,3 +17,6 @@ export  default () =>
     		</div>
     	</div>
     </footer>
+  )
+export default Footer
+

@@ -2,61 +2,49 @@ import React from 'react'
 import axios from 'axios'
 import lscache from 'lscache'
 import ReactIScroll from 'react-iscroll'
-import {FormattedDate, FormattedMessage} from 'react-intl';
+import {FormattedDate, FormattedMessage} from 'react-intl'
 
+const iScroll = require('iscroll/build/iscroll')
 
+const Velina = (props)=>(
+  <li className="link_news">
+    <div className="notizia">
+      <h3>{props.title}</h3>
+      <div dangerouslySetInnerHTML={{__html: props.description}} ></div>
+      <span className="date_news"><span className="date">
+        <FormattedDate value={props.validitystart} day="numeric" month="long" year="numeric" />
+      </span></span>
+    </div>
+  </li>
+)
 
-var iScroll = require('iscroll/build/iscroll')
-
-const Velina = React.createClass({
-  render: function() {
-    return (
-        <li className="link_news">
-            <div className="notizia">
-                <h3>{this.props.title}</h3>
-                <div dangerouslySetInnerHTML={{__html: this.props.description}} ></div>
-                <span className="date_news"><span className="date">
-                    <FormattedDate value={this.props.validitystart} day="numeric" month="long" year="numeric" />
-                </span></span>
-            </div>
-        </li>
-    )
+class News extends React.Component {
+  
+  static defaultProps = {
+    options: {
+      mouseWheel: true,
+      //snap: true,
+      scrollbars: 'custom',
+      interactiveScrollbars: true,
+      mouseWheel: true,
+      disableMouse: true,
+      preventDefaultException: { tagName:/.*/ }
+    }
   }
-})
-
-
-const News = React.createClass({
-
-    getDefaultProps: function() {
-        return ({
-          options: {
-            mouseWheel: true,
-            //snap: true,
-            scrollbars: 'custom',
-            interactiveScrollbars: true,
-            mouseWheel: true,
-            disableMouse: true,
-            preventDefaultException: { tagName:/.*/ }
-          }
-        })
-    },
-
-    getInitialState: function() {
-      // Check our localstorage cache, we may as well load from there if we have it
-      return lscache.get(this.constructor.displayName) || {news: []}
-	},
+  
+  state = lscache.get(this.constructor.displayName) || {news: []}
 
 	/**
 	 * Sets the localstorage state, and continues on to set the state of the React component
 	 */
-	setLocalState: function(data) {
+	setLocalState = (data)=> {
 		// Store in LocalStorage
 		lscache.set(this.constructor.displayName, data, 2);
 		// Store in Component State
 		this.setState(data);
-	},
+	}
 
-  componentDidMount: function() {
+  componentDidMount = () => {
     if(this.state.news.length == 0) {
 			axios
         .get('http://mip.muoversinpiemonte.it/news')
@@ -64,9 +52,9 @@ const News = React.createClass({
           this.setLocalState({news: res.data})
 			})
     }
-	},
+	}
 
-  render: function() {
+  render = () => {
       
     let velineNodes
     if ( this.state.news.length == 0 ) {
@@ -99,6 +87,6 @@ const News = React.createClass({
 
 )}
 
-})
+}
 
 export default News

@@ -5,24 +5,14 @@ import { Link } from 'react-router'
 import axios from 'axios'
 import lscache from 'lscache'
 
-const FooterMenuItem = React.createClass({
-  render: function() {
-    return (
-        <li><Link to={this.props.url}>{this.props.title}</Link></li>
-    )
+const FooterMenuItem = (props) => {
+  return <li><Link to={props.url}>{props.title}</Link></li>
   }
-})
 
-let FooterMenu = React.createClass({
+class FooterMenu extends React.Component {
+  state = { footerMenu: lscache.get(`footerMenu_${this.props.currentLocale}`) }
 
-    getInitialState: function () {
-      // Check our localstorage cache, we may as well load from there if we have it
-      return  { footerMenu: lscache.get(`footerMenu_${this.props.currentLocale}`)
-              }
-  },
-
-
-  loadMenu: function() {
+  loadMenu = () => {
           let menuId = 3 //it
           if(this.props.currentLocale == 'en') menuId=6
 
@@ -33,41 +23,42 @@ let FooterMenu = React.createClass({
                   this.setState({footerMenu: res.data})
                   lscache.set(`footerMenu_${this.props.currentLocale}`,res.data,5)
               })
-  },
+  }
 
-componentDidMount: function() {
+  componentDidMount = () => {
+    //se è già presente nella lscache di pamela, viene pescato in inizializzazione e messo nello state
     if(this.state.footerMenu == null) {
         this.loadMenu()
     }
-},
+  }
 
-render: function() {
-        if ( ! this.state.footerMenu ) {
-           var footerMenuNodes = <FooterMenuItem title="home" url="/"  />
-           return (
-               <div className="loading-wrap">
-                   <div className="loading"><span className="fa fa-heart"></span> LOADING</div>
-               </div>
-           )
-       }else{
+  render = ()  => {
+    if ( ! this.state.footerMenu ) {
+       var footerMenuNodes = <FooterMenuItem title="home" url="/"  />
+       return (
+           <div className="loading-wrap">
+               <div className="loading"><span className="fa fa-heart"></span> LOADING</div>
+           </div>
+       )
+   }else{
 
-            var footerMenuNodes = this.state.footerMenu.items.map( function(item, idx){
-                const baseurl="http://wpmip.5t.torino.it"
-                const url = '/page'+item.url.slice(baseurl.length,-1)
-                return(
-                    <FooterMenuItem key={idx} title={item.title} url={url}  />
-                )
-            }.bind(this))
-        }
-        return (
-            <nav className="footer-menu">
-                <ul>
-                    {footerMenuNodes}
-                </ul>
-            </nav>
-        )
+        var footerMenuNodes = this.state.footerMenu.items.map( function(item, idx){
+            const baseurl="http://wpmip.5t.torino.it"
+            const url = '/page'+item.url.slice(baseurl.length,-1)
+            return(
+                <FooterMenuItem key={idx} title={item.title} url={url}  />
+            )
+        }.bind(this))
     }
-})
+    return (
+        <nav className="footer-menu">
+            <ul>
+                {footerMenuNodes}
+            </ul>
+        </nav>
+    )
+  }
+}
 
 //mappo l' intl.locale dello state di redux sulla props currentLocale
 function mapStateToProps(state) {

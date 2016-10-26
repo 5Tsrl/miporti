@@ -1,7 +1,7 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl'
 
-export default () =>(
+const Bip = () =>(
 
     <div className="widget_ticket">
         <h2 className="title-2"><FormattedMessage id='Biglietto integrato Piemonte'/></h2>
@@ -11,3 +11,4 @@ export default () =>(
     </div>
 
 )
+export default Bip

@@ -93,8 +93,14 @@ handleLangClick: function(locale){
         locale,
         messages,
       }))
+    //chiude menu su mobile
+    if(this.state.menuIsOpen){
+      this.setState({menuIsOpen:flase}, document.body.classList.remove('menu-open'))
+    }
+    
     lscache.set('preferredLocale', locale /*, 60*/)
     document.cookie = 'i18next='+locale+';domain=muoversinpiemonte.it;path=/'
+    
 },
 
     
