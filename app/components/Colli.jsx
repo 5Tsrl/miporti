@@ -37,7 +37,7 @@ class Selector extends React.Component {
     }
 }
 
-class Colli extends React.Component {  
+class Colli extends React.Component {
   state = lscache.get('colli') || {colli: []}
 
   /**

@@ -1,60 +1,57 @@
 import React from 'react'
-import GeocodeSuggest from './calcolo/GeocodeSuggest'
+import GeocodeSuggest from './GeocodeSuggest'
 import {injectIntl, intlShape, FormattedMessage} from 'react-intl'
-import './calcolo/calcolo.scss';
+import './calcolo.scss';
 
-
-const Calcolo = React.createClass({
-    getInitialState: function(){
-            return {otpMode: 'TRANSIT,WALK', value_from: '', value_to:'', coord_from:'', coord_to:''}
-    },
-    handleModeChanged: function(mode){
-        console.log('changiato', mode)
+class Calcolo extends React.Component {
+  state = {otpMode: 'TRANSIT,WALK', value_from: '', value_to:'', coord_from:'', coord_to:''}
+    
+    handleModeChanged = (mode) =>{
+        console.log('switched to ', mode)
         this.setState({otpMode: mode})
-    },
-    onChangeFrom: function(e, { newValue }) {
-        e.preventDefault()
+    }
+    onChangeFrom = (e, { newValue }) =>{
+      e.preventDefault()
       e.stopPropagation()
-      this.setState({value_from: newValue});
-    },
-    onChangeTo: function(e, { newValue }) {
+      this.setState({value_from: newValue})
+    }
+    onChangeTo = (e, { newValue }) => {
       e.stopPropagation()
-      this.setState({value_to: newValue});
-    },
+      this.setState({value_to: newValue})
+    }
 
-    handleReverseBtn: function(e){
+    handleReverseBtn = (e) =>{
         e.preventDefault()
         e.stopPropagation()
         console.log('invertito')
-        const value_from_tmp = this.state.value_from;
-        const coord_from_tmp = this.state.coord_from;
+        const value_from_tmp = this.state.value_from
+        const coord_from_tmp = this.state.coord_from
         this.setState({value_from: this.state.value_to, coor_from: this.state.coord_to, value_to: value_from_tmp, coord_to: coord_from_tmp})
-    },
-    handleFromSelected: function(suggestion){
+    }
+    handleFromSelected = (suggestion) =>{
       this.setState({value_from: suggestion.properties.hint })
       this.setState({coord_from: '::'+suggestion.geometry.coordinates[1]+','+suggestion.geometry.coordinates[0]})
-
-    },
-    handleToSelected: function(suggestion){
+    }
+    handleToSelected = (suggestion) =>{
       this.setState({value_to: suggestion.properties.hint  })
       this.setState({coord_to: '::'+suggestion.geometry.coordinates[1]+','+suggestion.geometry.coordinates[0]})
-
-    },
-    handleSubmit: function(e){
+    }
+    handleSubmit = (e) =>{
         e.preventDefault()
         //console.log('submittato')
         var params = {
             module: 'planner',
-            fromPlace: this.state.value_from + this.state.coord_from,
-            toPlace: this.state.value_to +   this.state.coord_to,
-            mode: this.state.otpMode
+        }
+        if (this.state.value_from && this.state.value_to){
+          params.fromPlace = this.state.value_from + this.state.coord_from
+          params.toPlace =   this.state.value_to +   this.state.coord_to
+          params.mode = this.state.otpMode
         }
         var queryString = Object.keys(params).map(function(k){return encodeURIComponent(k) +'=' + encodeURIComponent(params[k])}).join('&')
-        console.log(queryString)
+//        console.log(queryString)
         location.href='http://map.muoversinpiemonte.it/#planner?'+queryString
-
-    },
-    render: function() {
+    }
+    render = () =>{
         const {formatMessage} = this.props.intl
         const styles = {
           widget_viaggio: {color: '#fff'},//esempio di inline style...
@@ -118,6 +115,6 @@ const Calcolo = React.createClass({
 
   )}
 
-})
+}
 
 export default injectIntl(Calcolo)
