@@ -29,7 +29,7 @@ module.exports = {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract("style",[ "css?sourceMap", "sass?sourceMap"])
           },
-          {     test: /\.jpe?g$|\.gif$|\.png$|\.svg$/,
+          {     test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.m4v$/,
                 //include: 'images',
                 loader: 'url?limit=25000&name=images/[name].[ext]'
                 //loader: "file?name=images/[name].[hash].[ext]",
