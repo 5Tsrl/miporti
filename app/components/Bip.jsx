@@ -11,4 +11,6 @@ const Bip = () =>(
     </div>
 
 )
+
 export default Bip
+

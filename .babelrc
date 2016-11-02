@@ -1,9 +1,7 @@
 {
   "plugins": [
-    "transform-object-assign",
-  /*  ["react-intl", {
-        "messagesDir": "./build/messages/"
-    }]*/
+    
+    "react-hot-loader/babel"
   ],
   "presets": [
     "es2015",
@@ -11,7 +9,7 @@
     "stage-0",
   ],
   "env": {
-    "start": {
+    "development": {
       "presets": [
         "react-hmre"
       ]

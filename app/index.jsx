@@ -1,3 +1,4 @@
+import './index.html'
 import './style.scss'
 
 import React from 'react'
@@ -19,6 +20,8 @@ import Pvova      from './components/Pvova'
 import NotFound   from './components/NotFound'
 import messages_en   from './messages/en.js'
 import messages_it   from './messages/it.js'
+
+
 
 /*utility functions*/
 function getParameterByName(name, url) {
