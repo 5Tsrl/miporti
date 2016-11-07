@@ -11,9 +11,9 @@ const Velina = (props)=>(
     <div className="notizia">
       <h3>{props.title}</h3>
       <div dangerouslySetInnerHTML={{__html: props.description}} ></div>
-      <span className="date_news"><span className="date">
+      <span className="date_news">
         <FormattedDate value={props.validitystart} day="numeric" month="long" year="numeric" />
-      </span></span>
+      </span>
     </div>
   </li>
 )

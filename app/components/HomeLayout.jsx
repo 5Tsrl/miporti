@@ -8,6 +8,8 @@ import Tweet from './Tweet'
 import Meteo from './Meteo'
 import Colli from './Colli'
 import Bip from './Bip'
+import Carousel from './Carousel'
+
 import Voli from './Voli'
 
 class HomeLayout extends React.Component {
@@ -24,13 +26,13 @@ class HomeLayout extends React.Component {
                 <Traffico />
             </div>
             { this.props.currentLocale != 'en' &&
-            <div  className="widget widget_4-1 widget_4-1">
+            <div  className="widget widget_4-2">
               <News />
             </div>
-          }
-            { this.props.currentLocale != 'en' &&
+            }
+            { this.props.currentLocale != 'en' && false &&
               <div  className="widget widget_4-1 widget_4-1">
-                    <ViaggiaPiemonte />                  
+                    <ViaggiaPiemonte />
               </div>
             }
             { this.props.currentLocale != 'en' &&
@@ -46,7 +48,7 @@ class HomeLayout extends React.Component {
 			      </div>
             { this.props.currentLocale != 'en' &&
               <div className="widget widget_4-1">
-                  <Bip />
+                  <Carousel />
               </div>
             }
             <div  className="widget widget_4-2 widget_4-4">

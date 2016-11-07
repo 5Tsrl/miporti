@@ -596,6 +596,7 @@ footer{
 }
 
 .widget{
+  position: relative;
 	width:100%;
 	background: #fff;
 	margin-bottom: 30px;
@@ -1117,15 +1118,9 @@ footer{
 		}
 		.date_news{
 			display: block;
-			text-transform: uppercase;
 			padding-top: 10px;
-			.date{
-				font-weight: 700;
-				margin-right: 20px;
-			}
-			.time{
-				font-weight: 600;
-			}
+      color: $c10_3;
+      font-style: italic;
 		}
 		.no-touch &:hover{
 			text-decoration: none;
@@ -1140,10 +1135,13 @@ footer{
 
 
 .widget_viaggia{
+  background-color: #fff;
+  width:100%;
 	.title-2{
 		color: #fff;
 		background: #00665d;
 		padding: 15px 25px;
+  
 	}
   p{
 		margin: 40px auto;
@@ -1444,7 +1442,7 @@ footer{
 .widget_imgbg{
   height:100%;
   min-height: 438px;
-  background: url(./images/img_bg_colli_estate.jpg) no-repeat center;
+  background: url(./images/img_bg_colli_inverno.jpg) no-repeat center;
 	background-size: cover;
 	color: #fff;
 	ul{list-style-type:none}
@@ -1489,8 +1487,10 @@ footer{
 }
 
 .widget_ticket{
+  
 	color: $c4;
 	padding: 23px;
+  background-color: #fff;
 	.title-2{
 		margin: 0 auto;
 		margin-bottom: 15px;
@@ -1499,6 +1499,7 @@ footer{
 	p{
 		margin: 0 auto;
 		max-width: 260px;
+    background-color: 'red';
 	}
 	.img_ticket{
 		background: url(images/img_biglietto.svg)  no-repeat center;
@@ -1517,6 +1518,28 @@ footer{
 			background:#b4bac9;
 		}
 	}
+}
+
+.carouselFade{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%
+}
+
+.carousel-enter {
+  opacity: 0.01;
+}
+.carousel-enter.carousel-enter-active {
+  opacity: 1;
+  transition: opacity 600ms ease-out;
+}
+.carousel-leave {
+  opacity: 1;
+}
+.carousel-leave.carousel-leave-active {
+  opacity: 0.01;
+  transition: opacity 600ms ease-out;
 }
 
 .widget_voli{
