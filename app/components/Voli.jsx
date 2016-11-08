@@ -14,9 +14,9 @@ let Volo = React.createClass({
             <td>{this.props.volo}</td>
             <td className="note">{this.props.imbarco}</td>
         </tr>
-    );
+    )
   }
-});
+})
 
 
 const VoliTable = React.createClass({

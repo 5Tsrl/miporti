@@ -45,6 +45,7 @@
     "react-autosuggest": "^3.7.3",
     "react-bootstrap": "^0.29.5",
     "react-collapse": "^2.2.4",
+    "react-css-transition-replace": "^2.0.1",
     "react-dom": "^15.0.2",
     "react-height": "^2.1.0",
     "react-html5video": "^1.2.9",
@@ -53,6 +54,7 @@
     "react-iscroll": "^1.0.1",
     "react-motion": "^0.4.4",
     "react-redux": "^4.4.5",
-    "react-router": "^2.4.1"
+    "react-router": "^2.4.1",
+    "react-twitter-widgets": "^0.2.4"
   }
 }

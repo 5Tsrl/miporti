@@ -596,7 +596,7 @@ footer{
 }
 
 .widget{
-  position: relative;
+  
 	width:100%;
 	background: #fff;
 	margin-bottom: 30px;
@@ -1157,6 +1157,7 @@ footer{
     background: #00665d;
     color: #fff;
     width: 100%;
+    margin-bottom: 20px;
     box-sizing: border-box;
     max-width: 170px;
     .no-touch &:hover{
@@ -1520,26 +1521,22 @@ footer{
 	}
 }
 
-.carouselFade{
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 100%
-}
-
 .carousel-enter {
-  opacity: 0.01;
+  opacity: 0;
 }
 .carousel-enter.carousel-enter-active {
   opacity: 1;
-  transition: opacity 600ms ease-out;
+  transition: opacity 1s  ease-in;
 }
 .carousel-leave {
   opacity: 1;
 }
 .carousel-leave.carousel-leave-active {
-  opacity: 0.01;
-  transition: opacity 600ms ease-out;
+  opacity: 0;
+  transition: opacity 1s  ease-in;
+}
+.carousel-height {
+  transition: height .5s ease-in-out;
 }
 
 .widget_voli{
@@ -1747,6 +1744,7 @@ footer{
 			margin-right: 30px;
 		}
 	}
+
 }
 
 @include media('screen', '>dim_20') {
@@ -1805,6 +1803,7 @@ footer{
 	.widget_news #scroll_news{
 		height: 425px;
 	}
+
 	.widget_voli {
 		.tabs_container .tabella_voli tr td,
 		.tabs_container .tabella_voli tr th{
@@ -1818,9 +1817,8 @@ footer{
 	}
 }
 @include media('screen', '>dim_22') {
-	.widget_traffico {
-		_height: 280px;
-	}
+	
+
 }
 @include media('screen', '>dim_25') {
 	.widget_4-1{
@@ -1874,6 +1872,7 @@ footer{
 	.widget_twitter #scroll_twit{
 		height: 478px;
 	}
+
 	.widget_voli{
 		.title-4{
 			text-align: left;
@@ -1890,10 +1889,12 @@ footer{
 			text-align: left;
 			margin: 10px 30px;
 			a.btn_link{
-				position: absolute;
-				right: 0;
-				bottom: 0;
-				margin: 10px 0;
+        display: block;
+        float: right;
+				_position: absolute;
+				_right: 0;
+				_bottom: 0;
+				margin: 10px 0 20px ;
 			}
 		}
 		.tabs_container .tabella_voli tr td,
@@ -1989,6 +1990,7 @@ footer{
 	.widget_news #scroll_news {
 		height: 480px;
 	}
+
 }
 
 @include media('screen', '>dim_50') {
@@ -2102,7 +2104,7 @@ footer{
 			margin: 0 auto;
 		}
 	}
-	.widget_voli{
+  .widget_voli{
 		.last_info{
 			span.btn_partenze_cont{
 				a.btn_partenze{

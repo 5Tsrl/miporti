@@ -78,6 +78,10 @@ module.exports = {
                 loader: "file?name=[name].[ext]",
           },
           {
+                test: /favicon\.ico/,
+                loader: "file?name=images/[name].[ext]",
+          },
+          {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract("style",[ "css?sourceMap", "sass?sourceMap"])
           },

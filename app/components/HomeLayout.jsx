@@ -51,7 +51,7 @@ class HomeLayout extends React.Component {
                   <Carousel />
               </div>
             }
-            <div  className="widget widget_4-2 widget_4-4">
+            <div  className="widget widget_4-2">
                 <Voli url="https://www.muoversinpiemonte.it/voli-caselle" pollInterval={10*60*1000}/>
 			</div>
         </div>

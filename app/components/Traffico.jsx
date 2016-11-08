@@ -34,7 +34,7 @@ const Traffico = React.createClass({
     
     render: function() {
         
-      var songs = [	{url: this.props.notiziario} ]
+      var songs = [	{url: "https://www.muoversinpiemonte.it/notiziario/notiziario.mp3"} ]
         
       return (
 

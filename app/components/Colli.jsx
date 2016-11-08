@@ -11,6 +11,9 @@ const SelectorText = (props) => {
 }
 
 const SelectorTexts = (props) => {
+  if(!props.texts) {
+    return <Collapse isOpened={props.open} ><ul className="elencoColli" ></ul></Collapse>
+  }
   const textsNodes = props.texts.map(function(singleText, id){
       return <li className={singleText.Stato} key={id} ><span>{singleText.Nome}</span></li>
   })

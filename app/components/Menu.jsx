@@ -82,7 +82,7 @@ handleClick: function() {
 },
 handleLangClick: function(locale){
     //event.preventDefault()
-    
+    console.log('cliccato con locale = ', locale)
     let messages = {}
         if(locale == 'it'){
             messages=messages_it
@@ -95,7 +95,7 @@ handleLangClick: function(locale){
       }))
     //chiude menu su mobile
     if(this.state.menuIsOpen){
-      this.setState({menuIsOpen:flase}, document.body.classList.remove('menu-open'))
+      this.setState({menuIsOpen:false}, document.body.classList.remove('menu-open'))
     }
     
     lscache.set('preferredLocale', locale /*, 60*/)
@@ -112,7 +112,7 @@ render: function() {
         var menuNodes = this.state.menu.items.map( (item, idx) =>{
             let url = ''
             const baseurlWP="http://wpmip.5t.torino.it"
-            const baseurlMip="http://mip.muoversinpiemonte.it"
+            const baseurlMip="https://www.muoversinpiemonte.it"
             if(item.url.indexOf(baseurlWP) >=0){
                 //pagine wordpress
                 url = '/page'+item.url.slice(baseurlWP.length,-1)

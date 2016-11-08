@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import ReactCSSTransitionReplace from 'react-css-transition-replace'
 import ViaggiaPiemonte from './ViaggiaPiemonte'
 import Bip from './Bip'
 
@@ -21,15 +21,15 @@ class Carousel extends React.Component {
 
   render = () => {
     const carouselNode = this.state.oo ? <ViaggiaPiemonte /> : <Bip />
-    const node = <div className="carouselFade" key={'id_'+this.state.oo}>{carouselNode}</div>
+    const node = <div key={'id_'+this.state.oo}>{carouselNode}</div>
 
-    return <ReactCSSTransitionGroup      
+    return <ReactCSSTransitionReplace      
           transitionName="carousel"
-          transitionEnterTimeout={600}
-          transitionLeaveTimeout={600}
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}
           >
           {node}
-        </ReactCSSTransitionGroup>
+        </ReactCSSTransitionReplace>
   
   }
 }

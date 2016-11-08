@@ -47,7 +47,7 @@ class News extends React.Component {
   componentDidMount = () => {
     if(this.state.news.length == 0) {
 			axios
-        .get('http://mip.muoversinpiemonte.it/news')
+        .get('https://www.muoversinpiemonte.it/news')
 				.then( (res) =>{
           this.setLocalState({news: res.data})
 			})
