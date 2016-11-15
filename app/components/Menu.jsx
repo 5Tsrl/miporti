@@ -53,7 +53,7 @@ loadMenu: function() {
         if(this.props.currentLocale == 'en') menuId=5
         
         axios
-            .get('https://www.muoversinpiemonte.it/wp-json/wp-api-menus/v2/menus/'+menuId)
+            .get('/wp-json/wp-api-menus/v2/menus/'+menuId)
             .then( (res) =>{
                 console.log('scaricato', `menu_${this.props.currentLocale}`)
                 this.setState({menu: res.data})
@@ -111,6 +111,7 @@ render: function() {
     
         var menuNodes = this.state.menu.items.map( (item, idx) =>{
             let url = ''
+            //qs url arrivano da wp
             const baseurlWP="http://wpmip.5t.torino.it"
             const baseurlMip="https://www.muoversinpiemonte.it"
             if(item.url.indexOf(baseurlWP) >=0){

@@ -17,11 +17,14 @@ padding-left: 0px;
 width: 100%;
 }
 .react-autosuggest__suggestions-container {
-  padding: 0.3em 0.8em 0.2em 0em;
+  _padding: 0.3em 0.8em 0.2em 0em;
   position:absolute;
   background-color: darken($c12_1, 8%);
-  
 }
+.react-autosuggest__suggestions-list {
+  padding: 0.3em 0.8em 0.2em 0em;
+}
+
 .react-autosuggest__suggestion {
   padding-left: 15px; 
   cursor: pointer;

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack --progress ",
     "buildProd": "NODE_ENV=production webpack --progress ",
-    "start": "node webpackDevServer.js"
+    "start": "NODE_ENV=development node webpackDevServer.js"
   },
   "keywords": [],
   "author": "raf",
@@ -42,8 +42,8 @@
     "moment": "^2.15.1",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.3.2",
-    "react-autosuggest": "^3.7.3",
-    "react-bootstrap": "^0.29.5",
+    "react-autosuggest": "^7.0.1",
+    "react-bootstrap": "^0.30.6",
     "react-collapse": "^2.2.4",
     "react-css-transition-replace": "^2.0.1",
     "react-dom": "^15.0.2",

@@ -10,12 +10,13 @@ class Calcolo extends React.Component {
         console.log('switched to ', mode)
         this.setState({otpMode: mode})
     }
-    onChangeFrom = (e, { newValue }) =>{
+    onChangeFrom = (e,  newValue ) => {
+      //console.log(e)
       e.preventDefault()
       e.stopPropagation()
       this.setState({value_from: newValue})
     }
-    onChangeTo = (e, { newValue }) => {
+    onChangeTo = (e,  newValue ) => {
       e.stopPropagation()
       this.setState({value_to: newValue})
     }
@@ -29,26 +30,29 @@ class Calcolo extends React.Component {
         this.setState({value_from: this.state.value_to, coor_from: this.state.coord_to, value_to: value_from_tmp, coord_to: coord_from_tmp})
     }
     handleFromSelected = (suggestion) =>{
-      this.setState({value_from: suggestion.properties.hint })
-      this.setState({coord_from: '::'+suggestion.geometry.coordinates[1]+','+suggestion.geometry.coordinates[0]})
+      if(suggestion){
+        this.setState({value_from: suggestion.properties.hint })
+        this.setState({coord_from: '::'+suggestion.geometry.coordinates[1]+','+suggestion.geometry.coordinates[0]})
+      }
     }
     handleToSelected = (suggestion) =>{
-      this.setState({value_to: suggestion.properties.hint  })
-      this.setState({coord_to: '::'+suggestion.geometry.coordinates[1]+','+suggestion.geometry.coordinates[0]})
+      if(suggestion){
+        this.setState({value_to: suggestion.properties.hint  })
+        this.setState({coord_to: '::'+suggestion.geometry.coordinates[1]+','+suggestion.geometry.coordinates[0]})
+      }
     }
     handleSubmit = (e) =>{
         e.preventDefault()
-        //console.log('submittato')
         var params = {
             module: 'planner',
         }
-        if (this.state.value_from && this.state.value_to){
+        if (this.state.coord_from && this.state.coord_to){
           params.fromPlace = this.state.value_from + this.state.coord_from
           params.toPlace =   this.state.value_to +   this.state.coord_to
           params.mode = this.state.otpMode
         }
         var queryString = Object.keys(params).map(function(k){return encodeURIComponent(k) +'=' + encodeURIComponent(params[k])}).join('&')
-//        console.log(queryString)
+        //console.log(queryString)
         location.href='http://map.muoversinpiemonte.it/#planner?'+queryString
     }
     render = () =>{
@@ -71,12 +75,12 @@ class Calcolo extends React.Component {
 
         <div className="trip_container">
             <ul>
-                <li className="trip_input" style={styles.trip_input_z13}>
+                <li className="trip_input from" style={styles.trip_input_z13}>
                     <label htmlFor="trip_from"><FormattedMessage id='da' defaultMessage='da dove?'/></label>
                     {/* <input type="text" value={this.state.trip_from} id="trip_from" name="trip_from" /> */}
                     <GeocodeSuggest id="trip_from" value={this.state.value_from} onChange={this.onChangeFrom} onSuggestSelected={this.handleFromSelected} autoFocus={true}/>
                 </li>
-                <li className="trip_input" style={styles.trip_input_z12}>
+                <li className="trip_input to" style={styles.trip_input_z12}>
                     <label htmlFor="trip_to"><FormattedMessage id='a'/></label>
                     <GeocodeSuggest id="trip_to" value={this.state.value_to}  onChange={this.onChangeTo} onSuggestSelected={this.handleToSelected}/>
                 </li>

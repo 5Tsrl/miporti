@@ -26,7 +26,7 @@ class WPage extends React.Component {
 
   getPageContent = (slug) =>{
     axios
-      .get('https://www.muoversinpiemonte.it/wp-json/wp/v2/pages?filter[name]=' + slug)
+      .get('/wp-json/wp/v2/pages?filter[name]=' + slug)
       .then( (res) =>{
           if(res.data[0])
             this.setLocalState(slug, res.data[0])

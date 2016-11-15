@@ -11,7 +11,7 @@ const Traffico = React.createClass({
   
   getDefaultProps: function() {
     return {
-      notiziario: 'https://www.muoversinpiemonte.it/notiziario/notiziario.mp3'
+      notiziario: '/notiziario/notiziario.mp3'
     }
   },
   getInitialState: function() {

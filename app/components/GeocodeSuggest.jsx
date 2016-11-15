@@ -4,31 +4,55 @@ import axios from 'axios'
 
 class GeocodeSuggest extends React.Component {  
   
-  state = {suggestions: []}
+  state = {suggestions: [], value:''}
+  
+  onChange = (event, { newValue, method }) => {
+    //method: enter,click,type
+    this.setState({
+      value: newValue
+    })
+    this.props.onChange(event, newValue)
+  }
+  
+  onBlur = (event, { focusedSuggestion }) => {   
+    if(focusedSuggestion){ 
+      console.log('onBlur ', focusedSuggestion.properties.hint);
+      this.setState({
+        value: focusedSuggestion.properties.hint
+      })
+      this.props.onSuggestSelected(focusedSuggestion)
+    }
+  }
+  
   
   loadSuggestions = (inputText) => {
     const inputValue = inputText.trim().toLowerCase()
     const this_ = this
-    axios.get('https://www.muoversinpiemonte.it/suggest?query=' + inputValue)
+    axios.get('/suggest?query=' + inputValue)
       .then(function(response){
         const suggestions = response.data.features.slice(0,6)
         this_.setState({ suggestions })
       })
   }
   
-  onSuggestionsUpdateRequested = ({ value: currentInput, reason })  => {
+
+  onSuggestionsFetchRequested = ({ value })  => {
     //reason vale type: "key pressed"  enter:"enter pressed"
     // todo: chiamare il gocoker search su enter?
     //console.log('reason', reason)
-    this.loadSuggestions(currentInput)
-    if(reason == 'enter'){
-        //console.log('enter key pressed')            
-    }
+    this.loadSuggestions(value)  
+  }
+  
+  // Autosuggest will call this function every time you need to clear suggestions.
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: []
+    });
   }
 
   getSuggestionValue = (suggestion) => { // when suggestion selected, this function tells
-    //console.log('getSuggestionValue',suggestion.properties.hint, suggestion.geometry.coordinates)
-    this.props.onSuggestSelected(suggestion)
+    console.log('getSuggestionValue',suggestion.properties.hint, suggestion.geometry.coordinates)
+    //this.props.onSuggestSelected(suggestion)
     return suggestion.properties.hint              // what should be the value of the input
   }
   
@@ -36,26 +60,30 @@ class GeocodeSuggest extends React.Component {
     return <span>{suggestion.properties.hint}</span>
   }   
     
-  onSuggestSelected = (event, { suggestion, suggestionValue, sectionIndex, method }) => {
+  onSuggestionSelected = (event, { suggestion, suggestionValue, sectionIndex, method }) => {
       //console.log('onSuggestSelected')
       this.props.onSuggestSelected(suggestion)
   }
 
   render = () =>{
       const inputProps = {
-        value: this.props.value, //this.state.value,
-        onChange: this.props.onChange, //this.onChange,        
+        value: this.state.value,  //this.props.value
+        onChange: this.onChange,
+        onBlur: this.onBlur,        
         placeholder: '',
         type: 'search', 
+      
         autoFocus: this.props.autoFocus
       }
 
       return <Autosuggest suggestions={this.state.suggestions}
-                     onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+                     onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                     onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                      getSuggestionValue={this.getSuggestionValue}
                      renderSuggestion={this.renderSuggestion}
-                     onSuggestionSelected={this.onSuggestSelected}
-                     inputProps={inputProps} 
+                     onSuggestionSelected={this.onSuggestionSelected}
+                     inputProps={inputProps}
+                     focusFirstSuggestion= {true}
                      id={this.props.id}
                />
   }

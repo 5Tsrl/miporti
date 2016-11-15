@@ -41,10 +41,10 @@ class HomeLayout extends React.Component {
               </div>
             }
             <div className="widget widget_4-1">
-                <Meteo url="https://www.muoversinpiemonte.it/meteoarpa" pollInterval={2000} />
+                <Meteo url="/meteoarpa" pollInterval={2000} />
             </div>
             <div className="widget widget_4-1">
-                <Colli url="https://www.muoversinpiemonte.it/colli" pollInterval={2000}/>
+                <Colli url="/colli" pollInterval={2000}/>
 			      </div>
             { this.props.currentLocale != 'en' &&
               <div className="widget widget_4-1">
@@ -52,7 +52,7 @@ class HomeLayout extends React.Component {
               </div>
             }
             <div  className="widget widget_4-2">
-                <Voli url="https://www.muoversinpiemonte.it/voli-caselle" pollInterval={10*60*1000}/>
+                <Voli url="/voli-caselle" pollInterval={10*60*1000}/>
 			</div>
         </div>
       

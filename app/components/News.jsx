@@ -39,7 +39,7 @@ class News extends React.Component {
 	 */
 	setLocalState = (data)=> {
 		// Store in LocalStorage
-		lscache.set(this.constructor.displayName, data, 2);
+		lscache.set(this.constructor.displayName, data, 2)
 		// Store in Component State
 		this.setState(data);
 	}
@@ -47,7 +47,7 @@ class News extends React.Component {
   componentDidMount = () => {
     if(this.state.news.length == 0) {
 			axios
-        .get('https://www.muoversinpiemonte.it/news')
+        .get('/news')
 				.then( (res) =>{
           this.setLocalState({news: res.data})
 			})

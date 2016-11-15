@@ -12,21 +12,25 @@ function getPlugins() {
   // Always expose NODE_ENV to webpack, you can now use `process.env.NODE_ENV`
   // inside your code for any environment checks; UglifyJS will automatically
   // drop any unreachable code.
+  console.log('process.env.NODE_ENV',process.env.NODE_ENV)
+
   plugins.push(new webpack.DefinePlugin({
     'process.env': {
-      //'NODE_ENV': process.env.NODE_ENV
-      'NODE_ENV': JSON.stringify('production')
+      'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      //'NODE_ENV': JSON.stringify('production')
     }
   }))
 
   plugins.push(new ExtractTextPlugin("style.css", {allChunks: true}))
-    
+  
+  //require only desired moment locales
+  plugins.push(new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|it)$/))
     
   // Conditionally add plugins for Production builds.
   if (isProd) {
     //console.log('isProd è', isProd)
-    plugins.push(new webpack.optimize.DedupePlugin()),
-    plugins.push(new webpack.optimize.UglifyJsPlugin())
+    plugins.push(new webpack.optimize.DedupePlugin())
+    plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}, sourceMap: false}))
   }
 
   // Conditionally add plugins for Development
@@ -46,9 +50,15 @@ function getEntries() {
     entries.push('webpack-dev-server/client?http://0.0.0.0:8080')   // WebpackDevServer host and port
     entries.push('webpack/hot/only-dev-server')             // "only" prevents reload on syntax errors
   }
-  
   return entries
 }
+
+function getDevtool(){
+  //devtool: '#cheap-module-source-map': 2 sec meno, ma no debug su jsx...,  '#source-map'
+  if(!isProd) return '#source-map'
+  return ''
+}
+
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -57,11 +67,6 @@ const PATHS = {
 
 module.exports = {
     entry: getEntries(),
-    /* [
-      //'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
-      //'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-      PATHS.app + '/index'
-    ],*/
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
@@ -69,8 +74,9 @@ module.exports = {
         path: PATHS.build,
         filename: "bundle.js",
     },
-    //devtool: '#source-map',
-    devtool: '#cheap-module-source-map',
+    
+    devtool: getDevtool(),
+    
     module: {
         loaders: [
           {
@@ -107,18 +113,47 @@ module.exports = {
     },
     devServer: {
       contentBase: 'build/',
-
       // Enable history API fallback so HTML5 History API based
       // routing works. This is a good default that will come
       // in handy in more complicated setups.
       historyApiFallback: true,
-      //hot: true,  //già presente ndel package.json
       //inline: true,
-      progress: true,
+      
+      
+      proxy: {
+            '/news': {
+              target: 'http://proteo:3000',
+              pathRewrite: {'^/news' : '/api/veline?filter[where][channel]=5&filter[order]=validitystart%20desc'},
+              changeOrigin: true
+            },
+            '/wp-json': {
+              target: 'http://wpmip.5t.torino.it',
+              changeOrigin: true
+            },
+            '/meteoarpa': {
+              target: 'http://telegraf:3012',
+              changeOrigin: true
+            },
+            '/voli-caselle': {
+              target: 'http://telegraf:3013',
+              changeOrigin: true
+            },
+            '/colli': {
+              target: 'http://lab.5t.torino.it',
+              pathRewrite: {'^/colli' : '/mip-colli/api'},
+              changeOrigin: true
+            },
+            '/suggest': {
+              target: 'http://geococker:8082/',
+            },
+            
+            
+            
+          }
+      
+      
+      
     },
     plugins:  getPlugins()
-    /*[
-        new ExtractTextPlugin("style.css", {allChunks: true}),
-        new webpack.HotModuleReplacementPlugin()
-    ]*/
+
 }
