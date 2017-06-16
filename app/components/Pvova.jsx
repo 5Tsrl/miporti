@@ -8,14 +8,14 @@ import './page.scss';
 
 const Pvova = React.createClass({
     getInitialState: function() {
-      return {open:true, texts:['pippo', 'pluto','paperino']};
+      return {open:true, texts:['prova1', 'prova2','prova3']};
     },
     handleClick: function(){
         //console.log('open', this.state.open)
         this.setState({open:!this.state.open})
         //this.refs.textsBox.toggle()
     },
-    
+
   render: function() {
       var textsNodes = this.state.texts.map(function(singleText, id){
         return (
@@ -27,10 +27,10 @@ const Pvova = React.createClass({
           <div className="widget page">
               <h2 className="pageHeader" onClick={this.handleClick}>Pvova</h2>
               <Collapse isOpened={this.state.open} >
-                  
+
                   <ul class="meteo_cities accord_meteo_cities">
                       {textsNodes}
-                      
+
                       {/*
                       <li class="meteo_city accord_meteo_city"><span class="city">Alessandria</span></li>
                       <li class="meteo_city accord_meteo_city"><span class="city">Asti</span></li>
@@ -44,11 +44,10 @@ const Pvova = React.createClass({
                 </ul>
             </Collapse>
           </div>
-          
+
       )
   }
 })
 
 
 export default Pvova
-
