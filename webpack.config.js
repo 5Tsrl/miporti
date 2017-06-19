@@ -21,15 +21,14 @@ function getPlugins() {
     }
   }))
 
-  plugins.push(new ExtractTextPlugin("style.css", {allChunks: true}))
-  
+  plugins.push(new ExtractTextPlugin("style.css"))
+
   //require only desired moment locales
   plugins.push(new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|it)$/))
-    
+
   // Conditionally add plugins for Production builds.
   if (isProd) {
     //console.log('isProd è', isProd)
-    plugins.push(new webpack.optimize.DedupePlugin())
     plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}, sourceMap: false}))
   }
 
@@ -68,42 +67,43 @@ const PATHS = {
 module.exports = {
     entry: getEntries(),
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['*', '.js', '.jsx']
     },
     output: {
         path: PATHS.build,
         filename: "bundle.js",
     },
-    
+
     devtool: getDevtool(),
-    
+
     module: {
         loaders: [
           {
                 test: /index\.html/,
-                loader: "file?name=[name].[ext]",
+                loader: "file-loader?name=[name].[ext]",
           },
           {
                 test: /favicon\.ico/,
-                loader: "file?name=images/[name].[ext]",
+                loader: "file-loader?name=images/[name].[ext]",
           },
           {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract("style",[ "css?sourceMap", "sass?sourceMap"])
+                //loader: ExtractTextPlugin.extract("style",[ "css?sourceMap", "sass?sourceMap"])
+                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader']})
           },
           {     test: /\.(jpe?g|gif|png|svg|m4v)$/,
                 include: PATHS.app + '/images',
-                loader: 'url?limit=25000&name=images/[name].[ext]'
+                loader: 'url-loader?limit=25000&name=images/[name].[ext]'
                 //loader: "file?name=images/[name].[hash].[ext]",
           },
           {
                 test: /\.(eot|ttf|woff|woff2|svg)$/,
                 include: PATHS.app + '/font',
-                loader : 'file?name=font/[name].[ext]'
-          },           
+                loader : 'file-loader?name=font/[name].[ext]'
+          },
           {
                 test: /\.jsx?$/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 //loaders: ['react-hot', 'babel'],
                 //loader: 'react-hot!babel',
                 include: path.join(__dirname, 'app'),
@@ -118,8 +118,8 @@ module.exports = {
       // in handy in more complicated setups.
       historyApiFallback: true,
       //inline: true,
-      
-      
+
+
       proxy: {
             '/news': {
               target: 'http://proteo:3000',
@@ -146,13 +146,13 @@ module.exports = {
             '/suggest': {
               target: 'http://geococker:8082/',
             },
-            
-            
-            
+
+
+
           }
-      
-      
-      
+
+
+
     },
     plugins:  getPlugins()
 
