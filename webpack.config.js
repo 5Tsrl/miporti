@@ -44,7 +44,8 @@ function getEntries() {
   let entries = []
   //always
   entries.push('babel-polyfill')
-  entries.push(PATHS.app + '/index')
+  entries.push(PATHS.app + '/index.jsx')
+  entries.push(PATHS.app + '/test1.html')
   if (!isProd) {
     entries.push('webpack-dev-server/client?http://0.0.0.0:8080')   // WebpackDevServer host and port
     entries.push('webpack/hot/only-dev-server')             // "only" prevents reload on syntax errors
@@ -79,8 +80,9 @@ module.exports = {
     module: {
         rules: [
           {
-                test: /index\.html/,
-                use: "file-loader?name=[name].[ext]",
+                test: /\.(html|txt)$/,
+                include: PATHS.app,
+                loader: "file-loader?name=[name].[ext]",
           },
           {
                 test: /favicon\.ico/,
