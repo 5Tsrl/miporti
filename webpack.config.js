@@ -77,33 +77,33 @@ module.exports = {
     devtool: getDevtool(),
 
     module: {
-        loaders: [
+        rules: [
           {
                 test: /index\.html/,
-                loader: "file-loader?name=[name].[ext]",
+                use: "file-loader?name=[name].[ext]",
           },
           {
                 test: /favicon\.ico/,
-                loader: "file-loader?name=images/[name].[ext]",
+                use: "file-loader?name=images/[name].[ext]",
           },
           {
                 test: /\.scss$/,
                 //loader: ExtractTextPlugin.extract("style",[ "css?sourceMap", "sass?sourceMap"])
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader']})
+                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader']})
           },
           {     test: /\.(jpe?g|gif|png|svg|m4v)$/,
                 include: PATHS.app + '/images',
-                loader: 'url-loader?limit=25000&name=images/[name].[ext]'
+                use: 'url-loader?limit=25000&name=images/[name].[ext]'
                 //loader: "file?name=images/[name].[hash].[ext]",
           },
           {
                 test: /\.(eot|ttf|woff|woff2|svg)$/,
                 include: PATHS.app + '/font',
-                loader : 'file-loader?name=font/[name].[ext]'
+                use : 'file-loader?name=font/[name].[ext]'
           },
           {
                 test: /\.jsx?$/,
-                loader: 'babel-loader',
+                use: 'babel-loader',
                 //loaders: ['react-hot', 'babel'],
                 //loader: 'react-hot!babel',
                 include: path.join(__dirname, 'app'),
