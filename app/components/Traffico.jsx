@@ -26,6 +26,9 @@ class Traffico extends React.Component {
       const time_format = this.props.intl.formatMessage({id:'time_format'})
       this.setState({bollentinUpdate: moment(new Date(lm)).format(time_format)})
     })
+    .catch(error => {
+      console.log(error)
+    })
   }
 
   render() {
