@@ -29,6 +29,13 @@ function getPlugins() {
   // Conditionally add plugins for Production builds.
   if (isProd) {
     //console.log('isProd è', isProd)
+    plugins.push(new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor','manifest'],
+      minChunks: function (module) {
+                   // this assumes your vendor imports exist in the node_modules directory
+                   return module.context && module.context.indexOf('node_modules') !== -1;
+                }
+    })) // Specify the common bundle's name.
     plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}, sourceMap: false}))
   }
 
@@ -40,7 +47,7 @@ function getPlugins() {
   return plugins
 }
 
-function getEntries() {
+function getEntriesArray() {
   let entries = []
   //always
   entries.push('babel-polyfill')
@@ -49,6 +56,19 @@ function getEntries() {
   if (!isProd) {
     entries.push('webpack-dev-server/client?http://0.0.0.0:8080')   // WebpackDevServer host and port
     entries.push('webpack/hot/only-dev-server')             // "only" prevents reload on syntax errors
+  }
+  return entries
+}
+function getEntries() {
+  let entries = {}
+  //always
+  //entries.push('babel-polyfill')
+  entries.main = PATHS.app + '/index.jsx'
+  entries.test = PATHS.app + '/test1.html'
+  entries.vendor = 'moment'
+  if (!isProd) {
+    //entries.push('webpack-dev-server/client?http://0.0.0.0:8080')   // WebpackDevServer host and port
+    //entries.push('webpack/hot/only-dev-server')             // "only" prevents reload on syntax errors
   }
   return entries
 }
@@ -72,7 +92,8 @@ module.exports = {
     },
     output: {
         path: PATHS.build,
-        filename: "bundle.js",
+        //filename: "bundle.js",
+        filename: '[name].[chunkhash].js',
     },
 
     devtool: getDevtool(),
