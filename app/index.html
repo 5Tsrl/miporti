@@ -9,31 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
-    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">-->
-    <script>
-      window.onerror = function (message, url, lineNo, colNo, error) {
-       console.log(arguments);
-       let container = document.createElement('div');
 
-       container.style.color = 'red';
-       container.style.position = 'fixed';
-       container.style.background = '#eee';
-       container.style.padding = '2em';
-       container.style.top = '1em';
-       container.style.left = '1em';
-
-       let msg = document.createElement('pre');
-       msg.innerText = [
-          'Message: ' + message,
-          'URL: ' + url,
-          'Line: ' + lineNo,
-          'Column: ' + colNo,
-          'Stack: ' + (error && error.stack)
-       ].join('\n');
-       container.appendChild(msg);
-       document.body.appendChild(container);
-    };
-  </script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -51,11 +28,7 @@
   <!--[if !IE]><!-->
   <body>
   <!--<![endif]-->
-
     <div id="main"></div>
-
     <script src="/bundle.js"></script>
-
-
   </body>
 </html>

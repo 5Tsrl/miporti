@@ -2,7 +2,7 @@
 
 
 .page{
-  text-align: left;
+  text-align: left !important;
   min-height: 500px;
 
   .pageHeader{
@@ -20,7 +20,7 @@
       list-style: none;
       margin-top: 10px;
       a{font-weight: 400}
-      
+
     }
 
     .liv1 li {

@@ -1,6 +1,7 @@
 import './index.html'
 import './style.scss'
 import './images/favicon.ico'
+import './robots.txt'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
