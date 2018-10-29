@@ -104,10 +104,10 @@ a {
 		height: 37px;
 		background:url(images/logo_MIP.svg) no-repeat top left;
 		background-size:contain;
-    
+
     //style inline nel logo svg, ma explorer non lo becca
     .cls-1{fill:#1961ac;}.cls-2{fill:#c6c6c6;}.cls-3{fill:#c61532;}
-    
+
 	}
 	#nav-toggle {
 		display: block;
@@ -237,7 +237,7 @@ a {
 		}
 	}
 	@include media('screen', '>dim_50') {
-    
+
 		#nav-toggle{
 			display: none;
 		}
@@ -405,7 +405,7 @@ footer{
 		ul li{
 			display: inline-block;
 			font-size: 0.7em;
-      
+
       &:not(:first-child):before{
 				content: " | ";
 				padding: 0 10px;
@@ -596,7 +596,7 @@ footer{
 }
 
 .widget{
-  
+
 	width:100%;
 	background: #fff;
 	margin-bottom: 30px;
@@ -1144,7 +1144,7 @@ footer{
 		color: #fff;
 		background: #00665d;
 		padding: 15px 25px;
-  
+
 	}
   p{
 		margin: 40px auto;
@@ -1154,7 +1154,7 @@ footer{
 		background: url(images/train.svg)  no-repeat center;
 		display: block;
 		height: 180px;
-		margin: 4px auto 5px;		
+		margin: 4px auto 5px;
 	}
   .btn_link{
     background: #00665d;
@@ -1491,7 +1491,7 @@ footer{
 }
 
 .widget_ticket{
-  
+
 	color: $c4;
 	padding: 23px;
   background-color: #fff;
@@ -1820,7 +1820,7 @@ footer{
 	}
 }
 @include media('screen', '>dim_22') {
-	
+
 
 }
 @include media('screen', '>dim_25') {
@@ -2253,15 +2253,15 @@ footer{
 		// content: '\e807';
 		background:url(images/meteo/variabile-con-temporali.svg) no-repeat center;
 	}
-	&.ventoso:before{
+	&.vento:before, &.ventoso:before{
 		// content: '\e808';
 		background:url(images/meteo/vento.svg) no-repeat center;
 	}
-	&.ventoso-neve:before{
+	&.vento-neve:before, &.ventoso-neve:before{
 		// content: '\e809';
 		background:url(images/meteo/vento-neve.svg) no-repeat center;
 	}
-	&.ventoso-pioggia:before{
+	&.vento-pioggia:before, &.ventoso-pioggia:before{
 		// content: '\e80a';
 		background:url(images/meteo/vento-pioggia.svg) no-repeat center;
 	}
@@ -2362,15 +2362,15 @@ footer{
 		// content: '\e807';
 		background:url(images/meteo/small/variabile-con-temporali.svg) no-repeat center;
 	}
-	&.ventoso:before{
+	&.vento:before, &.ventoso:before{
 		// content: '\e808';
 		background:url(images/meteo/small/vento.svg) no-repeat center;
 	}
-	&.ventoso-neve:before{
+	&.vento-neve:before, &.ventoso-neve:before{
 		// content: '\e809';
 		background:url(images/meteo/small/vento-neve.svg) no-repeat center;
 	}
-	&.ventoso-pioggia:before{
+	&.vento-pioggia:before, &.ventoso-pioggia:before{
 		// content: '\e80a';
 		background:url(images/meteo/small/vento-pioggia.svg) no-repeat center;
 	}
