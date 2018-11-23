@@ -1,18 +1,4 @@
 {
-  "plugins": [
-    
-    "react-hot-loader/babel"
-  ],
-  "presets": [
-    "es2015",
-    "react",
-    "stage-0",
-  ],
-  "env": {
-    "development": {
-      "presets": [
-        "react-hmre"
-      ]
-    }
-  }
+"presets": ["@babel/env", "@babel/react"],
+"plugins": ["@babel/plugin-proposal-class-properties"]
 }

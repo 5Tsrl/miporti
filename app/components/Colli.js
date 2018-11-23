@@ -53,9 +53,9 @@ class Colli extends React.Component {
 		this.setState(data);
 	}
 
-  loadDataFromServer = () => {      
+  loadDataFromServer = () => {
     axios
-      .get(this.props.url)
+      .get('/mip-colli/api/')
       .then( (res) =>{
         this.setLocalState({colli: res.data})
       })
@@ -66,7 +66,7 @@ class Colli extends React.Component {
       this.loadDataFromServer()
     }
   }
-  
+
   render() {
     return <div className="widget_imgbg">
             <div className="centra">
@@ -75,7 +75,7 @@ class Colli extends React.Component {
               <Selector texts={this.state.colli} text={this.props.intl.formatMessage({id:'Situazione colli alpini'})}/>
             </div>
           </div>
-    
+
   }
 }
 

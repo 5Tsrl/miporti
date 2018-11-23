@@ -1,6 +1,10 @@
 const path = require("path");
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+// const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
+const devMode = process.env.NODE_ENV !== 'production'
+
 
 const isProd = (process.env.NODE_ENV === 'production')
 
@@ -21,7 +25,14 @@ function getPlugins() {
     }
   }))
 
-  plugins.push(new ExtractTextPlugin("style.css"))
+  //plugins.push(new ExtractTextPlugin("style.css"))
+  plugins.push(new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }))
+
 
   //require only desired moment locales
   plugins.push(new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|it)$/))
@@ -34,7 +45,7 @@ function getPlugins() {
 
   // Conditionally add plugins for Development
   else {
-    plugins.push(new webpack.HotModuleReplacementPlugin())
+    // plugins.push(new webpack.HotModuleReplacementPlugin())
   }
 
   return plugins
@@ -43,13 +54,13 @@ function getPlugins() {
 function getEntries() {
   let entries = []
   //always
-  entries.push('babel-polyfill')
+  // 11/2018 entries.push('babel-polyfill')
   entries.push(PATHS.app + '/index.jsx')
-  entries.push(PATHS.app + '/test1.html')
-  if (!isProd) {
-    entries.push('webpack-dev-server/client?http://0.0.0.0:8080')   // WebpackDevServer host and port
-    entries.push('webpack/hot/only-dev-server')             // "only" prevents reload on syntax errors
-  }
+  //entries.push(PATHS.app + '/test1.html')
+  // if (!isProd) {
+  //   entries.push('webpack-dev-server/client?http://0.0.0.0:8080')   // WebpackDevServer host and port
+  //   entries.push('webpack/hot/only-dev-server')             // "only" prevents reload on syntax errors
+  // }
   return entries
 }
 
@@ -88,10 +99,20 @@ module.exports = {
                 test: /favicon\.ico/,
                 use: "file-loader?name=images/[name].[ext]",
           },
+          // {
+          //       test: /\.scss$/,
+          //       //loader: ExtractTextPlugin.extract("style",[ "css?sourceMap", "sass?sourceMap"])
+          //       use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader']})
+          // },
           {
-                test: /\.scss$/,
-                //loader: ExtractTextPlugin.extract("style",[ "css?sourceMap", "sass?sourceMap"])
-                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader']})
+            test: /\.scss$/,
+            use: [
+              'style-loader',
+              //devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+              'css-loader',
+              //'postcss-loader',
+              'sass-loader',
+            ],
           },
           {     test: /\.(jpe?g|gif|png|svg|m4v)$/,
                 include: PATHS.app + '/images',
@@ -118,42 +139,32 @@ module.exports = {
       // Enable history API fallback so HTML5 History API based
       // routing works. This is a good default that will come
       // in handy in more complicated setups.
+      // When using the HTML5 History API, the index.html page will likely have to be served in place of any 404 responses.
       historyApiFallback: true,
-      //inline: true,
+      //inline: true,//è il default...
 
 
       proxy: {
-            '/news': {
-              target: 'http://proteo:3000',
-              pathRewrite: {'^/news' : '/api/veline?filter[where][channel]=5&filter[order]=validitystart%20desc'},
-              changeOrigin: true
-            },
-            '/wp-json': {
-              target: 'http://wpmip.5t.torino.it',
-              changeOrigin: true
-            },
-            '/meteoarpa': {
-              target: 'http://telegraf:3012',
-              changeOrigin: true
-            },
-            '/voli-caselle': {
-              target: 'http://telegraf:3013',
-              changeOrigin: true
-            },
-            '/colli': {
-              target: 'http://lab.5t.torino.it',
-              pathRewrite: {'^/colli' : '/mip-colli/api'},
-              changeOrigin: true
-            },
-            '/suggest': {
-              target: 'http://geococker:8082/',
-            },
-
-
-
-          }
-
-
+        '/news': {
+          target: 'http://proteo:3000',
+          pathRewrite: {'^/news' : '/api/veline?filter[where][channel]=5&filter[order]=validitystart%20desc'},
+          // changeOrigin: true   // da usare quando si proxa su un named virtula host!
+        },
+        '/wp-json': {
+          target: 'http://wpmip.5t.torino.it',
+        },
+        '/meteoarpa': {
+          target: 'http://telegraf:3012',
+        },
+        '/voli-caselle': {
+          target: 'http://telegraf:3013',
+        },
+        '/colli': {
+          target: 'http://lab.5t.torino.it',
+          pathRewrite: {'^/colli' : '/mip-colli/api'},
+        },
+        '/suggest': 'http://geococker:8082/',
+      }
 
     },
     plugins:  getPlugins()

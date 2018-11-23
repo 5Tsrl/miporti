@@ -53,7 +53,7 @@ export default {
     'treno':'treno',
     'Orario Generale':'Orario Generale',
     //NotFound
-    'Ooops...  pagina non trovata!':'Ooops...  pagina non trovata!',
+    'Ops...  pagina non trovata!':'Ops... pagina non trovata!',
     'Torna alla':'Torna alla',
     'di Muoversi in Piemonte':'di Muoversi in Piemonte'
 }

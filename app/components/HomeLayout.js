@@ -13,11 +13,11 @@ import Carousel from './Carousel'
 import Voli from './Voli'
 
 class HomeLayout extends React.Component {
-    
+
       render() {
         //console.log('this.props.location.query.setLng', this.props.location.query.setLng)
         return (
-            
+
         <div className="aux widget_container">
             <div  className="widget widget_4-2">
                 <Calcolo />
@@ -41,10 +41,10 @@ class HomeLayout extends React.Component {
               </div>
             }
             <div className="widget widget_4-1">
-                <Meteo url="/meteoarpa" pollInterval={2000} />
+                <Meteo />
             </div>
             <div className="widget widget_4-1">
-                <Colli url="/colli" pollInterval={2000}/>
+                <Colli />
 			      </div>
             { this.props.currentLocale != 'en' &&
               <div className="widget widget_4-1">
@@ -55,7 +55,7 @@ class HomeLayout extends React.Component {
                 <Voli url="/voli-caselle" pollInterval={10*60*1000}/>
 			</div>
         </div>
-      
+
         )
     }
 }

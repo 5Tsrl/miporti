@@ -6,3 +6,4 @@ build/images*
 build/font*
 build/traffico.m*
 build/index.html
+*.log

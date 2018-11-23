@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect} from 'react-redux'
 import {update} from 'react-intl-redux'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import lscache from 'lscache'
 
