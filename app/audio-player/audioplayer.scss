@@ -9,7 +9,7 @@ $animate-sec: 1.5s;
   position:absolute;
   top:0;
   left:0;
-  
+
 }
 
 .audio-button-panel {
@@ -51,7 +51,7 @@ $animate-sec: 1.5s;
 }
 
 .audio-progress {
-  
+
     position: absolute;
     top:32px;
     left: 75px;
@@ -66,7 +66,7 @@ $animate-sec: 1.5s;
 .audio-progress:hover {
   background-color: #40B391;
 }
-  
+
 
 .audio-songs-list {
 	float: left;
@@ -191,9 +191,9 @@ $animate-sec: 1.5s;
   margin-bottom: 50px;
   //position:relative;
   //display: inline-block;
-  
+
   .btn_link {
-    
+
     position: absolute;
     top:0;
     right:20px;
@@ -256,4 +256,3 @@ $animate-sec: 1.5s;
   width: 20px;
   height: 19px;
 }
-

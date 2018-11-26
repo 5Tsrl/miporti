@@ -1,7 +1,6 @@
 import React from 'react'
-// import { ProgressBar } from 'react-bootstrap'
 import classNames from 'classnames'
-
+import PropTypes from 'prop-types'
 
 export default class ProgressBar extends React.Component {
   render() {
@@ -10,7 +9,7 @@ export default class ProgressBar extends React.Component {
     const classes = classNames({
       'audio-progress-container': true,
       visibile: this.props.isPlaying,
-      'audio-progress-container-short-width': this.props.shorter
+      'audio-progress-container-short-width': this.props.shorter,
     });
 
     return (
@@ -19,6 +18,13 @@ export default class ProgressBar extends React.Component {
       </div>
     )
   }
+}
+
+ProgressBar.propTypes = {
+  progressStyle: PropTypes.object,
+  percent: PropTypes.any,
+  shorter: PropTypes.any,
+  isPlaying: PropTypes.any,
 }
 
 ProgressBar.defaultProps = {

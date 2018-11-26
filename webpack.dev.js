@@ -10,13 +10,13 @@ module.exports = merge(common, {
         test: /\.scss$/,
         use: [
           'style-loader',
-          //devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
-          //'postcss-loader',
+          // 'postcss-loader',
           'sass-loader',
         ],
       },
-    ]
+    ],
   },
 
   devServer: {
@@ -25,20 +25,21 @@ module.exports = merge(common, {
     // Enable history API fallback so HTML5 History API based routing works.
     // the index.html page will likely have to be served in place of any 404 responses.
     historyApiFallback: true,
-    //inline: true,//è il default...
+    // inline: true,//è il default...
 
     proxy: {
+
       '/news': {
         target: 'http://proteo:3000',
-        pathRewrite: {'^/news' : '/api/veline?filter[where][channel]=5&filter[order]=validitystart%20desc'},
+        pathRewrite: { '^/news': '/api/veline?filter[where][channel]=5&filter[order]=validitystart%20desc' },
       },
       '/wp-json': {
         target: 'http://wpmip.5t.torino.it',
-        changeOrigin: true  // da usare quando si proxa su un named virtual host!
+        changeOrigin: true, // da usare quando si proxa su un named virtual host!
       },
       '/notiziario': {
         target: 'https://www.muoversinpiemonte.it',
-        changeOrigin: true  // da usare quando si proxa su un named virtual host!
+        changeOrigin: true, // da usare quando si proxa su un named virtual host!
       },
       '/meteoarpa': {
         target: 'http://telegraf:3012',
@@ -51,7 +52,7 @@ module.exports = merge(common, {
         // pathRewrite: {'^/colli-alpini' : '/mip-colli/api'},
       },
       '/suggest': 'http://geococker:8082/',
-    }
+    },
 
-  }
+  },
 });

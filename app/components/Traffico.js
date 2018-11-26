@@ -3,7 +3,7 @@ import { injectIntl, FormattedMessage } from 'react-intl'
 import axios from 'axios'
 import moment from 'moment'
 import AudioPlayer from '../audio-player/components/AudioPlayer'
-import '../audio-player/app.scss'
+// import '../audio-player/audioplayer.scss'
 import '../images/traffico.png'
 import '../images/traffico.m4v'
 

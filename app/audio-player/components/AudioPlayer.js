@@ -1,9 +1,7 @@
-//import '../vendor/bootstrap.min.scss'
-
 import React from 'react'
 import ButtonPanel from './ButtonPanel'
 import ProgressBar from './ProgressBar'
-import NameLabel from './NameLabel'
+import '../audioplayer.scss'
 
 var Howl = require('../vendor/howler.min.js').Howl;
 

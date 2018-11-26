@@ -13,5 +13,7 @@ module.exports = {
         "camelcase": "off",
         'max-len': [1, 150, 2, {ignoreComments: true}],
         "import/extensions": "always",
-      }
+        "react/prop-types": 0, //
+      },
+      "parser": "babel-eslint" //  per le static  properties
 };
