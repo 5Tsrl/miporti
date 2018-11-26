@@ -5,7 +5,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, combineReducers } from 'redux'
-import { Provider, intlReducer, update} from 'react-intl-redux' // Provider di react-intl-redux wrappa tutto
+import { Provider, intlReducer, update } from 'react-intl-redux' // Provider di react-intl-redux wrappa tutto
 import { addLocaleData } from 'react-intl'
 import localeDataIt from 'react-intl/locale-data/it'
 import localeDataEn from 'react-intl/locale-data/en'
@@ -18,23 +18,23 @@ import messages_it from './messages/it.js'
 
 /* utility functions */
 function getParameterByName(name, url) {
-  if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, "\\$&");
-  let regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`)
-  let results = regex.exec(url)
+  const purl = url || window.location.href;
+  const pname = name.replace(/[[]]/g, '\\$&');
+  const regex = new RegExp(`[?&]${pname}(=([^&#]*)|&|#|$)`)
+  const results = regex.exec(purl)
   if (!results) return null;
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
 // gestione cookie lingua
-let i18next = document.cookie.replace(/(?:(?:^|.*;\s*)i18next\s*\=\s*([^;]*).*$)|^.*$/, '$1')
+const i18next = document.cookie.replace(/(?:(?:^|.*;\s*)i18next\s*=\s*([^;]*).*$)|^.*$/, '$1')
 // console.log('i18next', i18next);
 
 let setLng = getParameterByName('setLng')
 if (!setLng || setLng === '') {
   if (i18next) {
-    setLng = i18next
+    setLng = i18next.substring(0, 2) // se it-IT -> solo it
   } else {
     setLng = lscache.get('preferredLocale')
     if (!setLng) setLng = 'it'

@@ -11,12 +11,12 @@ class WPage extends React.Component {
     isLoaded: false,
   }
 
-  setLocalState = (key, value) => {
-    const newPages = Object.assign({}, this.state.pages)
-    newPages[key] = value
-    this.setState({ pages: newPages })
-    lscache.set('pages', this.state.pages, 2)
-  }
+  // setLocalState = (key, value) => {
+  //   const newPages = Object.assign({}, this.state.pages)
+  //   newPages[key] = value
+  //   this.setState({ pages: newPages })
+  //   lscache.set('pages', this.state.pages, 2)
+  // }
 
   getPageContent = () => {
     const { slug } = this.props.match.params
@@ -41,7 +41,7 @@ class WPage extends React.Component {
     this.getPageContent()
   }
 
-  componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps() {
     console.log('componentWillReceiveProps() called')
     this.setState({ page: {}, isLoaded: false })
     this.getPageContent()

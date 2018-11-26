@@ -14,10 +14,12 @@ import config from '../configurations/config.js'
 const MenuItem = (props) => {
   // console.log('props', props)
   if (/^https?:\/\//.test(props.url)) {
-    return <li><a href={props.url} onClick={props.handleClick}>{props.title}</a></li>
+    console.log('a')
+    return (<li><a href={props.url} onClick={props.handleClick}>{props.title}</a></li>)
   }
   // activeClassName="active" di default!
-  return <li><NavLink to={props.url} onClick={props.handleClick}>{props.title}</NavLink></li>
+  console.log('NavLink', props.url)
+  return (<li><NavLink to={props.url} onClick={props.handleClick}>{props.title}</NavLink></li>)
 }
 
 const LangItem = (props) => {
@@ -90,7 +92,7 @@ class Menu extends React.Component {
 
   render = () => {
     // console.log('config', config)
-    const menu = config.mainMenu[this.props.currentLocale]
+    const menu = config.mainMenu[this.props.currentLocale] || config.mainMenu.it
     // console.log('menu', menu)
 
     const menuNodes = menu.map((item, idx) => {

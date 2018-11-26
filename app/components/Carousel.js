@@ -4,15 +4,15 @@ import ViaggiaPiemonte from './ViaggiaPiemonte'
 import Bip from './Bip'
 
 class Carousel extends React.Component {
-  state = {oo: false}
-  
+  state = { oo: false }
+
   toggleOo = () => {
-    this.setState({oo: !this.state.oo})
+    this.setState({ oo: !this.state.oo })
   }
-  
+
   componentDidMount = () => {
-    const intervalId = setInterval(this.toggleOo, 10*1000)
-    this.setState({intervalId: intervalId})
+    const intervalId = setInterval(this.toggleOo, 10 * 1000)
+    this.setState({ intervalId })
   }
 
   componentWillUnmount = () => {
@@ -21,18 +21,16 @@ class Carousel extends React.Component {
 
   render = () => {
     const carouselNode = this.state.oo ? <ViaggiaPiemonte /> : <Bip />
-    const node = <div key={'id_'+this.state.oo}>{carouselNode}</div>
+    const node = <div key={`id_${this.state.oo}`}>{carouselNode}</div>
 
-    return <ReactCSSTransitionReplace      
+    return <ReactCSSTransitionReplace
           transitionName="carousel"
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={1000}
           >
           {node}
         </ReactCSSTransitionReplace>
-  
   }
 }
 
 export default Carousel
-
