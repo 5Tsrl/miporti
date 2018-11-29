@@ -1417,28 +1417,6 @@ footer{
 					background: $c13_1;
 				}
 			}
-			/*.meteo_today{
-				.meteo_img{
-					display: block;
-					content: '';
-					width: 41px;
-					height: 41px;
-					background:url(images/variabile_small.svg) no-repeat center;
-					background-size:contain;
-					margin: 10px auto;
-				}
-			}
-			.meteo_tomorrow{
-				.meteo_img{
-					display: block;
-					content: '';
-					width: 41px;
-					height: 41px;
-					background:url(images/variabile_small.svg) no-repeat center;
-					background-size:contain;
-					margin: 10px auto;
-				}
-			}*/
 		}
 	}
 }
@@ -2215,98 +2193,101 @@ footer{
 		height: 55px;
 		display: block;
 		margin: 10px auto;
+		fill:red;
+		// filter: brightness(0.7)  hue-rotate(180deg);
+		filter:  brightness(45%) sepia(1) saturate(5) hue-rotate(170deg) ;
 	}
 	&.coperto:before{
 		// content: '\e80b';
 		// font-size: 1.8em;
-		background:url(images/meteo/small/coperto.svg) no-repeat center;
+		background: url(images/meteo/coperto.svg) no-repeat center;
 	}
 	&.foschia:before{
 		// content: '\e80c';
-		background:url(images/meteo/small/foschia.svg) no-repeat center;
+		background:url(images/meteo/foschia.svg) no-repeat center;
 	}
 	&.nebbia:before{
 		// content: '\e80d';
-		background:url(images/meteo/small/nebbia.svg) no-repeat center;
+		background:url(images/meteo/nebbia.svg) no-repeat center;
 	}
 	&.neve-debole:before{
 		// content: '\e80e';
-		background:url(images/meteo/small/neve-debole.svg) no-repeat center;
+		background:url(images/meteo/neve-debole.svg) no-repeat center;
 	}
 	&.neve-forte:before{
 		// content: '\e80f';
-		background:url(images/meteo/small/neve-forte.svg) no-repeat center;
+		background:url(images/meteo/neve-forte.svg) no-repeat center;
 	}
 	&.neve-moderata:before{
 		// content: '\e810';
-		background:url(images/meteo/small/neve-moderata.svg) no-repeat center;
+		background:url(images/meteo/neve-moderata.svg) no-repeat center;
 	}
 	&.neve-molto-forte:before{
 		// content: '\e811';
-		background:url(images/meteo/small/neve-molto-forte.svg) no-repeat center;
+		background:url(images/meteo/neve-molto-forte.svg) no-repeat center;
 	}
 	&.nuvoloso:before{
 		// content: '\e800';
-		background:url(images/meteo/small/nuvoloso.svg) no-repeat center;
+		background:url(images/meteo/nuvoloso.svg) no-repeat center;
 	}
 	&.parzialmente-nuvoloso:before{
 		// content: '\e801';
-		background:url(images/meteo/small/parzialmente-nuvoloso.svg) no-repeat center;
+		background:url(images/meteo/parzialmente-nuvoloso.svg) no-repeat center;
 	}
 	&.pioggia-debole:before{
 		// content: '\e812';
-		background:url(images/meteo/small/pioggia-debole.svg) no-repeat center;
+		background:url(images/meteo/pioggia-debole.svg) no-repeat center;
 	}
 	&.pioggia-forte:before{
 		// content: '\e813';
-		background:url(images/meteo/small/pioggia-forte.svg) no-repeat center;
+		background:url(images/meteo/pioggia-forte.svg) no-repeat center;
 	}
 	&.pioggia-moderata:before{
 		// content: '\e814';
-		background:url(images/meteo/small/pioggia-moderata.svg) no-repeat center;
+		background:url(images/meteo/pioggia-moderata.svg) no-repeat center;
 	}
 	&.pioggia-molto-forte:before{
 		// content: '\e815';
-		background:url(images/meteo/small/pioggia-molto-forte.svg) no-repeat center;
+		background:url(images/meteo/pioggia-molto-forte.svg) no-repeat center;
 	}
 	&.pioggia-mista-neve:before{
 		// content: '\e816';
-		background:url(images/meteo/small/pioggia-neve.svg) no-repeat center;
+		background:url(images/meteo/pioggia-neve.svg) no-repeat center;
 	}
 	&.poco-nuvoloso:before{
 		// content: '\e802';
-		background:url(images/meteo/small/poco-nuvoloso.svg) no-repeat center;
+		background:url(images/meteo/poco-nuvoloso.svg) no-repeat center;
 	}
 	&.rovesci:before{
 		// content: '\e803';
-		background:url(images/meteo/small/rovesci.svg) no-repeat center;
+		background:url(images/meteo/rovesci.svg) no-repeat center;
 	}
 	&.sereno:before{
 		// content: '\e804';
-		background:url(images/meteo/small/sereno.svg) no-repeat center;
+		background:url(images/meteo/sereno.svg) no-repeat center;
 	}
 	&.temporale:before{
 		// content: '\e805';
-		background:url(images/meteo/small/temporale.svg) no-repeat center;
+		background:url(images/meteo/temporale.svg) no-repeat center;
 	}
 	&.tormenta-neve:before{
 		// content: '\e806';
-		background:url(images/meteo/small/tormenta-neve.svg) no-repeat center;
+		background:url(images/meteo/tormenta-neve.svg) no-repeat center;
 	}
 	&.variabile-con-temporali:before{
 		// content: '\e807';
-		background:url(images/meteo/small/variabile-con-temporali.svg) no-repeat center;
+		background:url(images/meteo/variabile-con-temporali.svg) no-repeat center;
 	}
 	&.vento:before, &.ventoso:before{
 		// content: '\e808';
-		background:url(images/meteo/small/vento.svg) no-repeat center;
+		background:url(images/meteo/vento.svg) no-repeat center;
 	}
 	&.vento-neve:before, &.ventoso-neve:before{
 		// content: '\e809';
-		background:url(images/meteo/small/vento-neve.svg) no-repeat center;
+		background:url(images/meteo/vento-neve.svg) no-repeat center;
 	}
 	&.vento-pioggia:before, &.ventoso-pioggia:before{
 		// content: '\e80a';
-		background:url(images/meteo/small/vento-pioggia.svg) no-repeat center;
+		background:url(images/meteo/vento-pioggia.svg) no-repeat center;
 	}
 }
