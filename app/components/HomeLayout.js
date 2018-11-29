@@ -1,41 +1,41 @@
 import React from 'react'
-import { connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Calcolo from './Calcolo'
-import Traffico from './Traffico'
-import News from './News'
-import ViaggiaPiemonte from './ViaggiaPiemonte'
-import Tweet from './Tweet'
-import Meteo from './Meteo'
-import Colli from './Colli'
-import Bip from './Bip'
 import Carousel from './Carousel'
-
+import Colli from './Colli'
+import Header from './Header'
+import Meteo from './Meteo'
+import News from './News'
+import Traffico from './Traffico'
+import Tweet from './Tweet'
+import ViaggiaPiemonte from './ViaggiaPiemonte'
 import Voli from './Voli'
 
 class HomeLayout extends React.Component {
-
-      render() {
-        //console.log('this.props.location.query.setLng', this.props.location.query.setLng)
-        return (
-
+  render() {
+    // console.log('this.props.location.query.setLng', this.props.location.query.setLng)
+    return (
+      <React.Fragment>
+        <Header />
+        <main className="main">
         <div className="aux widget_container">
-            <div  className="widget widget_4-2">
+            <div className="widget widget_4-2">
                 <Calcolo />
             </div>
-            <div  className="widget widget_4-2">
+            <div className="widget widget_4-2">
                 <Traffico />
             </div>
-            { this.props.currentLocale != 'en' &&
-            <div  className="widget widget_4-2">
+            { this.props.currentLocale !== 'en' &&
+            <div className="widget widget_4-2">
               <News />
             </div>
             }
-            { this.props.currentLocale != 'en' && false &&
-              <div  className="widget widget_4-1 widget_4-1">
+            { this.props.currentLocale !== 'en' && false &&
+              <div className="widget widget_4-1 widget_4-1">
                     <ViaggiaPiemonte />
               </div>
             }
-            { this.props.currentLocale != 'en' &&
+            { this.props.currentLocale !== 'en' &&
               <div className="widget widget_4-1">
                   <Tweet />
               </div>
@@ -45,22 +45,24 @@ class HomeLayout extends React.Component {
             </div>
             <div className="widget widget_4-1">
                 <Colli />
-			      </div>
-            { this.props.currentLocale != 'en' &&
+            </div>
+            { this.props.currentLocale !== 'en' &&
               <div className="widget widget_4-1">
                   <Carousel />
               </div>
             }
-            <div  className="widget widget_4-2">
-                <Voli url="/voli-caselle" pollInterval={10*60*1000}/>
-			</div>
+              <div className="widget widget_4-2">
+                <Voli url="/voli-caselle" />
+              </div>
         </div>
+      </main>
+    </React.Fragment>
 
-        )
-    }
+    )
+  }
 }
 
-//mappo l' intl.locale dello state di redux sulla props currentLocale
+// mappo l' intl.locale dello state di redux sulla props currentLocale
 function mapStateToProps(state) {
   return { currentLocale: state.intl.locale }
 }

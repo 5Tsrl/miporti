@@ -1,7 +1,6 @@
 import React from 'react'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import axios from 'axios'
-import moment from 'moment'
 import AudioPlayer from '../audio-player/components/AudioPlayer'
 // import '../audio-player/audioplayer.scss'
 import '../images/traffico.png'
@@ -11,7 +10,10 @@ class Traffico extends React.Component {
   constructor(props) {
     super(props)
     // this.audioPlayerRef= React.createRef();
-    this.state = { bollentinUpdate: '...' }
+    this.state = {
+      bollentinUpdate: '...',
+      songs: [{ url: 'https://www.muoversinpiemonte.it/notiziario/notiziario.mp3' }],
+    }
   }
 
   onAscoltaClick(e) {
@@ -19,13 +21,21 @@ class Traffico extends React.Component {
     this.audioPlayerRef.onPlayBtnClick()
   }
 
+  static formatTime(lastModified) {
+    const date = new Date(lastModified)
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+    const minutesPad = minutes < 10 ? `0${minutes}` : minutes
+    const strTime = `${hours}:${minutesPad}`
+    return strTime
+  }
+
   componentDidMount() {
     axios
       .head(this.props.notiziario)
       .then((res) => {
         const lm = res.headers['last-modified']
-        const time_format = this.props.intl.formatMessage({id: 'time_format' })
-        this.setState({ bollentinUpdate: moment(new Date(lm)).format(time_format) })
+        this.setState({ bollentinUpdate: Traffico.formatTime(lm) })
       })
       .catch((error) => {
         console.log(error)
@@ -33,8 +43,6 @@ class Traffico extends React.Component {
   }
 
   render() {
-    const songs = [{ url: 'https://www.muoversinpiemonte.it/notiziario/notiziario.mp3' }]
-
     return (
 
     <div className="widget_traffico ">
@@ -49,7 +57,7 @@ class Traffico extends React.Component {
       </div>
       <div className="align_brother_bottom">
         <div className="area_player no_news_traffico no_close">
-          <AudioPlayer ref={c => this.audioPlayerRef = c} songs={songs} />
+          <AudioPlayer ref={c => this.audioPlayerRef = c} songs={this.state.songs} />
           <a href="#" className="ascolta" id='Ascolta il notiziario'
             onClick={this.onAscoltaClick.bind(this)}>
             <FormattedMessage id='Ascolta il notiziario' values={{ bollentinUpdate: this.state.bollentinUpdate }}/>

@@ -1,5 +1,7 @@
 const merge = require('webpack-merge')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const common = require('./webpack.common.js')
+
 
 module.exports = merge(common, {
   mode: 'development',
@@ -10,7 +12,6 @@ module.exports = merge(common, {
         test: /\.scss$/,
         use: [
           'style-loader',
-          // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           // 'postcss-loader',
           'sass-loader',
@@ -18,6 +19,10 @@ module.exports = merge(common, {
       },
     ],
   },
+
+  plugins: [
+    new BundleAnalyzerPlugin(),
+  ],
 
   devServer: {
     contentBase: './dist',

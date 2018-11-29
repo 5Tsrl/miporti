@@ -1,4 +1,5 @@
 export default {
+
   mainMenu: {
     it: [
       {
@@ -40,32 +41,30 @@ export default {
   footerMenu: {
     it: [{
       title: 'Radio',
-      url: 'http://wpmip.5t.torino.it/radio/',
+      url: '/page/radio',
     }, {
       title: 'Disclaimer',
-      url: 'http://wpmip.5t.torino.it/disclaimer/',
+      url: '/page/disclaimer',
     }, {
       title: 'Cookies',
-      url: 'http://wpmip.5t.torino.it/cookies/',
+      url: '/page/cookies',
     }, {
       title: 'Contatti',
-      url: 'http://wpmip.5t.torino.it/contatti/',
+      url: '/page/contatti',
     }],
 
     en: [{
       title: 'Radio',
-      url: 'http://wpmip.5t.torino.it/local-radio-stations/',
+      url: '/page/local-radio-stations',
     }, {
       title: 'Disclaimer',
-      url: 'http://wpmip.5t.torino.it/disclaimer_en/',
+      url: '/page/disclaimer_en',
     }, {
       title: 'Cookies',
-      url: 'http://wpmip.5t.torino.it/cookies_en/',
+      url: '/page/cookies_en',
     }, {
       title: 'Contact',
-      url: 'http://wpmip.5t.torino.it/contacts/',
+      url: '/page/contacts',
     }],
-
-
   },
 }

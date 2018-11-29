@@ -67,5 +67,5 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('main'),
+  document.getElementById('app'),
 )

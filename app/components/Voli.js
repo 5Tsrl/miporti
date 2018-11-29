@@ -95,17 +95,16 @@ class Voli extends React.Component {
 
   loadVoliFromServer() {
     axios.get(this.props.url)
-       .catch(function (response){
-          if (response instanceof Error) {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', response.message);
-          } else {
-            // The request was made, but the server responded with a status code that falls out of the range of 2xx
-            console.log(response.status);
-        }})
-        .then( (response) =>{
-            this.setState({data: response.data})
-       })
+      .then((response) => {
+        this.setState({ data: response.data })
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.status, error.response.data)
+        } else {
+          console.log('errore di rete')
+        }
+      })
   }
 
   componentDidMount() {
@@ -113,17 +112,17 @@ class Voli extends React.Component {
   }
 
   handleSceltaCurrent(current) {
-      console.log('p/a', current)
-      this.setState({partenzeArrivi : current})
+    // console.log('p/a', current)
+    this.setState({ partenzeArrivi: current })
   }
 
   render() {
-    var voli = []
-    var aggiornamento = ''
-    if(typeof this.state.data.partenze !== 'undefined'){
-        voli = this.state.data[this.state.partenzeArrivi].slice(0,4)
-        aggiornamento = this.state.data.aggiornamento.split(/alle/).pop().trim()
-        //console.log(aggiornamento)
+    let voli = []
+    let aggiornamento = ''
+    if (typeof this.state.data.partenze !== 'undefined') {
+      voli = this.state.data[this.state.partenzeArrivi].slice(0, 4)
+      aggiornamento = this.state.data.aggiornamento.split(/alle/).pop().trim()
+      // console.log(aggiornamento)
     }
     return (
 
@@ -131,7 +130,9 @@ class Voli extends React.Component {
         <div className="title-4">
             <h2><FormattedMessage id='orario voli'/></h2>
             <h3><FormattedMessage id='Aeroporto di Torino'/></h3>
-            <p><FormattedMessage id='In collaborazione con '/> <a href={'http://www.aeroportoditorino.it/'+this.props.currentLocale} target="_blank">Sagat S.p.a.</a></p>
+            <p><FormattedMessage id='In collaborazione con '/>
+             <a href={`http://www.aeroportoditorino.it/${this.props.currentLocale}`}>Sagat S.p.a.</a>
+           </p>
         </div>
         <VoliTabs partenzeArrivi={this.state.partenzeArrivi} onCurrentChoosen={this.handleSceltaCurrent.bind(this)}/>
         <VoliTable partenzeArrivi={this.state.partenzeArrivi} voli={voli} />
@@ -141,7 +142,7 @@ class Voli extends React.Component {
     )
   }
 }
-//mappo l' intl.locale dello state di redux sulla props currentLocale
+// mappo l' intl.locale dello state di redux sulla props currentLocale
 const mapStateToProps = (state) => {
   return { currentLocale: state.intl.locale }
 }

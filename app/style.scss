@@ -1826,26 +1826,6 @@ footer{
 @include media('screen', '>dim_25') {
 	.widget_4-1{
 		width: 48%;
-		.browser_ie9 &{
-			float: left;
-			margin-left: 4%;
-			min-height: 470px;
-			&:nth-child(even){
-				margin-left: 0;
-			}
-		}
-	}
-	.widget_4-2{
-		.browser_ie9 &{
-			float: left;
-		}
-	}
-	.browser_ie9 .widget_container{
-		&:after{
-			display: table;
-			content: '';
-			clear: both;
-		}
 	}
 
 	.title-1{
@@ -1929,29 +1909,12 @@ footer{
 	}
 	.widget_4-1{
 		width: 48.5%;
-		.browser_ie9 &{
-			margin-left: 3%;
-			&:nth-child(even){
-				margin-left: 0;
-			}
-		}
 	}
 	.widget_4-2{
 		width: 48.5%;
-		.browser_ie9 &{
-			margin-left: 3%;
-			min-height: 550px;
-			&:nth-child(odd){
-				margin-left: 0;
-			}
-		}
 	}
 	.widget_4-4{
 		width: 100%;
-		.browser_ie9 &{
-			margin-left: 0;
-			min-height: 470px;
-		}
 	}
 	.widget_viaggio {
 		height: 390px; //470px;
@@ -2009,39 +1972,11 @@ footer{
 	}
 	.widget_4-1{
 		width: 23.5%;
-		.browser_ie9 &{
-			margin-left: 2%;
-			min-height: 472px;
-			&:nth-child(even){
-				margin-left: 2%;
-			}
-			&:nth-child(6){
-				margin-left: 0;
-			}
-		}
 	}
 	.widget_4-2{
 		width: 49%;
-		.browser_ie9 &{
-			margin-left: 2%;
-			min-height: 350px;
-			&:nth-child(odd){
-				margin-left: 0;
-			}
-			&:nth-child(8){
-				margin-left: 2%;
-			}
-			&.widget_traffico{
-				padding: 25px;
-			}
-		}
 	}
-	.widget_4-4{
-		.browser_ie9 &{
-			min-height: 472px;
-			margin-left: 0;
-		}
-	}
+
 	.widget_viaggio {
 		height: 290px;//370px;
 		.title-1{

@@ -10,16 +10,12 @@ import messages_en from '../messages/en.js'
 import messages_it from '../messages/it.js'
 import config from '../configurations/config.js'
 
-
 const MenuItem = (props) => {
-  // console.log('props', props)
   if (/^https?:\/\//.test(props.url)) {
-    console.log('a')
     return (<li><a href={props.url} onClick={props.handleClick}>{props.title}</a></li>)
   }
-  // activeClassName="active" di default!
-  console.log('NavLink', props.url)
-  return (<li><NavLink to={props.url} onClick={props.handleClick}>{props.title}</NavLink></li>)
+  // activeClassName="active" di default! funge perchè i parents hanno passato props.param.match
+  return (<li><NavLink exact to={props.url} onClick={props.handleClick}>{props.title}</NavLink></li>)
 }
 
 const LangItem = (props) => {
@@ -31,25 +27,10 @@ const LangItem = (props) => {
 
 class Menu extends React.Component {
   state = {
+    menu: config.mainMenu[this.props.currentLocale] || config.mainMenu.it,
     menuIsOpen: false,
-    // menu: lscache.get(`menu_${this.props.currentLocale}`),
     langs: ['it', 'en'],
   }
-
-
-  // loadMenu = () => {
-  //   let menuId = 4 // it
-  //   if (this.props.currentLocale === 'en') menuId = 5
-  //
-  //   axios
-  //     .get(`/wp-json/wp-api-menus/v2/menus/${menuId}`)
-  //     .then((res) => {
-  //       console.log('scaricato', `menu_${this.props.currentLocale}`)
-  //       this.setState({ menu: res.data })
-  //       lscache.set(`menu_${this.props.currentLocale}`, res.data, 5)
-  //     })
-  // }
-
 
   componentDidMount = () => {
     // Detects Touch or noTouch devices
@@ -58,13 +39,10 @@ class Menu extends React.Component {
     } else { // behaviour and events for pointing device like mouse
       document.body.classList.add('no-touch')
     }
-
-    // if (this.state.menu == null) {
-    //   this.loadMenu()
-    // }
   }
 
   handleClick = () => {
+    console.log('handleClick - prima del click è open?', this.state.menuIsOpen)
     this.setState({ menuIsOpen: !this.state.menuIsOpen }, () => {
       document.body.classList.toggle('menu-open', this.state.menuIsOpen)
     })
@@ -91,44 +69,26 @@ class Menu extends React.Component {
   }
 
   render = () => {
-    // console.log('config', config)
-    const menu = config.mainMenu[this.props.currentLocale] || config.mainMenu.it
-    // console.log('menu', menu)
-
-    const menuNodes = menu.map((item, idx) => {
-      // let url = ''
-      // // qs url arrivano da wp
-      // const baseurlWP = 'http://wpmip.5t.torino.it'
-      // const baseurlMip = 'https://www.muoversinpiemonte.it'
-      // if (item.url.indexOf(baseurlWP) >= 0) {
-      //   // pagine wordpress
-      //   url = `/page${item.url.slice(baseurlWP.length, -1)}`
-      // } else {
-      //   // pagine otp + home
-      //   url = item.url
-      //   let external = true
-      //   if (item.title === 'Home') {
-      //     external = false
-      //     url = item.url.slice(baseurlMip.length)
-      //   }
-      // }
+    const menuNodes = this.state.menu.map((item, idx) => {
       return (
-          <MenuItem key={idx} title={item.title} url={item.url} handleClick={this.handleClick.bind(this)} />
+          <MenuItem key={idx} title={item.title} url={item.url} handleClick={this.handleClick.bind(this)} {...this.props} />
       )
     })
 
     const langNodes = this.state.langs.map((item, idx) => {
       const isCurrentLang = (item === this.props.currentLocale)
-      return <LangItem key={idx} lang={item} isCurrentLang={isCurrentLang} handleLangClick={this.handleLangClick} />
+      return (
+        <LangItem key={idx} lang={item} isCurrentLang={isCurrentLang} handleLangClick={this.handleLangClick} />
+      )
     })
 
     return (
       <div>
-        <nav className="main-menu-container" id="main-menu-container">
-          <ul className="main-menu-5t" id="main-menu-5t">
+        <nav className="main-menu-container">
+          <ul className="main-menu-5t">
             {menuNodes}
           </ul>
-          <div className="language-switcher" id="language-switcher">
+          <div className="language-switcher">
             <ul>
               {langNodes}
             </ul>

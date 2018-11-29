@@ -1,34 +1,27 @@
 import React from 'react'
 import axios from 'axios'
-// import lscache from 'lscache'
-import './page.scss'
+
+import Header from './Header'
 import PageLayout from './PageLayout.js'
+import './page.scss'
 
 class WPage extends React.Component {
-  // state = { pages: lscache.get('pages') || {} }
   state = {
     page: {},
     isLoaded: false,
   }
 
-  // setLocalState = (key, value) => {
-  //   const newPages = Object.assign({}, this.state.pages)
-  //   newPages[key] = value
-  //   this.setState({ pages: newPages })
-  //   lscache.set('pages', this.state.pages, 2)
-  // }
-
   getPageContent = () => {
     const { slug } = this.props.match.params
-    console.log('slug', slug)
+    // console.log('slug', slug)
     axios
       .get(`/wp-json/wp/v2/pages?filter[name]=${slug}`)
       .then((res) => {
         if (res.data[0]) {
-          // this.setLocalState(slug, res.data[0])
           this.setState({ page: res.data[0], isLoaded: true })
         } else {
           this.props.history.push('/notfound')
+          // console.log('NOT FOUND')
         }
       })
       .catch((error) => {
@@ -37,31 +30,36 @@ class WPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount() called')
     this.getPageContent()
   }
 
-  UNSAFE_componentWillReceiveProps() {
-    console.log('componentWillReceiveProps() called')
-    this.setState({ page: {}, isLoaded: false })
-    this.getPageContent()
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.match.params !== prevProps.match.params) {
+      this.getPageContent()
+    }
   }
 
   render = () => {
     const { page, isLoaded } = this.state
     return (
-      <PageLayout>
-        <div className="widget page">
-            <h2 className="pageHeader" >{isLoaded ? page.title.rendered : ''}</h2>
-            <div className="pageContent">
-              {isLoaded ? (
-                <div className="entry-content" dangerouslySetInnerHTML={{ __html: page.content.rendered }}></div>
-                ) : (
-                <div className="entry-content">...</div>
-              )}
+      <React.Fragment>
+        <Header {...this.props}/>{/* !! per passare props.param.match */}
+        <main className="main">
+          <PageLayout>
+            <div className="widget page">
+                <h2 className="pageHeader" >{isLoaded ? page.title.rendered : ''}</h2>
+                <div className="pageContent">
+                  {isLoaded ? (
+                    <div className="entry-content" dangerouslySetInnerHTML={{ __html: page.content.rendered }}></div>
+                    ) : (
+                    <div className="entry-content">...</div>
+                  )}
+                </div>
             </div>
-        </div>
-      </PageLayout>
+          </PageLayout>
+        </main>
+      </React.Fragment>
     )
   }
 }
