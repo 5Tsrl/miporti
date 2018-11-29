@@ -4,6 +4,7 @@ import axios from 'axios'
 import AudioPlayer from '../audio-player/components/AudioPlayer'
 // import '../audio-player/audioplayer.scss'
 import '../images/traffico.png'
+import '../images/traffico.jpg'
 import '../images/traffico.m4v'
 
 class Traffico extends React.Component {

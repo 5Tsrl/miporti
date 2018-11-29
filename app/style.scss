@@ -723,7 +723,8 @@ footer{
 			top: 30%;
 			cursor: pointer;
 			.no-touch &:hover{
-				background: url(images/trip_input_switch2.svg) no-repeat center;
+				// background: url(images/trip_input_switch2.svg) no-repeat center;
+				filter:  brightness(45%);
 			}
 		}
 	}
@@ -1312,7 +1313,7 @@ footer{
 			color: #b6e7f3;
 		}
 		&:after{
-			background: url(images/select_arrow.png) no-repeat center;
+			background: url(images/select_arrow.svg) no-repeat center;
 			width: 10px;
 			height: 10px;
 			margin-left: 15px;
@@ -1446,7 +1447,7 @@ footer{
 			background: rgba(255,255,255, 0.9);
 		}
 		&:after{
-			background: url(images/select_arrow.png) no-repeat center;
+			background: url(images/select_arrow.svg) no-repeat center;
 			width: 10px;
 			height: 10px;
 			margin-left: 15px;
@@ -2193,8 +2194,6 @@ footer{
 		height: 55px;
 		display: block;
 		margin: 10px auto;
-		fill:red;
-		// filter: brightness(0.7)  hue-rotate(180deg);
 		filter:  brightness(45%) sepia(1) saturate(5) hue-rotate(170deg) ;
 	}
 	&.coperto:before{
