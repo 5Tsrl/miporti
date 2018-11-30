@@ -1,0 +1,104 @@
+@import '../base/_variables.scss';
+
+.widget_meteo{
+ .meteo_now .meteo_img, .meteo_forecast .meteo_img{
+  display: block;
+
+  &:before{
+    content: '';
+    max-width: 60%;
+    height: 140px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &.coperto:before{
+    background-image:url(../images/meteo/coperto.svg);
+  }
+  &.foschia:before{
+    background-image:url(../images/meteo/foschia.svg);
+  }
+  &.nebbia:before{
+    background-image:url(../images/meteo/nebbia.svg);
+  }
+  &.neve-debole:before{
+    background-image:url(../images/meteo/neve-debole.svg);
+  }
+  &.neve-forte:before{
+    background-image:url(../images/meteo/neve-forte.svg);
+  }
+  &.neve-moderata:before{
+    background-image:url(../images/meteo/neve-moderata.svg);
+  }
+  &.neve-molto-forte:before{
+    background-image:url(../images/meteo/neve-molto-forte.svg);
+  }
+  &.nuvoloso:before{
+    background-image:url(../images/meteo/nuvoloso.svg);
+  }
+  &.parzialmente-nuvoloso:before{
+    background-image:url(../images/meteo/parzialmente-nuvoloso.svg);
+  }
+  &.pioggia-debole:before{
+    background-image:url(../images/meteo/pioggia-debole.svg);
+  }
+  &.pioggia-forte:before{
+    background-image:url(../images/meteo/pioggia-forte.svg);
+  }
+  &.pioggia-moderata:before{
+    background-image:url(../images/meteo/pioggia-moderata.svg);
+  }
+  &.pioggia-molto-forte:before{
+    background-image:url(../images/meteo/pioggia-molto-forte.svg);
+  }
+  &.pioggia-mista-neve:before{
+    background-image:url(../images/meteo/pioggia-neve.svg);
+  }
+  &.poco-nuvoloso:before{
+    background-image:url(../images/meteo/poco-nuvoloso.svg);
+  }
+  &.rovesci:before{
+    background-image:url(../images/meteo/rovesci.svg);
+  }
+  &.sereno:before{
+    background-image:url(../images/meteo/sereno.svg);
+  }
+  &.temporale:before{
+    background-image:url(../images/meteo/temporale.svg);
+  }
+  &.tormenta-neve:before{
+    background-image:url(../images/meteo/tormenta-neve.svg);
+  }
+  &.variabile-con-temporali:before{
+    background-image:url(../images/meteo/variabile-con-temporali.svg);
+  }
+  &.vento:before, &.ventoso:before{
+    background-image:url(../images/meteo/vento.svg);
+  }
+  &.vento-neve:before, &.ventoso-neve:before{
+    background-image:url(../images/meteo/vento-neve.svg);
+  }
+  &.vento-pioggia:before, &.ventoso-pioggia:before{
+    background-image:url(../images/meteo/vento-pioggia.svg);
+  }
+}
+
+ .meteo_forecast .meteo_img:before{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color:#298ca4;
+}
+
+ .meteo_forecast .meteo_img{
+  &:before{
+    content: '';
+    max-width: 40%;
+    height: 55px;
+    display: block;
+    margin: 10px auto;
+    filter:  brightness(45%) sepia(1) saturate(2) hue-rotate(170deg) ;
+  }
+ }
+}

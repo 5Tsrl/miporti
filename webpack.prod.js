@@ -1,6 +1,7 @@
 const merge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const cssnano = require('cssnano')
 const common = require('./webpack.common.js')
 
@@ -23,6 +24,7 @@ module.exports = merge(common, {
       },
       canPrint: true,
     }),
+    new BundleAnalyzerPlugin(),
   ],
   module: {
     rules: [

@@ -3,6 +3,7 @@ import Collapse from 'react-collapse'
 import { FormattedMessage } from 'react-intl'
 import classNames from 'classnames'
 import axios from 'axios'
+import './meteo.scss'
 
 
 const SelectorText = (props) => {

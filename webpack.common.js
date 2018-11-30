@@ -42,7 +42,7 @@ module.exports = {
       {
         test: /\.(jpe?g|gif|png|svg|m4v)$/,
         include: path.resolve(__dirname, 'app/images'),
-        use: 'url-loader?limit=25000&name=images/[name].[ext]',
+        use: 'url-loader?limit=10000&name=images/[name].[ext]',
       },
       {
         test: /\.(eot|ttf|woff|woff2|svg)$/,
