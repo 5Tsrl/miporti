@@ -5,7 +5,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, combineReducers } from 'redux'
-import { Provider, intlReducer, update } from 'react-intl-redux' // Provider di react-intl-redux wrappa tutto
+import { Provider, intlReducer } from 'react-intl-redux' // Provider di react-intl-redux wrappa tutto
 import { addLocaleData } from 'react-intl'
 import localeDataIt from 'react-intl/locale-data/it'
 import localeDataEn from 'react-intl/locale-data/en'

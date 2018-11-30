@@ -1,9 +1,9 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin') // eslint-disable-line import/no-extraneous-dependencies
+const HtmlWebpackPlugin = require('html-webpack-plugin') // eslint-disable-line import/no-extraneous-dependencies
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/app/index.html',
+  template: `${__dirname}/app/index.html`,
   filename: 'index.html',
   inject: 'body',
 })
@@ -38,6 +38,10 @@ module.exports = {
       {
         test: /favicon\.ico/,
         use: 'file-loader?name=images/[name].[ext]',
+      },
+      {
+        test: /\.ya?ml$/,
+        use: 'js-yaml-loader',
       },
       {
         test: /\.(jpe?g|gif|png|svg|m4v)$/,

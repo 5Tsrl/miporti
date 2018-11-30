@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateIntl } from 'react-intl-redux'
 import { NavLink } from 'react-router-dom'
-// import axios from 'axios'
+import { Helmet } from 'react-helmet'
 import lscache from 'lscache'
 import classNames from 'classnames';
 
 import messages_en from '../messages/en.js'
 import messages_it from '../messages/it.js'
-import config from '../configurations/config.js'
+import config from '../configurations/menus.js'
 
 const MenuItem = (props) => {
   if (/^https?:\/\//.test(props.url)) {
@@ -83,7 +83,10 @@ class Menu extends React.Component {
     })
 
     return (
-      <div>
+      <React.Fragment>
+        <Helmet>
+          <html lang={this.props.currentLocale || 'it'} />
+        </Helmet>
         <nav className="main-menu-container">
           <ul className="main-menu-5t">
             {menuNodes}
@@ -97,7 +100,7 @@ class Menu extends React.Component {
         <span id="nav-toggle" onClick={this.handleClick}>
           <span className="icon"> <span></span></span>
         </span>
-      </div>
+      </React.Fragment>
 
     )
   }

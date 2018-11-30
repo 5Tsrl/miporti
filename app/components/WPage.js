@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+import { Helmet } from 'react-helmet'
 import Header from './Header'
 import PageLayout from './PageLayout.js'
 import './page.scss'
@@ -44,6 +44,9 @@ class WPage extends React.Component {
     const { page, isLoaded } = this.state
     return (
       <React.Fragment>
+        <Helmet>
+          <title>{isLoaded ? page.title.rendered : ''} | Muoversi in Piemonte</title>
+        </Helmet>
         <Header {...this.props}/>{/* !! per passare props.param.match */}
         <main className="main">
           <PageLayout>

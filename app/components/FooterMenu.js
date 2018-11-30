@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import config from '../configurations/config.js'
+import config from '../configurations/menus.js'
 
 const FooterMenuItem = (props) => {
   return <li><Link to={props.url}>{props.title}</Link></li>
