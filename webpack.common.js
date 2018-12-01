@@ -27,10 +27,10 @@ module.exports = {
 
   module: {
     rules: [
-      // {
-      //   test: /\.(html|txt)$/,
-      //   loader: "file-loader?name=[name].[ext]",
-      // },
+      {
+        test: /\.(txt)$/,
+        loader: 'file-loader?name=[name].[ext]', // robots.txt
+      },
       {
         test: /\.html$/,
         loader: 'html-loader',
@@ -44,7 +44,7 @@ module.exports = {
         use: 'js-yaml-loader',
       },
       {
-        test: /\.(jpe?g|gif|png|svg|m4v)$/,
+        test: /\.(jpe?g|gif|png|svg|webp|m4v)$/,
         include: path.resolve(__dirname, 'app/images'),
         use: 'url-loader?limit=10000&name=images/[name].[ext]',
       },

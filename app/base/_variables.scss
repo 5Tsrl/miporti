@@ -48,13 +48,13 @@ $fw3: 600;
 $fw3: 700;
 
 $OS: "Open Sans", sans-serif;
-
+$SF: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 
 
 // Media Queries
 $breakpoints: (
  'dim_05': 23.5em,
- 'dim_07': 26em,	
+ 'dim_07': 26em,
  'dim_10': 30em,
  'dim_20': 31.250em,
  'dim_22': 34.250em,
@@ -80,4 +80,3 @@ $media-expressions: (
  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
 );
-

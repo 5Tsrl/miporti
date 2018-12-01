@@ -11,7 +11,6 @@ const HelmetApp = () => (
        con aggiornamenti in tempo reale sul traffico sulle strade regionali' />
     <meta name='keywords' content='Servizio infomobilità, traffico, colli alpini, orario voli da Caselle, news traffico, notiziario' />
     <link rel='shortcut icon' href='/images/favicon.ico' />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css' />
   </Helmet>
 )
 export default HelmetApp

@@ -42,7 +42,6 @@ class Menu extends React.Component {
   }
 
   handleClick = () => {
-    console.log('handleClick - prima del click è open?', this.state.menuIsOpen)
     this.setState({ menuIsOpen: !this.state.menuIsOpen }, () => {
       document.body.classList.toggle('menu-open', this.state.menuIsOpen)
     })

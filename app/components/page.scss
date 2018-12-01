@@ -1,101 +1,127 @@
 @import '../base/_variables.scss';
 
-
-.page{
+.page {
   text-align: left !important;
   min-height: 500px;
 
-  .pageHeader{
+  .pageHeader {
     color: #fff;
     background-color: $c12_1;
     padding: 15px 35px;
   }
-  .pageContent{
+
+  .pageContent {
     line-height: 1.5;
-    h2{margin-top:15px; font-size: 1.2em}
-    a{color: $c3;}
-    p{  font-size: 1em; margin-bottom: 12px}
+    color: #777;
+
+    h2 {
+      margin-top: 15px;
+      font-size: 1.2em;
+    }
+
+    a {
+      color: $c3;
+    }
+
+    p {
+      font-size: 1em;
+      margin-bottom: 12px;
+    }
     padding: 35px;
-    ul{
+
+    ul {
       list-style: none;
       margin-top: 10px;
-      a{font-weight: 400}
 
+      a {
+        font-weight: 400;
+      }
     }
 
     .liv1 li {
-       background: url(../images/list.gif) 0 10px no-repeat;
-       padding-left: 14px;
-       margin-bottom: 6px;
-     }
-    .liv2 li {
-        background: url(../images/list-2.gif) 0 16px no-repeat;
-        margin-left:20px;
-        padding-left: 11px;
-        padding-top: 5px;
-      }
-
-  /*Radio*/
-  #radio {
-    width:100%;
-    padding:10px;
-    color:#000;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: stretch;
-    justify-content: space-between;
-    display: -webkit-flex;
-
-    li{
-   	  border-bottom:1px solid #eeeeee;
-   	  background:url(../images/ico-radio.gif) 0 20px no-repeat;
-   	  padding:15px 0 15px 23px;
-      }
-    li.last{border-bottom:0}
-
-    strong {
-  	  text-transform:uppercase;
-  	  color:$cfont;
-  	  font-size:1.1em;
-  	  display:block;
-  	  margin:0 0 5px 0;
-  	  }
-    a{ color:$c2 }
+      background: url('../images/list.gif') 0 10px no-repeat;
+      padding-left: 14px;
+      margin-bottom: 6px;
     }
 
-.tablepress {
-        margin-top: 20px;
-        th {
-          text-align: center;
-          padding: 10px;
-          }
-        td {
-          border-bottom: 1px solid $c12_1;
-          padding: 10px;
-          }
-        thead {
-          _background-color: $c12_1;
-          color: $c12_1;
-          border-bottom: 2px solid $c12_1;
-          }
-        .column-2 {
-          text-align: center;
-          border-right: 1px solid $c12_1;
-          border-left: 1px solid $c12_1;
-          }
-	      }
-	}
+    .liv2 li {
+      background: url('../images/list-2.gif') 0 16px no-repeat;
+      margin-left: 20px;
+      padding-left: 11px;
+      padding-top: 5px;
+    }
+
+    #radio {
+      width: 100%;
+      padding: 10px;
+      color: #000;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: stretch;
+      justify-content: space-between;
+      display: -webkit-flex;
+
+      li {
+        border-bottom: 1px solid #eeeeee;
+        background: url('../images/ico-radio.webp') 0 20px no-repeat;
+        padding: 15px 0 15px 23px;
+      }
+
+      li.last {
+        border-bottom: 0;
+      }
+
+      strong {
+        text-transform: uppercase;
+        color: $cfont;
+        font-size: 1.1em;
+        display: block;
+        margin: 0 0 5px;
+      }
+
+      a {
+        color: $c2;
+      }
+    }
+
+    .tablepress {
+      margin-top: 20px;
+
+      th {
+        text-align: center;
+        padding: 10px;
+      }
+
+      td {
+        border-bottom: 1px solid $c12_1;
+        padding: 10px;
+      }
+
+      thead {
+        color: $c12_1;
+        border-bottom: 2px solid $c12_1;
+      }
+
+      .column-2 {
+        text-align: center;
+        border-right: 1px solid $c12_1;
+        border-left: 1px solid $c12_1;
+      }
+    }
+  }
+
   .errore {
     font-weight: 600;
     text-align: center;
     padding: 200px 0 200px 240px;
-      a {
-        color: #4089cd;
-        }
+
+    a {
+      color: #4089cd;
     }
+  }
 }
 
-#notfound{
-  background: url(../images/notFound.jpg) #fff left center no-repeat;
+#notfound {
+  background: url('../images/notFound.jpg') #fff left center no-repeat;
   background-size: auto;
-  }
+}

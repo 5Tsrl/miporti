@@ -1,0 +1,182 @@
+@import '../base/mixins.scss';
+@import '../base/_variables.scss';
+
+.widget_voli{
+  text-align: left;
+  color: $c10_3;
+  font-weight: $fw2;
+  text-transform: uppercase;
+  .title-4{
+    text-align: center;
+    background: $c10_1;
+    padding: 10px 30px;
+    h2{
+      color: #fff;
+      font-weight: $fw1;
+      font-size: 2.1em;
+      text-transform: lowercase;
+    }
+    h3{
+      color: $c10_2;
+      font-weight: $fw1;
+      font-size: 1em;
+    }
+    p{
+      color: $c10_2;
+      font-weight: $fw1;
+    }
+  }
+  .last_info{
+    text-align: center;
+    margin: 0px auto;
+    p{text-align: right; margin:0 10px 10px}
+    a.btn_link{
+      background: $c10_1;
+      padding: 7px 15px;
+      .no-touch &:hover{
+        background:#e66b16;
+      }
+    }
+    span.btn_partenze_cont{
+      border: 1px $c10_4 solid;
+      margin: 10px 0;
+      display: inline-block;
+      a.btn_partenze{
+        padding:0 5px;
+        margin: 6px 0;
+        color: $cfont;
+        font-weight: $fw3;
+        font-size: 0.8em;
+        display: inline-block;
+        &:first-child{
+          border-right: 1px $c10_4 solid;
+        }
+      }
+    }
+    span.raggiungere{
+      font-size: 0.8em;
+
+      margin: 10px 0;
+      display: inline-block;
+      a.btn_partenze{
+        border: 1px $c10_4 solid;
+        padding:0 5px;
+        margin: 6px 0;
+        color: $cfont;
+        font-weight: $fw3;
+        font-size: 0.8em;
+        display: inline-block;
+        &:first-child{
+          border-right: 1px $c10_4 solid;
+          margin-left: 6px
+        }
+      }
+    }
+  }
+
+
+  .voli_tabella_container{
+    color: $c10_3;
+    font-weight: $fw3;
+    font-size: 0.9em;
+    margin: 15px;
+    .tab_left,
+    .tab_right{
+      cursor: pointer;
+      padding: 10px;
+      width: 49%;
+      box-sizing: border-box;
+      text-align: center;
+      .no-touch &:hover{
+        color: $c10_2;
+      }
+      &:before{
+        display: inline-block;
+        content: '';
+        width: 20px;
+        height: 20px;
+        padding: 0 10px;
+        vertical-align: middle;
+        .no-touch &:hover{
+          color: $c10_2;
+        }
+      }
+    }
+    .tab_left{
+      &:before{
+        background:url(../images/plane_take_off.svg) no-repeat center;
+      }
+      padding-right: 20px;
+    }
+    .tab_right{
+      &:before{
+        background:url(../images/plane_landing.svg) no-repeat center;
+      }
+      border-left: 1px $c10_4 solid;
+    }
+    .tab_active{
+      color: $c10_1;
+      cursor: auto;
+      .no-touch &:hover{
+        color: $c10_1;
+      }
+    }
+    :not(.tab_active){
+      &:before{
+        filter: brightness(2) grayscale(100%);
+      }
+      &:hover:before{
+        filter: brightness(2) grayscale(40%);
+      }
+    }
+  }
+  .tabs_container{
+    overflow-x: scroll;
+    height: 218px;
+    width: 100%;
+    .voli_partenze,
+    .voli_arrivi{
+      width: 100%;
+    }
+    .tabella_voli{
+      width: 100%;
+      thead{
+        color: $c10_3;
+        font-size: 0.75em;
+        border-top: 1px $c10_4 solid;
+        tr th{
+          font-weight: $fw2;
+          text-align: left;
+        }
+      }
+      tbody{
+        tr{
+          font-size: 0.7em;
+          font-weight: $fw3;
+          background: $c10_5;
+          color: $cfont;
+          border-bottom: 1px #fff solid;
+          text-transform: none;
+          &:nth-child(even){
+            background: $c10_6;
+          }
+          .note{text-transform: lowercase; font-weight:normal}
+        }
+      }
+      tr{
+        height: 40px;
+        td,
+        th{
+          vertical-align: middle;
+          padding: 0 7px;
+          &:first-child{
+            padding-left: 14px;
+          }
+          &:last-child{
+            padding-right: 14px;
+          }
+        }
+      }
+    }
+  }
+}

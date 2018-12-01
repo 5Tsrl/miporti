@@ -67,7 +67,7 @@ class Traffico extends React.Component {
         </p>
       </div>
       <div className='align_brother_bottom'>
-        <div className='area_player no_news_traffico no_close'>
+        <div className='area_player'>
           <AudioPlayer ref={c => this.audioPlayerRef = c} songs={this.state.songs} />
           <a href='#' className='ascolta' id='Ascolta il notiziario'
             onClick={this.onAscoltaClick.bind(this)}>

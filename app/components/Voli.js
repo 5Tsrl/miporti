@@ -4,6 +4,8 @@ import { FormattedMessage } from 'react-intl'
 import classNames from 'classnames'
 import axios from 'axios'
 
+import './voli.scss'
+
 const Volo = props => (
   <tr>
     <td>{props.data}</td>
@@ -75,17 +77,11 @@ const VoliFooter = (props) => {
         <p><FormattedMessage id='orari di volo aggiornati alle '/>{props.aggiornamento}</p>
         <span className="raggiungere">
             <FormattedMessage id="Raggiungere l'aeroporto in "/>
-            <a href={`${links[props.currentLocale].auto}`} className="btn_partenze" target="_blank"><FormattedMessage id='auto'/></a>
-                <a href={`${links[props.currentLocale].bus}`} className="btn_partenze" target="_blank"><FormattedMessage id='bus'/></a>
-                    <a href={`${links[props.currentLocale].train}`} className="btn_partenze" target="_blank"><FormattedMessage id='treno'/></a>
-            {/*
-            <a href="http://www.aeroportoditorino.it/it/tofly/voli/partenze-arrivi?orario=oggi" className="btn_partenze">Partenze di oggi</a>
-            <a href="http://www.aeroportoditorino.it/it/tofly/voli/partenze-arrivi?orario=domani&set=partenze" className="btn_partenze">Partenze di domani</a>
-             href={`links.${props.currentLocale}.timetable`}
-
-            */}
+            <a href={`${links[props.currentLocale].auto}`} className="btn_partenze"><FormattedMessage id='auto'/></a>
+                <a href={`${links[props.currentLocale].bus}`} className="btn_partenze"><FormattedMessage id='bus'/></a>
+                    <a href={`${links[props.currentLocale].train}`} className="btn_partenze"><FormattedMessage id='treno'/></a>
         </span>
-        <a href={`${links[props.currentLocale].timetable}`} className="btn_link" target="_blank"><FormattedMessage id='Orario Generale'/></a>
+        <a href={`${links[props.currentLocale].timetable}`} className="btn_link"><FormattedMessage id='Orario Generale'/></a>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import FooterMenu from './FooterMenu'
+import './footer.scss'
 
 const Footer = () =>(
     <footer>
@@ -19,4 +20,3 @@ const Footer = () =>(
     </footer>
   )
 export default Footer
-

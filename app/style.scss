@@ -3,11 +3,9 @@
 @import 'base/_include-media.scss';
 @import 'base/_variables.scss';
 
-@import 'font/font.scss';
-
 body{
   background: $c1;
-  font-family: $OS;
+  font-family: $SF;
 }
 @include media('screen', '>dim_05') {
   body.menu-open {
@@ -89,11 +87,6 @@ a {
     display: table;
     clear: both;
   }
-  hgroup{
-    display: block;
-    width: 115px;
-    float: left;
-  }
 
   #logo_site-title {
     text-indent: -9999px;
@@ -104,10 +97,6 @@ a {
     height: 37px;
     background:url(images/logo_MIP.svg) no-repeat top left;
     background-size:contain;
-
-    //style inline nel logo svg, ma explorer non lo becca
-    .cls-1{fill:#1961ac;}.cls-2{fill:#c6c6c6;}.cls-3{fill:#c61532;}
-
   }
   #nav-toggle {
     display: block;
@@ -222,9 +211,6 @@ a {
   }
   @include media('screen', '>dim_30') {
     padding: 20px 0;
-    hgroup{
-      width: 230px;
-    }
     #logo_site-title {
       width: 230px;
       height: 70px;
@@ -353,230 +339,7 @@ a {
   }
 }
 
-footer{
-  width: 100%;
-  background: $c3;
-  color: $c4;
-  position: relative;
-  padding: 25px 0 0;
-  .logo-regione{
-    text-indent: -9999px;
-    display: inline-block;
-    width: 80px;
-    height: 26px;
-    background:url(images/logo_regione_w.svg) no-repeat top left;
-    background-size:contain;
-    margin-right: 20px;
-    .no-touch &:hover{
-      opacity: 0.8;
-    }
-  }
-  .logo-5t{
-    text-indent: -9999px;
-    display: inline-block;
-    width: 27px;
-    height: 27px;
-    background:url(images/logo_5T.png) no-repeat top left;
-    background-size:contain;
-    vertical-align: middle;
-    margin-left: 5px;
-  }
-  .madeby{
-    float: right;
-    display: inline-block;
-    font-size: 0.8em;
-    color: #fff;
-    vertical-align: middle;
-    .no-touch &:hover{
-      opacity: 0.8;
-      text-decoration: none;
-    }
-  }
-  .wrapper{
-    padding-top: 1.35em;
-    &:after{
-      content: '';
-      display: table;
-      clear: both;
-    }
-  }
-  .footer-menu{
-    padding-top: 25px;
-    ul li{
-      display: inline-block;
-      font-size: 0.7em;
 
-      &:not(:first-child):before{
-        content: " | ";
-        padding: 0 10px;
-        color: #fff;
-      }
-
-      a {
-        text-transform: uppercase;
-      }
-    }
-  }
-  .info{
-    font-size: 0.7em;
-    display: block;
-    padding-top: 0.25em;
-    a{
-      color: $c4;
-    }
-  }
-
-  .info-tel{
-    display:block;
-    // float: right;
-    color: #fff;
-    font-size: 0.9em;
-    text-align: right;
-    line-height: 3em;
-    width: 110px;
-    height: 40px;
-    background:url(images/bg_tel.png) no-repeat center;
-    background-size:contain;
-    margin-right: 10px;
-    padding-right: 8px;
-    box-sizing: border-box;
-    margin: 0 auto;
-  }
-  .social{
-    text-indent: -9999px;
-    display: inline-block;
-    float: right;
-    position: relative;
-    background: #00aced;
-    width: 26px;
-    height: 26px;
-    top: -47px;
-    @include prefix('border-radius', '25px');
-    &:after{
-      display: block;
-      width: 15px;
-      height: 15px;
-      background:url(images/twitter.svg) no-repeat center;
-      background-size:contain;
-      content: " ";
-      position: absolute;
-      top: 5px;
-      right: 5px;
-    }
-    .no-touch &:hover{
-      background: rgba(0, 172, 237, 0.8);
-    }
-  }
-  @include media('screen', '>dim_05') {
-    .social{
-      width: 35px;
-      height: 35px;
-      margin-left: 12px;
-      top: -38px;
-      &:after{
-        width: 20px;
-        height: 20px;
-        top: 8px;
-        right: 7px;
-      }
-    }
-  }
-  @include media('screen', '>dim_20') {
-    padding: 25px 0;
-    .wrapper{
-      padding-top: 2.2em;
-    }
-    .madeby{
-      float: none;
-    }
-    .social{
-      width: 35px;
-      height: 35px;
-      margin-left: -1px;
-      top: 6px;
-      &:after{
-        width: 20px;
-        height: 20px;
-        top: 8px;
-        right: 7px;
-      }
-    }
-    .footer-info{
-      float: left;
-      margin-right: 12px;
-    }
-    .footer-menu{
-      padding-top: 0;
-      font-size: 1.1em;
-    }
-    .info-tel{
-      margin-right: 20px;
-      width: 115px;
-      height: 45px;
-      font-size: 0.95em;
-      line-height: 3.2em;
-      float: left;
-    }
-  }
-  @include media('screen', '>dim_30') {
-    .logo-regione{
-      width: 150px;
-      height: 50px;
-      margin-right: 30px;
-    }
-    .logo-5t{
-      width: 47px;
-      height: 45px;
-      margin-left: 10px;
-    }
-    .madeby{
-      font-size: 1em;
-      vertical-align: text-top;
-    }
-    .social{
-      width: 40px;
-      height: 40px;
-      margin-left: 15px;
-      top: 4px;
-      &:after{
-        width: 23px;
-        height: 23px;
-        top: 9px;
-        right: 8px;
-      }
-    }
-    .info-tel{
-      margin-right: 30px;
-    }
-
-  }
-  @include media('screen', '>dim_40') {
-    padding: 45px 0;
-    .wrapper{
-      float: right;
-      padding: 0;
-      .footer-menu{
-        font-size: 1.3em;
-      }
-      .info{
-        font-size: 0.75em;
-      }
-      .info-tel{
-        margin-right: 30px;
-        width: 120px;
-        height: 50px;
-        font-size: 1em;
-        line-height: 3.4em;
-      }
-      .social{
-        top: 8px;
-      }
-    }
-  }
-  @include media('screen', '>dim_50') {
-    padding: 65px 0;
-  }
-}
 .main{
   position: relative;
   z-index: 1;
@@ -627,14 +390,11 @@ footer{
     text-transform: uppercase;
     font-size: 1em;
   }
-  strong{
-    font-weight: 400;
-  }
   p{
     font-size: 0.8em;
   }
   .btn_link{
-    font-family: $OS;
+    font-family: $SF;
     text-transform: uppercase;
     font-size: 0.75em;
     font-weight: 600;
@@ -657,152 +417,6 @@ footer{
   .centra{margin:auto}
 }
 //@import 'components/calcolo/calcolo.scss';
-.widget_viaggio {
-  height: 420px;
-  position: relative;
-  background: $c12_1;
-  color:#fff;
-  padding: 40px 20px;
-  text-align: left;
-
-  .title-1{
-    text-align: center;
-    &:before{
-      width: 80px;
-      height: 80px;
-      margin-bottom: 20px;
-      background:url(images/indicazioni.svg) no-repeat center;
-      vertical-align: middle;
-    }
-  }
-  .trip_form{
-      z-index: 0;
-      _position: relative;
-  }
-  .trip_container{
-    position: relative;
-    z-index: 10;
-    ul li{
-      list-style-type: none;
-    }
-    .trip_input{
-      width: 90%;
-      border-bottom: 1px $c12_2 solid;
-      margin-bottom: 30px;
-      label{
-        color: $c12_2;
-        padding-left: 10px;
-        font-size: 1.1em;
-        font-weight: $fw2;
-        text-align: right;
-        width: 29px;
-        display: inline-block;
-      }
-      input{
-        background: $c12_1;
-        border: 0;
-        color: #fff;
-        font-size: 1.1em;
-        font-weight: $fw2;
-        font-family: $OS;
-        vertical-align: baseline;
-        margin-left: 10px;
-      }
-    }
-    .trip_input.from label{
-      padding-left: 5px;
-      width: 35px;
-    }
-    .trip_input_switch{
-      background: url(images/trip_input_switch.svg) no-repeat center;
-      border: 0;
-      width: 22px;
-      height: 29px;
-      position: absolute;
-      right: 0;
-      top: 30%;
-      cursor: pointer;
-      .no-touch &:hover{
-        // background: url(images/trip_input_switch2.svg) no-repeat center;
-        filter:  brightness(45%);
-      }
-    }
-  }
-  .trip_mode{
-    padding-top:20px;
-    z-index: 1;
-    //position: absolute;
-    //bottom: 0px;
-    ul{
-      //float: left;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    ul li{
-      list-style-type: none;
-      display: inline-block;
-      cursor:pointer;
-      .no-touch &:hover{
-        label span:after{
-          color:#fff;
-        }
-      }
-      input[type="radio"] {
-        display:none;
-      }
-      input[type="radio"] + label {
-        text-indent: -9999px;
-        font-size: 0;
-        line-height: 0;
-      }
-      input[type="radio"] + label span:after {
-        font-family: 'fontello';
-        content: '\e800';
-        font-size: 2rem;
-        line-height: 3rem;
-        margin: 0 10px;
-        cursor:pointer;
-        color:$c12_4;
-      }
-      input[type="radio"]:checked + label span:after{
-        color:#fff;
-      }
-      &.public input[type="radio"] + label span:after{
-        content: '\e800';
-      }
-      &.car input[type="radio"] + label span:after{
-        content: '\e803';
-        font-size: 1.8rem;
-      }
-      &.bike input[type="radio"] + label span:after{
-        content: '\e805';
-
-      }
-      &.walk input[type="radio"] + label span:after{
-        content: '\e804';
-
-      }
-    }
-    .trip_button_container{
-      text-align: center;
-      .trip_button{
-        border:0;
-        color: #fff;
-        cursor:pointer;
-      }
-      .trip_button:focus{
-        border:1px solid $c12_2;
-      }
-    }
-    &:after{
-      content: '';
-      display: table;
-      clear: both;
-    }
-  }
-
-
-}
 
 .widget_news{
   text-align: left;
@@ -892,7 +506,7 @@ footer{
     box-sizing: border-box;
     max-width: 170px;
     .no-touch &:hover{
-      background:#006651;
+      background: #19756d;
     }
   }
 }
@@ -902,104 +516,6 @@ footer{
     color: #fff;
     background: $c9_1;
     padding: 15px 25px;
-  }
-  #scroll_twit {
-    position: relative;
-    z-index: 1;
-    height: 480px;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    &:before{
-      display: block;
-      content: '';
-      _border-left: 2px dashed #ddd;
-      width: 3px;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 32px;
-    }
-    ul{
-      padding-top: 7%;
-      padding-bottom: 7%;
-    }
-  }
-  .link_twit{
-    list-style-type: none;
-    margin: 7% 15% 7% 0;
-    margin-left:70px;
-    background: $c9_2;
-    position: relative;
-
-    &:first-child{
-      margin-top: 0;
-    }
-    &:last-child{
-      margin-bottom: 0;
-    }
-
-
-
-  }
-  .link_twit a{
-    color: $cfont;
-    text-align: left;
-    font-size: 0.7em;
-    font-weight: 400;
-    display: inline-block;
-    padding: 8px 25px 10px 19px;
-    position: relative;
-    &:before{
-      display: block;
-      content: '';
-      position: absolute;
-      top: 20%;
-      left: -20px;
-      margin: 0;
-      width: 0;
-      height: 0;
-      border: 10px solid transparent;
-      border-right-color: $c9_2;
-    }
-    &:after{
-      background: url(images/twitter_circle.svg) no-repeat center;
-      display: block;
-      content: '';
-      position: absolute;
-      top: 13%;
-      left: -55px;
-      width: 35px;
-      height: 35px;
-    }
-
-    h3{
-      margin-bottom: 10px;
-      font-size:1.1em;
-    }
-    .date_news{
-      display: block;
-      text-transform: uppercase;
-      padding-top: 10px;
-      .date{
-        font-weight: 700;
-        margin-right: 20px;
-      }
-      .time{
-        font-weight: 600;
-      }
-    }
-    .no-touch &:hover{
-      text-decoration: none;
-      background: $c9_3;
-      &:before{
-        border-right-color: $c9_3;
-      }
-    }
-  }
-
-  .iScrollIndicator:after {
-    background: $c9_1;
   }
 }
 
@@ -1022,13 +538,6 @@ footer{
     margin: 30px auto;
   }
 
-  .tabs_meteo_container{
-    height: 480px;
-    position:relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-  }
   span.meteo_here{
     color: #fff;
     font-size: 1.4em;
@@ -1080,12 +589,6 @@ footer{
     }
   }
 
-  .tabs_container{
-    height: 255px;
-    margin: 0 auto 5px;
-    border-top: 1px #a4e1f0 solid;
-    width: 85%;
-  }
   .tab_container{
     margin: 0 auto 5px;
     border-top: 1px #a4e1f0 solid;
@@ -1236,175 +739,6 @@ footer{
   transition: height .5s ease-in-out;
 }
 
-.widget_voli{
-  text-align: left;
-  color: $c10_3;
-  font-weight: $fw2;
-  text-transform: uppercase;
-  .title-4{
-    text-align: center;
-    background: $c10_1;
-    padding: 10px 30px;
-    h2{
-      color: #fff;
-      font-weight: $fw1;
-      font-size: 2.1em;
-      text-transform: lowercase;
-    }
-    h3{
-      color: $c10_2;
-      font-weight: $fw1;
-      font-size: 1em;
-    }
-    p{
-      color: $c10_2;
-      font-weight: $fw1;
-    }
-  }
-  .last_info{
-    text-align: center;
-    margin: 0px auto;
-    p{text-align: right; margin:0 10px 10px}
-    a.btn_link{
-      background: $c10_1;
-      padding: 7px 15px;
-      .no-touch &:hover{
-        background:#e66b16;
-      }
-    }
-    span.btn_partenze_cont{
-      border: 1px $c10_4 solid;
-      margin: 10px 0;
-      display: inline-block;
-      a.btn_partenze{
-        padding:0 5px;
-        margin: 6px 0;
-        color: $cfont;
-        font-weight: $fw3;
-        font-size: 0.8em;
-        display: inline-block;
-        &:first-child{
-          border-right: 1px $c10_4 solid;
-        }
-      }
-    }
-    span.raggiungere{
-      font-size: 0.8em;
-
-      margin: 10px 0;
-      display: inline-block;
-      a.btn_partenze{
-        border: 1px $c10_4 solid;
-        padding:0 5px;
-        margin: 6px 0;
-        color: $cfont;
-        font-weight: $fw3;
-        font-size: 0.8em;
-        display: inline-block;
-        &:first-child{
-          border-right: 1px $c10_4 solid;
-          margin-left: 6px
-        }
-      }
-    }
-  }
-
-
-  .voli_tabella_container{
-    color: $c10_3;
-    font-weight: $fw3;
-    font-size: 0.9em;
-    margin: 15px;
-    .tab_left,
-    .tab_right{
-      &:before{
-        display: inline-block;
-        font-size: 1.4em;
-        font-family: 'fontello';
-        font-weight: normal;
-        padding-right: 10px;
-      }
-      cursor: pointer;
-      padding: 10px;
-      width: 49%;
-      box-sizing: border-box;
-      text-align: center;
-      .no-touch &:hover{
-        color: $c10_2;
-      }
-    }
-    .tab_left{
-      &:before{
-        content: '\e802';
-      }
-      padding-right: 20px;
-    }
-    .tab_right{
-      &:before{
-        content: '\e801';
-      }
-      border-left: 1px $c10_4 solid;
-      padding-left: 20px;
-    }
-    .tab_active{
-      color: $c10_1;
-      cursor: auto;
-      .no-touch &:hover{
-        color: $c10_1;
-      }
-    }
-  }
-  .tabs_container{
-    overflow-x: scroll;
-    height: 218px;
-    width: 100%;
-    .voli_partenze,
-    .voli_arrivi{
-      width: 100%;
-    }
-    .tabella_voli{
-      width: 100%;
-      thead{
-        color: $c10_3;
-        font-size: 0.75em;
-        border-top: 1px $c10_4 solid;
-        tr th{
-          font-weight: $fw2;
-          text-align: left;
-        }
-      }
-      tbody{
-        tr{
-          font-size: 0.7em;
-          font-weight: $fw3;
-          background: $c10_5;
-          color: $cfont;
-          border-bottom: 1px #fff solid;
-          text-transform: none;
-          &:nth-child(even){
-            background: $c10_6;
-          }
-          .note{text-transform: lowercase; font-weight:normal}
-        }
-      }
-      tr{
-        height: 40px;
-        td,
-        th{
-          vertical-align: middle;
-          padding: 0 7px;
-          &:first-child{
-            padding-left: 14px;
-          }
-          &:last-child{
-            padding-right: 14px;
-          }
-        }
-      }
-    }
-  }
-}
-
 @include media('screen', '>dim_05') {
   .widget_traffico{
     _height: 470px;
@@ -1437,9 +771,6 @@ footer{
   }
   .widget_traffico{
     height: 400px;
-    .news_traffico{
-      margin-right: 30px;
-    }
   }
 
 }
@@ -1495,7 +826,6 @@ footer{
       font-size: 1.2em;
     }
   }
-  .widget_twitter #scroll_twit,
   .widget_news #scroll_news{
     height: 425px;
   }
@@ -1537,9 +867,6 @@ footer{
     p{
       font-size: 1.3em;
       line-height: 1.5em;
-    }
-    .news_traffico{
-      margin-bottom: 0;
     }
   }
   .widget_news #scroll_news {
@@ -1639,9 +966,6 @@ footer{
       height: 85px;
       margin-bottom: 15px;
     }
-    .news_traffico{
-      margin-bottom: 30px;
-    }
   }
   .widget_news #scroll_news {
     height: 480px;
@@ -1704,9 +1028,6 @@ footer{
       padding-top: 10px;
     }
     .align_brother_bottom{
-      .news_traffico{
-        margin-bottom: 0;
-      }
       .visualizza{
         float:right;
       }
@@ -1720,9 +1041,6 @@ footer{
     height: 430px;
   }
   .widget_meteo {
-    .tabs_meteo_container {
-      height: 433px;
-    }
     .meteo_now {
       padding-top: 25px;
     }
@@ -1756,11 +1074,6 @@ footer{
     }
   }
 
-  .widget_traffico{
-    .news_traffico{
-      margin-bottom: 0;
-    }
-  }
   .widget_voli{
     .last_info{
       span.btn_partenze_cont{
