@@ -3,6 +3,21 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 export default class ProgressBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.progressBarRef = React.createRef();
+  }
+  seekTo(e) {
+    if (!this.props.percent) {
+      return;
+    }
+    const container = this.progressBarRef.current
+    const containerStartX = container.getBoundingClientRect().left
+    let percent = (e.clientX - containerStartX) / container.offsetWidth
+    percent = percent >= 1 ? 1 : percent
+    this.props.seekTo(percent)
+  }
+
   render() {
     const percent = this.props.percent * 100;
     const style = { left: `${percent}%` }
@@ -13,7 +28,7 @@ export default class ProgressBar extends React.Component {
     });
 
     return (
-      <div ref="progressBar" className={classes} style={this.props.progressStyle} onClick={this.seekTo}>
+      <div ref={this.progressBarRef} className={classes} style={this.props.progressStyle} onClick={this.seekTo.bind(this)}>
         <div className="audio-progress" style={style}></div>
       </div>
     )

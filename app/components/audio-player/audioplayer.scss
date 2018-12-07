@@ -1,5 +1,5 @@
-@import '../base/_include-media.scss';
-@import '../base/_variables.scss';
+@import '../../base/_include-media.scss';
+@import '../../base/_variables.scss';
 
 $common-padding: 5px;
 $animate-sec: 1.5s;
@@ -110,7 +110,7 @@ $animate-sec: 1.5s;
   background: #56C3A3
 }
 .audio-button:after{
-  background: url(../images/player_default.svg) no-repeat center;
+  background: url(../../images/player_default.svg) no-repeat center;
   display: block;
   content: '';
   width: 30px;
@@ -120,14 +120,14 @@ $animate-sec: 1.5s;
   position: absolute;
 }
 .playing.audio-button:after{
-  background: url(../images/player_pausa.svg) no-repeat center;
+  background: url(../../images/player_pausa.svg) no-repeat center;
   top:30%;
   left:28%;
   width: 20px;
   height: 19px;
 }
 .paused.audio-button:after{
-  background: url(../images/player_play.svg) no-repeat center;
+  background: url(../../images/player_play.svg) no-repeat center;
   top:30%;
   left:33%;
   width: 20px;

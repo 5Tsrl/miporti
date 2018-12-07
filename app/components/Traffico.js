@@ -1,7 +1,7 @@
 import React from 'react'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import axios from 'axios'
-import AudioPlayer from '../audio-player/components/AudioPlayer'
+import AudioPlayer from './audio-player/AudioPlayer'
 import './traffico.scss'
 import imgTraffico from '../images/traffico.jpg'
 import videoTraffico from '../images/traffico.m4v'
@@ -9,10 +9,10 @@ import videoTraffico from '../images/traffico.m4v'
 class Traffico extends React.Component {
   constructor(props) {
     super(props)
-    // this.audioPlayerRef= React.createRef();
+    this.audioPlayerRef = React.createRef();
     // check connection type
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection
-    const { downlink } = connection
+    const downlink = connection ? connection.downlink : 0
     // console.log('connection', connection)
     this.state = {
       bollentinUpdate: '...',
@@ -23,7 +23,7 @@ class Traffico extends React.Component {
 
   onAscoltaClick(e) {
     e.preventDefault()
-    this.audioPlayerRef.onPlayBtnClick()
+    this.audioPlayerRef.current.onPlayBtnClick()
   }
 
   static formatTime(lastModified) {
@@ -61,21 +61,20 @@ class Traffico extends React.Component {
           <p></p>
         </div>
         }
-        <h2 className='title-1'><FormattedMessage id='traffico in tempo reale'/></h2>
-        <p><FormattedMessage id='Aggiornamenti su traffico e viabilità in Piemonte.'/>
-          <br /><strong><FormattedMessage id='Muoviti informato.'/></strong>
+        <h2 className='title-1'><FormattedMessage id='traffico'/></h2>
+        <p><FormattedMessage id='aggiornamenti'/>
+          <br /><strong><FormattedMessage id='muoviti'/></strong>
         </p>
       </div>
       <div className='align_brother_bottom'>
         <div className='area_player'>
-          <AudioPlayer ref={c => this.audioPlayerRef = c} songs={this.state.songs} />
-          <a href='#' className='ascolta' id='Ascolta il notiziario'
-            onClick={this.onAscoltaClick.bind(this)}>
-            <FormattedMessage id='Ascolta il notiziario' values={{ bollentinUpdate: this.state.bollentinUpdate }}/>
+          <AudioPlayer ref={this.audioPlayerRef} songs={this.state.songs} />
+          <a href='#' className='ascolta' onClick={this.onAscoltaClick.bind(this)}>
+            <FormattedMessage id='ascolta' values={{ bollentinUpdate: this.state.bollentinUpdate }}/>
           </a>
         </div>
         <div className='visualizza'>
-          <a href='https://map.muoversinpiemonte.it/#traffic' className='btn_link '><FormattedMessage id='Visualizza eventi'/></a>
+          <a href='https://map.muoversinpiemonte.it/#traffic' className='btn_link '><FormattedMessage id='eventi'/></a>
         </div>
     </div>
   </div>

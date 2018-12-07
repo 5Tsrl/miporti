@@ -4,7 +4,7 @@ import { Timeline } from 'react-twitter-widgets'
 
 const Tweet = () => (
   <div className="widget_twitter">
-    <h2 className="title-2"><FormattedMessage id='Tweet di mobilità'/></h2>
+    <h2 className="title-2"><FormattedMessage id='tweet'/></h2>
     <Timeline
       dataSource={{
         sourceType: 'list',

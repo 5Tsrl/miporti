@@ -6,13 +6,13 @@ import { FormattedDate, FormattedMessage } from 'react-intl'
 
 const iScroll = require('iscroll/build/iscroll')
 
-const Velina = props => (
+const Velina = ({ title, description, validitystart }) => (
   <li className="link_news">
     <div className="notizia">
-      <h3>{props.title}</h3>
-      <div dangerouslySetInnerHTML={{ __html: props.description }} ></div>
+      <h3>{title}</h3>
+      <div dangerouslySetInnerHTML={{ __html: description }} ></div>
       <span className="date_news">
-        <FormattedDate value={props.validitystart} day="numeric" month="long" year="numeric" />
+        <FormattedDate value={validitystart} day="numeric" month="long" year="numeric" />
       </span>
     </div>
   </li>
@@ -30,22 +30,14 @@ class News extends React.Component {
     },
   }
 
-  state = lscache.get(this.constructor.displayName) || { news: [] }
-
-
-  setLocalState = (data) => {
-    // Store in LocalStorage
-    lscache.set(this.constructor.displayName, data, 2)
-    // Store in Component State
-    this.setState(data);
-  }
+  state = { news: [] }
 
   componentDidMount = () => {
     if (this.state.news.length === 0) {
       axios
         .get('/news')
         .then((res) => {
-          this.setLocalState({ news: res.data })
+          this.setState({ news: res.data })
         })
         .catch((error) => {
           if (error.response) {
@@ -76,7 +68,7 @@ class News extends React.Component {
     return (
 
     <div className="widget_news">
-        <h2 className="title-2"><FormattedMessage id='Ultime news'/></h2>
+        <h2 className="title-2"><FormattedMessage id='news'/></h2>
         <div id="scroll_news">
           <ReactIScroll iScroll={iScroll} options={this.props.options}>
             <ul>

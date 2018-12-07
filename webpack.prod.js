@@ -1,19 +1,21 @@
-const merge = require('webpack-merge')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const cssnano = require('cssnano')
+const merge = require('webpack-merge') // eslint-disable-line import/no-extraneous-dependencies
+const MiniCssExtractPlugin = require('mini-css-extract-plugin') // eslint-disable-line import/no-extraneous-dependencies
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin') // eslint-disable-line import/no-extraneous-dependencies
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') // eslint-disable-line import/no-extraneous-dependencies
+const cssnano = require('cssnano') // eslint-disable-line import/no-extraneous-dependencies
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map', // 'source-map',
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       // filename: '[name].css',
-      filename: '[hash].css',
+      // filename: '[name].[contenthash].css',
+      // filename: '[name].css',
+      filename: '[name].[contenthash].css',
       chunkFilename: '[id].css',
     }),
     new OptimizeCssAssetsPlugin({

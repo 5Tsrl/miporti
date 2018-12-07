@@ -36,14 +36,14 @@ module.exports = merge(common, {
 
       '/news': {
         target: 'http://proteo:3000',
-        pathRewrite: { '^/news': '/api/veline?filter[where][channel]=5&filter[order]=validitystart%20desc' },
-      },
-      '/wp-json': {
-        target: 'http://wpmip.5t.torino.it',
-        changeOrigin: true, // da usare quando si proxa su un named virtual host!
+        pathRewrite: { '^/news': '/api/veline?filter[where][channel]=5&filter[order]=priority%20desc' },
       },
       '/notiziario': {
         target: 'https://www.muoversinpiemonte.it',
+        changeOrigin: true, // da usare quando si proxa su un named virtual host!
+      },
+      '/wp-json': {
+        target: 'http://wpmip.5t.torino.it',
         changeOrigin: true, // da usare quando si proxa su un named virtual host!
       },
       '/meteoarpa': {
@@ -52,9 +52,9 @@ module.exports = merge(common, {
       '/voli-caselle': {
         target: 'http://telegraf:3013',
       },
-      '/mip-colli/api/': {
+      '/colli': {
         target: 'http://lab.5t.torino.it',
-        // pathRewrite: {'^/colli-alpini' : '/mip-colli/api'},
+        pathRewrite: { '^/colli': '/mip-colli/api/' },
       },
       '/suggest': 'http://geococker:8082/',
     },

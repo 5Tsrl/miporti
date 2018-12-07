@@ -12,7 +12,7 @@ class Carousel extends React.Component {
 
   componentDidMount = () => {
     const intervalId = setInterval(this.toggleOo, 10 * 1000)
-    this.setState({ intervalId })
+    this.setState({ intervalId })// keep ref for unmounting
   }
 
   componentWillUnmount = () => {
@@ -20,15 +20,14 @@ class Carousel extends React.Component {
   }
 
   render = () => {
-    const carouselNode = this.state.oo ? <ViaggiaPiemonte /> : <Bip />
-    const node = <div key={`id_${this.state.oo}`}>{carouselNode}</div>
-
     return <ReactCSSTransitionReplace
           transitionName="carousel"
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={1000}
           >
-          {node}
+            <div key={`id_${this.state.oo}`}>
+              {this.state.oo ? <ViaggiaPiemonte /> : <Bip />}
+            </div>
         </ReactCSSTransitionReplace>
   }
 }

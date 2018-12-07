@@ -78,7 +78,7 @@ class Calcolo extends React.Component {
 <div className="widget_viaggio" style={styles.widget_viaggio}>
     <h2 className="title-1">
         <FormattedMessage
-            id='calcolo percorsi'
+            id='calcolo_percorsi'
             description='titolo del componente calcolo'
             defaultMessage='calcolo percorso'
         /></h2>
@@ -105,19 +105,19 @@ class Calcolo extends React.Component {
 
         <div className="trip_mode align_brother_bottom">
             <ul>
-                <li className="public active" title={formatMessage({ id: 'Mezzi pubblici', defaultMessage: 'Mezzi pubblici' })}>
+                <li className="public active" title={formatMessage({ id: 'bus' })}>
                     <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode" checked={this.state.otpMode == 'TRANSIT,WALK'} onChange={this.handleModeChanged.bind(null, 'TRANSIT,WALK')}/>
                     <label htmlFor="tripmode_public"><span></span>Mezzi pubblici</label>
                 </li>
-                <li className="car" title={formatMessage({ id: 'In auto' })}>
+                <li className="car" title={formatMessage({ id: 'auto' })}>
                     <input type="radio" id="tripmode_car" value="CAR" className="car" name="otpMode" checked={this.state.otpMode == 'CAR'} onChange={this.handleModeChanged.bind(null, 'CAR')}/>
                     <label htmlFor="tripmode_car"><span></span>In auto</label>
                 </li>
-                <li className="bike" title={formatMessage({ id: 'In bici' })}>
+                <li className="bike" title={formatMessage({ id: 'bici' })}>
                     <input type="radio" id="tripmode_bike" value="BICYCLE" className="bike" name="otpMode" checked={this.state.otpMode == 'BICYCLE'} onChange={this.handleModeChanged.bind(null, 'BICYCLE')}/>
                     <label htmlFor="tripmode_bike"><span></span>In bici</label>
                 </li>
-                <li className="walk" title={formatMessage({ id: 'A piedi' })}>
+                <li className="walk" title={formatMessage({ id: 'piedi' })}>
                     <input type="radio" id="tripmode_walk" value="WALK" className="walk" name="otpMode" checked={this.state.otpMode == 'WALK'} onChange={this.handleModeChanged.bind(null, 'WALK')}/>
                     <label htmlFor="tripmode_walk"><span></span>A piedi</label>
                 </li>

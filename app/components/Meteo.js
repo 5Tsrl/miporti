@@ -54,9 +54,9 @@ const MeteoPanel = (props) => {
   return (
     <div>
       <div className="tab_container first_active meteo_now">
-          <span className={classes}>{props.temperature}<FormattedMessage id='gradi cent'/></span>
+          <span className={classes}>{props.temperature}<FormattedMessage id='gradi_cent'/></span>
       </div>
-      <p><FormattedMessage id='In collaborazione con '/><a href="https://www.arpa.piemonte.gov.it/" >Arpa Piemonte</a></p>
+      <p><FormattedMessage id='collaborazione'/><a href="https://www.arpa.piemonte.gov.it/" >Arpa Piemonte</a></p>
     </div>
   )
 }
@@ -71,11 +71,11 @@ const MeteoDays = (props) => {
     <ul className="tabs_label meteo_forecast_container">
       <li onClick={props.onDayChoosen.bind(null, 'oggi')} className={classesLiOggi}>
         <FormattedMessage id='oggi'/><span className={classesOggi}></span>{props.temperature}
-        <FormattedMessage id='gradi cent'/>
+        <FormattedMessage id='gradi_cent'/>
       </li>
       <li onClick={props.onDayChoosen.bind(null, 'domani')} className={classesLiDomani}>
         <FormattedMessage id='domani'/><span className={classesDomani}></span>{props.temperatureDomani}
-        <FormattedMessage id='gradi cent'/>
+        <FormattedMessage id='gradi_cent'/>
       </li>
     </ul>
   )

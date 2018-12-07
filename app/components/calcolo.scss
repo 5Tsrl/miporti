@@ -52,7 +52,9 @@
         font-family: $SF;
         vertical-align: baseline;
         margin-left: 10px;
+        &:focus { outline: none; }
       }
+
     }
     .trip_input.from label{
       padding-left: 5px;
@@ -60,6 +62,7 @@
     }
     .trip_input_switch{
       background: url(../images/trip_input_switch.svg) no-repeat center;
+      background-size: contain;
       border: 0;
       width: 22px;
       height: 29px;
@@ -68,7 +71,7 @@
       top: 30%;
       cursor: pointer;
       .no-touch &:hover{
-        filter:  brightness(45%);
+        filter:  brightness(145%);
       }
     }
   }
@@ -104,6 +107,8 @@
         width: 37px;
         height: 32px;
         vertical-align: baseline;
+        // background-size: contain;
+        // background-size: 37px 32px;
       }
       input[type="radio"]:hover + label span:after{
         filter: brightness(1.3);

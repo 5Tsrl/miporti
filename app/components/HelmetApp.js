@@ -1,9 +1,13 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 
+import '../images/favicon.ico'
+import '../robots.txt'
+import '../sitemap.txt'
+
 const HelmetApp = () => (
   <Helmet>
-    <meta charSet='utf-8' />
+    <meta charset="utf-8" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Tutti i servizi per muoverti informato | Muoversi in Piemonte</title>
     <meta name='description'

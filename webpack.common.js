@@ -20,7 +20,8 @@ module.exports = {
     HtmlWebpackPluginConfig,
   ],
   output: {
-    filename: '[hash].bundle.js',
+    // filename: '[hash].bundle.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
@@ -28,8 +29,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(txt)$/,
-        loader: 'file-loader?name=[name].[ext]', // robots.txt
+        test: /\.txt$/,
+        loader: 'file-loader?name=[name].[ext]', // robots.txt, sitemap.txt
       },
       {
         test: /\.html$/,
@@ -44,7 +45,20 @@ module.exports = {
         use: 'js-yaml-loader',
       },
       {
-        test: /\.(jpe?g|gif|png|svg|webp|m4v)$/,
+        test: /\.svg$/,
+        include: path.resolve(__dirname, 'app/images'),
+        loader: 'svg-url-loader',
+        options: {
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024,
+          // Remove the quotes from the url
+          // (they’re unnecessary in most cases)
+          noquotes: true,
+        },
+        // use: 'svg-url-loader?limit=10000&name=images/[name].[ext]',
+      },
+      {
+        test: /\.(jpe?g|gif|png|webp|m4v)$/,
         include: path.resolve(__dirname, 'app/images'),
         use: 'url-loader?limit=10000&name=images/[name].[ext]',
       },

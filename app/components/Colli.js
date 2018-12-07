@@ -1,25 +1,21 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from 'react'
+import classNames from 'classnames'
 import Collapse from 'react-collapse'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import axios from 'axios'
-import lscache from 'lscache'
 
 const SelectorText = (props) => {
-  const classes = classNames('btn_link meteo_here', { open: props.open })
+  const classes = classNames('btn_link', { open: props.open })
   return <span className={classes} onClick={props.onTextClick}>{props.text}</span>
 }
 
-const SelectorTexts = (props) => {
-  if (!props.texts) {
-    return <Collapse isOpened={props.open} ><ul className="elencoColli" ></ul></Collapse>
-  }
-  const textsNodes = props.texts.map((singleText, id) => {
-    return <li className={singleText.Stato} key={id} ><span>{singleText.Nome}</span></li>
+const SelectorTexts = ({ open, texts }) => {
+  const textsNodes = texts && texts.map((colle, idx) => {
+    return <li className={colle.Stato} key={idx} ><span>{colle.Nome}</span></li>
   })
   return (
-    <Collapse isOpened={props.open} >
-      <ul className="elencoColli" >
+    <Collapse isOpened={open} >
+      <ul className='elencoColli' >
           {textsNodes}
       </ul>
     </Collapse>
@@ -29,9 +25,7 @@ const SelectorTexts = (props) => {
 class Selector extends React.Component {
   state = { open: false }
 
-  handleTextClick = () => {
-    this.setState({ open: !this.state.open })
-  }
+  handleTextClick = () => this.setState({ open: !this.state.open })
 
   render() {
     return (
@@ -44,24 +38,12 @@ class Selector extends React.Component {
 }
 
 class Colli extends React.Component {
-  state = lscache.get('colli') || { colli: [] }
-
-  /*
-   * Sets the localstorage state, and continues on to set the state of the React component
-   */
-  setLocalState(data) {
-    // Store in LocalStorage
-    lscache.set('colli', data, 2);
-    // Store in Component State
-    this.setState(data);
-  }
+  state = { colli: [] }
 
   loadDataFromServer = () => {
     axios
-      .get('/mip-colli/api/')
-      .then((res) => {
-        this.setLocalState({ colli: res.data })
-      })
+      .get('/colli')
+      .then(res => this.setState({ colli: res.data }))
       .catch((error) => {
         if (error.response) {
           console.log(error.response.status, error.response.data)
@@ -78,13 +60,13 @@ class Colli extends React.Component {
   }
 
   render() {
-    return <div className="widget_imgbg">
-            <div className="centra">
-              <h2 className="title-3"><FormattedMessage id='I colli alpini in piemonte'/></h2>
-              <p><FormattedMessage id="Informazioni sull'apertura dei principali colli alpini piemontesi." /></p>
-              <Selector texts={this.state.colli} text={this.props.intl.formatMessage({ id: 'Situazione colli alpini' })}/>
-            </div>
-          </div>
+    return (
+      <div className='widget_imgbg'>
+        <h2 className='title-3'><FormattedMessage id='colli'/></h2>
+        <p><FormattedMessage id='info_apertura' /></p>
+        <Selector texts={this.state.colli} text={this.props.intl.formatMessage({ id: 'info_colli' })}/>
+      </div>
+    )
   }
 }
 

@@ -12,7 +12,7 @@ const Volo = props => (
     <td>{props.ora}</td>
     <td>{props.destinazione}</td>
     <td>{props.volo}</td>
-    <td className="note">{props.imbarco}</td>
+    <td className='note'>{props.imbarco}</td>
   </tr>
 )
 
@@ -21,9 +21,9 @@ const VoliTable = (props) => {
     return <Volo key={idx} data={volo.data} ora={volo.ora} destinazione={volo.destinazione} volo={volo.volo} imbarco={volo.stato} />
   })
   return (
-    <div className="tabs_container">
-      <div className="tab_container first_active voli_partenze">
-        <table className="tabella_voli">
+    <div className='tabs_container'>
+      <div className='tab_container first_active voli_partenze'>
+        <table className='tabella_voli'>
           <thead>
             <tr>
               <th><FormattedMessage id='Data'/></th>
@@ -48,7 +48,7 @@ const VoliTabs = (props) => {
 
   return (
       <div>
-          <ul className="tabs_label voli_tabella_container">
+          <ul className='tabs_label voli_tabella_container'>
               <li onClick={props.onCurrentChoosen.bind(null, 'partenze')} className={classesPartenze}><FormattedMessage id='Partenze'/></li>
               <li onClick={props.onCurrentChoosen.bind(null, 'arrivi')} className={classesArrivi}><FormattedMessage id='Arrivi'/></li>
           </ul>
@@ -73,15 +73,15 @@ const VoliFooter = (props) => {
   }
 
   return (
-    <div className="last_info">
-        <p><FormattedMessage id='orari di volo aggiornati alle '/>{props.aggiornamento}</p>
-        <span className="raggiungere">
-            <FormattedMessage id="Raggiungere l'aeroporto in "/>
-            <a href={`${links[props.currentLocale].auto}`} className="btn_partenze"><FormattedMessage id='auto'/></a>
-                <a href={`${links[props.currentLocale].bus}`} className="btn_partenze"><FormattedMessage id='bus'/></a>
-                    <a href={`${links[props.currentLocale].train}`} className="btn_partenze"><FormattedMessage id='treno'/></a>
+    <div className='last_info'>
+        <p><FormattedMessage id='orari'/>{props.aggiornamento}</p>
+        <span className='raggiungere'>
+            <FormattedMessage id='raggiungere'/>
+            <a href={`${links[props.currentLocale].auto}`} className='btn_partenze'><FormattedMessage id='by_auto'/></a>
+                <a href={`${links[props.currentLocale].bus}`} className='btn_partenze'><FormattedMessage id='by_bus'/></a>
+                    <a href={`${links[props.currentLocale].train}`} className='btn_partenze'><FormattedMessage id='by_treno'/></a>
         </span>
-        <a href={`${links[props.currentLocale].timetable}`} className="btn_link"><FormattedMessage id='Orario Generale'/></a>
+        <a href={`${links[props.currentLocale].timetable}`} className='btn_link'><FormattedMessage id='orario_gen'/></a>
     </div>
   )
 }
@@ -122,11 +122,11 @@ class Voli extends React.Component {
     }
     return (
 
-      <div className="widget_voli">
-        <div className="title-4">
-            <h2><FormattedMessage id='orario voli'/></h2>
-            <h3><FormattedMessage id='Aeroporto di Torino'/></h3>
-            <p><FormattedMessage id='In collaborazione con '/>
+      <div className='widget_voli'>
+        <div className='title-4'>
+            <h2><FormattedMessage id='orario'/></h2>
+            <h3><FormattedMessage id='aeroporto'/></h3>
+            <p><FormattedMessage id='collaborazione'/>
              <a href={`http://www.aeroportoditorino.it/${this.props.currentLocale}`}>Sagat S.p.a.</a>
            </p>
         </div>
