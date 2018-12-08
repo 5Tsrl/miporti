@@ -54,7 +54,7 @@ module.exports = merge(common, {
       },
       '/colli': {
         target: 'http://lab.5t.torino.it',
-        pathRewrite: { '^/colli': '/mip-colli/api/' },
+        pathRewrite: { '^/colli': '/mip-colli2/api/' },
       },
       '/suggest': 'http://geococker:8082/',
     },
