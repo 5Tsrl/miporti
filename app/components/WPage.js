@@ -17,8 +17,11 @@ class WPage extends React.Component {
     axios
       .get(`/wp-json/wp/v2/pages?filter[name]=${slug}`)
       .then((res) => {
-        if (res.data[0]) {
-          this.setState({ page: res.data[0], isLoaded: true })
+        const pageObj = res.data[0]
+        if (pageObj && pageObj.content) {
+          const newContent = { rendered: pageObj.content.rendered.replace(/http:\/\/wpmip.5t.torino.it\/wp-content\/uploads/gi, '/wp-images') }
+          const newPageObj = { ...pageObj, content: newContent }
+          this.setState({ page: newPageObj, isLoaded: true })
         } else {
           this.props.history.push('/notfound')
           // console.log('NOT FOUND')

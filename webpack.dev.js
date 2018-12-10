@@ -46,6 +46,11 @@ module.exports = merge(common, {
         target: 'http://wpmip.5t.torino.it',
         changeOrigin: true, // da usare quando si proxa su un named virtual host!
       },
+      '/wp-images': {
+        target: 'http://wpmip.5t.torino.it',
+        pathRewrite: { '^/wp-images': '/wp-content/uploads' },
+        changeOrigin: true, // da usare quando si proxa su un named virtual host!
+      },
       '/meteoarpa': {
         target: 'http://telegraf:3012',
       },
