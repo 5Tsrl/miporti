@@ -12,11 +12,9 @@
 
   .title-1{
     text-align: center;
-    &:before{
-      width: 80px;
-      height: 80px;
-      margin-bottom: 20px;
-      background:url(../images/indicazioni.svg) no-repeat center;
+    .icoIndicazioni {
+      width: 57px;
+      margin-right: 20px;
       vertical-align: middle;
     }
   }
@@ -61,17 +59,14 @@
       width: 35px;
     }
     .trip_input_switch{
-      background: url(../images/trip_input_switch.svg) no-repeat center;
-      background-size: contain;
-      border: 0;
       width: 22px;
-      height: 29px;
       position: absolute;
       right: 0;
       top: 30%;
       cursor: pointer;
+      fill: $c12_2;
       .no-touch &:hover{
-        filter:  brightness(145%);
+        fill: #fff;
       }
     }
   }
@@ -85,12 +80,19 @@
     ul li{
       list-style-type: none;
       display: inline-block;
-      cursor:pointer;
       .no-touch &:hover{
         label span:after{
           color:#fff;
         }
       }
+      .icoTripMode{
+        width: 37px;
+        height: 32px;
+        margin: 0 10px;
+        vertical-align: baseline;
+        fill: $c12_4;
+      }
+
       input[type="radio"] {
         display:none;
       }
@@ -98,39 +100,16 @@
         text-indent: -9999px;
         font-size: 0;
         line-height: 0;
-      }
-      input[type="radio"] + label span:after {
-        margin: 0 10px;
         cursor:pointer;
-        display: inline-block;
-        content: '';
-        width: 37px;
-        height: 32px;
-        vertical-align: baseline;
-        // background-size: contain;
-        // background-size: 37px 32px;
       }
-      input[type="radio"]:hover + label span:after{
-        filter: brightness(1.3);
+      input[type="radio"]:checked + label svg{
+        fill: #fff;
       }
-
-      input[type="radio"]:checked + label span:after{
-        filter: brightness(100);
-      }
-
-      &.public input[type="radio"] + label span:after{
-        background:url(../images/tp_bus.svg) no-repeat center;
-      }
-      &.car input[type="radio"] + label span:after{
-        background:url(../images/tp_car.svg) no-repeat center;
-      }
-      &.bike input[type="radio"] + label span:after{
-        background:url(../images/tp_bike.svg) no-repeat center;
-      }
-      &.walk input[type="radio"] + label span:after{
-        background:url(../images/tp_walk.svg) no-repeat center;
+      input[type="radio"]:hover + label svg{
+        fill: $c12_2;
       }
     }
+
     .trip_button_container{
       text-align: center;
       .trip_button{
@@ -141,11 +120,6 @@
       .trip_button:focus{
         border:1px solid $c12_2;
       }
-    }
-    &:after{
-      content: '';
-      display: table;
-      clear: both;
     }
   }
 

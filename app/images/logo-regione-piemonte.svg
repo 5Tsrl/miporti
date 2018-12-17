@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 1730 530">
+  <path fill="#a6a6a6" d="M0 0h530v530H0z"/>
+  <path fill="red" d="M30 30h170v168H30zM330 30h170v168H330zM30 330h170v168H30zM330 330h170v168H330z"/>
+  <path fill="#0f5fa6" d="M110 120l20-63h270l20 63h-60l10-28h-80l10 28h-60l10-28h-90l10 28z"/>
+  <text fill="currentColor" x="550" y="250" textLength="1179" lengthAdjust="spacingAndGlyphs" font-size="322" style="font-family: TimesNewRoman,'Times New Roman',Times,Baskerville,Georgia,serif;">REGIONE</text>
+  <text fill="currentColor" x="550" y="510" textLength="1179" lengthAdjust="spacingAndGlyphs" font-size="300" style="font-family: TimesNewRoman,'Times New Roman',Times,Baskerville,Georgia,serif;">PIEMONTE</text>
+</svg>

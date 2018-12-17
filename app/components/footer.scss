@@ -8,17 +8,23 @@ footer{
   color: $c4;
   position: relative;
   padding: 25px 0 0;
-  .logo-regione{
+
+  .link-regione{
     text-indent: -9999px;
     display: inline-block;
-    width: 80px;
+    width: 180px;
     height: 26px;
-    background:url(../images/logo_regione_w.svg) no-repeat top left;
-    background-size:contain;
     margin-right: 20px;
     .no-touch &:hover{
       opacity: 0.8;
     }
+  }
+  .logo_regPie {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    margin-right: 30px;
   }
   .logo-5t{
     text-indent: -9999px;
@@ -42,11 +48,6 @@ footer{
   }
   .wrapper{
     padding-top: 1.35em;
-    &:after{
-      content: '';
-      display: table;
-      clear: both;
-    }
   }
   .footer-menu{
     padding-top: 25px;
@@ -89,28 +90,12 @@ footer{
     box-sizing: border-box;
     margin: 0 auto;
   }
-  .social{
-    text-indent: -9999px;
-    float: right;
-    position: relative;
-    background: #00aced;
-    width: 26px;
-    height: 26px;
-    top: -47px;
-    @include prefix('border-radius', '25px');
-    &:after{
-      display: block;
-      width: 15px;
-      height: 15px;
-      background:url(../images/twitter.svg) no-repeat center;
-      background-size:contain;
-      content: " ";
-      position: absolute;
-      top: 5px;
-      right: 5px;
-    }
+  .logoTwitter{
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
     .no-touch &:hover{
-      background: rgba(0, 172, 237, 0.8);
+      opacity: 0.8;
     }
   }
   @include media('screen', '>dim_05') {
@@ -119,12 +104,6 @@ footer{
       height: 35px;
       margin-left: 12px;
       top: -38px;
-      &:after{
-        width: 20px;
-        height: 20px;
-        top: 8px;
-        right: 7px;
-      }
     }
   }
   @include media('screen', '>dim_20') {
@@ -140,12 +119,6 @@ footer{
       height: 35px;
       margin-left: -1px;
       top: 6px;
-      &:after{
-        width: 20px;
-        height: 20px;
-        top: 8px;
-        right: 7px;
-      }
     }
     .footer-info{
       float: left;
@@ -184,12 +157,6 @@ footer{
       height: 40px;
       margin-left: 15px;
       top: 4px;
-      &:after{
-        width: 23px;
-        height: 23px;
-        top: 9px;
-        right: 8px;
-      }
     }
     .info-tel{
       margin-right: 30px;

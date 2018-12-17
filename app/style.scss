@@ -41,62 +41,23 @@ a {
   }
 }
 
-
-.tabs_label{
-  position: relative;
-  .tab_label{
-    display: inline-block;
-  }
-}
-.iScrollVerticalScrollbar {
-  position: absolute;
-  z-index: 9999;
-  width: 35px;
-  bottom: 20px;
-  top: 20px;
-  right: 0;
-  overflow: hidden;
-}
-.iScrollIndicator {
-  position: absolute;
-  border:0;
-  cursor: pointer;
-}
-.iScrollVerticalScrollbar .iScrollIndicator {
-  &:after{
-    display: block;
-    content: '';
-    width: 7px;
-    height: 100%;
-    right: 13px;
-    position: absolute;
-  }
-  width: 100%;
-  right: 0;
-}
-
-
 .header{
   position: relative;
   z-index: 2;
   width: 100%;
   background: #fff;
   padding: 9px 0;
-  .aux:after{
-    content:'';
-    display: table;
-    clear: both;
-  }
 
-  #logo_site-title {
+  .link-logo-mip{
     text-indent: -9999px;
     font-size: 0;
     line-height: 0;
-    display: block;
+  }
+  .logo-mip {
     width: 115px;
-    height: 37px;
-    background:url(images/logo_MIP.svg) no-repeat top left;
-    background-size:contain;
+  }
+  .logo_regPie {
+    display: none;
   }
   #nav-toggle {
     display: block;
@@ -172,8 +133,6 @@ a {
       font-size: 1.1em;
     }
     .language-switcher{
-      /* temporaneamente disabilitato*/
-      //display: none;
       position: absolute;
       top: 25px;
       right: 30px;
@@ -211,9 +170,8 @@ a {
   }
   @include media('screen', '>dim_30') {
     padding: 20px 0;
-    #logo_site-title {
+    .logo-mip {
       width: 230px;
-      height: 70px;
     }
     #nav-toggle {
       top: 30%;
@@ -227,18 +185,14 @@ a {
     #nav-toggle{
       display: none;
     }
-    #logo_regPie {
+    .logo_regPie {
+      display: block;
+      color: #000;
       position: absolute;
       top:26px;
       right:0;
       width: 120px;
       height: 40px;
-      text-indent: -9999px;
-      font-size: 0;
-      line-height: 0;
-      display: block;
-      background:url(images/logo_regione.svg) no-repeat top right;
-      background-size:contain;
     }
     nav{
       background: none;
@@ -248,8 +202,6 @@ a {
       right: 148px;
       bottom: -20px;
       width: auto;
-      //float: right;
-      //width: inherit;
       padding: 0;
       padding-right: 50px;
 
@@ -320,7 +272,7 @@ a {
         }
       }
     }
-  }
+  }//chiude media ('screen', '>dim_50')
 }
 .menu-open nav.main-menu-container{
   left: 0;
@@ -373,13 +325,6 @@ a {
   }
   .title-1{
     margin-bottom: 35px;
-    &:before{
-      display: block;
-      content: '';
-      background-size:contain;
-      margin: 0 auto 10px;
-      vertical-align: bottom;
-    }
   }
   .title-2{
     text-transform: uppercase;
@@ -416,7 +361,6 @@ a {
   }
   .centra{margin:auto}
 }
-//@import 'components/calcolo/calcolo.scss';
 
 .widget_news{
   text-align: left;
@@ -492,9 +436,7 @@ a {
     margin: 40px auto;
     max-width: 260px;
   }
-  .img_viaggia{
-    background: url(images/train.svg)  no-repeat center;
-    display: block;
+  .imgTrain{
     height: 180px;
     margin: 4px auto 5px;
   }
@@ -529,7 +471,6 @@ a {
   text-align: center;
   padding: 0;
   position: relative;
-  //min-height: 470px;
   h2{
     display: none;
   }
@@ -702,9 +643,7 @@ a {
     max-width: 260px;
     background-color: 'red';
   }
-  .img_ticket{
-    background: url(images/img_biglietto.svg)  no-repeat center;
-    display: block;
+  .logoBip{
     height: 151px;
     margin: 40px auto 50px;
     max-width: 170px;
@@ -779,12 +718,6 @@ a {
   .title-1{
     font-size:1.75em;
   }
-  .widget .title-1{
-    &:before{
-      display: inline-block;
-      margin: 0 20px 0 0;
-    }
-  }
   .widget_viaggio {
     height: 280px;
     .align_brother_bottom{
@@ -794,11 +727,6 @@ a {
     .title-1{
       padding-left: 20px;
       text-align: left;
-      &:before{
-        width: 50px;
-        height: 50px;
-        margin-bottom: 0;
-      }
     }
     .trip_container .trip_input input{
     }
@@ -817,11 +745,6 @@ a {
   }
   .widget_traffico {
     height: 330px;
-    .title-1:before{
-      width: 57px;
-      height: 41px;
-      margin-bottom: 0;
-    }
     p{
       font-size: 1.2em;
     }
@@ -918,12 +841,6 @@ a {
 }
 //passaggio da un widget per colonna a due widget per colonna
 @include media('screen', '>dim_35') {
-  .widget .title-1{
-    &:before{
-      display: block;
-      margin: 0 auto;
-    }
-  }
   .widget_4-1{
     width: 48.5%;
   }
@@ -938,11 +855,6 @@ a {
     .title-1{
       padding-left: 0;
       text-align: center;
-      &:before{
-        width: 80px;
-        height: 80px;
-        margin-bottom: 20px;
-      }
     }
     .trip_mode{
       width: auto;
@@ -961,11 +873,6 @@ a {
   }
   .widget_traffico {
     height: 470px;
-    .title-1:before{
-      width: 97px;
-      height: 85px;
-      margin-bottom: 15px;
-    }
   }
   .widget_news #scroll_news {
     height: 480px;
@@ -996,11 +903,6 @@ a {
     .title-1{
       padding-left: 20px;
       text-align: left;
-      &:before{
-        width: 50px;
-        height: 50px;
-        margin-bottom: 0;
-      }
     }
     .trip_mode{
       width: 90%;
@@ -1019,11 +921,6 @@ a {
   }
   .widget_traffico{
     height: 370px;
-    .title-1:before{
-      width: 57px;
-      height: 41px;
-      margin-bottom: 0;
-    }
     p{
       padding-top: 10px;
     }

@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        include: path.resolve(__dirname, 'app/images'),
+        include: path.resolve(__dirname, 'app/images/meteo'),
         loader: 'svg-url-loader',
         options: {
           // Inline files smaller than 10 kB (10240 bytes)
@@ -58,15 +58,35 @@ module.exports = {
         // use: 'svg-url-loader?limit=10000&name=images/[name].[ext]',
       },
       {
+        test: /\.svg$/,
+        exclude: path.resolve(__dirname, 'app/images/meteo'),
+        // issuer: {
+        //   test: /\.js$/,
+        // },
+        use: [
+          { loader: '@svgr/webpack' },
+          // {
+          //   loader: 'svg-url-loader',
+          //   options: {
+          //     // Inline files smaller than 10 kB (10240 bytes)
+          //     limit: 10 * 1024,
+          //     // Remove the quotes from the url
+          //     // (they’re unnecessary in most cases)
+          //     noquotes: true,
+          //   },
+          // },
+        ],
+      },
+      {
         test: /\.(jpe?g|gif|png|webp|m4v)$/,
         include: path.resolve(__dirname, 'app/images'),
         use: 'url-loader?limit=5000&name=images/[name].[ext]',
       },
-      {
-        test: /\.(eot|ttf|woff|woff2|svg)$/,
-        include: path.resolve(__dirname, 'app/font'),
-        use: 'file-loader?name=font/[name].[ext]',
-      },
+      // {
+      //   test: /\.(eot|ttf|woff|woff2|svg)$/,
+      //   include: path.resolve(__dirname, 'app/font'),
+      //   use: 'file-loader?name=font/[name].[ext]',
+      // },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,

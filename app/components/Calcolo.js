@@ -2,6 +2,12 @@ import React from 'react'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import GeocodeSuggest from './GeocodeSuggest'
 import './calcolo.scss'
+import IcoIndicazioni from '../images/ico-indicazioni.svg'
+import TripInputSwitch from '../images/trip_input_switch.svg'
+import IcoTpBus from '../images/tp_bus.svg'
+import IcoTpCar from '../images/tp_car.svg'
+import IcoTpBike from '../images/tp_bike.svg'
+import IcoTpWalk from '../images/tp_walk.svg'
 
 class Calcolo extends React.Component {
   state = {
@@ -30,7 +36,7 @@ class Calcolo extends React.Component {
   handleReverseBtn = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    console.log('invertito')
+    // console.log('invertito')
     const value_from_tmp = this.state.value_from
     const coord_from_tmp = this.state.coord_from
     this.setState({
@@ -77,11 +83,13 @@ class Calcolo extends React.Component {
 
 <div className="widget_viaggio" style={styles.widget_viaggio}>
     <h2 className="title-1">
-        <FormattedMessage
-            id='calcolo_percorsi'
-            description='titolo del componente calcolo'
-            defaultMessage='calcolo percorso'
-        /></h2>
+      <IcoIndicazioni className="icoIndicazioni"/>
+      <FormattedMessage
+          id='calcolo_percorsi'
+          description='titolo del componente calcolo'
+          defaultMessage='calcolo percorso'
+      />
+    </h2>
     <form className="trip_form" action="/#planner" onSubmit={this.handleSubmit}>
 
         <div className="trip_container">
@@ -98,28 +106,42 @@ class Calcolo extends React.Component {
                       onChange={this.onChangeTo.bind(this)} onSuggestSelected={this.handleToSelected.bind(this)}/>
                 </li>
             </ul>
-
-            <button type="button" key="revbtn" tabIndex="-1" className="trip_input_switch" id="trip_switch" onClick={this.handleReverseBtn.bind(this)}></button>
-
+            <TripInputSwitch className="trip_input_switch" onClick={this.handleReverseBtn.bind(this)}/>
         </div>
 
         <div className="trip_mode align_brother_bottom">
             <ul>
-                <li className="public active" title={formatMessage({ id: 'bus' })}>
-                    <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode" checked={this.state.otpMode == 'TRANSIT,WALK'} onChange={this.handleModeChanged.bind(null, 'TRANSIT,WALK')}/>
-                    <label htmlFor="tripmode_public"><span></span>Mezzi pubblici</label>
+                <li className="public" title={formatMessage({ id: 'bus' })}>
+                  <input type="radio" id="tripmode_public" value="TRANSIT" className="public" name="otpMode"
+                     checked={this.state.otpMode === 'TRANSIT,WALK'} onChange={this.handleModeChanged.bind(null, 'TRANSIT,WALK')}/>
+                  <label htmlFor="tripmode_public">
+                    <IcoTpBus className="icoTripMode"/>
+                    Mezzi pubblici
+                  </label>
                 </li>
                 <li className="car" title={formatMessage({ id: 'auto' })}>
-                    <input type="radio" id="tripmode_car" value="CAR" className="car" name="otpMode" checked={this.state.otpMode == 'CAR'} onChange={this.handleModeChanged.bind(null, 'CAR')}/>
-                    <label htmlFor="tripmode_car"><span></span>In auto</label>
+                  <input type="radio" id="tripmode_car" value="CAR" className="car" name="otpMode"
+                     checked={this.state.otpMode === 'CAR'} onChange={this.handleModeChanged.bind(null, 'CAR')}/>
+                  <label htmlFor="tripmode_car">
+                    <IcoTpCar className="icoTripMode"/>
+                    In auto
+                  </label>
                 </li>
                 <li className="bike" title={formatMessage({ id: 'bici' })}>
-                    <input type="radio" id="tripmode_bike" value="BICYCLE" className="bike" name="otpMode" checked={this.state.otpMode == 'BICYCLE'} onChange={this.handleModeChanged.bind(null, 'BICYCLE')}/>
-                    <label htmlFor="tripmode_bike"><span></span>In bici</label>
+                  <input type="radio" id="tripmode_bike" value="BICYCLE" className="bike" name="otpMode"
+                     checked={this.state.otpMode === 'BICYCLE'} onChange={this.handleModeChanged.bind(null, 'BICYCLE')}/>
+                  <label htmlFor="tripmode_bike">
+                    <IcoTpBike className="icoTripMode"/>
+                    In bici
+                  </label>
                 </li>
                 <li className="walk" title={formatMessage({ id: 'piedi' })}>
-                    <input type="radio" id="tripmode_walk" value="WALK" className="walk" name="otpMode" checked={this.state.otpMode == 'WALK'} onChange={this.handleModeChanged.bind(null, 'WALK')}/>
-                    <label htmlFor="tripmode_walk"><span></span>A piedi</label>
+                  <input type="radio" id="tripmode_walk" value="WALK" className="walk" name="otpMode"
+                     checked={this.state.otpMode === 'WALK'} onChange={this.handleModeChanged.bind(null, 'WALK')}/>
+                  <label htmlFor="tripmode_walk">
+                    <IcoTpWalk className="icoTripMode"/>
+                    A piedi
+                  </label>
                 </li>
             </ul>
             <div className="trip_button_container">

@@ -38,14 +38,10 @@
     background: $c11;
     overflow: hidden;
   }
-
-  .title-1 {
-    &:before {
-      width: 87px;
-      height: 71px;
-      margin-bottom: 15px;
-      background: url("../images/traffico.svg") no-repeat center;
-    }
+  .icoTraffico {
+    width: 57px;
+    margin-right: 20px;
+    vertical-align: middle;
   }
 
   p {

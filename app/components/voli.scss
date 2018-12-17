@@ -26,6 +26,12 @@
       font-weight: $fw1;
     }
   }
+  .tabs_label{
+    position: relative;
+    .tab_label{
+      display: inline-block;
+    }
+  }
   .last_info{
     text-align: center;
     margin: 0px auto;
@@ -90,43 +96,21 @@
       .no-touch &:hover{
         color: $c10_2;
       }
-      &:before{
-        display: inline-block;
-        content: '';
+      .imgVoli{
         width: 20px;
-        height: 20px;
-        padding: 0 10px;
+        margin: 0 10px;
         vertical-align: middle;
-        .no-touch &:hover{
-          color: $c10_2;
-        }
       }
     }
     .tab_left{
-      &:before{
-        background:url(../images/plane_take_off.svg) no-repeat center;
-      }
       padding-right: 20px;
-    }
-    .tab_right{
-      &:before{
-        background:url(../images/plane_landing.svg) no-repeat center;
-      }
-      border-left: 1px $c10_4 solid;
+      border-right: 1px $c10_4 solid;
     }
     .tab_active{
       color: $c10_1;
       cursor: auto;
       .no-touch &:hover{
         color: $c10_1;
-      }
-    }
-    :not(.tab_active){
-      &:before{
-        filter: brightness(2) grayscale(100%);
-      }
-      &:hover:before{
-        filter: brightness(2) grayscale(40%);
       }
     }
   }

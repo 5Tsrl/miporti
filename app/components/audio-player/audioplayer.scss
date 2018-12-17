@@ -1,29 +1,17 @@
 @import '../../base/_include-media.scss';
 @import '../../base/_variables.scss';
 
-$common-padding: 5px;
-$animate-sec: 1.5s;
-
 .audio-player {
-	max-width: 180px;
   position:absolute;
   top:0;
   left:0;
-
 }
-
-.audio-button-panel {
-	padding-top: 2px;
+.icoAudioButton{
+  width: 50px;
+  &:hover circle{
+    fill: #56C3A3;
+  }
 }
-
-.audio-refresh-animate {
-  -webkit-animation: rotating $animate-sec linear infinite;
-  -moz-animation: rotating $animate-sec linear infinite;
-  -ms-animation: rotating $animate-sec linear infinite;
-  -o-animation: rotating $animate-sec linear infinite;
-  animation: rotating $animate-sec linear infinite;
-}
-
 .audio-progress-container {
   position: absolute;
   left:70px;
@@ -34,24 +22,20 @@ $animate-sec: 1.5s;
 }
 .audio-progress-container:before {
   display: block;
-    content: '';
-    position: absolute;
-    top: 39px;
-    left: 0px;
-    right: 0px;
-    height: 3px;
-    background: #739dc6;
+  content: '';
+  position: absolute;
+  top: 39px;
+  left: 0px;
+  right: 0px;
+  height: 3px;
+  background: #739dc6;
 }
 .audio-progress-container.visibile{
   display: block;
 }
 
-.audio-progress-container-short-width {
-	width: 130px;
-}
-
+//pallino
 .audio-progress {
-
     position: absolute;
     top:32px;
     left: 75px;
@@ -62,9 +46,9 @@ $animate-sec: 1.5s;
     background: #fff;
     cursor: pointer;
     border: 3px #fff solid;
-}
-.audio-progress:hover {
-  background-color: #40B391;
+    &:hover{
+      background-color: #40B391;
+    }
 }
 
 .area_player{
@@ -80,56 +64,4 @@ $animate-sec: 1.5s;
   .area_player{
     float: left;
   }
-}
-
-.audio-button{
-  position: absolute;;
-  width: 50px;
-  height: 50px;
-  top:0;
-  left:0
-}
-
-.audio-button:before{
-  box-sizing: border-box;
-  display: inline-block !important;
-    content: '';
-    width: 50px;
-    height: 50px;
-    vertical-align: middle;
-    margin-right: 10px;
-    background: #40b391;
-    border: 4px #fff solid;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
-}
-.audio-button:hover:before{
-  background: #56C3A3
-}
-.audio-button:after{
-  background: url(../../images/player_default.svg) no-repeat center;
-  display: block;
-  content: '';
-  width: 30px;
-  height: 27px;
-  top: 22%;
-  left: 20%;
-  position: absolute;
-}
-.playing.audio-button:after{
-  background: url(../../images/player_pausa.svg) no-repeat center;
-  top:30%;
-  left:28%;
-  width: 20px;
-  height: 19px;
-}
-.paused.audio-button:after{
-  background: url(../../images/player_play.svg) no-repeat center;
-  top:30%;
-  left:33%;
-  width: 20px;
-  height: 19px;
 }

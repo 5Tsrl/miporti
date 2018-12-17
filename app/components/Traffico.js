@@ -3,6 +3,7 @@ import { injectIntl, FormattedMessage } from 'react-intl'
 import axios from 'axios'
 import AudioPlayer from './audio-player/AudioPlayer'
 import './traffico.scss'
+import IcoTraffico from '../images/traffico.svg'
 import imgTraffico from '../images/traffico.jpg'
 import videoTraffico from '../images/traffico.m4v'
 
@@ -61,7 +62,10 @@ class Traffico extends React.Component {
           <p></p>
         </div>
         }
-        <h2 className='title-1'><FormattedMessage id='traffico'/></h2>
+        <h2 className='title-1'>
+          <IcoTraffico className="icoTraffico" />
+          <FormattedMessage id='traffico'/>
+        </h2>
         <p><FormattedMessage id='aggiornamenti'/>
           <br /><strong><FormattedMessage id='muoviti'/></strong>
         </p>

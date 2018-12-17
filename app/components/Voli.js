@@ -5,6 +5,8 @@ import classNames from 'classnames'
 import axios from 'axios'
 
 import './voli.scss'
+import PlaneTakeOff from '../images/plane_take_off.svg'
+import PlaneLanding from '../images/plane_landing.svg'
 
 const Volo = props => (
   <tr>
@@ -49,8 +51,14 @@ const VoliTabs = (props) => {
   return (
       <div>
           <ul className='tabs_label voli_tabella_container'>
-              <li onClick={props.onCurrentChoosen.bind(null, 'partenze')} className={classesPartenze}><FormattedMessage id='Partenze'/></li>
-              <li onClick={props.onCurrentChoosen.bind(null, 'arrivi')} className={classesArrivi}><FormattedMessage id='Arrivi'/></li>
+              <li onClick={props.onCurrentChoosen.bind(null, 'partenze')} className={classesPartenze}>
+                <PlaneTakeOff className='imgVoli'/>
+                <FormattedMessage id='Partenze'/>
+              </li>
+              <li onClick={props.onCurrentChoosen.bind(null, 'arrivi')} className={classesArrivi}>
+                <PlaneLanding className='imgVoli'/>
+                <FormattedMessage id='Arrivi'/>
+              </li>
           </ul>
       </div>
   )

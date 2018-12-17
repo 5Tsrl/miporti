@@ -50,17 +50,18 @@ class AudioPlayer extends React.Component {
 
     return (
       <div className="audio-player">
-          <ButtonPanel key="1" isPlaying={this.state.isPlaying} isPause={this.state.isPause}
-              isLoading={this.state.isLoading}
-              currentSongIndex={this.state.currentSongIndex} songCount={songCount}
-              onPlayBtnClick={this.onPlayBtnClick.bind(this)} onPauseBtnClick={this.onPauseBtnClick.bind(this)}
-              />
-            <ProgressBar key="2" shorter={songCount > 1} percent={percent} seekTo={this.seekTo.bind(this)} isPlaying={this.state.isPlaying}/>
+        <ButtonPanel isPlaying={this.state.isPlaying} isPause={this.state.isPause}
+          isLoading={this.state.isLoading}
+          currentSongIndex={this.state.currentSongIndex} songCount={songCount}
+          onPlayBtnClick={this.onPlayBtnClick.bind(this)} onPauseBtnClick={this.onPauseBtnClick.bind(this)}
+        />
+        <ProgressBar percent={percent} seekTo={this.seekTo.bind(this)} isPlaying={this.state.isPlaying}/>
       </div>
     );
   }
 
   onPlayBtnClick() {
+    console.log('AudioPlayer.onPlayBtnClick')
     if (this.state.isPlaying && !this.state.isPause) {
       return;
     }
@@ -68,9 +69,14 @@ class AudioPlayer extends React.Component {
   }
 
   onPauseBtnClick() {
+    console.log('AudioPlayer.onPauseBtnClick')
     const isPause = !this.state.isPause
     this.setState({ isPause })
-    isPause ? this.pause() : this._play()
+    if (isPause) {
+      this.pause()
+    } else {
+      this._play()
+    }
   }
 
   play() {
