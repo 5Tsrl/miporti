@@ -4,11 +4,17 @@ import { FormattedMessage } from 'react-intl'
 import classNames from 'classnames'
 import axios from 'axios'
 import './meteo.scss'
+import IcoArrow from '../images/select_arrow.svg'
 
 
 const SelectorText = (props) => {
-  const classes = classNames('meteo_here', { open: props.open })
-  return <span className={classes} onClick={props.onTextClick}>{props.text}</span>
+  const icoClasses = classNames('ico_meteo_here', { open: props.open })
+  return (
+      <span className='meteo_here' onClick={props.onTextClick}>
+        {props.text}
+        <IcoArrow className={icoClasses} />
+      </span>
+  )
 }
 
 const SelectorTexts = (props) => {
@@ -137,7 +143,7 @@ class Meteo extends React.Component {
   }
 
   handleSceltaGiorno = (giorno) => {
-    console.log('giorno', giorno)
+    // console.log('giorno', gixorno)
     this.setState({ giornoAttivo: giorno })
   }
 

@@ -4,6 +4,9 @@ import { Helmet } from 'react-helmet';
 import '../images/favicon.ico'
 import '../robots.txt'
 import '../sitemap.txt'
+// google verification file:
+// https://search.google.com/search-console/ownership?resource_id=https%3A%2F%2Fwww.muoversinpiemonte.it%2F
+import '../google2d5a70150f443732.html'
 
 const HelmetApp = () => (
   <Helmet>

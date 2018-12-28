@@ -61,6 +61,7 @@
     "@babel/polyfill": "^7.0.0",
     "axios": "^0.18",
     "classnames": "^2.2.6",
+    "core-js": "^2.6.1",
     "howler": "^2.0.15",
     "iscroll": "^5.2.0",
     "lscache": "^1.3.0",

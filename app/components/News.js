@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import lscache from 'lscache'
+import iScroll from 'iscroll'
 import ReactIScroll from 'react-iscroll'
 import { FormattedDate, FormattedMessage } from 'react-intl'
 
-const iScroll = require('iscroll/build/iscroll')
+// const iScroll = require('iscroll/build/iscroll')
 
 const Velina = ({ title, description, validitystart }) => (
   <li className="link_news">
@@ -23,7 +23,8 @@ class News extends React.Component {
     options: {
       mouseWheel: true,
       // snap: true,
-      scrollbars: 'custom',
+      // scrollbars: 'custom',
+      scrollbars: 'true',
       interactiveScrollbars: true,
       disableMouse: true,
       preventDefaultException: { tagName: /.*/ },

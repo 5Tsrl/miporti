@@ -29,13 +29,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.txt$/,
-        loader: 'file-loader?name=[name].[ext]', // robots.txt, sitemap.txt
+        test: /\.txt|google2d5a70150f443732\.html$/,
+        loader: 'file-loader?name=[name].[ext]', // robots.txt, sitemap.txt, google verification file
       },
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
-      },
+      // {
+      //   test: /\.html$/,
+      //   loader: 'html-loader',
+      // },
       {
         test: /favicon\.ico/,
         use: 'file-loader?name=images/[name].[ext]',
@@ -46,7 +46,10 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        include: path.resolve(__dirname, 'app/images/meteo'),
+        include: [
+          path.resolve(__dirname, 'app/images/meteo'),
+          /node_modules/,
+        ],
         loader: 'svg-url-loader',
         options: {
           // Inline files smaller than 10 kB (10240 bytes)
@@ -54,12 +57,16 @@ module.exports = {
           // Remove the quotes from the url
           // (they’re unnecessary in most cases)
           noquotes: true,
+          name: 'images/[name].[ext]',
         },
         // use: 'svg-url-loader?limit=10000&name=images/[name].[ext]',
       },
       {
         test: /\.svg$/,
-        exclude: path.resolve(__dirname, 'app/images/meteo'),
+        exclude: [
+          path.resolve(__dirname, 'app/images/meteo'),
+          /node_modules/,
+        ],
         // issuer: {
         //   test: /\.js$/,
         // },

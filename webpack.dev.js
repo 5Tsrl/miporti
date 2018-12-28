@@ -25,6 +25,8 @@ module.exports = merge(common, {
   ],
 
   devServer: {
+    host: '0.0.0.0',
+    port: '8080',
     contentBase: './dist',
     publicPath: '/',
     // Enable history API fallback so HTML5 History API based routing works.
@@ -59,7 +61,7 @@ module.exports = merge(common, {
       },
       '/colli': {
         target: 'http://lab.5t.torino.it',
-        pathRewrite: { '^/colli': '/mip-colli2/api/' },
+        pathRewrite: { '^/colli': '/mip-colli/api/' },
       },
       '/suggest': 'http://geococker:8082/',
     },

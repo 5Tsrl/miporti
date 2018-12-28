@@ -11,6 +11,8 @@ import localeDataIt from 'react-intl/locale-data/it'
 import localeDataEn from 'react-intl/locale-data/en'
 import { BrowserRouter } from 'react-router-dom'
 import lscache from 'lscache'
+
+import './utils/polyfills.js'
 import App from './components/App'
 import messages_en from './messages/en.js'
 import messages_it from './messages/it.js'

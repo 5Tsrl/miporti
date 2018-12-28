@@ -13,7 +13,8 @@
   .title-1{
     text-align: center;
     .icoIndicazioni {
-      width: 57px;
+      width: 57px; // ie bug, specify both
+      height: 57px;
       margin-right: 20px;
       vertical-align: middle;
     }

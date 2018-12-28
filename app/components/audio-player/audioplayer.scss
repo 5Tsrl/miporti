@@ -8,6 +8,7 @@
 }
 .icoAudioButton{
   width: 50px;
+  height: 50px; // ie bug, specify both
   &:hover circle{
     fill: #56C3A3;
   }

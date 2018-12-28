@@ -33,11 +33,11 @@ class GeocodeSuggest extends React.Component {
 
   loadSuggestions = (inputText) => {
     const inputValue = inputText.trim().toLowerCase()
-    const this_ = this
+    // su nginx Referer: '', per unicorn
     axios.get(`/suggest?query=${inputValue}`)
       .then((response) => {
         const suggestions = response.data.features.slice(0, 6)
-        this_.setState({ suggestions })
+        this.setState({ suggestions })
       })
       .catch((error) => {
         if (error.response) {
@@ -64,7 +64,7 @@ class GeocodeSuggest extends React.Component {
   }
 
   getSuggestionValue = (suggestion) => { // when suggestion selected, this function tells
-    console.log('getSuggestionValue', suggestion.properties.hint, suggestion.geometry.coordinates)
+    // console.log('getSuggestionValue', suggestion.properties.hint, suggestion.geometry.coordinates)
     // this.props.onSuggestSelected(suggestion)
     return suggestion.properties.hint // what should be the value of the input
   }

@@ -3,10 +3,16 @@ import classNames from 'classnames'
 import Collapse from 'react-collapse'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import axios from 'axios'
+import IcoArrow from '../images/select_arrow.svg'
 
 const SelectorText = (props) => {
-  const classes = classNames('btn_link', { open: props.open })
-  return <span className={classes} onClick={props.onTextClick}>{props.text}</span>
+  const icoClasses = classNames('ico_btn_link', { open: props.open })
+  return (
+    <span className='btn_link' onClick={props.onTextClick}>
+      {props.text}
+      <IcoArrow className={icoClasses} />
+    </span>
+  )
 }
 
 const SelectorTexts = ({ open, texts }) => {

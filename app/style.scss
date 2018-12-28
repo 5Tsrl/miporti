@@ -55,6 +55,7 @@ a {
   }
   .logo-mip {
     width: 115px;
+    height: 70px;
   }
   .logo_regPie {
     display: none;
@@ -185,9 +186,13 @@ a {
     #nav-toggle{
       display: none;
     }
+    .link_regPie {
+      text-decoration: none !important;
+    }
     .logo_regPie {
       display: block;
       color: #000;
+      text-decoration: none;
       position: absolute;
       top:26px;
       right:0;
@@ -416,8 +421,29 @@ a {
     }
   }
 
+  .iScrollVerticalScrollbar {
+    position: absolute;
+    z-index: 2;
+    width: 35px;
+    bottom: 20px;
+    top: 20px;
+    right: 0;
+    overflow: hidden;
+  }
+
+  .iScrollIndicator {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+  }
   .iScrollIndicator:after {
+    position: absolute;
+    right: 13px;
     background: $c8_1;
+    display: block;
+    content: '';
+    width: 7px;
+    height: 100%;
   }
 }
 
@@ -489,16 +515,13 @@ a {
     .no-touch &:hover{
       color: #b6e7f3;
     }
-    &:after{
-      background: url(images/select_arrow.svg) no-repeat center;
+    .ico_meteo_here{
       width: 10px;
       height: 10px;
       margin-left: 15px;
-      display: inline-block;
-      content: '';
       @include prefix('transition', '0.5s all');
     }
-    &.open:after{
+    .ico_meteo_here.open{
       @include prefix('transform', 'rotate(-180deg)');
     }
   }
@@ -509,6 +532,7 @@ a {
     left: (100% - $cities_width) /2;
     width: $cities_width;
     background: $c13_2;
+    z-index: 1;
   }
   ul{
 
@@ -605,16 +629,13 @@ a {
     .no-touch &:hover{
       background: rgba(255,255,255, 0.9);
     }
-    &:after{
-      background: url(images/select_arrow.svg) no-repeat center;
+    .ico_btn_link{
       width: 10px;
       height: 10px;
       margin-left: 15px;
-      display: inline-block;
-      content: '';
       @include prefix('transition', '0.5s all');
     }
-    &.open:after{
+    .ico_btn_link.open{
       @include prefix('transform', 'rotate(-180deg)');
     }
   }
@@ -884,12 +905,6 @@ a {
   .widget_container{
     margin-top: 40px;
     margin-bottom: 25px;
-  }
-  .widget .title-1{
-    &:before{
-      display: inline-block;
-      margin: 0 20px 0 0;
-    }
   }
   .widget_4-1{
     width: 23.5%;

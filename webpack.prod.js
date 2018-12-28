@@ -7,7 +7,7 @@ const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: 'cheap-module-source-map', // 'source-map',
+  devtool: 'source-map', // 'source-map', // 'cheap-module-source-map'
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -26,7 +26,7 @@ module.exports = merge(common, {
       },
       canPrint: true,
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   module: {
     rules: [

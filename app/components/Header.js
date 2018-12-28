@@ -13,7 +13,7 @@ const Header = props => (
               Muoversi in Piemonte
             </Link>
             <Menu {...props}/>{/* !! per passare props.param.match */}
-            <a href="http://www.regione.piemonte.it/">
+            <a href='http://www.regione.piemonte.it/' className='link_regPie'>
               <LogoRegione className='logo_regPie' />
             </a>
         </div>

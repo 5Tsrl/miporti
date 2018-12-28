@@ -61,7 +61,7 @@ class AudioPlayer extends React.Component {
   }
 
   onPlayBtnClick() {
-    console.log('AudioPlayer.onPlayBtnClick')
+    // console.log('AudioPlayer.onPlayBtnClick')
     if (this.state.isPlaying && !this.state.isPause) {
       return;
     }
@@ -69,7 +69,7 @@ class AudioPlayer extends React.Component {
   }
 
   onPauseBtnClick() {
-    console.log('AudioPlayer.onPauseBtnClick')
+    // console.log('AudioPlayer.onPauseBtnClick')
     const isPause = !this.state.isPause
     this.setState({ isPause })
     if (isPause) {

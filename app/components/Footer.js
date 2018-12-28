@@ -9,7 +9,6 @@ const Footer = () => (
     <div className="aux">
       <a href="http://www.regione.piemonte.it/" className="link-regione">
         <LogoRegione className='logo_regPie'/>
-        Regione Piemonte
       </a>
       <a href="http://www.5t.torino.it/" className="madeby">Powered by <span className="logo-5t">5T</span></a>
       <div className="wrapper">
