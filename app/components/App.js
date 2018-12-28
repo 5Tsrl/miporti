@@ -5,6 +5,7 @@ import HelmetApp from './HelmetApp'
 import Footer from './Footer'
 import HomeLayout from './HomeLayout'
 import WPage from './WPage'
+import NewsPage from './NewsPage'
 import NotFound from './NotFound'
 import logPageView from '../utils/analytics'
 
@@ -17,6 +18,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomeLayout} />
       <Route path="/page/:slug" component={WPage} />
+      <Route exact path="/avvisi" component={NewsPage} />
       <Route component={NotFound} />
     </Switch>
     <Footer />

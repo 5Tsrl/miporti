@@ -23,8 +23,7 @@ class News extends React.Component {
     options: {
       mouseWheel: true,
       // snap: true,
-      // scrollbars: 'custom',
-      scrollbars: 'true',
+      scrollbars: 'custom',
       interactiveScrollbars: true,
       disableMouse: true,
       preventDefaultException: { tagName: /.*/ },
@@ -67,9 +66,6 @@ class News extends React.Component {
     }
 
     return (
-
-    <div className="widget_news">
-        <h2 className="title-2"><FormattedMessage id='news'/></h2>
         <div id="scroll_news">
           <ReactIScroll iScroll={iScroll} options={this.props.options}>
             <ul>
@@ -77,7 +73,6 @@ class News extends React.Component {
             </ul>
         </ReactIScroll>
       </div>
-    </div>
 
     )
   }

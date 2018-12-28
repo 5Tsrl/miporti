@@ -5,7 +5,7 @@ import Carousel from './Carousel'
 import Colli from './Colli'
 import Header from './Header'
 import Meteo from './Meteo'
-import News from './News'
+import NewsWidget from './NewsWidget'
 import Traffico from './Traffico'
 import Tweet from './Tweet'
 import ViaggiaPiemonte from './ViaggiaPiemonte'
@@ -27,7 +27,7 @@ class HomeLayout extends React.Component {
             </div>
             { this.props.currentLocale !== 'en' &&
             <div className="widget widget_4-2">
-              <News />
+              <NewsWidget />
             </div>
             }
             { this.props.currentLocale !== 'en' && false &&
