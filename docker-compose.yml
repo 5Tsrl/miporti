@@ -8,20 +8,21 @@ services:
       context: .
       dockerfile: Dockerfile.web
     container_name: mip-port
-    network_mode: bridge
     ports:
     - 8087:80
+    restart: unless-stopped
+
+  mip-cache:
+    image: registry:5000/mip-cache
+    build:
+      context: .
+      dockerfile: Dockerfile.cache
+    container_name: mip-cache
+    # ports:
+    # - 8087:80
     volumes:
     - mip-port-cache:/opt/nginx/cache
     restart: unless-stopped
-
-  miporti-worm:
-    image: registry:5000/mip-worm
-    build:
-      context: .
-      dockerfile: Dockerfile.worm
-    container_name: mip-worm
-    network_mode: bridge
 
 volumes:
   mip-port-cache:

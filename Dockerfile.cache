@@ -1,0 +1,3 @@
+FROM nginx:alpine
+ENV TZ Europe/Rome
+COPY nginx.cache.conf /etc/nginx/nginx.conf
