@@ -9,7 +9,8 @@ import { FormattedDate, FormattedMessage } from 'react-intl'
 const Velina = ({ title, description, validitystart }) => (
   <li className="link_news">
     <div className="notizia">
-      <h3>{title}</h3>
+      {/* <h3>{title}</h3> */}
+      <h3 dangerouslySetInnerHTML={{ __html: title }} ></h3>
       <div dangerouslySetInnerHTML={{ __html: description }} ></div>
       <span className="date_news">
         <FormattedDate value={validitystart} day="numeric" month="long" year="numeric" />
