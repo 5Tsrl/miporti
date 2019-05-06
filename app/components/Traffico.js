@@ -17,7 +17,7 @@ class Traffico extends React.Component {
     // console.log('connection', connection)
     this.state = {
       bollentinUpdate: '...',
-      songs: [{ url: 'https://www.muoversinpiemonte.it/notiziario/notiziario.mp3' }],
+      songs: [{ url: '/notiziario/notiziario.mp3' }],
       downlink: downlink || 0,
     }
   }
