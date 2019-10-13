@@ -45,7 +45,7 @@ class News extends React.Component {
           if (error.response) {
             console.log(error.response.status, error.response.data)
           } else {
-            console.log('errore di rete')
+            console.log('errore di rete', error)
           }
         })
     }
