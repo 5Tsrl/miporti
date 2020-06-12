@@ -53,7 +53,7 @@ class News extends React.Component {
 
   render = () => {
     let velineNodes
-    if (this.state.news.length === 0) {
+    if (!this.state.news || this.state.news.length === 0) {
       velineNodes = (
         <li className="link_news">
             <div className="notizia">Notizie non disponibili</div>
