@@ -1,0 +1,106 @@
+
+  proxy_cache_path /opt/nginx/cache  levels=1:2 keys_zone=mipcache:1m  max_size=100m inactive=60d use_temp_path=off;
+
+  server {
+    charset utf-8;
+    root /usr/share/nginx/html;
+
+    gzip on;
+    gzip_types        text/css text/javascript application/javascript application/json;
+    gzip_min_length   500;
+
+    proxy_ignore_headers Cache-Control;
+    # proxy_cache_valid 200 180d;
+    proxy_cache_lock on;
+    proxy_cache_use_stale updating;
+    proxy_cache_background_update on;
+    # le richieste con http header recache bypassano la cache (il poller fa così), un "wormer" o un "bucante" deve impostare questo header
+    proxy_cache_bypass $http_recache;
+
+
+    location / {
+      try_files $uri /index.html;
+    }
+
+
+
+    ### PROXY ###
+
+    location /news {
+      # proxy_pass    https://reporter.5t.torino.it/ws/publish.php?ch=11; # reporter di produzione  registry:5000/mip-port
+      # proxy_pass    http://test.5t.torino.it:86/ws/publish.php?ch=11; # reporter di test        registry:5000/mip-port:test
+      proxy_pass ${REPORTER_URL};
+      proxy_http_version 1.1;
+      # proxy_cache   mipcache;
+    }
+    location /notiziario/notiziario.mp3 {
+      expires off;
+      proxy_pass    https://s3-eu-west-1.amazonaws.com/5t.mip.notiziario/notiziario.mp3;
+    }
+
+    # url comunicata alle radio
+    location /notiziario-traffico-piemonte.mp3 {
+      proxy_pass    https://s3-eu-west-1.amazonaws.com/5t.mip.notiziario/notiziario.mp3;
+    }
+
+    location /wp-json/ {
+      proxy_pass    http://wpmip.5t.torino.it/wp-json/;
+    }
+
+    location ^~ /wp-images/ {
+      proxy_pass    http://wpmip.5t.torino.it/wp-content/uploads/;
+    }
+
+    location = /meteoarpa {
+      resolver 8.8.8.8;
+      set $backendArpa "https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com/v1/mipArpaScrape";
+      # proxy_pass    https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com/v1/mipArpaScrape;
+      proxy_pass $backendArpa;
+      proxy_cache   mipcache;
+      proxy_cache_valid 30m;
+    }
+
+    location = /voli-caselle {
+      # force dns resolution
+      resolver 8.8.8.8;
+      # proxy_pass    https://pwfo8ijf7h.execute-api.eu-west-1.amazonaws.com/default/mipCaselleScrape;
+      set $backend "https://pwfo8ijf7h.execute-api.eu-west-1.amazonaws.com/default/mipCaselleScrape";
+      proxy_pass $backend;
+      proxy_http_version 1.1;
+      proxy_cache   mipcache;
+      proxy_cache_valid 2m;
+    }
+
+    location /colli {
+      # proxy_pass   http://colli/api/index.php;          # PRODUZIONE , uso nome del servizio
+      # proxy_pass   http://swarm.5t.torino.it:90/api/index.php;   # TEST , uso endpoint di rete
+      proxy_pass ${COLLI_URL};
+    }
+
+    location /suggest {
+      proxy_pass    http://geocoding-dns.5t.torino.it:8082/suggest;
+      proxy_set_header Referer ''; # altrimenti becchiamo 403 forbidden da unicorn ??!!
+    }
+
+
+    location /ottieni/ {
+      proxy_pass    http://swarm.5t.torino.it:3071/ottieni/;
+    }
+
+
+    # CSS and Javascript
+    location ~* \.(?:css|js)$ {
+      expires 1y;
+      #access_log off;
+      add_header Cache-Control "public";
+    }
+
+    # Media: images, icons, video,
+    location ~* \.(?:jpg|jpeg|gif|png|ico|gz|svg|svgz|mp4)$ {
+      expires 1M;
+      # access_log off;
+      add_header Cache-Control "public";
+    }
+
+  }
+

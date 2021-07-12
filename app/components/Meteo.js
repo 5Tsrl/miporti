@@ -123,6 +123,7 @@ class Meteo extends React.Component {
         } else {
           console.log('errore di rete:', error)
         }
+        this.setState({ data: [] })
       })
   }
 
@@ -150,6 +151,8 @@ class Meteo extends React.Component {
   render = () => {
     let temperature, temperatureDomani, temperaturePanel, clima, climaDomani, climaPanel = ''
     if (this.state.data.length > 1) {
+      // se c'è errore nel caricare il json arpa becchiamo qui un Cannot read property 'temperature' of undefined
+      // messo un setState [] nel catch error
       temperature = this.state.data[this.state.provId].oggi.temperature
       temperatureDomani = this.state.data[this.state.provId].domani.temperature
       temperaturePanel = this.state.data[this.state.provId][this.state.giornoAttivo].temperature

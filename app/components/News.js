@@ -25,7 +25,7 @@ class News extends React.Component {
       mouseWheel: true,
       // snap: true,
       // scrollbars: 'custom',
-      scrollbars: 'true',
+      scrollbars: true,
       interactiveScrollbars: true,
       disableMouse: true,
       preventDefaultException: { tagName: /.*/ },

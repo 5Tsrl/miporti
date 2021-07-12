@@ -37,8 +37,9 @@ module.exports = merge(common, {
     proxy: {
 
       '/news': {
-        target: 'http://proteo:3000',
-        pathRewrite: { '^/news': '/api/veline?filter[where][channel]=5&filter[order]=priority%20desc' },
+        target: 'https://reporter.5t.torino.it',
+        pathRewrite: { '^/news': '/ws/publish.php?ch=11' },
+        changeOrigin: true,
       },
       '/notiziario': {
         target: 'https://www.muoversinpiemonte.it',
@@ -54,14 +55,18 @@ module.exports = merge(common, {
         changeOrigin: true, // da usare quando si proxa su un named virtual host!
       },
       '/meteoarpa': {
-        target: 'http://telegraf:3012',
+        target: 'https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com',
+        pathRewrite: { '^/meteoarpa': '/v1/mipArpaScrape' },
+        changeOrigin: true,
       },
       '/voli-caselle': {
-        target: 'http://telegraf:3013',
+        target: 'https://pwfo8ijf7h.execute-api.eu-west-1.amazonaws.com',
+        pathRewrite: { '^/voli-caselle': '/default/mipCaselleScrape' },
+        changeOrigin: true,
       },
       '/colli': {
-        target: 'http://lab.5t.torino.it',
-        pathRewrite: { '^/colli': '/mip-colli/api/' },
+        target: 'http://swarm.5t.torino.it:90',
+        pathRewrite: { '^/colli': '/api/index.php' },
       },
       '/suggest': 'http://geococker:8082/',
     },

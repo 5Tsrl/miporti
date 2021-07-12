@@ -72,14 +72,21 @@ http {
 
     location = /meteoarpa {
       # proxy_pass    http://telegraf:3012/meteoarpa;
-      proxy_pass    https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com/v1/mipArpaScrape;
+      resolver 8.8.8.8;
+      set $backendArpa "https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com/v1/mipArpaScrape";
+      # proxy_pass    https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com/v1/mipArpaScrape;
       proxy_cache   mipcache;
+      proxy_pass $backendArpa;
       proxy_cache_valid 30m;
     }
 
     location = /voli-caselle {
-      # proxy_pass  http://telegraf:3013/voli-caselle;
-      proxy_pass    https://pwfo8ijf7h.execute-api.eu-west-1.amazonaws.com/default/mipCaselleScrape;
+      # force dns resolution
+      resolver 8.8.8.8;
+      # proxy_pass    https://pwfo8ijf7h.execute-api.eu-west-1.amazonaws.com/default/mipCaselleScrape;
+      set $backend "https://pwfo8ijf7h.execute-api.eu-west-1.amazonaws.com/default/mipCaselleScrape";
+      proxy_pass $backend;
+      proxy_http_version 1.1;
       proxy_cache   mipcache;
       proxy_cache_valid 2m;
     }
@@ -93,6 +100,11 @@ http {
     location /suggest {
       proxy_pass    http://geocoding-dns.5t.torino.it:8082/suggest;
       proxy_set_header Referer ''; # altrimenti becchiamo 403 forbidden da unicorn ??!!
+    }
+
+
+    location /ottieni/ {
+      proxy_pass    http://swarm.5t.torino.it:3071/ottieni/;
     }
 
 
