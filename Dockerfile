@@ -12,4 +12,4 @@ COPY dist /usr/share/nginx/html
 # docker build -t registry:5000/mip-port:test . && docker push registry:5000/mip-port:test
 
 # PRODUZIONE
-# docker build -t registry:5000/mip-port . && docker push registry:5000/mip-port
+# docker build -t registry:5000/mip-port:latest . && docker push registry:5000/mip-port:latest

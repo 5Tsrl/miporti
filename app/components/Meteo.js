@@ -56,13 +56,13 @@ class Selector extends React.Component {
 }
 
 const MeteoPanel = (props) => {
-  const classes = classNames('meteo_img', props.clima)
+  const classes = classNames('meteo_img', props.clima, props.testo)
   return (
     <div>
-      <div className="tab_container first_active meteo_now">
+      <div title={props.testo} className="tab_container first_active meteo_now">
           <span className={classes}>{props.temperature}<FormattedMessage id='gradi_cent'/></span>
       </div>
-      <p><FormattedMessage id='collaborazione'/><a href="https://www.arpa.piemonte.gov.it/" >Arpa Piemonte</a></p>
+      <p><FormattedMessage id='collaborazione'/><a href="https://www.arpa.piemonte.it/" >Arpa Piemonte</a></p>
     </div>
   )
 }
@@ -76,11 +76,11 @@ const MeteoDays = (props) => {
   return (
     <ul className="tabs_label meteo_forecast_container">
       <li onClick={props.onDayChoosen.bind(null, 'oggi')} className={classesLiOggi}>
-        <FormattedMessage id='oggi'/><span className={classesOggi}></span>{props.temperature}
+        <FormattedMessage id='oggi'/><span title={props.testo} className={classesOggi}></span>{props.temperature}
         <FormattedMessage id='gradi_cent'/>
       </li>
       <li onClick={props.onDayChoosen.bind(null, 'domani')} className={classesLiDomani}>
-        <FormattedMessage id='domani'/><span className={classesDomani}></span>{props.temperatureDomani}
+        <FormattedMessage id='domani'/><span title={props.testoDomani} className={classesDomani}></span>{props.temperatureDomani}
         <FormattedMessage id='gradi_cent'/>
       </li>
     </ul>
@@ -149,29 +149,37 @@ class Meteo extends React.Component {
   }
 
   render = () => {
-    let temperature, temperatureDomani, temperaturePanel, clima, climaDomani, climaPanel = ''
+    let testo, testoDomani, testoPanel, temperature, temperatureDomani, temperaturePanel, clima, climaDomani, climaPanel = ''
     if (this.state.data.length > 1) {
       // se c'è errore nel caricare il json arpa becchiamo qui un Cannot read property 'temperature' of undefined
       // messo un setState [] nel catch error
+      testo = this.state.data[this.state.provId].oggi.testo
+      testoDomani = this.state.data[this.state.provId].domani.testo
+      testoPanel = this.state.data[this.state.provId][this.state.giornoAttivo].testo
+      
       temperature = this.state.data[this.state.provId].oggi.temperature
       temperatureDomani = this.state.data[this.state.provId].domani.temperature
       temperaturePanel = this.state.data[this.state.provId][this.state.giornoAttivo].temperature
+
       clima = this.state.data[this.state.provId].oggi.meteoImg
       climaDomani = this.state.data[this.state.provId].domani.meteoImg
       climaPanel = this.state.data[this.state.provId][this.state.giornoAttivo].meteoImg
     }
+    
     return (
 
         <div className="widget_meteo accord_widget_meteo" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
             <h2>Meteo</h2>
             <Selector texts={this.state.province} text={this.state.province[this.state.provId]} onTextIdChoosen={this.handleSceltaProvincia}/>
-            <MeteoPanel temperature={temperaturePanel} clima={climaPanel}/>
+            <MeteoPanel testo={testoPanel} temperature={temperaturePanel} clima={climaPanel}/>
             <MeteoDays
               giornoAttivo={this.state.giornoAttivo}
               temperature={temperature}
               clima={clima}
+              testo={testo}
               temperatureDomani={temperatureDomani}
               climaDomani={climaDomani}
+              testoDomani={testoDomani}
               onDayChoosen={this.handleSceltaGiorno}
             />
       </div>

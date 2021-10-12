@@ -15,6 +15,7 @@ const Tweet = () => (
       options={{
         height: '424',
         chrome: 'nofooter  noheader noborders noscrollbar',
+        id: "list:5Tlive"
       }}
     />
   </div>

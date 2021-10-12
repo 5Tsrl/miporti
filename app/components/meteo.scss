@@ -14,10 +14,10 @@
     background-repeat: no-repeat;
     background-position: center;
   }
-  &.coperto:before{
-    background-image:url(../images/meteo/coperto.svg);
+  &.molto-nuvoloso:before, &.coperto:before{
+    background-image:url(../images/meteo/molto-nuvoloso.svg);
   }
-  &.foschia:before{
+  &.foschia:before, &.velature:before{
     background-image:url(../images/meteo/foschia.svg);
   }
   &.nebbia:before{
@@ -62,11 +62,11 @@
   &.rovesci:before{
     background-image:url(../images/meteo/rovesci.svg);
   }
-  &.sereno:before{
-    background-image:url(../images/meteo/sereno.svg);
+  &.soleggiato:before, &.cielo-sereno:before{
+    background-image:url(../images/meteo/soleggiato.svg);
   }
-  &.temporale:before{
-    background-image:url(../images/meteo/temporale.svg);
+  &.temporali:before{
+    background-image:url(../images/meteo/temporali.svg);
   }
   &.tormenta-neve:before{
     background-image:url(../images/meteo/tormenta-neve.svg);
@@ -74,7 +74,7 @@
   &.variabile-con-temporali:before{
     background-image:url(../images/meteo/variabile-con-temporali.svg);
   }
-  &.vento:before, &.ventoso:before{
+  &.vento:before, &.ventoso:before, &.vento-e-sole:before{
     background-image:url(../images/meteo/vento.svg);
   }
   &.vento-neve:before, &.ventoso-neve:before{

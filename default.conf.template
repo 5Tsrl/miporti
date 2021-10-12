@@ -53,11 +53,14 @@
 
     location = /meteoarpa {
       resolver 8.8.8.8;
-      set $backendArpa "https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com/v1/mipArpaScrape";
-      # proxy_pass    https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com/v1/mipArpaScrape;
+      set $backendArpa "https://i0b1qnp3za.execute-api.eu-west-1.amazonaws.com/prod/getForecast";
+      proxy_ssl_server_name on; #passing of the server name
       proxy_pass $backendArpa;
-      proxy_cache   mipcache;
-      proxy_cache_valid 30m;
+      # proxy_cache   mipcache;
+      # proxy_cache_valid 30m;
+      proxy_buffer_size          128k;
+      proxy_buffers              4 256k;
+      proxy_busy_buffers_size    256k;
     }
 
     location = /voli-caselle {
@@ -103,4 +106,3 @@
     }
 
   }
-

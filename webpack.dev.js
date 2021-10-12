@@ -55,8 +55,10 @@ module.exports = merge(common, {
         changeOrigin: true, // da usare quando si proxa su un named virtual host!
       },
       '/meteoarpa': {
-        target: 'https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com',
-        pathRewrite: { '^/meteoarpa': '/v1/mipArpaScrape' },
+        // target: 'https://dsml3n16i9.execute-api.eu-west-1.amazonaws.com',
+        target: 'https://i0b1qnp3za.execute-api.eu-west-1.amazonaws.com',
+        // pathRewrite: { '^/meteoarpa': '/v1/mipArpaScrape' },
+        pathRewrite: { '^/meteoarpa': '/prod/getForecast' },
         changeOrigin: true,
       },
       '/voli-caselle': {
@@ -65,7 +67,7 @@ module.exports = merge(common, {
         changeOrigin: true,
       },
       '/colli': {
-        target: 'http://swarm.5t.torino.it:90',
+        target: 'http://docker1.5t.torino.it:90',
         pathRewrite: { '^/colli': '/api/index.php' },
       },
       '/suggest': 'http://geococker:8082/',
