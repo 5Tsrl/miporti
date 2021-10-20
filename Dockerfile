@@ -1,7 +1,8 @@
 FROM nginx:alpine
 ENV TZ Europe/Rome
 # COPY nginx.conf /etc/nginx/nginx.conf
-COPY default.conf.template /etc/nginx/templates/
+# COPY default.conf.template /etc/nginx/templates/
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
 COPY dist /usr/share/nginx/html
 

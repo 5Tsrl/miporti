@@ -70,7 +70,7 @@ class Calcolo extends React.Component {
     }
     const queryString = Object.keys(params).map((k) => { return `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}` }).join('&')
     // console.log(queryString)
-    location.href = `http://map.muoversinpiemonte.it/#planner?${queryString}`
+    location.href = `https://map.muoversinpiemonte.it/#planner?${queryString}`
   }
   render = () => {
     const { formatMessage } = this.props.intl
