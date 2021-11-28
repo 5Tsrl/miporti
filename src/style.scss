@@ -1,0 +1,1001 @@
+@import 'base/reset.scss';
+@import 'base/mixins.scss';
+@import 'base/_include-media.scss';
+@import 'base/_variables.scss';
+
+body{
+  background: $c1;
+  font-family: $SF;
+}
+@include media('screen', '>dim_05') {
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+  }
+}
+
+@include media('screen', '>dim_50') {
+  body.menu-open {
+    overflow:auto;
+    position: relative;
+  }
+}
+
+.aux {
+  margin: 0 15px;
+  position: relative;
+  @include media('screen', '>dim_30') {
+    margin: 0 30px;
+  }
+  @include media('screen', '>dim_70') {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  .no-touch &:hover{
+    text-decoration: underline;
+  }
+}
+
+.header{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background: #fff;
+  padding: 9px 0;
+
+  .link-logo-mip{
+    text-indent: -9999px;
+    font-size: 0;
+    line-height: 0;
+  }
+  .logo-mip {
+    width: 115px;
+    height: 70px;
+  }
+  .logo_regPie {
+    display: none;
+  }
+  #nav-toggle {
+    display: block;
+    width: 23px;
+    height: 20px;
+    text-indent: -9999px;
+    position:absolute;
+    right:0;
+    top: 10%;
+    padding: 6px 5px 5px 5px;
+
+    .icon {
+        bottom: 0;
+        height: 20px;
+        margin: auto;
+        position: absolute;
+        right: 15%;
+        text-indent: -9999px;
+        top: 0;
+      @include prefix('transition', 'all 0.2s linear 0s');
+        width: 23px;
+
+        &:before, &:after, span{
+          background: $c2 none repeat scroll 0 0;
+          height: 3px;
+          left: 0;
+          position: absolute;
+          right: 0;
+          @include prefix('border-radius', '2px');
+        @include prefix('transition', 'all 0.2s linear 0s');
+      }
+
+      &:before {
+          content: "";
+          top: 0;
+      }
+      &:after {
+          bottom: 1px;
+          content: "";
+          top: auto;
+      }
+      span {
+          margin-top: -2px;
+          top: 50%;
+      }
+    }
+    .no-touch &:hover{
+      cursor: pointer;
+      background: $c2;
+      .icon:before, .icon:after, .icon span{
+        background: #fff;
+      }
+    }
+  }
+  nav{
+    background: $c2;
+    position: fixed;
+    padding: 25px 30px;
+    z-index: 10;
+    left: 100%;
+    top: 55px;
+    width: 100%;
+    bottom: 0;
+    @include prefix('box-sizing', 'border-box');
+    @include prefix('transition', 'all 0.3s ease 0s');
+
+
+    ul li a{
+      padding: 3px 15px;
+      display: inline-block;
+      color: #fff;
+      font-weight: $fw3;
+      font-size: 1.1em;
+    }
+    .language-switcher{
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      ul li a{
+        background: rgba(0, 0, 0, 0.1);
+        text-transform: uppercase;
+        font-weight: $fw2;
+        font-size: 0.9em;
+        text-align: center;
+        @include prefix('box-sizing', 'border-box');
+        width: 35px;
+        padding: 4px;
+        display: none;
+        &.current_lang{
+          display: block;
+        }
+      }
+      ul{
+        .no-touch &:hover{
+          background: rgba(0, 0, 0, 0.3);
+          li a{
+            display: block;
+          }
+        }
+        .touch &{
+          li a{
+            display: block;
+          }
+        }
+      }
+    }
+    .menu-open &{
+      display: block;
+    }
+  }
+  @include media('screen', '>dim_30') {
+    padding: 20px 0;
+    .logo-mip {
+      width: 230px;
+    }
+    #nav-toggle {
+      top: 30%;
+    }
+    nav{
+      top: 110px;
+    }
+  }
+  @include media('screen', '>dim_50') {
+
+    #nav-toggle{
+      display: none;
+    }
+    .link_regPie {
+      text-decoration: none !important;
+    }
+    .logo_regPie {
+      display: block;
+      color: #000;
+      text-decoration: none;
+      position: absolute;
+      top:26px;
+      right:0;
+      width: 120px;
+      height: 40px;
+    }
+    nav{
+      background: none;
+      position: absolute;
+      left: auto;
+      top: auto;
+      right: 148px;
+      bottom: -20px;
+      width: auto;
+      padding: 0;
+      padding-right: 50px;
+
+      ul {
+        display: inline-block;
+        float: right;
+        li{
+          display: inline-block;
+        }
+      }
+
+      ul.main-menu-5t li a{
+        color: $c5;
+        font-size: 0.9em;
+        text-transform: uppercase;
+        position: relative;
+        padding-bottom: 29px;
+        border-bottom: 6px #fff solid;
+        .no-touch &:hover{
+          text-decoration: none;
+          border-bottom: 6px $c6 solid;
+          color: #222;
+          &:before{
+            display: block;
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 43%;
+              margin: 0;
+              width: 0;
+              height: 0;
+              border: 5px solid transparent;
+              border-bottom-color: $c6;
+          }
+        }
+      }
+      ul.main-menu-5t li a.active{
+        text-decoration: none;
+        border-bottom: 6px $c6 solid;
+        color: #222;
+        &:before{
+          display: block;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 43%;
+            margin: 0;
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-bottom-color: $c6;
+        }
+      }
+      .language-switcher{
+        top: 0;
+        right: 0;
+        ul li a{
+          background: rgba(0, 0, 0, 0.05);
+          color: $c5;
+        }
+        ul{
+          li{
+            display:block;
+          }
+          .no-touch &:hover{
+            background: rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
+  }//chiude media ('screen', '>dim_50')
+}
+.menu-open nav.main-menu-container{
+  left: 0;
+}
+.menu-open #nav-toggle {
+  .icon:before {
+    top: 40%;
+    @include prefix('transform', 'rotate(45deg)');
+  }
+  .icon:after {
+    bottom: 45%;
+      @include prefix('transform', 'rotate(-45deg)');
+  }
+  .icon span {
+      opacity: 0;
+  }
+}
+
+
+.main{
+  position: relative;
+  z-index: 1;
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.widget_container{
+  @include flex();
+  @include prefix('flex-wrap', 'wrap');
+  @include prefix('justify-content', 'space-between');
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.widget{
+
+  width:100%;
+  background: #fff;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 300;
+  box-sizing: border-box;
+  @include prefix('box-shadow', '0px 0px 7px 0px rgba(0,0,0,0.2)');
+
+  h2{
+    font-weight: 400;
+  }
+  .title-1{
+    margin-bottom: 35px;
+  }
+  .title-2{
+    text-transform: uppercase;
+    font-size: 1.15em;
+    line-height: 1.2em;
+  }
+  .title-3{
+    text-transform: uppercase;
+    font-size: 1em;
+  }
+  p{
+    font-size: 0.8em;
+  }
+  .btn_link{
+    font-family: $SF;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: 600;
+    display: inline-block;
+    padding: 15px 30px;
+    background: #26527b;
+    max-width: 225px;
+    .no-touch &:hover{
+      text-decoration: none;
+      background: #2e6294;
+    }
+  }
+  .align_brother_bottom{
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+
+  }
+  .centra{margin:auto}
+}
+
+.widget_news{
+  text-align: left;
+  #scroll_news {
+    position: relative;
+    height: 480px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  .title-2{
+    color: #fff;
+    background: $c8_1;
+    padding: 15px 35px;
+  }
+  p{font-size: 1em;
+    strong{font-weight: 800}
+  }
+  a{font-size: 1em; color: darken($c8_1, 10%); font-weight: 600}
+
+  .link_news {
+    list-style-type: none;
+    &:nth-child(even){
+      background: $c8_2;
+      border-bottom: 1px $c8_3 solid;
+      border-top: 1px $c8_3 solid;
+      .no-touch &:hover{
+        background: #edf6f5;
+      }
+    }
+    .no-touch &:hover{
+      background: #f9fbfb;
+    }
+  }
+  .link_news>.notizia{
+    color: $cfont;
+    font-size: 0.8em;
+    font-weight: 400;
+    display: inline-block;
+    padding: 15px 45px 15px 35px;
+    h3{
+      margin-bottom: 10px;
+    }
+    .date_news{
+      display: block;
+      padding-top: 10px;
+      color: $c10_3;
+      font-style: italic;
+    }
+    .no-touch &:hover{
+      text-decoration: none;
+    }
+  }
+
+  .iScrollVerticalScrollbar {
+    position: absolute;
+    z-index: 2;
+    width: 35px;
+    bottom: 20px;
+    top: 20px;
+    right: 0;
+    overflow: hidden;
+  }
+
+  .iScrollIndicator {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+  }
+  .iScrollIndicator:after {
+    position: absolute;
+    right: 13px;
+    background: $c8_1;
+    display: block;
+    content: '';
+    width: 7px;
+    height: 100%;
+  }
+}
+
+
+
+.widget_viaggia{
+  background-color: #fff;
+  width:100%;
+  .title-2{
+    color: #fff;
+    background: #00665d;
+    padding: 15px 25px;
+
+  }
+  p{
+    margin: 40px auto;
+    max-width: 260px;
+  }
+  .imgTrain{
+    height: 180px;
+    margin: 4px auto 5px;
+  }
+  .btn_link{
+    background: #00665d;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    max-width: 170px;
+    .no-touch &:hover{
+      background: #19756d;
+    }
+  }
+}
+
+.widget_twitter{
+  .title-2{
+    color: #fff;
+    background: $c9_1;
+    padding: 15px 25px;
+  }
+}
+
+.widget_meteo{
+  height: 100%;
+  background: $c13_1;
+  color:#b6e7f3;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: $fw1;
+  text-align: center;
+  padding: 0;
+  position: relative;
+  h2{
+    display: none;
+  }
+  p{
+    font-size: 1em;
+    margin: 30px auto;
+  }
+
+  span.meteo_here{
+    color: #fff;
+    font-size: 1.4em;
+    padding: 14px 0;
+    width: 85%;
+    cursor: pointer;
+    display: inline-block;
+    .no-touch &:hover{
+      color: #b6e7f3;
+    }
+    .ico_meteo_here{
+      width: 10px;
+      height: 10px;
+      margin-left: 15px;
+      @include prefix('transition', '0.5s all');
+    }
+    .ico_meteo_here.open{
+      @include prefix('transform', 'rotate(-180deg)');
+    }
+  }
+  $cities_width: 85% ;
+  .meteo_cities{
+    position: absolute;
+    top: 51px;
+    left: (100% - $cities_width) /2;
+    width: $cities_width;
+    background: $c13_2;
+    z-index: 1;
+  }
+  ul{
+
+    li{
+      list-style-type: none;
+      color: #fff;
+      font-size: 1.4em;
+      padding: 7px;
+      cursor: pointer;
+      &:first-child{
+        padding-top: 14px;
+      }
+      &:last-child{
+        padding-bottom: 14px;
+      }
+      .no-touch &:hover{
+        background: $c13_3;
+      }
+    }
+  }
+
+  .tab_container{
+    margin: 0 auto 5px;
+    border-top: 1px #a4e1f0 solid;
+    width: 85%;
+  }
+  .meteo_now{
+    color: #fff;
+    font-size: 4.5em;
+    display: block;
+    padding-top: 45px;
+    width: 85%;
+  }
+  .meteo_forecast_container{
+    width: 100%;
+    padding-top: 20px;
+
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .meteo_forecast{
+      color: #fff;
+      font-size: 1.4em;
+      padding: 10px 0;
+      float: left;
+      width: 50%;
+      cursor: pointer;
+      background: $c13_2;
+      .no-touch &:hover{
+        background: $c13_3;
+      }
+      &.tab_left{
+        border-right: 1px $c13_4 solid;
+        @include prefix('box-sizing', 'border-box');
+      }
+      &.tab_right{
+        border-left: 1px $c13_4 solid;
+        @include prefix('box-sizing', 'border-box');
+      }
+      &.tab_active{
+        background: $c13_1;
+        cursor: auto;
+        .no-touch &:hover{
+          background: $c13_1;
+        }
+      }
+    }
+  }
+}
+
+.widget_imgbg{
+  height:100%;
+  min-height: 438px;
+  background: url(./images/img_bg_colli_inverno.jpg) no-repeat center;
+  background-size: cover;
+  color: #fff;
+  ul{list-style-type:none}
+  p,
+  .title-3{
+    padding-top: 23px;
+    margin-bottom: 15px;
+  }
+  .btn_link{
+    margin: 0 auto;
+    padding: 14px 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    background: #fff;
+    color: $c6;
+    cursor: pointer;
+    .no-touch &:hover{
+      background: rgba(255,255,255, 0.9);
+    }
+    .ico_btn_link{
+      width: 10px;
+      height: 10px;
+      margin-left: 15px;
+      @include prefix('transition', '0.5s all');
+    }
+    .ico_btn_link.open{
+      @include prefix('transform', 'rotate(-180deg)');
+    }
+  }
+  .elencoColli{background: #fff;color: $c6; text-align: left; padding: 10px;margin:20px 40px;     font-size: 0.8em; line-height: 2em;
+    .aperto, .Aperto{
+      &:before{content: '\2713'; margin-right: 10px}
+    }
+    .chiuso, .Chiuso{
+      &:before{content: '\2717'; color: #de5b00; margin-right: 10px}
+    }
+  }
+}
+
+.widget_ticket{
+
+  color: $c4;
+  padding: 23px;
+  background-color: #fff;
+  .title-2{
+    margin: 0 auto;
+    margin-bottom: 15px;
+    max-width: 260px;
+  }
+  p{
+    margin: 0 auto;
+    max-width: 260px;
+    background-color: 'red';
+  }
+  .logoBip{
+    height: 151px;
+    margin: 40px auto 50px;
+    max-width: 170px;
+  }
+  .btn_link{
+    background: #A9B0C0;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 170px;
+    .no-touch &:hover{
+      background:#b4bac9;
+    }
+  }
+}
+
+.carousel-enter {
+  opacity: 0;
+}
+.carousel-enter.carousel-enter-active {
+  opacity: 1;
+  transition: opacity 1s  ease-in;
+}
+.carousel-leave {
+  opacity: 1;
+}
+.carousel-leave.carousel-leave-active {
+  opacity: 0;
+  transition: opacity 1s  ease-in;
+}
+.carousel-height {
+  transition: height .5s ease-in-out;
+}
+
+@include media('screen', '>dim_05') {
+  .widget_traffico{
+    _height: 470px;
+  }
+}
+
+@include media('screen', '>dim_07') {
+  .widget_voli{
+    .tabs_container{
+      overflow-x: auto;
+      .tabella_voli{
+        thead{
+          font-size: 0.85em;
+        }
+        tbody tr{
+          font-size: 0.8em;
+        }
+      }
+    }
+    .last_info{
+      margin: 0 auto 10px;
+      a.btn_link{
+        margin-left: 15px;
+      }
+      span.btn_partenze_cont a.btn_partenze{
+        padding:0 15px;
+      }
+    }
+
+  }
+  .widget_traffico{
+    height: 400px;
+  }
+
+}
+
+@include media('screen', '>dim_20') {
+  .title-1{
+    font-size:1.75em;
+  }
+  .widget_viaggio {
+    height: 280px;
+    .align_brother_bottom{
+      left: 20px;
+      right: 20px;
+    }
+    .title-1{
+      padding-left: 20px;
+      text-align: left;
+    }
+    .trip_container .trip_input input{
+    }
+    .trip_mode{
+      width: 90%;
+      ul{
+        float: left;
+        margin-bottom: 0;
+        margin-left: 20px;
+      }
+      .trip_button_container{
+        float: right;
+
+      }
+    }
+  }
+  .widget_traffico {
+    height: 330px;
+    p{
+      font-size: 1.2em;
+    }
+  }
+  .widget_news #scroll_news{
+    height: 425px;
+  }
+
+  .widget_voli {
+    .tabs_container .tabella_voli tr td,
+    .tabs_container .tabella_voli tr th{
+      &:first-child{
+        padding-left: 30px;
+      }
+      &:last-child{
+        padding-right: 30px;
+      }
+    }
+  }
+}
+@include media('screen', '>dim_22') {
+
+
+}
+@include media('screen', '>dim_25') {
+  .widget_4-1{
+    width: 48%;
+  }
+
+  .title-1{
+    font-size:1.9em;
+  }
+  .widget_viaggio {
+    .trip_mode{
+      .trip_button_container{
+        .trip_button{
+          width: 190px;
+        }
+      }
+    }
+  }
+  .widget_traffico {
+    p{
+      font-size: 1.3em;
+      line-height: 1.5em;
+    }
+  }
+  .widget_news #scroll_news {
+    height: 370px;
+  }
+  .widget_twitter #scroll_twit{
+    height: 478px;
+  }
+
+  .widget_voli{
+    .title-4{
+      text-align: left;
+      position: relative;
+      p{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 10px 30px;
+      }
+    }
+    .last_info{
+      position: relative;
+      text-align: left;
+      margin: 30px 30px;
+      a.btn_link{
+        display: block;
+        float: right;
+        margin: 10px 0 20px ;
+      }
+    }
+    .tabs_container .tabella_voli tr td,
+    .tabs_container .tabella_voli tr th{
+      &:first-child{
+        padding-left: 30px;
+      }
+      &:last-child{
+        padding-right: 30px;
+      }
+    }
+    .voli_tabella_container{
+      .tab_left,
+      .tab_right{
+        width: auto;
+        box-sizing: border-box;
+        text-align: left;
+      }
+    }
+  }
+}
+//passaggio da un widget per colonna a due widget per colonna
+@include media('screen', '>dim_35') {
+  .widget_4-1{
+    width: 48.5%;
+  }
+  .widget_4-2{
+    width: 48.5%;
+  }
+  .widget_4-4{
+    width: 100%;
+  }
+  .widget_viaggio {
+    height: 390px; //470px;
+    .title-1{
+      padding-left: 0;
+      text-align: center;
+    }
+    .trip_mode{
+      width: auto;
+      ul{
+        float: none;
+        margin-bottom: 33px;
+        margin-left: 0;
+      }
+      .trip_button_container{
+        float: none;
+        .trip_button{
+          width: 190px;
+        }
+      }
+    }
+  }
+  .widget_traffico {
+    height: 470px;
+  }
+  .widget_news #scroll_news {
+    height: 480px;
+  }
+
+}
+
+@include media('screen', '>dim_50') {
+  .widget_container{
+    margin-top: 40px;
+    margin-bottom: 25px;
+  }
+  .widget_4-1{
+    width: 23.5%;
+  }
+  .widget_4-2{
+    width: 49%;
+  }
+
+  .widget_viaggio {
+    height: 290px;//370px;
+    .title-1{
+      padding-left: 20px;
+      text-align: left;
+    }
+    .trip_mode{
+      width: 90%;
+      ul{
+        float: left;
+        margin-bottom: 0;
+        margin-left: 20px;
+      }
+      .trip_button_container{
+        float: right;
+        .trip_button{
+          width: auto;
+        }
+      }
+    }
+  }
+  .widget_traffico{
+    height: 370px;
+    p{
+      padding-top: 10px;
+    }
+    .align_brother_bottom{
+      .visualizza{
+        float:right;
+      }
+      .area_player{
+        float:left;
+      }
+    }
+  }
+  .widget_twitter #scroll_twit,
+  .widget_news #scroll_news {
+    height: 430px;
+  }
+  .widget_meteo {
+    .meteo_now {
+      padding-top: 25px;
+    }
+    p{
+      margin: 0 auto;
+    }
+  }
+  .widget_voli{
+    .last_info{
+      span.btn_partenze_cont{
+        a.btn_partenze{
+          padding: 0 7px;
+        }
+      }
+
+      a.btn_link{
+        padding: 7px;
+      }
+    }
+  }
+}
+
+@include media('screen', '>dim_60') {
+  .widget_viaggio {
+    .trip_mode{
+      .trip_button_container{
+        .trip_button{
+          width: 190px;
+        }
+      }
+    }
+  }
+
+  .widget_voli{
+    .last_info{
+      span.btn_partenze_cont{
+        a.btn_partenze{
+          padding: 0 15px;
+        }
+      }
+      a.btn_link{
+        padding: 7px 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import '../../base/_include-media.scss';
+@import '../../base/_variables.scss';
+
+.audio-player {
+  position:absolute;
+  top:0;
+  left:0;
+}
+.icoAudioButton{
+  width: 50px;
+  height: 50px; // ie bug, specify both
+  &:hover circle{
+    fill: #56C3A3;
+  }
+}
+.audio-progress-container {
+  position: absolute;
+  left:70px;
+  top:0px;
+  width: 120px;
+  height: 50px;
+  display: none;
+}
+.audio-progress-container:before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 39px;
+  left: 0px;
+  right: 0px;
+  height: 3px;
+  background: #739dc6;
+}
+.audio-progress-container.visibile{
+  display: block;
+}
+
+//pallino
+.audio-progress {
+    position: absolute;
+    top:32px;
+    left: 75px;
+    width: 12px;
+    height: 12px;
+    margin-left: -10px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    border: 3px #fff solid;
+    &:hover{
+      background-color: #40B391;
+    }
+}
+
+.area_player{
+  padding: 0 30px;
+  margin-bottom: 50px;
+  .btn_link {
+    position: absolute;
+    top:0;
+    right:20px;
+  }
+}
+@include media('screen', '>dim_50') {
+  .area_player{
+    float: left;
+  }
+}

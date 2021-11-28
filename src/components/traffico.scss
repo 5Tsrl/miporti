@@ -1,0 +1,65 @@
+@import '../base/mixins.scss';
+@import '../base/_variables.scss';
+
+.widget_traffico {
+  box-sizing: border-box;
+  position: relative;
+  height: 420px;
+  color: #fff;
+
+  #videoTraff {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: auto !important;
+    opacity: 0.1;
+  }
+
+  #imgTraff {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0.1;
+    background-size: cover;
+  }
+
+  .widget_traffico_container {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 40px;
+    height: 100%;
+    background: $c11;
+    overflow: hidden;
+  }
+  .icoTraffico {
+    width: 57px;
+    height: 57px;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+
+  p {
+    font-size: 1.1em;
+    margin: 0 auto 45px;
+    max-width: 240px;
+  }
+
+  a.ascolta,
+  h3.ascolta {
+    display: inline-block;
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: $fw2;
+    top: 10px;
+    left: 62px;
+    @include prefix('transition', 'all 0.3s ease-out');
+  }
+}
