@@ -6,18 +6,18 @@ import { ReactComponent as LogoRegione } from '../images/logo-regione-piemonte.s
 
 const Header = props => (
 
-    <header className="clearfix header" id="branding">
-        <div className="aux">
-            <Link to="/" className="link-logo-mip">
-              <LogoMip className="logo-mip"/>
-              Muoversi in Piemonte
-            </Link>
-            <Menu {...props}/>{/* !! per passare props.param.match */}
-            <a href='http://www.regione.piemonte.it/' className='link_regPie'>
-              <LogoRegione className='logo_regPie' />
-            </a>
-        </div>
-    </header>
+  <header className="clearfix header" id="branding">
+    <div className="aux">
+      <Link to="/" className="link-logo-mip">
+        <LogoMip className="logo-mip"/>
+        Muoversi in Piemonte
+      </Link>
+      <Menu />
+      <a href='https://www.regione.piemonte.it/' className='link_regPie'>
+        <LogoRegione className='logo_regPie' />
+      </a>
+    </div>
+  </header>
 
 )
 export default Header

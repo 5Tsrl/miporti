@@ -1,4 +1,4 @@
-export default {
+const menu = {
 
   mainMenu: {
     it: [
@@ -68,3 +68,4 @@ export default {
     }],
   },
 }
+export default menu

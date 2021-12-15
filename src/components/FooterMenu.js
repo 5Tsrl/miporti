@@ -1,34 +1,25 @@
-import React from 'react'
-// import { connect } from 'react-redux'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
+
+import {IntlContext} from './IntlWrapper'
 import config from '../configurations/menus.js'
 
-const FooterMenuItem = (props) => {
-  return <li><Link to={props.url}>{props.title}</Link></li>
+
+const FooterMenu = props => {
+
+  const intlContext = useContext(IntlContext)
+
+  const footerMenu = config.footerMenu[intlContext.locale]
+
+  const footerMenuNodes = footerMenu.map((item, idx) => {
+    return <li key={idx}><Link to={item.url}>{item.title}</Link></li>
+  })
+
+  return (
+    <nav className="footer-menu">
+      <ul>{footerMenuNodes}</ul>
+    </nav>
+  )
+
 }
-
-class FooterMenu extends React.Component {
-  state = {
-    footerMenu: config.footerMenu[this.props.currentLocale] || config.mainMenu.it,
-  }
-
-  render = () => {
-    const footerMenuNodes = this.state.footerMenu.map((item, idx) => {
-      return <FooterMenuItem key={idx} title={item.title} url={item.url} />
-    })
-
-    return (
-      <nav className="footer-menu">
-        <ul>{footerMenuNodes}</ul>
-      </nav>
-    )
-  }
-}
-
-// mappo l' intl.locale dello state di redux sulla props currentLocale
-// const mapStateToProps = (state) => {
-//   return { currentLocale: state.intl.locale }
-// }
-
-// FooterMenu = connect(mapStateToProps)(FooterMenu)
 export default FooterMenu

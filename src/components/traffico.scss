@@ -51,8 +51,8 @@
     max-width: 240px;
   }
 
-  a.ascolta,
-  h3.ascolta {
+ 
+  .ascolta {
     display: inline-block;
     position: absolute;
     text-transform: uppercase;
@@ -60,6 +60,6 @@
     font-weight: $fw2;
     top: 10px;
     left: 62px;
-    @include prefix('transition', 'all 0.3s ease-out');
+    &:hover {text-decoration: underline;}
   }
 }

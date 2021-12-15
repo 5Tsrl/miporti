@@ -68,7 +68,7 @@
   &.temporali:before{
     background-image:url(../images/meteo/temporali.svg);
   }
-  &.tormenta-neve:before{
+  &.tormenta-neve:before, &.nevicata-forte:before{
     background-image:url(../images/meteo/tormenta-neve.svg);
   }
   &.variabile-con-temporali:before{

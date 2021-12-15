@@ -1,9 +1,9 @@
-import React from 'react'
-// import { connect } from 'react-redux'
+import React, {useContext, useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 import classNames from 'classnames'
-import axios from 'axios'
 
+import {IntlContext} from "./IntlWrapper"
 import './voli.scss'
 import { ReactComponent as PlaneTakeOff } from '../images/plane_take_off.svg'
 import { ReactComponent as PlaneLanding } from '../images/plane_landing.svg'
@@ -65,7 +65,8 @@ const VoliTabs = (props) => {
 }
 
 const VoliFooter = (props) => {
-  const currentLocale = props.currentLocale || 'it'
+  const intlContext = useContext(IntlContext) // prendo in context dichiarato in IntlWrapper
+  const currentLocale =  intlContext.locale
   const links = {
     en: {
       auto: 'http://www.aeroportoditorino.it/en/tomove/parking-transport/by-car',
@@ -95,62 +96,51 @@ const VoliFooter = (props) => {
   )
 }
 
-class Voli extends React.Component {
-  state = { partenzeArrivi: 'partenze', data: {} }
+const Voli = props => {
+  const intlContext = useContext(IntlContext)
+  const [partenzeArrivi, setPartenzeArrivi] = useState('partenze')
+  const [content, setContent] = useState('')
 
-  loadVoliFromServer() {
-    axios.get(this.props.url)
-      .then((response) => {
-        this.setState({ data: response.data })
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response.status, error.response.data)
-        } else {
-          console.log('errore di rete')
-        }
-      })
-  }
-
-  componentDidMount() {
-    this.loadVoliFromServer()
-  }
-
-  handleSceltaCurrent(current) {
-    // console.log('p/a', current)
-    this.setState({ partenzeArrivi: current })
-  }
-
-  render() {
-    let voli = []
-    let aggiornamento = ''
-    if (typeof this.state.data.partenze !== 'undefined') {
-      voli = this.state.data[this.state.partenzeArrivi].slice(0, 4)
-      aggiornamento = this.state.data.aggiornamento.split(/alle/).pop().trim()
-      // console.log(aggiornamento)
+  let navigate = useNavigate()
+  useEffect(  () => { // https://www.robinwieruch.de/react-hooks-fetch-data/
+    const fetchData = async () => {
+      const response = await fetch('https://k7w3w56agc.execute-api.eu-west-1.amazonaws.com/voli-caselle')
+      const json = await response.json()
+      // console.log(json)
+      if(json){
+        setContent( json )
+      } else {
+        navigate(`/notfound`)
+        console.log('NOT FOUND')
+      }
     }
-    return (
+    fetchData()
+  }, [navigate])
 
-      <div className='widget_voli'>
-        <div className='title-4'>
-            <h2><FormattedMessage id='orario'/></h2>
-            <h3><FormattedMessage id='aeroporto'/></h3>
-            <p><FormattedMessage id='collaborazione'/>
-             <a href={`http://www.aeroportoditorino.it/${this.props.currentLocale}`}>Sagat S.p.a.</a>
-           </p>
-        </div>
-        <VoliTabs partenzeArrivi={this.state.partenzeArrivi} onCurrentChoosen={this.handleSceltaCurrent.bind(this)}/>
-        <VoliTable partenzeArrivi={this.state.partenzeArrivi} voli={voli} />
-        <VoliFooter aggiornamento={aggiornamento} currentLocale={this.props.currentLocale}/>
 
-      </div>
-    )
+  let voli = []
+  let aggiornamento = ''
+  if (typeof content.partenze !== 'undefined') {
+    voli = content[partenzeArrivi].slice(0, 4)
+    aggiornamento = content.aggiornamento.split(/alle/).pop().trim()
+    // console.log(aggiornamento)
   }
-}
-// mappo l' intl.locale dello state di redux sulla props currentLocale
-const mapStateToProps = (state) => {
-  return { currentLocale: state.intl.locale }
-}
+  return (
 
-// Voli = connect(mapStateToProps)(Voli)
+    <div className='widget_voli'>
+      <div className='title-4'>
+          <h2><FormattedMessage id='orario'/></h2>
+          <h3><FormattedMessage id='aeroporto'/></h3>
+          <p><FormattedMessage id='collaborazione'/>
+            <a href={`https://www.aeroportoditorino.it/${intlContext.locale}`}>Sagat S.p.a.</a>
+          </p>
+      </div>
+      <VoliTabs partenzeArrivi={partenzeArrivi} onCurrentChoosen={setPartenzeArrivi}/>
+      <VoliTable partenzeArrivi={partenzeArrivi} voli={voli} />
+      <VoliFooter aggiornamento={aggiornamento} currentLocale={intlContext.locale}/>
+
+    </div>
+  )
+
+}
 export default Voli

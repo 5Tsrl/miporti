@@ -22,9 +22,9 @@ class GeocodeSuggest extends React.Component {
 
   onBlur = (event, { focusedSuggestion }) => {
     if (focusedSuggestion) {
-      console.log('onBlur ', focusedSuggestion.properties.hint);
+      console.log('onBlur ', focusedSuggestion.properties.label);
       this.setState({
-        value: focusedSuggestion.properties.hint,
+        value: focusedSuggestion.properties.label,
       })
       this.props.onSuggestSelected(focusedSuggestion)
     }
@@ -34,7 +34,8 @@ class GeocodeSuggest extends React.Component {
   loadSuggestions = (inputText) => {
     const inputValue = inputText.trim().toLowerCase()
     // su nginx Referer: '', per unicorn
-    axios.get(`/suggest?query=${inputValue}`)
+    // axios.get(`/suggest?query=${inputValue}`)
+    axios.get(`/autocomplete?lang=it&text=${inputValue}`)
       .then((response) => {
         const suggestions = response.data.features.slice(0, 6)
         this.setState({ suggestions })
@@ -63,14 +64,15 @@ class GeocodeSuggest extends React.Component {
     });
   }
 
-  getSuggestionValue = (suggestion) => { // when suggestion selected, this function tells
-    // console.log('getSuggestionValue', suggestion.properties.hint, suggestion.geometry.coordinates)
-    // this.props.onSuggestSelected(suggestion)
-    return suggestion.properties.hint // what should be the value of the input
+  // When suggestion is clicked, Autosuggest needs to populate the input
+  // based on the clicked suggestion. Teach Autosuggest how to calculate the
+  // input value for every given suggestion.
+  getSuggestionValue = (suggestion) => {
+    return suggestion.properties.label.replace(', Italia', '')
   }
 
   renderSuggestion = (suggestion) => {
-    return <span>{suggestion.properties.hint}</span>
+    return <span>{suggestion.properties.label.replace(', Italia', '')}</span>
   }
 
   onSuggestionSelected = (event, { suggestion, suggestionValue, sectionIndex, method }) => {

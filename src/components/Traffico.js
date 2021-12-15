@@ -17,7 +17,7 @@ class Traffico extends React.Component {
     // console.log('connection', connection)
     this.state = {
       bollentinUpdate: '...',
-      songs: [{ url: '/notiziario/notiziario.mp3' }],
+      songs: [{ url: '/notiziario.mp3' }],
       downlink: downlink || 0,
     }
   }
@@ -73,9 +73,9 @@ class Traffico extends React.Component {
       <div className='align_brother_bottom'>
         <div className='area_player'>
           <AudioPlayer ref={this.audioPlayerRef} songs={this.state.songs} />
-          <a href='#' className='ascolta' onClick={this.onAscoltaClick.bind(this)}>
+          <span role='button' className='ascolta' onClick={this.onAscoltaClick.bind(this)}>
             <FormattedMessage id='ascolta' values={{ bollentinUpdate: this.state.bollentinUpdate }}/>
-          </a>
+          </span>
         </div>
         <div className='visualizza'>
           <a href='https://map.muoversinpiemonte.it/#traffic' className='btn_link '><FormattedMessage id='eventi'/></a>
@@ -86,7 +86,7 @@ class Traffico extends React.Component {
   }
 }
 Traffico.defaultProps = {
-  notiziario: '/notiziario/notiziario.mp3',
+  notiziario: '/notiziario.mp3',
 }
 
 export default injectIntl(Traffico)

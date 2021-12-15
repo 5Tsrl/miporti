@@ -1,73 +1,56 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import Header from './Header'
 import PageLayout from './PageLayout.js'
 import './page.scss'
 
-class WPage extends React.Component {
-  state = {
-    page: {},
-    isLoaded: false,
-  }
+const WPage = (props) => {
 
-  getPageContent = () => {
-    const { slug } = this.props.match.params
-    // console.log('slug', slug)
-    axios
-      .get(`/wp-json/wp/v2/pages?filter[name]=${slug}`)
-      .then((res) => {
-        const pageObj = res.data[0]
-        if (pageObj && pageObj.content) {
-          const newContent = { rendered: pageObj.content.rendered.replace(/http:\/\/wpmip.5t.torino.it\/wp-content\/uploads/gi, '/wp-images') }
-          const newPageObj = { ...pageObj, content: newContent }
-          this.setState({ page: newPageObj, isLoaded: true })
-        } else {
-          this.props.history.push('/notfound')
-          // console.log('NOT FOUND')
-        }
-      })
-      .catch((error) => {
-        console.log('error', error)
-      })
-  }
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
 
-  componentDidMount() {
-    this.getPageContent()
-  }
+  const { slug } = useParams()
+  // console.log('slug', slug)
 
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.props.match.params !== prevProps.match.params) {
-      this.getPageContent()
+  let navigate = useNavigate()
+
+  useEffect(  () => { // https://www.robinwieruch.de/react-hooks-fetch-data/
+    const fetchData = async () => {
+      // const response = await fetch(`/wp-json/wp/v2/pages?filter[name]=${slug}`)
+      const response = await fetch(`/wp-json/wp/v2/pages?slug=${slug}`)  //su nuovo spmip su aws...
+      const json = await response.json()
+      // console.log(json)
+      if(json && Array.isArray(json) && json.length > 0){
+        setTitle( json[0].title.rendered )
+        // content.rendered.replace(/http:\/\/wpmip.5t.torino.it\/wp-content\/uploads/gi, '/wp-images') }
+        setContent( json[0].content.rendered )
+      } else {
+        // history.push('/notfound')
+        navigate(`/notfound`)
+        console.log('NOT FOUND')
+      }
     }
-  }
+    fetchData()
+  }, [slug, navigate])
 
-  render = () => {
-    const { page, isLoaded } = this.state
     return (
-      <React.Fragment>
+      <>
         <Helmet>
-          <title>{isLoaded ? page.title.rendered : ''} | Muoversi in Piemonte</title>
+          <title>{title} | Muoversi in Piemonte</title>
         </Helmet>
-        <Header {...this.props}/>{/* !! per passare props.param.match */}
         <main className="main">
           <PageLayout>
             <div className="widget page">
-                <h2 className="pageHeader" >{isLoaded ? page.title.rendered : ''}</h2>
+                <h2 className="pageHeader" >{title}</h2>
                 <div className="pageContent">
-                  {isLoaded ? (
-                    <div className="entry-content" dangerouslySetInnerHTML={{ __html: page.content.rendered }}></div>
-                    ) : (
-                    <div className="entry-content">...</div>
-                  )}
+                  <div className="entry-content" dangerouslySetInnerHTML={{ __html: content }}></div>
                 </div>
             </div>
           </PageLayout>
         </main>
-      </React.Fragment>
+      </>
     )
-  }
+
 }
 
 export default WPage

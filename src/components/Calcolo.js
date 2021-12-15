@@ -48,13 +48,13 @@ class Calcolo extends React.Component {
   }
   handleFromSelected = (suggestion) => {
     if (suggestion) {
-      this.setState({ value_from: suggestion.properties.hint })
+      this.setState({ value_from: suggestion.properties.label.replace(', Italia', '') })
       this.setState({ coord_from: `::${suggestion.geometry.coordinates[1]},${suggestion.geometry.coordinates[0]}` })
     }
   }
   handleToSelected = (suggestion) => {
     if (suggestion) {
-      this.setState({ value_to: suggestion.properties.hint })
+      this.setState({ value_to: suggestion.properties.label.replace(', Italia', '') })
       this.setState({ coord_to: `::${suggestion.geometry.coordinates[1]},${suggestion.geometry.coordinates[0]}` })
     }
   }
@@ -69,8 +69,8 @@ class Calcolo extends React.Component {
       params.mode = this.state.otpMode
     }
     const queryString = Object.keys(params).map((k) => { return `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}` }).join('&')
-    // console.log(queryString)
-    // location.href = `https://map.muoversinpiemonte.it/#planner?${queryString}`
+    console.log(queryString)
+    window.location.href = `https://map.muoversinpiemonte.it/#planner?${queryString}`
   }
   render = () => {
     const { formatMessage } = this.props.intl

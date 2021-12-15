@@ -113,7 +113,8 @@ class Meteo extends React.Component {
 
   loadMeteoFromServer = () => {
     axios
-      .get('/meteoarpa')
+      // .get('/meteoarpa')
+      .get('/getForecast')
       .then((res) => {
         this.setState({ data: res.data })
       })
