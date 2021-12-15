@@ -16,7 +16,8 @@ const SelectorText = (props) => {
 }
 
 const SelectorTexts = ({ open, texts }) => {
-  const textsNodes = texts && texts.map((colle, idx) => {
+  
+  const textsNodes = texts && Array.isArray(texts) && texts.map((colle, idx) => {
     return <li className={colle.Stato} key={idx} ><span>{colle.Nome}</span></li>
   })
   return (
