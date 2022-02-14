@@ -17,13 +17,13 @@ if (process.env.NODE_ENV === 'development'){
 const useAnalyticsTracking = () => {
   let location = useLocation()
   useEffect(() => {
-    console.log('qui location.pathname', location.pathname)
+    // console.log('qui location.pathname', location.pathname)
     const page = `${location.pathname}${location.search}`
     ReactGA.set({ page })
     ReactGA.pageview(page)
 
   }, [location])
 
-  console.log('logPageView')
+  // console.log('logPageView')
 }
 export {useAnalyticsTracking}

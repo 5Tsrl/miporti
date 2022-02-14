@@ -28,7 +28,8 @@ module.exports = (app) => {
   app.use(
     '/news',  // così funge! evidentemente, quando il target è copleto di estensione? querystrin? lo mappa as is
     createProxyMiddleware({
-      target: 'https://reporter.5t.torino.it/ws/publish.php?ch=11',
+      // target: 'https://reporter.5t.torino.it/ws/publish.php?ch=11',
+      target: 'https://apimip.5t.torino.it',
       changeOrigin: true,
     })
   )
@@ -113,7 +114,8 @@ module.exports = (app) => {
   app.use(
     '/colli',
     createProxyMiddleware({
-      target: 'http://docker1.5t.torino.it:90/api/index.php',
+      // target: 'http://docker1.5t.torino.it:90/api/index.php',
+      target: 'https://apimip.5t.torino.it',
       changeOrigin: true,
     })
   )

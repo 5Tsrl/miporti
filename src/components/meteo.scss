@@ -23,10 +23,10 @@
   &.nebbia:before{
     background-image:url(../images/meteo/nebbia.svg);
   }
-  &.neve-debole:before{
+  &.neve-debole:before, &.nevicata-debole:before{
     background-image:url(../images/meteo/neve-debole.svg);
   }
-  &.neve-forte:before{
+  &.neve-forte:before, &.nevicata-forte:before{
     background-image:url(../images/meteo/neve-forte.svg);
   }
   &.neve-moderata:before{
@@ -53,7 +53,7 @@
   &.pioggia-molto-forte:before{
     background-image:url(../images/meteo/pioggia-molto-forte.svg);
   }
-  &.pioggia-mista-neve:before{
+  &.pioggia-mista-neve:before, &.pioggia-e-neve:before{
     background-image:url(../images/meteo/pioggia-neve.svg);
   }
   &.poco-nuvoloso:before{
